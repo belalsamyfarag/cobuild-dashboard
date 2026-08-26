@@ -160,10 +160,10 @@ function initBuildingModel(containerId) {
 
         <!-- Floor Quick Info Hover Card -->
         <div id="floor-detail-overlay" class="absolute bottom-2 left-2 bg-white/95 backdrop-blur-md px-3 py-2 rounded-xl shadow-md border border-slate-100 text-xs hidden animate-fade-in">
-          <div class="font-bold text-slate-800" id="floor-overlay-title">الطابق الثالث</div>
+          <div class="font-bold text-slate-800" id="floor-overlay-title">الدور الثالث</div>
           <div class="text-emerald-600 font-semibold flex items-center gap-1 mt-0.5" id="floor-overlay-status">
             <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-            مكتمل 100%
+            منتهي بالكامل 100%
           </div>
         </div>
       </div>
@@ -173,10 +173,10 @@ function initBuildingModel(containerId) {
   window.selectBuildingFloor = function(floorNum) {
     activeFloor = floorNum;
     const floorInfo = dashboardData.floors.find(f => f.floorNumber === floorNum) || {
-      name: `الطابق ${floorNum}`,
+      name: `الدور ${floorNum}`,
       status: floorNum <= 3 ? "completed" : "in-progress",
       progress: floorNum <= 3 ? 100 : (floorNum === 4 ? 75 : 40),
-      label: floorNum <= 3 ? "مكتمل بالكامل" : "قيد التنفيذ"
+      label: floorNum <= 3 ? "منتهي بالكامل" : "تحت التنفيذ"
     };
 
     const overlay = document.getElementById("floor-detail-overlay");

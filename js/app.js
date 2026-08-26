@@ -6,9 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 let currentGaugeIndex = 0;
 const gaugeMetrics = [
-  { title: "نسبة الإنجاز الكلي", value: 90, subtext: "المشروع متقدم بنسبة 4% عن الجدول" },
-  { title: "نسبة الهيكل الإنشائي", value: 100, subtext: "تم استلام كافة الأعمال الخرسانية" },
-  { title: "نسبة التشطيبات الداخلية", value: 68, subtext: "جاري أعمال التمديدات والدهان" }
+  { title: "نسبة الإنجاز الكلية", value: 90, subtext: "متقدم عن الجدول الزمني بـ 4 أيام" },
+  { title: "الهيكل الخرساني", value: 100, subtext: "تم صب واستلام كافة العناصر الإنشائية" },
+  { title: "التشطيبات والتأسيس", value: 68, subtext: "جاري أعمال المحارة وتأسيس السباكة والكهرباء" }
 ];
 
 let currentCameraIndex = 0;
@@ -242,17 +242,21 @@ window.downloadReport = function(repId) {
 ===================================================
 CoBuild PropTech - مركز شفافية البناء
 مشروع: ${dashboardData.projectInfo.name} (${dashboardData.projectInfo.code})
+الموقع: ${dashboardData.projectInfo.location}
+الاستشاري المشرف: شركة الاستشارات الهندسية وضبط الجودة
+المقاول العام: ${dashboardData.projectInfo.generalContractor}
+---------------------------------------------------
 ${rep.title}
 تاريخ الإصدار: ${rep.date}
 الحالة: ${rep.status}
 ---------------------------------------------------
-الملخص التنفيذي:
+الملخص التنفيذي للأعمال:
 ${rep.summary}
 
-مؤشرات المشروع الرئيسية:
+مؤشرات الأداء والجودة والسلامة:
 - نسبة الإنجاز الإجمالية: ${dashboardData.projectInfo.completionPercentage}%
-- سجل السلامة المهنية: ${dashboardData.projectInfo.safeDays} يوم بدون إصابات
-- تقييم الاستدامة البيئية: ${dashboardData.projectInfo.sustainabilityScore}
+- سجل السلامة والصحة المهنية: ${dashboardData.projectInfo.safeDays} يوم عمل بدون إصابات
+- تقييم البناء الأخضر والاستدامة: ${dashboardData.projectInfo.sustainabilityScore}
 ===================================================
   `;
 

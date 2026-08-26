@@ -49,7 +49,8 @@ function initBudgetChart(canvasId) {
           callbacks: {
             label: function(context) {
               const cat = budgetData.categories[context.dataIndex];
-              return ` ${cat.name}: ${cat.percentage}% (${(cat.amount).toLocaleString('ar-SA')} ر.س)`;
+              const curr = dashboardData.budget.currency || 'ج.م';
+              return ` ${cat.name}: ${cat.percentage}% (${(cat.amount).toLocaleString('ar-EG')} ${curr})`;
             }
           }
         }

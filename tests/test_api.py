@@ -40,7 +40,7 @@ class TestCoBuildBackend(unittest.TestCase):
                 data = json.loads(res.read().decode('utf-8'))
                 self.assertIn("name", data)
                 self.assertIn("completion_pct", data)
-                self.assertEqual(data["id"], "CB-2023-YAS-01")
+                self.assertEqual(data["id"], "CB-2023-NRG-01")
         except urllib.error.URLError:
             self.skipTest("Backend server is not currently running on port 5000")
 

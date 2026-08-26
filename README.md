@@ -86,7 +86,11 @@ The platform includes a zero-dependency Python REST API backend paired with a re
 - **`rfis`**: Engineering Requests for Information (RFIs) and approvals.
 - **`iot_telemetry`**: Concrete curing temperature, crane tilt, noise, and air quality telemetry.
 
-### 🔌 REST API Endpoints (`http://127.0.0.1:5000`)
+### 🔌 REST API Endpoints
+- **Production (Render)**: `https://cobuild-dashboard.onrender.com/api`
+- **Local Development**: `http://127.0.0.1:5000/api`
+
+Endpoints:
 - `GET /api/project` — Active project summary
 - `GET /api/reports` — Monthly reports list
 - `GET /api/milestones` & `POST /api/milestones` — CRUD milestones (persisted to SQLite)

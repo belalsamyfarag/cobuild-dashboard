@@ -76,9 +76,9 @@
           <!-- Project Selector Dropdown -->
           <div class="relative hidden sm:block">
             <select id="project-selector" class="bg-teal-50 text-teal-800 text-xs font-bold py-1.5 px-3 rounded-xl border border-teal-200/80 focus:outline-none focus:ring-2 focus:ring-teal-500 cursor-pointer">
-              <option value="p1">برج الياسمين - الرياض (CB-2023)</option>
-              <option value="p2">مجمع النرجس السكني - جدة (CB-2024)</option>
-              <option value="p3">أبراج الشاطئ - الخبر (CB-2025)</option>
+              <option value="p1">برج النرجس - التجمع الخامس (CB-2023)</option>
+              <option value="p2">كمبوند زايد ريزيدنس - الشيخ زايد (CB-2024)</option>
+              <option value="p3">أبراج الساحل - العلمين الجديدة (CB-2025)</option>
             </select>
           </div>
 
@@ -93,11 +93,11 @@
       <!-- Left: Search, Notifications, Quick Actions & Profile -->
       <div class="flex items-center gap-2.5 w-full md:w-auto justify-end">
         <!-- Search Input -->
-        <div class="relative flex-1 md:w-60">
+        <div class="relative flex-1 md:w-64">
           <input 
             type="text" 
             id="dashboard-search-input" 
-            placeholder="البحث في التقارير والمعالم..." 
+            placeholder="البحث في التقارير والمهام ومستخلصات الموقع..." 
             class="w-full bg-white/90 backdrop-blur-md border border-slate-200/80 rounded-full py-2 pr-9 pl-4 text-xs md:text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500/50 shadow-sm transition-all text-right"
           />
           <div class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
@@ -109,7 +109,7 @@
         <button 
           onclick="openRfiModal()" 
           class="w-9 h-9 rounded-full bg-white border border-slate-200/80 shadow-sm flex items-center justify-center text-slate-600 hover:text-teal-600 hover:border-teal-300 transition-all no-print" 
-          title="سجل الاعتمادات الهندسية والمراسلات (RFIs & EIRs)"
+          title="سجل الاعتمادات وطلبات الفحص الهندسي (RFIs & EIRs)"
         >
           <i data-lucide="clipboard-check" class="w-4 h-4 text-teal-600"></i>
         </button>
@@ -129,7 +129,7 @@
         <button 
           onclick="window.print()" 
           class="w-9 h-9 rounded-full bg-white border border-slate-200/80 shadow-sm flex items-center justify-center text-slate-600 hover:text-teal-600 hover:border-teal-300 transition-all no-print" 
-          title="طباعة وتصدير التقرير التنفيذي"
+          title="طباعة وتصدير التقرير التنفيذي للمشروع"
         >
           <i data-lucide="printer" class="w-4 h-4"></i>
         </button>
@@ -148,7 +148,7 @@
           <button 
             id="notif-bell-btn" 
             class="w-10 h-10 rounded-full bg-white border border-slate-200/80 shadow-sm flex items-center justify-center text-slate-600 hover:text-teal-600 hover:border-teal-300 transition-all relative"
-            title="الإشعارات الميدانية"
+            title="الإشعارات الميدانية والتنبيهات"
           >
             <i data-lucide="bell" class="w-4 h-4"></i>
             <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-rose-500 ring-2 ring-white animate-ping"></span>
@@ -159,7 +159,7 @@
           <div id="notif-dropdown" class="hidden absolute left-0 mt-2 w-80 bg-white rounded-2xl shadow-xl border border-slate-100 p-3 z-50 animate-fade-in">
             <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100 px-2">
               <span class="text-xs font-bold text-slate-800">التنبيهات الميدانية الفورية</span>
-              <span class="text-[10px] text-teal-600 bg-teal-50 px-2 py-0.5 rounded-full font-semibold">3 جديدة</span>
+              <span class="text-[10px] text-teal-600 bg-teal-50 px-2 py-0.5 rounded-full font-semibold">3 تنبيهات جديدة</span>
             </div>
             <div id="notifications-container" class="space-y-1 max-h-60 overflow-y-auto">
               <!-- Rendered via JS -->
@@ -187,7 +187,7 @@
         <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
         <span class="font-black text-slate-800 font-['Cairo'] flex items-center gap-1.5">
           <i data-lucide="activity" class="w-3.5 h-3.5 text-teal-600"></i>
-          بث المستشعرات الحية (IoT Telemetry):
+          بث حساسات الموقع الحية (IoT Telemetry):
         </span>
       </div>
 
@@ -197,15 +197,15 @@
           <span class="font-bold text-emerald-600">28.4°C (36 MPa)</span>
         </div>
         <div class="flex items-center gap-1.5 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-100">
-          <span class="text-slate-500 font-sans">ميلان الرافعة:</span>
-          <span class="font-bold text-teal-600">0.18° (آمن)</span>
+          <span class="text-slate-500 font-sans">ميلان الونش البرجي:</span>
+          <span class="font-bold text-teal-600">0.18° (آمن ومستقر)</span>
         </div>
         <div class="flex items-center gap-1.5 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-100">
-          <span class="text-slate-500 font-sans">الضجيج البيئي:</span>
-          <span class="font-bold text-sky-600">68 dB (مطابق)</span>
+          <span class="text-slate-500 font-sans">الضوضاء بالموقع:</span>
+          <span class="font-bold text-sky-600">68 dB (مطابق بيئياً)</span>
         </div>
         <div class="flex items-center gap-1.5 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-100">
-          <span class="text-slate-500 font-sans">جودة الهواء:</span>
+          <span class="text-slate-500 font-sans">نقاء الهواء:</span>
           <span class="font-bold text-emerald-600">AQI 28 (ممتاز)</span>
         </div>
       </div>
@@ -248,7 +248,7 @@
       </div>
 
 
-      <!-- CARD 2: معالم التطور / معرض الصور (Progress Evolution Gallery) [lg:col-span-5] -->
+      <!-- CARD 2: تطور الموقع ومراحل البناء (Progress Evolution Gallery) [lg:col-span-5] -->
       <div class="cobuild-card p-4 lg:p-5 lg:col-span-5 flex flex-col justify-between">
         <!-- Header -->
         <div class="flex items-center justify-between mb-3">
@@ -257,7 +257,7 @@
             <span>مقارنة زمنية</span>
           </button>
           <h2 class="text-base font-extrabold text-slate-800 flex items-center gap-2 font-['Cairo']">
-            معالم التطور
+            تطور الموقع ومراحل البناء
           </h2>
         </div>
 
@@ -305,7 +305,7 @@
             <div class="mt-2 text-right">
               <div class="text-xs font-black text-slate-800">فبراير</div>
               <p class="text-[10px] text-slate-500 line-clamp-2 leading-tight mt-0.5">
-                أندين مكتبية البناء مع الخطوات النفيس للفنيات.
+                شدات الأعمدة ورفع المون بالونش البرجي.
               </p>
               <div class="text-[9px] text-slate-400 mt-1 font-mono">2023-02-15</div>
             </div>
@@ -326,7 +326,7 @@
             <div class="mt-2 text-right">
               <div class="text-xs font-black text-slate-800">يناير</div>
               <p class="text-[10px] text-slate-500 line-clamp-2 leading-tight mt-0.5">
-                أندين مكتبية البناء مع الخطوات النفيس للفنيات.
+                صب خرسانة سقف الدور المتكرر والدمك.
               </p>
               <div class="text-[9px] text-slate-400 mt-1 font-mono">2023-02-23</div>
             </div>
@@ -428,9 +428,9 @@
             </button>
             <div class="text-right">
               <h2 class="text-base font-extrabold text-slate-800 font-['Cairo']">
-                هيكل الموازنة
+                توزيع الميزانية والتكاليف
               </h2>
-              <div class="text-xs text-slate-400 mt-0.5">التماسك الصندوق والتكلفة</div>
+              <div class="text-xs text-slate-400 mt-0.5">المصروفات الفعلية والتحكم في التكلفة</div>
             </div>
           </div>
 
@@ -439,7 +439,7 @@
             <canvas id="budgetChart"></canvas>
             <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
               <span class="text-xs text-slate-400">إجمالي المصروف</span>
-              <span class="text-sm font-extrabold text-slate-800">15.0M ر.س</span>
+              <span class="text-sm font-extrabold text-slate-800">15.0M ج.م</span>
             </div>
           </div>
 
@@ -448,28 +448,28 @@
             <div class="flex items-center justify-between px-1">
               <span class="font-bold text-slate-800">30%</span>
               <div class="flex items-center gap-2">
-                <span class="text-slate-600 font-medium">المواد</span>
+                <span class="text-slate-600 font-medium">المواد الخام</span>
                 <span class="w-2.5 h-2.5 rounded-full bg-[#0d9488]"></span>
               </div>
             </div>
             <div class="flex items-center justify-between px-1">
               <span class="font-bold text-slate-800">20%</span>
               <div class="flex items-center gap-2">
-                <span class="text-slate-600 font-medium">العمالة</span>
+                <span class="text-slate-600 font-medium">المصنعيات والعمالة</span>
                 <span class="w-2.5 h-2.5 rounded-full bg-[#0284c7]"></span>
               </div>
             </div>
             <div class="flex items-center justify-between px-1">
               <span class="font-bold text-slate-800">10%</span>
               <div class="flex items-center gap-2">
-                <span class="text-slate-600 font-medium">المقاولين</span>
+                <span class="text-slate-600 font-medium">مقاولي الباطن</span>
                 <span class="w-2.5 h-2.5 rounded-full bg-[#f59e0b]"></span>
               </div>
             </div>
             <div class="flex items-center justify-between px-1">
               <span class="font-bold text-slate-800">40%</span>
               <div class="flex items-center gap-2">
-                <span class="text-slate-600 font-medium">التراخيص</span>
+                <span class="text-slate-600 font-medium">التراخيص والاحتياطي</span>
                 <span class="w-2.5 h-2.5 rounded-full bg-[#94a3b8]"></span>
               </div>
             </div>
@@ -493,16 +493,16 @@
             <!-- Floor Indicators -->
             <div class="flex flex-col gap-1.5 items-end text-xs">
               <div class="flex items-center gap-1.5">
-                <span class="text-slate-700 font-bold">الأدوار المكتملة</span>
+                <span class="text-slate-700 font-bold">أدوار تم صبها وتشطيبها</span>
                 <span class="w-1.5 h-4 rounded-full bg-emerald-500"></span>
               </div>
               <div class="flex items-center gap-1.5">
-                <span class="text-slate-500 font-medium">الأدوار قيد الإنجاز</span>
+                <span class="text-slate-500 font-medium">أدوار تحت التنفيذ</span>
                 <span class="w-1.5 h-4 rounded-full bg-amber-500"></span>
               </div>
               <div class="mt-1 text-right">
                 <div class="text-2xl font-black text-slate-900 leading-none">3</div>
-                <div class="text-[10px] text-slate-400">طوابق منجزة</div>
+                <div class="text-[10px] text-slate-400">أدوار منتهية</div>
               </div>
             </div>
           </div>
@@ -514,20 +514,20 @@
         </div>
 
         <div class="text-center text-[11px] text-slate-400 pt-2 border-t border-slate-100">
-          انقر على أي طابق لعرض تفاصيل الصب ونسب الفحص الهندسية
+          انقر على أي دور لعرض تفاصيل الصب ونسب الفحص الهندسية وكسر المكعبات
         </div>
       </div>
 
 
-      <!-- CARD 6: معالم التشطيب والتطور (Finishing Stepper & Progress Cards) [lg:col-span-5] -->
+      <!-- CARD 6: مراحل التنفيذ والتشطيب (Finishing Stepper & Progress Cards) [lg:col-span-5] -->
       <div class="cobuild-card p-4 lg:p-5 lg:col-span-5 flex flex-col justify-between">
         <!-- Header -->
         <div class="flex items-center justify-between mb-3">
           <h2 class="text-base font-extrabold text-slate-800 font-['Cairo']">
-            معالم التطور الميداني
+            تطور الموقع الميداني
           </h2>
           <h2 class="text-base font-extrabold text-slate-800 font-['Cairo']">
-            مراحل التشطيب
+            مراحل التنفيذ والتشطيب
           </h2>
         </div>
 
@@ -544,7 +544,7 @@
               <div class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs shadow-sm">
                 <i data-lucide="check" class="w-3.5 h-3.5"></i>
               </div>
-              <span class="text-xs font-bold text-slate-700">مرحلة الهيكل</span>
+              <span class="text-xs font-bold text-slate-700">مرحلة الهيكل الخرساني</span>
             </div>
 
             <!-- Step 2: التشطيب (Active) -->
@@ -552,23 +552,23 @@
               <div class="w-7 h-7 rounded-full bg-teal-600 text-white flex items-center justify-center text-xs shadow-md ring-4 ring-teal-100 animate-pulse">
                 <i data-lucide="layers" class="w-3.5 h-3.5"></i>
               </div>
-              <span class="text-xs font-black text-teal-700">مرحلة التشطيب</span>
+              <span class="text-xs font-black text-teal-700">مرحلة المباني والتأسيس</span>
             </div>
 
             <!-- Step 3: التجهيز -->
             <div class="relative z-10 flex items-center gap-2.5">
               <div class="w-6 h-6 rounded-full bg-white border-2 border-slate-300 text-slate-400 flex items-center justify-center text-xs">
-                <i data-lucide="package" class="w-3 h-3"></i>
+                <i data-lucide="package" class="w-3.5 h-3.5"></i>
               </div>
-              <span class="text-xs font-medium text-slate-400">مرحلة التجهيز</span>
+              <span class="text-xs font-medium text-slate-400">مرحلة التشطيبات والواجهات</span>
             </div>
 
             <!-- Step 4: التسليم -->
             <div class="relative z-10 flex items-center gap-2.5">
               <div class="w-6 h-6 rounded-full bg-white border-2 border-slate-300 text-slate-400 flex items-center justify-center text-xs">
-                <i data-lucide="key" class="w-3 h-3"></i>
+                <i data-lucide="key" class="w-3.5 h-3.5"></i>
               </div>
-              <span class="text-xs font-medium text-slate-400">مرحلة التسليم</span>
+              <span class="text-xs font-medium text-slate-400">مرحلة التسليم النهائي</span>
             </div>
           </div>
 
@@ -580,7 +580,7 @@
               <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=300&q=80" alt="مارس" class="h-20 w-full object-cover rounded-lg" />
               <div class="mt-1.5 text-right px-1">
                 <div class="text-xs font-bold text-slate-800">مارس</div>
-                <div class="text-[9px] text-slate-500 line-clamp-2 leading-tight">الموقع تصوير الإجمالي للدهان</div>
+                <div class="text-[9px] text-slate-500 line-clamp-2 leading-tight">الموقع العام وتجهيز المحارة</div>
                 <div class="text-[8px] text-slate-400 font-mono mt-1">21-05-2023</div>
               </div>
             </div>
@@ -590,7 +590,7 @@
               <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=300&q=80" alt="فبراير" class="h-20 w-full object-cover rounded-lg" />
               <div class="mt-1.5 text-right px-1">
                 <div class="text-xs font-bold text-slate-800">فبراير</div>
-                <div class="text-[9px] text-slate-500 line-clamp-2 leading-tight">الهيكل الأساسي للأعمدة</div>
+                <div class="text-[9px] text-slate-500 line-clamp-2 leading-tight">صب خرسانات الأعمدة والشدات</div>
                 <div class="text-[8px] text-slate-400 font-mono mt-1">11-05-2023</div>
               </div>
             </div>
@@ -600,7 +600,7 @@
               <img src="https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?auto=format&fit=crop&w=300&q=80" alt="يناير" class="h-20 w-full object-cover rounded-lg" />
               <div class="mt-1.5 text-right px-1">
                 <div class="text-xs font-bold text-slate-800">يناير</div>
-                <div class="text-[9px] text-slate-500 line-clamp-2 leading-tight">المعايير المتميزة بالدفع</div>
+                <div class="text-[9px] text-slate-500 line-clamp-2 leading-tight">اكتمال اللبشة والأساسات</div>
                 <div class="text-[8px] text-slate-400 font-mono mt-1">22-05-2023</div>
               </div>
             </div>

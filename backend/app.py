@@ -5,10 +5,12 @@ import json
 import urllib.parse
 import os
 import sys
+import time
 from database import get_connection, init_db
 
-PORT = 5000
-HOST = "127.0.0.1"
+PORT = int(os.environ.get("PORT", 5000))
+HOST = os.environ.get("HOST", "0.0.0.0")
+STATIC_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 class RestApiHandler(http.server.BaseHTTPRequestHandler):
     def _set_cors_headers(self, status=200, content_type="application/json"):
@@ -107,21 +109,33 @@ class RestApiHandler(http.server.BaseHTTPRequestHandler):
                     "status": "healthy"
                 })
 
-            elif path == "/":
-                self._send_json({
-                    "status": "online",
-                    "name": "CoBuild PropTech REST API",
-                    "version": "2.0.0",
-                    "endpoints": [
-                        "/api/project",
-                        "/api/reports",
-                        "/api/milestones",
-                        "/api/floors",
-                        "/api/budget",
-                        "/api/rfis",
-                        "/api/telemetry/live"
-                    ]
-                })
+            elif path == "/" or path == "/index.html":
+                index_path = os.path.join(STATIC_DIR, "index.html")
+                if os.path.exists(index_path):
+                    with open(index_path, 'rb') as f:
+                        content = f.read()
+                    self._set_cors_headers(200, "text/html")
+                    self.wfile.write(content)
+                    return
+                else:
+                    self._send_json({
+                        "status": "online",
+                        "name": "CoBuild PropTech REST API",
+                        "version": "2.0.0",
+                        "endpoints": ["/api/project", "/api/reports", "/api/milestones", "/api/floors", "/api/budget", "/api/rfis", "/api/telemetry/live"]
+                    })
+
+            elif path.startswith("/css/") or path.startswith("/js/"):
+                file_path = os.path.join(STATIC_DIR, path.lstrip("/"))
+                if os.path.exists(file_path) and os.path.isfile(file_path):
+                    content_type = "text/css" if path.endswith(".css") else "application/javascript"
+                    with open(file_path, 'rb') as f:
+                        content = f.read()
+                    self._set_cors_headers(200, content_type)
+                    self.wfile.write(content)
+                    return
+                else:
+                    self._send_json({"error": "File not found"}, 404)
 
             else:
                 self._send_json({"error": "Endpoint not found"}, 404)
@@ -146,7 +160,7 @@ class RestApiHandler(http.server.BaseHTTPRequestHandler):
         try:
             # Add new milestone
             if path == "/api/milestones":
-                m_id = payload.get("id") or f"ev-{int(urllib.parse.time.time()) if hasattr(urllib.parse, 'time') else 999}"
+                m_id = payload.get("id") or f"ev-{int(time.time())}"
                 title = payload.get("title", "")
                 subtitle = payload.get("subtitle", "")
                 date = payload.get("date", "")
@@ -155,7 +169,7 @@ class RestApiHandler(http.server.BaseHTTPRequestHandler):
 
                 cursor.execute("""
                 INSERT INTO milestones (id, project_id, title, subtitle, date, status, priority)
-                VALUES (?, 'CB-2023-YAS-01', ?, ?, ?, ?, ?)
+                VALUES (?, 'CB-2023-NRG-01', ?, ?, ?, ?, ?)
                 """, (m_id, title, subtitle, date, status, priority))
                 conn.commit()
 
