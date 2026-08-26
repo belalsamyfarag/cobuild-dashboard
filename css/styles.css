@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&display=swap');
+
+:root {
+  --font-arabic: 'Tajawal', 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --bg-gradient-from: #e9f3f8;
+  --bg-gradient-via: #e4f5f1;
+  --bg-gradient-to: #e3f0fb;
+  --brand-teal: #0d9488;
+  --brand-teal-light: #14b8a6;
+  --brand-blue: #0284c7;
+  --brand-orange: #f59e0b;
+}
+
+* {
+  font-family: var(--font-arabic);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: linear-gradient(135deg, #eaf2f8 0%, #e2f4f1 45%, #e1effa 100%);
+  min-height: 100vh;
+  color: #1e293b;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.6);
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Glass Card & Soft Shadows */
+.cobuild-card {
+  background: #ffffff;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+  border: 1px solid rgba(241, 245, 249, 0.9);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cobuild-card:hover {
+  box-shadow: 0 10px 25px -4px rgba(13, 148, 136, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.04);
+}
+
+/* Live Stream Video Player & Radar Animations */
+.live-stream-screen {
+  background: radial-gradient(circle at center, #111e2e 0%, #080d14 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.radar-glow {
+  filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.85));
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(0.85);
+    opacity: 0.9;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 3s infinite ease-in-out;
+}
+
+@keyframes live-badge-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-live-blink {
+  animation: live-badge-blink 1.5s infinite ease-in-out;
+}
+
+/* 3D Isometric Building Styles */
+.building-isometric-container {
+  perspective: 1200px;
+  perspective-origin: 50% 30%;
+}
+
+.building-isometric {
+  transform: rotateX(60deg) rotateZ(-45deg);
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.floor-slice {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.floor-slice:hover {
+  filter: brightness(1.12);
+  transform: translateY(-4px) scale(1.02);
+}
+
+.floor-active {
+  stroke: #10b981;
+  stroke-width: 2.5;
+  filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.6));
+}
+
+/* Milestones Vertical Stepper */
+.stepper-line {
+  position: absolute;
+  top: 1rem;
+  bottom: 1rem;
+  right: 1.15rem;
+  width: 2px;
+  background: #e2e8f0;
+  z-index: 0;
+}
+
+.stepper-line-active {
+  position: absolute;
+  top: 1rem;
+  height: 42%;
+  right: 1.15rem;
+  width: 2px;
+  background: #0d9488;
+  z-index: 1;
+}
+
+/* Weather Sky Card */
+.weather-sky-card {
+  background: linear-gradient(180deg, #3b82f6 0%, #60a5fa 60%, #93c5fd 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.weather-sky-card::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(254, 240, 138, 0.8) 0%, rgba(254, 240, 138, 0) 70%);
+  border-radius: 50%;
+}
+
+/* Modal and Lightbox */
+.modal-overlay {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(8px);
+}
+
+/* IoT Ticker Animation */
+@keyframes ticker-slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Blueprint Theme Mode */
+body.blueprint-mode {
+  background: linear-gradient(135deg, #091a2e 0%, #0d2847 50%, #081726 100%) !important;
+  color: #f1f5f9 !important;
+}
+
+body.blueprint-mode .cobuild-card {
+  background: rgba(15, 33, 56, 0.85) !important;
+  border-color: rgba(30, 58, 95, 0.8) !important;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.blueprint-mode h1,
+body.blueprint-mode h2,
+body.blueprint-mode h3,
+body.blueprint-mode .text-slate-800,
+body.blueprint-mode .text-slate-900 {
+  color: #f8fafc !important;
+}
+
+body.blueprint-mode .text-slate-500,
+body.blueprint-mode .text-slate-600 {
+  color: #94a3b8 !important;
+}
+
+body.blueprint-mode .bg-slate-50 {
+  background: rgba(10, 24, 43, 0.7) !important;
+}
+
+body.blueprint-mode .border-slate-100 {
+  border-color: rgba(30, 58, 95, 0.5) !important;
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .cobuild-card {
+    box-shadow: none !important;
+    border: 1px solid #e2e8f0 !important;
+    break-inside: avoid;
+  }
+}
+

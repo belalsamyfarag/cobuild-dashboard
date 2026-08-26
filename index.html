@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoBuild PropTech | مركز شفافية البناء</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#0d9488',
+              'teal-light': '#14b8a6',
+              'teal-dark': '#0f766e',
+              blue: '#0284c7',
+              orange: '#f59e0b',
+              slate: '#1e293b'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-gradient-to-br from-[#eaf2f8] via-[#e2f4f1] to-[#e1effa] min-h-screen text-slate-800 antialiased p-3 sm:p-5 lg:p-7 select-none">
+
+  <!-- Main Container -->
+  <div class="max-w-[1480px] mx-auto flex flex-col gap-5">
+
+    <!-- ==================== TOP HEADER ==================== -->
+    <header class="flex flex-col md:flex-row items-center justify-between gap-4 px-2">
+      <!-- Right: Logo & Center Name (RTL First) -->
+      <div class="flex items-center gap-4 w-full md:w-auto justify-between md:justify-start">
+        <div class="flex items-center gap-3 cursor-pointer group">
+          <!-- Stylized Isometric Cube Icon -->
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-teal-600 via-teal-500 to-cyan-400 p-0.5 shadow-md shadow-teal-500/20 group-hover:scale-105 transition-transform flex items-center justify-center">
+            <div class="w-full h-full bg-white rounded-[14px] flex items-center justify-center overflow-hidden">
+              <svg viewBox="0 0 24 24" class="w-7 h-7 text-teal-600 fill-teal-500">
+                <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#0d9488" />
+                <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#0284c7" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+          <div class="text-right">
+            <div class="text-xl font-extrabold tracking-tight text-slate-900 flex items-center gap-1.5 font-['Cairo']">
+              <span class="text-teal-600">CoBuild</span>
+              <span class="text-slate-800">PropTech</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="h-7 w-[1.5px] bg-slate-300/80 hidden md:block"></div>
+
+        <div class="flex items-center gap-2">
+          <h1 class="text-xl lg:text-2xl font-black text-slate-800 tracking-tight font-['Cairo']">
+            مركز شفافية البناء
+          </h1>
+
+          <!-- Project Selector Dropdown -->
+          <div class="relative hidden sm:block">
+            <select id="project-selector" class="bg-teal-50 text-teal-800 text-xs font-bold py-1.5 px-3 rounded-xl border border-teal-200/80 focus:outline-none focus:ring-2 focus:ring-teal-500 cursor-pointer">
+              <option value="p1">برج الياسمين - الرياض (CB-2023)</option>
+              <option value="p2">مجمع النرجس السكني - جدة (CB-2024)</option>
+              <option value="p3">أبراج الشاطئ - الخبر (CB-2025)</option>
+            </select>
+          </div>
+
+          <!-- Backend API Connection Indicator -->
+          <div id="backend-status-badge" class="hidden sm:flex items-center gap-1 bg-emerald-50 text-emerald-700 px-2 py-1 rounded-full text-[10px] font-bold border border-emerald-200/70" title="قاعدة بيانات SQLite متصلة بنجاح">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span id="backend-status-text">SQLite REST API</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Left: Search, Notifications, Quick Actions & Profile -->
+      <div class="flex items-center gap-2.5 w-full md:w-auto justify-end">
+        <!-- Search Input -->
+        <div class="relative flex-1 md:w-60">
+          <input 
+            type="text" 
+            id="dashboard-search-input" 
+            placeholder="البحث في التقارير والمعالم..." 
+            class="w-full bg-white/90 backdrop-blur-md border border-slate-200/80 rounded-full py-2 pr-9 pl-4 text-xs md:text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500/50 shadow-sm transition-all text-right"
+          />
+          <div class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
+            <i data-lucide="search" class="w-4 h-4"></i>
+          </div>
+        </div>
+
+        <!-- RFI / Engineering Submittals Queue Button -->
+        <button 
+          onclick="openRfiModal()" 
+          class="w-9 h-9 rounded-full bg-white border border-slate-200/80 shadow-sm flex items-center justify-center text-slate-600 hover:text-teal-600 hover:border-teal-300 transition-all no-print" 
+          title="سجل الاعتمادات الهندسية والمراسلات (RFIs & EIRs)"
+        >
+          <i data-lucide="clipboard-check" class="w-4 h-4 text-teal-600"></i>
+        </button>
+
+        <!-- Language Switcher (AR / EN) -->
+        <button 
+          onclick="toggleLanguage()" 
+          id="lang-toggle-btn"
+          class="px-2.5 py-1.5 rounded-full bg-white border border-slate-200/80 shadow-sm text-xs font-bold text-slate-700 hover:text-teal-600 hover:border-teal-300 transition-all no-print flex items-center gap-1" 
+          title="Switch Language / تبديل اللغة"
+        >
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-teal-600"></i>
+          <span id="lang-label">EN</span>
+        </button>
+
+        <!-- Export / Print Dashboard Button -->
+        <button 
+          onclick="window.print()" 
+          class="w-9 h-9 rounded-full bg-white border border-slate-200/80 shadow-sm flex items-center justify-center text-slate-600 hover:text-teal-600 hover:border-teal-300 transition-all no-print" 
+          title="طباعة وتصدير التقرير التنفيذي"
+        >
+          <i data-lucide="printer" class="w-4 h-4"></i>
+        </button>
+
+        <!-- Blueprint / Daylight Theme Toggle -->
+        <button 
+          onclick="toggleBlueprintTheme()" 
+          class="w-9 h-9 rounded-full bg-white border border-slate-200/80 shadow-sm flex items-center justify-center text-slate-600 hover:text-teal-600 hover:border-teal-300 transition-all no-print" 
+          title="التبديل بين النمط النهاري ونمط المخططات الهندسية (Blueprint Mode)"
+        >
+          <i data-lucide="moon" class="w-4 h-4" id="theme-icon"></i>
+        </button>
+
+        <!-- Notification Bell Button -->
+        <div class="relative">
+          <button 
+            id="notif-bell-btn" 
+            class="w-10 h-10 rounded-full bg-white border border-slate-200/80 shadow-sm flex items-center justify-center text-slate-600 hover:text-teal-600 hover:border-teal-300 transition-all relative"
+            title="الإشعارات الميدانية"
+          >
+            <i data-lucide="bell" class="w-4 h-4"></i>
+            <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-rose-500 ring-2 ring-white animate-ping"></span>
+            <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-rose-500 ring-2 ring-white"></span>
+          </button>
+
+          <!-- Notification Dropdown -->
+          <div id="notif-dropdown" class="hidden absolute left-0 mt-2 w-80 bg-white rounded-2xl shadow-xl border border-slate-100 p-3 z-50 animate-fade-in">
+            <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100 px-2">
+              <span class="text-xs font-bold text-slate-800">التنبيهات الميدانية الفورية</span>
+              <span class="text-[10px] text-teal-600 bg-teal-50 px-2 py-0.5 rounded-full font-semibold">3 جديدة</span>
+            </div>
+            <div id="notifications-container" class="space-y-1 max-h-60 overflow-y-auto">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- User Profile Avatar -->
+        <div class="flex items-center gap-2 cursor-pointer group">
+          <div class="relative">
+            <img 
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" 
+              alt="User Avatar" 
+              class="w-10 h-10 rounded-full object-cover ring-2 ring-teal-500/60 shadow-sm group-hover:scale-105 transition-transform"
+            />
+            <span class="absolute bottom-0 left-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white"></span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ==================== IOT SENSORS & TELEMETRY TICKER BAR ==================== -->
+    <div class="cobuild-card p-2.5 px-4 flex flex-wrap items-center justify-between gap-3 text-xs bg-white/80 backdrop-blur-md border border-teal-100/60 shadow-sm">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+        <span class="font-black text-slate-800 font-['Cairo'] flex items-center gap-1.5">
+          <i data-lucide="activity" class="w-3.5 h-3.5 text-teal-600"></i>
+          بث المستشعرات الحية (IoT Telemetry):
+        </span>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-4 sm:gap-6 font-mono text-[11px]">
+        <div class="flex items-center gap-1.5 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-100">
+          <span class="text-slate-500 font-sans">إماهة الخرسانة:</span>
+          <span class="font-bold text-emerald-600">28.4°C (36 MPa)</span>
+        </div>
+        <div class="flex items-center gap-1.5 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-100">
+          <span class="text-slate-500 font-sans">ميلان الرافعة:</span>
+          <span class="font-bold text-teal-600">0.18° (آمن)</span>
+        </div>
+        <div class="flex items-center gap-1.5 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-100">
+          <span class="text-slate-500 font-sans">الضجيج البيئي:</span>
+          <span class="font-bold text-sky-600">68 dB (مطابق)</span>
+        </div>
+        <div class="flex items-center gap-1.5 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-100">
+          <span class="text-slate-500 font-sans">جودة الهواء:</span>
+          <span class="font-bold text-emerald-600">AQI 28 (ممتاز)</span>
+        </div>
+      </div>
+
+      <button onclick="showToast('تم تحديث قراءات المستشعرات الحية بنجاح')" class="text-[11px] text-teal-700 font-bold hover:underline flex items-center gap-1">
+        <i data-lucide="refresh-cw" class="w-3 h-3"></i>
+        <span>تحديث فوري</span>
+      </button>
+    </div>
+
+
+    <!-- ==================== ROW 1: REPORTS | PROGRESS GALLERY | LIVE STREAM ==================== -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+
+      <!-- CARD 1: التقارير الشهرية (Monthly Reports) [lg:col-span-3] -->
+      <div class="cobuild-card p-4 lg:p-5 flex flex-col justify-between lg:col-span-3">
+        <div>
+          <!-- Header -->
+          <div class="flex items-center justify-between mb-4">
+            <button class="text-slate-400 hover:text-slate-600 transition-colors p-1" title="خيارات إضافية">
+              <i data-lucide="more-horizontal" class="w-4 h-4"></i>
+            </button>
+            <h2 class="text-base font-extrabold text-slate-800 flex items-center gap-2 font-['Cairo']">
+              التقارير الشهرية
+            </h2>
+          </div>
+
+          <!-- Reports List -->
+          <div id="reports-list-container" class="space-y-2.5">
+            <!-- Populated via JS: Jan, Feb, Feb (rev), Mar -->
+          </div>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+          <span>إجمالي التقارير: 4 معتمدة</span>
+          <button onclick="previewReport('rep-04')" class="text-teal-600 font-bold hover:underline">
+            عرض الأحدث
+          </button>
+        </div>
+      </div>
+
+
+      <!-- CARD 2: معالم التطور / معرض الصور (Progress Evolution Gallery) [lg:col-span-5] -->
+      <div class="cobuild-card p-4 lg:p-5 lg:col-span-5 flex flex-col justify-between">
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-3">
+          <button onclick="openTimelapseModal()" class="text-xs bg-amber-50 text-amber-800 font-bold px-2 py-1 rounded-lg hover:bg-amber-100 transition-colors flex items-center gap-1" title="مقارنة التطور الزمني">
+            <i data-lucide="history" class="w-3.5 h-3.5"></i>
+            <span>مقارنة زمنية</span>
+          </button>
+          <h2 class="text-base font-extrabold text-slate-800 flex items-center gap-2 font-['Cairo']">
+            معالم التطور
+          </h2>
+        </div>
+
+        <!-- Main Gallery Grid -->
+        <div class="grid grid-cols-3 gap-3">
+          
+          <!-- Column 1: Small Thumbnails Stack (Foundation & Interior) -->
+          <div class="flex flex-col gap-2.5 justify-between">
+            <div 
+              onclick="openLightbox(2)" 
+              class="relative rounded-xl overflow-hidden shadow-sm h-24 cursor-pointer group border border-slate-100"
+            >
+              <img 
+                src="https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?auto=format&fit=crop&w=400&q=80" 
+                alt="الموقع العام" 
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent flex items-end p-1.5">
+                <span class="text-[10px] font-bold text-white">الموقع العام</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-1.5 h-16">
+              <div onclick="openLightbox(3)" class="rounded-lg overflow-hidden cursor-pointer group">
+                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=200&q=80" alt="الأساسات" class="w-full h-full object-cover group-hover:scale-110 transition-transform" />
+              </div>
+              <div onclick="openLightbox(4)" class="rounded-lg overflow-hidden cursor-pointer group">
+                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=200&q=80" alt="التسليح" class="w-full h-full object-cover group-hover:scale-110 transition-transform" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: فبراير (Columns & Crane) -->
+          <div 
+            onclick="openLightbox(1)" 
+            class="flex flex-col justify-between bg-slate-50/70 rounded-xl p-2 border border-slate-100 cursor-pointer group hover:bg-teal-50/40 transition-colors"
+          >
+            <div class="rounded-lg overflow-hidden h-28 w-full shadow-sm">
+              <img 
+                src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=400&q=80" 
+                alt="فبراير" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="mt-2 text-right">
+              <div class="text-xs font-black text-slate-800">فبراير</div>
+              <p class="text-[10px] text-slate-500 line-clamp-2 leading-tight mt-0.5">
+                أندين مكتبية البناء مع الخطوات النفيس للفنيات.
+              </p>
+              <div class="text-[9px] text-slate-400 mt-1 font-mono">2023-02-15</div>
+            </div>
+          </div>
+
+          <!-- Column 3: يناير (Rooftop Concrete Pour) -->
+          <div 
+            onclick="openLightbox(0)" 
+            class="flex flex-col justify-between bg-slate-50/70 rounded-xl p-2 border border-slate-100 cursor-pointer group hover:bg-teal-50/40 transition-colors"
+          >
+            <div class="rounded-lg overflow-hidden h-28 w-full shadow-sm">
+              <img 
+                src="https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=400&q=80" 
+                alt="يناير" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div class="mt-2 text-right">
+              <div class="text-xs font-black text-slate-800">يناير</div>
+              <p class="text-[10px] text-slate-500 line-clamp-2 leading-tight mt-0.5">
+                أندين مكتبية البناء مع الخطوات النفيس للفنيات.
+              </p>
+              <div class="text-[9px] text-slate-400 mt-1 font-mono">2023-02-23</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- CARD 3: البث المباشر (Live Stream Video Player) [lg:col-span-4] -->
+      <div class="cobuild-card p-4 lg:p-5 lg:col-span-4 flex flex-col justify-between">
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-1.5">
+            <button onclick="toggleAiVision()" id="ai-vision-btn" class="text-xs text-emerald-700 bg-emerald-50 border border-emerald-200/80 px-2 py-1 rounded-full font-bold hover:bg-emerald-100 transition-colors flex items-center gap-1" title="تفعيل تحليل الذكاء الاصطناعي لمعدات السلامة (PPE)">
+              <i data-lucide="scan" class="w-3 h-3 text-emerald-600"></i>
+              <span id="ai-vision-label">AI Safety</span>
+            </button>
+            <button onclick="openDroneModal()" class="text-xs text-purple-700 bg-purple-50 px-2 py-1 rounded-full font-bold hover:bg-purple-100 transition-colors flex items-center gap-1" title="مسح الدرون الجوي">
+              <i data-lucide="plane" class="w-3 h-3"></i>
+              <span>درون</span>
+            </button>
+            <button onclick="openTour360Modal()" class="text-xs text-sky-600 bg-sky-50 px-2 py-1 rounded-full font-bold hover:bg-sky-100 transition-colors flex items-center gap-1" title="جولة افتراضية 360°">
+              <i data-lucide="crosshair" class="w-3 h-3"></i>
+              <span>360° VR</span>
+            </button>
+            <button onclick="switchCamera()" class="text-xs text-teal-600 bg-teal-50 px-2 py-1 rounded-full font-bold hover:bg-teal-100 transition-colors flex items-center gap-1">
+              <i data-lucide="refresh-cw" class="w-3 h-3"></i>
+              <span id="current-camera-name">كاميرا 1</span>
+            </button>
+          </div>
+          <h2 class="text-base font-extrabold text-slate-800 flex items-center gap-2 font-['Cairo']">
+            البث المباشر
+          </h2>
+        </div>
+
+        <!-- Video Player Screen -->
+        <div 
+          id="live-stream-container" 
+          class="live-stream-screen rounded-2xl h-48 w-full p-3 flex flex-col justify-between shadow-inner relative group"
+        >
+          <!-- Top Screen Overlay: Live Badge -->
+          <div class="flex items-center justify-between z-10">
+            <div class="bg-black/50 backdrop-blur-md text-[10px] text-emerald-400 px-2 py-0.5 rounded-md font-mono flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+              <span>1080p 60FPS</span>
+            </div>
+
+            <!-- Red Live Badge -->
+            <div class="bg-rose-600 text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1.5 shadow-md shadow-rose-600/30">
+              <span class="w-2 h-2 rounded-full bg-white animate-live-blink"></span>
+              <span>البث المباشر</span>
+            </div>
+          </div>
+
+          <!-- Center Glowing Radar Broadcast Signal -->
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div class="relative flex items-center justify-center">
+              <div class="w-20 h-20 rounded-full bg-teal-500/10 animate-pulse-ring absolute"></div>
+              <div class="w-14 h-14 rounded-full bg-teal-500/20 animate-pulse-ring absolute"></div>
+              <div class="text-emerald-400 radar-glow">
+                <svg viewBox="0 0 24 24" class="w-12 h-12 stroke-current fill-none stroke-[2.5]" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9" />
+                  <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5" />
+                  <circle cx="12" cy="12" r="2" fill="#34d399" />
+                  <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5" />
+                  <path d="M19.1 4.9C23 8.8 23 15.2 19.1 19.1" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Screen Overlay: Live Clock & Snapshot Action -->
+          <div class="flex items-center justify-between z-10 text-white/90 text-xs font-mono">
+            <button onclick="showToast('تم التقاط لقطة شاشة من البث المباشر وحفظها')" class="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-colors" title="التقاط صورة">
+              <i data-lucide="camera" class="w-3.5 h-3.5"></i>
+            </button>
+            <div id="camera-live-clock" class="bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-md text-[11px] text-slate-200 tracking-wider">
+              15:32:99 - 23-11-23 س
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- ==================== ROW 2: BUDGET | 3D COMPLETED FLOORS | FINISHING MILESTONES ==================== -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+
+      <!-- CARD 4: هيكل الموازنة (Budget Distribution) [lg:col-span-3] -->
+      <div class="cobuild-card p-4 lg:p-5 lg:col-span-3 flex flex-col justify-between">
+        <div>
+          <!-- Header -->
+          <div class="flex items-center justify-between mb-2">
+            <button onclick="openBudgetModal()" class="text-xs bg-slate-100 hover:bg-teal-50 hover:text-teal-700 font-bold px-2 py-1 rounded-lg transition-colors flex items-center gap-1" title="عرض تفاصيل المستخلصات">
+              <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+              <span>التفاصيل</span>
+            </button>
+            <div class="text-right">
+              <h2 class="text-base font-extrabold text-slate-800 font-['Cairo']">
+                هيكل الموازنة
+              </h2>
+              <div class="text-xs text-slate-400 mt-0.5">التماسك الصندوق والتكلفة</div>
+            </div>
+          </div>
+
+          <!-- Doughnut Chart Container -->
+          <div class="relative h-44 w-full flex items-center justify-center my-1 cursor-pointer" onclick="openBudgetModal()">
+            <canvas id="budgetChart"></canvas>
+            <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+              <span class="text-xs text-slate-400">إجمالي المصروف</span>
+              <span class="text-sm font-extrabold text-slate-800">15.0M ر.س</span>
+            </div>
+          </div>
+
+          <!-- Legend List matching the design -->
+          <div class="space-y-1.5 mt-3 text-xs">
+            <div class="flex items-center justify-between px-1">
+              <span class="font-bold text-slate-800">30%</span>
+              <div class="flex items-center gap-2">
+                <span class="text-slate-600 font-medium">المواد</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#0d9488]"></span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between px-1">
+              <span class="font-bold text-slate-800">20%</span>
+              <div class="flex items-center gap-2">
+                <span class="text-slate-600 font-medium">العمالة</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#0284c7]"></span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between px-1">
+              <span class="font-bold text-slate-800">10%</span>
+              <div class="flex items-center gap-2">
+                <span class="text-slate-600 font-medium">المقاولين</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#f59e0b]"></span>
+              </div>
+            </div>
+            <div class="flex items-center justify-between px-1">
+              <span class="font-bold text-slate-800">40%</span>
+              <div class="flex items-center gap-2">
+                <span class="text-slate-600 font-medium">التراخيص</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-[#94a3b8]"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- CARD 5: الأدوار المكتملة (3D Isometric Building Model) [lg:col-span-4] -->
+      <div class="cobuild-card p-4 lg:p-5 lg:col-span-4 flex flex-col justify-between relative overflow-hidden">
+        <div>
+          <!-- Header & Indicator Badges -->
+          <div class="flex items-start justify-between mb-2">
+            <!-- Right Text -->
+            <div class="text-right">
+              <h2 class="text-base font-extrabold text-slate-800 font-['Cairo']">
+                الأدوار المكتملة
+              </h2>
+            </div>
+
+            <!-- Floor Indicators -->
+            <div class="flex flex-col gap-1.5 items-end text-xs">
+              <div class="flex items-center gap-1.5">
+                <span class="text-slate-700 font-bold">الأدوار المكتملة</span>
+                <span class="w-1.5 h-4 rounded-full bg-emerald-500"></span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="text-slate-500 font-medium">الأدوار قيد الإنجاز</span>
+                <span class="w-1.5 h-4 rounded-full bg-amber-500"></span>
+              </div>
+              <div class="mt-1 text-right">
+                <div class="text-2xl font-black text-slate-900 leading-none">3</div>
+                <div class="text-[10px] text-slate-400">طوابق منجزة</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3D Model Render Container -->
+          <div id="buildingModelContainer" class="w-full h-64 flex items-center justify-center">
+            <!-- 3D SVG Isometric Building rendered via js/building3d.js -->
+          </div>
+        </div>
+
+        <div class="text-center text-[11px] text-slate-400 pt-2 border-t border-slate-100">
+          انقر على أي طابق لعرض تفاصيل الصب ونسب الفحص الهندسية
+        </div>
+      </div>
+
+
+      <!-- CARD 6: معالم التشطيب والتطور (Finishing Stepper & Progress Cards) [lg:col-span-5] -->
+      <div class="cobuild-card p-4 lg:p-5 lg:col-span-5 flex flex-col justify-between">
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-base font-extrabold text-slate-800 font-['Cairo']">
+            معالم التطور الميداني
+          </h2>
+          <h2 class="text-base font-extrabold text-slate-800 font-['Cairo']">
+            مراحل التشطيب
+          </h2>
+        </div>
+
+        <!-- Content Split: Left Stepper | Right Photo Cards -->
+        <div class="grid grid-cols-12 gap-3 items-center">
+          
+          <!-- Stepper Column (4 cols) -->
+          <div class="col-span-4 relative flex flex-col justify-between h-56 py-1 pr-2">
+            <div class="stepper-line"></div>
+            <div class="stepper-line-active"></div>
+
+            <!-- Step 1: الهيكل -->
+            <div class="relative z-10 flex items-center gap-2.5">
+              <div class="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs shadow-sm">
+                <i data-lucide="check" class="w-3.5 h-3.5"></i>
+              </div>
+              <span class="text-xs font-bold text-slate-700">مرحلة الهيكل</span>
+            </div>
+
+            <!-- Step 2: التشطيب (Active) -->
+            <div class="relative z-10 flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded-full bg-teal-600 text-white flex items-center justify-center text-xs shadow-md ring-4 ring-teal-100 animate-pulse">
+                <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+              </div>
+              <span class="text-xs font-black text-teal-700">مرحلة التشطيب</span>
+            </div>
+
+            <!-- Step 3: التجهيز -->
+            <div class="relative z-10 flex items-center gap-2.5">
+              <div class="w-6 h-6 rounded-full bg-white border-2 border-slate-300 text-slate-400 flex items-center justify-center text-xs">
+                <i data-lucide="package" class="w-3 h-3"></i>
+              </div>
+              <span class="text-xs font-medium text-slate-400">مرحلة التجهيز</span>
+            </div>
+
+            <!-- Step 4: التسليم -->
+            <div class="relative z-10 flex items-center gap-2.5">
+              <div class="w-6 h-6 rounded-full bg-white border-2 border-slate-300 text-slate-400 flex items-center justify-center text-xs">
+                <i data-lucide="key" class="w-3 h-3"></i>
+              </div>
+              <span class="text-xs font-medium text-slate-400">مرحلة التسليم</span>
+            </div>
+          </div>
+
+          <!-- Progress Photo Cards Column (8 cols) -->
+          <div class="col-span-8 grid grid-cols-3 gap-2">
+            
+            <!-- Card 1: مارس -->
+            <div class="flex flex-col bg-slate-50/80 rounded-xl p-1.5 border border-slate-100 hover:shadow-md transition-all cursor-pointer" onclick="openLightbox(2)">
+              <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=300&q=80" alt="مارس" class="h-20 w-full object-cover rounded-lg" />
+              <div class="mt-1.5 text-right px-1">
+                <div class="text-xs font-bold text-slate-800">مارس</div>
+                <div class="text-[9px] text-slate-500 line-clamp-2 leading-tight">الموقع تصوير الإجمالي للدهان</div>
+                <div class="text-[8px] text-slate-400 font-mono mt-1">21-05-2023</div>
+              </div>
+            </div>
+
+            <!-- Card 2: فبراير -->
+            <div class="flex flex-col bg-slate-50/80 rounded-xl p-1.5 border border-slate-100 hover:shadow-md transition-all cursor-pointer" onclick="openLightbox(1)">
+              <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=300&q=80" alt="فبراير" class="h-20 w-full object-cover rounded-lg" />
+              <div class="mt-1.5 text-right px-1">
+                <div class="text-xs font-bold text-slate-800">فبراير</div>
+                <div class="text-[9px] text-slate-500 line-clamp-2 leading-tight">الهيكل الأساسي للأعمدة</div>
+                <div class="text-[8px] text-slate-400 font-mono mt-1">11-05-2023</div>
+              </div>
+            </div>
+
+            <!-- Card 3: يناير -->
+            <div class="flex flex-col bg-slate-50/80 rounded-xl p-1.5 border border-slate-100 hover:shadow-md transition-all cursor-pointer" onclick="openLightbox(0)">
+              <img src="https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?auto=format&fit=crop&w=300&q=80" alt="يناير" class="h-20 w-full object-cover rounded-lg" />
+              <div class="mt-1.5 text-right px-1">
+                <div class="text-xs font-bold text-slate-800">يناير</div>
+                <div class="text-[9px] text-slate-500 line-clamp-2 leading-tight">المعايير المتميزة بالدفع</div>
+                <div class="text-[8px] text-slate-400 font-mono mt-1">22-05-2023</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- ==================== ROW 3: WEATHER | UPCOMING MILESTONES | TRANSPARENCY METRICS ==================== -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+
+      <!-- CARD 7: حالة الطقس (Weather & Cranes Safety) [lg:col-span-4] -->
+      <div class="cobuild-card p-4 lg:p-5 lg:col-span-4 flex flex-col justify-between">
+        <div class="grid grid-cols-12 gap-3 h-full">
+          
+          <!-- Left Section: 20° Sunny & 5-day mini forecast -->
+          <div class="col-span-6 flex flex-col justify-between pr-1">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <button class="text-slate-400 hover:text-slate-600 p-1">
+                  <i data-lucide="more-horizontal" class="w-4 h-4"></i>
+                </button>
+                <h2 class="text-sm font-extrabold text-slate-800 font-['Cairo']">حالة الطقس</h2>
+              </div>
+
+              <!-- Main Temp & Icon -->
+              <div class="flex items-center justify-between my-2">
+                <div class="text-amber-400 animate-spin-slow">
+                  <i data-lucide="sun" class="w-10 h-10 stroke-[2.5]"></i>
+                </div>
+                <div class="text-right">
+                  <div class="text-3xl font-black text-slate-900 font-mono">20°</div>
+                  <div class="text-xs font-bold text-slate-500">مشمس</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5-Day Mini Forecast Strip -->
+            <div class="grid grid-cols-5 gap-1 pt-2 border-t border-slate-100 text-center">
+              <div>
+                <div class="text-[9px] text-slate-400">الخميس</div>
+                <div class="text-amber-400 my-0.5 flex justify-center"><i data-lucide="sun" class="w-3 h-3"></i></div>
+                <div class="text-[10px] font-bold text-slate-700">18°</div>
+              </div>
+              <div>
+                <div class="text-[9px] text-slate-400">الأربعاء</div>
+                <div class="text-amber-400 my-0.5 flex justify-center"><i data-lucide="sun" class="w-3 h-3"></i></div>
+                <div class="text-[10px] font-bold text-slate-700">17°</div>
+              </div>
+              <div>
+                <div class="text-[9px] text-slate-400">الثلاثاء</div>
+                <div class="text-amber-400 my-0.5 flex justify-center"><i data-lucide="sun" class="w-3 h-3"></i></div>
+                <div class="text-[10px] font-bold text-slate-700">13°</div>
+              </div>
+              <div>
+                <div class="text-[9px] text-slate-400">الإثنين</div>
+                <div class="text-amber-400 my-0.5 flex justify-center"><i data-lucide="sun" class="w-3 h-3"></i></div>
+                <div class="text-[10px] font-bold text-slate-700">12°</div>
+              </div>
+              <div>
+                <div class="text-[9px] text-slate-400">الأحد</div>
+                <div class="text-amber-400 my-0.5 flex justify-center"><i data-lucide="sun" class="w-3 h-3"></i></div>
+                <div class="text-[10px] font-bold text-slate-700">17°</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Section: Sky Card Visual -->
+          <div class="col-span-6 weather-sky-card rounded-2xl p-3 flex flex-col justify-between text-white shadow-md">
+            <div class="flex items-center justify-between">
+              <i data-lucide="cloud-sun" class="w-7 h-7 text-amber-300"></i>
+              <button class="text-white/80 hover:text-white p-1">
+                <i data-lucide="more-horizontal" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <div class="text-right">
+              <div class="text-sm font-black tracking-wide">مخصص مشمس</div>
+              <div class="text-[10px] text-white/90 leading-tight mt-0.5">مناسب لعمل الرافعات</div>
+            </div>
+
+            <!-- Mini Indicators Strip -->
+            <div class="flex items-center justify-between text-center pt-2 border-t border-white/20 text-xs font-mono">
+              <div>
+                <div class="text-[9px] text-white/80">السبت</div>
+                <div class="font-bold">20°</div>
+              </div>
+              <div>
+                <div class="text-[9px] text-white/80">الجمعة</div>
+                <div class="font-bold">16°</div>
+              </div>
+              <div>
+                <div class="text-[9px] text-white/80">الخميس</div>
+                <div class="font-bold">15°</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- CARD 8: المعالم القادمة (Upcoming Milestones) [lg:col-span-4] -->
+      <div class="cobuild-card p-4 lg:p-5 lg:col-span-4 flex flex-col justify-between">
+        <div>
+          <!-- Header -->
+          <div class="flex items-center justify-between mb-3">
+            <button onclick="openAddMilestoneModal()" class="text-xs bg-teal-50 text-teal-700 font-bold px-2.5 py-1 rounded-lg hover:bg-teal-100 transition-colors flex items-center gap-1">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+              <span>إضافة معلم</span>
+            </button>
+            <h2 class="text-base font-extrabold text-slate-800 font-['Cairo']">
+              المعالم القادمة
+            </h2>
+          </div>
+
+          <!-- Milestones List -->
+          <div id="upcoming-milestones-container" class="space-y-2">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <div class="pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+          <span class="text-slate-400 font-medium">الجدول الزمني محدث</span>
+          <button onclick="showToast('تمت مزامنة الجداول الزمنية بنجاح')" class="text-teal-600 font-bold hover:underline">
+            مزامنة الجدول
+          </button>
+        </div>
+      </div>
+
+
+      <!-- CARD 9: مؤشرات الشفافية والأمان (Transparency & Safety Badges) [lg:col-span-4] -->
+      <div class="cobuild-card p-4 lg:p-5 lg:col-span-4 flex flex-col justify-between">
+        <!-- Header -->
+        <div class="text-right mb-2">
+          <h2 class="text-base font-extrabold text-slate-800 font-['Cairo']">
+            مؤشرات الشفافية
+          </h2>
+        </div>
+
+        <!-- 3 Interactive Metric Widgets -->
+        <div class="space-y-2.5">
+          
+          <!-- Widget 1: نسبة الإنجاز (Radial Gauge) -->
+          <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50/80 border border-slate-100/90">
+            <!-- Navigation Arrow -->
+            <button onclick="prevGaugeMetric()" class="text-slate-400 hover:text-teal-600 p-1" title="السابق">
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+
+            <!-- Label -->
+            <div class="text-right flex-1 px-3">
+              <div id="gauge-metric-label" class="text-xs font-bold text-slate-800">نسبة الإنجاز الكلي</div>
+              <div class="text-[10px] text-slate-400 mt-0.5">نسبة الإنجاز الفعلي</div>
+            </div>
+
+            <!-- Gauge Canvas & Value -->
+            <div class="relative w-12 h-12 flex items-center justify-center shrink-0">
+              <canvas id="gaugeChart" class="w-full h-full"></canvas>
+              <span id="gauge-metric-value" class="absolute text-[11px] font-black text-teal-700">90%</span>
+            </div>
+
+            <!-- Navigation Arrow -->
+            <button onclick="nextGaugeMetric()" class="text-slate-400 hover:text-teal-600 p-1" title="التالي">
+              <i data-lucide="chevron-left" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <!-- Widget 2: سجل الأمان (Safety Record) -->
+          <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50/80 border border-slate-100/90">
+            <button class="text-slate-400 hover:text-teal-600 p-1">
+              <i data-lucide="chevron-left" class="w-4 h-4"></i>
+            </button>
+            <div class="text-right flex-1 px-3">
+              <div class="text-xs font-bold text-slate-800">سجل الأمان</div>
+              <div class="text-[10px] text-slate-500 font-bold mt-0.5">200 يوم سلامة</div>
+            </div>
+            <div class="w-9 h-9 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center shrink-0 border border-sky-100">
+              <i data-lucide="shield-check" class="w-5 h-5"></i>
+            </div>
+          </div>
+
+          <!-- Widget 3: تأثير البيئة (Environmental Impact) -->
+          <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50/80 border border-slate-100/90">
+            <button class="text-slate-400 hover:text-teal-600 p-1">
+              <i data-lucide="chevron-left" class="w-4 h-4"></i>
+            </button>
+            <div class="text-right flex-1 px-3">
+              <div class="text-xs font-bold text-slate-800">تأثير البيئة</div>
+              <div class="text-[10px] text-emerald-600 font-bold mt-0.5">الاستدامة في البيئة</div>
+            </div>
+            <div class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-100">
+              <i data-lucide="leaf" class="w-5 h-5"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ==================== MODALS & LIGHTBOX ==================== -->
+
+  <!-- 1. PDF Report Preview & Download Modal -->
+  <div id="report-modal" class="hidden fixed inset-0 modal-overlay z-50 items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 text-right animate-scale-up">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <button onclick="closeReportModal()" class="p-1 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-all">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <div class="flex items-center gap-2">
+          <h3 id="modal-report-title" class="text-lg font-black text-slate-800 font-['Cairo']">تقرير يناير 2023</h3>
+          <div class="px-2 py-0.5 bg-red-100 text-red-600 rounded text-xs font-extrabold">PDF</div>
+        </div>
+      </div>
+
+      <div class="py-5 space-y-4 text-xs text-slate-600">
+        <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-100">
+          <div class="font-bold text-slate-800 mb-1">ملخص الإنجاز الشهري:</div>
+          <p id="modal-report-desc" class="leading-relaxed"></p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-center">
+          <div class="p-3 bg-teal-50/60 rounded-xl border border-teal-100">
+            <div class="text-[10px] text-slate-400">تاريخ الإصدار</div>
+            <div id="modal-report-date" class="font-bold text-teal-800 mt-0.5"></div>
+          </div>
+          <div class="p-3 bg-sky-50/60 rounded-xl border border-sky-100">
+            <div class="text-[10px] text-slate-400">حجم الملف</div>
+            <div id="modal-report-size" class="font-bold text-sky-800 mt-0.5"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+        <button onclick="downloadReport('rep-01')" class="flex-1 py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl shadow-md shadow-teal-600/20 transition-all flex items-center justify-center gap-2 text-xs">
+          <i data-lucide="download" class="w-4 h-4"></i>
+          <span>تحميل التقرير المعتمد (PDF)</span>
+        </button>
+        <button onclick="closeReportModal()" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-all text-xs">
+          إغلاق
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 2. Gallery Lightbox Modal -->
+  <div id="lightbox-modal" class="hidden fixed inset-0 modal-overlay z-50 items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-5 shadow-2xl border border-slate-100 text-right animate-scale-up">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <button onclick="closeLightbox()" class="p-1 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-all">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <h3 id="lightbox-title" class="text-base font-black text-slate-800 font-['Cairo']"></h3>
+      </div>
+
+      <div class="py-3">
+        <div class="h-80 w-full rounded-2xl overflow-hidden shadow-inner bg-slate-900">
+          <img id="lightbox-image" src="" alt="Site Image" class="w-full h-full object-cover" />
+        </div>
+        <div class="mt-3 flex items-center justify-between text-xs text-slate-400">
+          <div id="lightbox-date" class="font-mono font-bold text-slate-500"></div>
+          <span class="text-teal-600 font-bold">توثيق مصادق عليه رقمياً</span>
+        </div>
+        <p id="lightbox-desc" class="text-xs text-slate-600 mt-2 leading-relaxed bg-slate-50 p-3 rounded-xl border border-slate-100"></p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 3. Add Milestone Modal -->
+  <div id="add-milestone-modal" class="hidden fixed inset-0 modal-overlay z-50 items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-100 text-right animate-scale-up">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <button onclick="closeAddMilestoneModal()" class="p-1 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-all">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <h3 class="text-base font-black text-slate-800 font-['Cairo']">إضافة معلم رئيسي جديد</h3>
+      </div>
+
+      <form id="add-milestone-form" onsubmit="handleAddMilestone(event)" class="py-4 space-y-3.5 text-xs">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">عنوان المعلم / الموقع</label>
+          <input type="text" id="milestone-title-input" required placeholder="مثال: 32 برج الشمال - فحص أعمال الصب" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500 text-right" />
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">الوصف والمهام الميدانية</label>
+          <textarea id="milestone-desc-input" rows="2" required placeholder="أدخل تفاصيل الإنجاز والمطابقة الفنية..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500 text-right resize-none"></textarea>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">التاريخ المجدول</label>
+            <input type="date" id="milestone-date-input" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500 text-right" />
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">الأولوية</label>
+            <select id="milestone-priority-input" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-800 focus:outline-none focus:ring-2 focus:ring-teal-500 text-right font-medium">
+              <option value="high">أولوية عاجلة (حرجة)</option>
+              <option value="medium" selected>أولوية عادية</option>
+              <option value="low">أولوية منخفضة</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 pt-3 border-t border-slate-100">
+          <button type="submit" class="flex-1 py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl shadow-md shadow-teal-600/20 transition-all text-xs">
+            حفظ المعلم وإدراجه
+          </button>
+          <button type="button" onclick="closeAddMilestoneModal()" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-all text-xs">
+            إلغاء
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. Floor BIM Inspector Modal -->
+  <div id="bim-floor-modal" class="hidden fixed inset-0 modal-overlay z-50 items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 text-right animate-scale-up">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <button onclick="closeBimFloorModal()" class="p-1 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-all">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <div class="flex items-center gap-2">
+          <h3 id="bim-floor-title" class="text-base font-black text-slate-800 font-['Cairo']">تفاصيل الطابق</h3>
+          <span class="px-2 py-0.5 bg-teal-100 text-teal-700 rounded text-xs font-bold font-mono">BIM Model</span>
+        </div>
+      </div>
+
+      <div class="py-4 space-y-3 text-xs">
+        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100 space-y-1.5">
+          <div class="flex items-center justify-between">
+            <span id="bim-concrete-val" class="font-bold text-slate-800 font-mono">38 MPa</span>
+            <span class="text-slate-500 font-bold flex items-center gap-1">
+              <i data-lucide="shield" class="w-3.5 h-3.5 text-teal-600"></i>
+              فحص قوة كسر الخرسانة:
+            </span>
+          </div>
+          <div class="flex items-center justify-between pt-1 border-t border-slate-200/60">
+            <span id="bim-mep-val" class="font-bold text-teal-700 font-mono">95%</span>
+            <span class="text-slate-500 font-bold flex items-center gap-1">
+              <i data-lucide="wrench" class="w-3.5 h-3.5 text-sky-600"></i>
+              أعمال التمديدات الكهروميكانيكية:
+            </span>
+          </div>
+        </div>
+
+        <div class="p-3 bg-teal-50/50 rounded-2xl border border-teal-100">
+          <div class="font-bold text-teal-900 mb-1">حالة التشطيب والواجهات:</div>
+          <p id="bim-finishing-val" class="text-slate-600 leading-relaxed"></p>
+        </div>
+
+        <div class="p-3 bg-slate-50 rounded-2xl border border-slate-100">
+          <div class="font-bold text-slate-800 mb-1">ملاحظات الاستشاري وقائمة التحقق:</div>
+          <ul id="bim-snag-list" class="list-disc list-inside text-slate-600 space-y-1"></ul>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 pt-3 border-t border-slate-100">
+        <button onclick="triggerConfetti(); showToast('تم تصدير سجل فحص الطابق بصيغة BIM-IFC')" class="flex-1 py-2.5 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl shadow-md shadow-teal-600/20 transition-all text-xs flex items-center justify-center gap-1.5">
+          <i data-lucide="download" class="w-4 h-4"></i>
+          <span>تحميل شهادة الاستلام الهندسية</span>
+        </button>
+        <button onclick="closeBimFloorModal()" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-all text-xs">
+          إغلاق
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Budget Ledger Drilldown Modal -->
+  <div id="budget-ledger-modal" class="hidden fixed inset-0 modal-overlay z-50 items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl border border-slate-100 text-right animate-scale-up">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <button onclick="closeBudgetModal()" class="p-1 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-all">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <div class="flex items-center gap-2">
+          <h3 class="text-base font-black text-slate-800 font-['Cairo']">سجل المصروفات ومستخلصات الموازنة</h3>
+          <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded text-xs font-bold">15,000,000 ر.س</span>
+        </div>
+      </div>
+
+      <div class="py-4 max-h-72 overflow-y-auto">
+        <table class="w-full text-xs text-right">
+          <thead>
+            <tr class="bg-slate-50 text-slate-500 border-b border-slate-100">
+              <th class="py-2 px-2.5">البند / المورد</th>
+              <th class="py-2 px-2.5">التصنيف</th>
+              <th class="py-2 px-2.5">المبلغ</th>
+              <th class="py-2 px-2.5">التاريخ</th>
+              <th class="py-2 px-2.5">الحالة</th>
+            </tr>
+          </thead>
+          <tbody id="budget-ledger-tbody" class="divide-y divide-slate-100 text-slate-700">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="flex items-center justify-between pt-3 border-t border-slate-100 text-xs">
+        <span class="text-slate-400">سجل مدقق وفق المعايير المحاسبية المعتمدة</span>
+        <button onclick="closeBudgetModal()" class="px-5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-all">
+          إغلاق
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. 360° Virtual Site Tour Modal -->
+  <div id="tour-360-modal" class="hidden fixed inset-0 modal-overlay z-50 items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-3xl w-full p-6 shadow-2xl border border-slate-100 text-right animate-scale-up">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <button onclick="closeTour360Modal()" class="p-1 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-all">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <div class="flex items-center gap-2">
+          <h3 class="text-base font-black text-slate-800 font-['Cairo']">جولة 360° بانورامية في موقع البناء</h3>
+          <span class="px-2 py-0.5 bg-sky-100 text-sky-700 rounded text-xs font-bold font-mono">360° VR View</span>
+        </div>
+      </div>
+
+      <div class="py-4">
+        <!-- 360 Interactive Canvas Container -->
+        <div class="relative h-80 w-full rounded-2xl overflow-hidden shadow-inner bg-slate-900 flex items-center justify-center cursor-grab active:cursor-grabbing group">
+          <img 
+            id="pano-img" 
+            src="https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=1600&q=80" 
+            alt="360 Panorama" 
+            class="w-[200%] h-full object-cover transition-transform duration-100 select-none pointer-events-none"
+            style="transform: translateX(0%);"
+          />
+
+          <!-- Interactive Hotspots -->
+          <div class="absolute top-1/3 left-1/3 p-2 bg-teal-600/90 backdrop-blur-md rounded-xl text-white text-[11px] font-bold shadow-lg border border-white/40 flex items-center gap-1.5 animate-bounce">
+            <i data-lucide="crosshair" class="w-3.5 h-3.5 text-amber-300"></i>
+            <span>نقطة فحص حديد التسليح (محور B-4)</span>
+          </div>
+
+          <div class="absolute bottom-1/4 right-1/3 p-2 bg-slate-900/90 backdrop-blur-md rounded-xl text-white text-[11px] font-bold shadow-lg border border-white/40 flex items-center gap-1.5">
+            <i data-lucide="camera" class="w-3.5 h-3.5 text-emerald-400"></i>
+            <span>كاميرا المراقبة 2 (HD 60fps)</span>
+          </div>
+
+          <!-- Controls Overlay -->
+          <div class="absolute bottom-3 left-3 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-xl text-white text-xs flex items-center gap-3">
+            <span class="text-[10px] text-slate-300">اسحب للتحريك 360°</span>
+            <div class="flex items-center gap-1">
+              <button onclick="panPanorama(-15)" class="p-1 hover:bg-white/20 rounded"><i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></button>
+              <button onclick="panPanorama(15)" class="p-1 hover:bg-white/20 rounded"><i data-lucide="arrow-left" class="w-3.5 h-3.5"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between pt-3 border-t border-slate-100 text-xs">
+        <span class="text-slate-400">كاميرات تصوير كروية بدقة 8K بتقنية Matterport/Insta360</span>
+        <button onclick="closeTour360Modal()" class="px-5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-all">
+          إغلاق
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Time-Lapse Before & After Slider Modal -->
+  <div id="timelapse-modal" class="hidden fixed inset-0 modal-overlay z-50 items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl border border-slate-100 text-right animate-scale-up">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <button onclick="closeTimelapseModal()" class="p-1 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-all">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <div class="flex items-center gap-2">
+          <h3 class="text-base font-black text-slate-800 font-['Cairo']">مقارنة التطور الزمني (Before vs After)</h3>
+          <span class="px-2 py-0.5 bg-amber-100 text-amber-800 rounded text-xs font-bold">Time-Lapse Slider</span>
+        </div>
+      </div>
+
+      <div class="py-4 space-y-3">
+        <!-- Dual Image Slider Container -->
+        <div class="relative h-72 w-full rounded-2xl overflow-hidden shadow-inner select-none" id="slider-box">
+          <!-- After Image (Background) -->
+          <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=1000&q=80" alt="الحالي" class="absolute inset-0 w-full h-full object-cover" />
+          <span class="absolute bottom-3 left-3 bg-black/70 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg backdrop-blur-md">
+            الحالي: إنجاز 90% (مارس 2023)
+          </span>
+
+          <!-- Before Image (Clipped) -->
+          <div id="before-img-clip" class="absolute inset-0 w-1/2 overflow-hidden border-r-2 border-white shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1000&q=80" alt="الأساسات" class="absolute inset-0 w-full h-full object-cover max-w-none" style="width: 200%;" />
+            <span class="absolute bottom-3 right-3 bg-black/70 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg backdrop-blur-md">
+              البداية: الأساسات (يناير 2023)
+            </span>
+          </div>
+
+          <!-- Range Slider Control -->
+          <input 
+            type="range" 
+            min="0" 
+            max="100" 
+            value="50" 
+            id="timelapse-range" 
+            oninput="handleTimelapseSlider(this.value)" 
+            class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20"
+          />
+        </div>
+
+        <div class="text-center text-xs text-slate-400">
+          حرك المؤشر يميناً ويساراً لمقارنة مراحل البناء من الحفر وحتى الطوابق العليا
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between pt-3 border-t border-slate-100 text-xs">
+        <span class="text-teal-600 font-bold">تحديث صور الأقمار الصناعية والدرون أسبوعياً</span>
+        <button onclick="closeTimelapseModal()" class="px-5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-all">
+          إغلاق
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. Drone Aerial Orthomosaic Survey Modal -->
+  <div id="drone-modal" class="hidden fixed inset-0 modal-overlay z-50 items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-3xl w-full p-6 shadow-2xl border border-slate-100 text-right animate-scale-up">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <button onclick="closeDroneModal()" class="p-1 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-all">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <div class="flex items-center gap-2">
+          <h3 class="text-base font-black text-slate-800 font-['Cairo']">مسح الدرون الجوي والطبقات المساحية (GIS Orthomosaic)</h3>
+          <span class="px-2 py-0.5 bg-purple-100 text-purple-700 rounded text-xs font-bold font-mono">GSD 0.8cm</span>
+        </div>
+      </div>
+
+      <div class="py-4 space-y-3">
+        <!-- Drone Map Display -->
+        <div class="relative h-80 w-full rounded-2xl overflow-hidden shadow-inner bg-slate-900">
+          <img src="https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?auto=format&fit=crop&w=1200&q=80" alt="Drone Survey" class="w-full h-full object-cover" />
+          
+          <!-- Survey Grid Overlay Lines -->
+          <div class="absolute inset-0 bg-[radial-gradient(#ffffff15_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
+
+          <!-- Drone Stats Overlay -->
+          <div class="absolute top-3 right-3 bg-black/70 backdrop-blur-md px-3 py-2 rounded-xl text-white text-[11px] font-mono space-y-0.5 border border-white/20">
+            <div><span class="text-slate-400">تاريخ الطيران:</span> 2023-03-24</div>
+            <div><span class="text-slate-400">المساحة الإجمالية:</span> 12,500 م²</div>
+            <div><span class="text-slate-400">طراز الدرون:</span> DJI Matrice 300 RTK</div>
+          </div>
+
+          <div class="absolute bottom-3 left-3 bg-teal-600/90 text-white text-xs px-3 py-1.5 rounded-xl backdrop-blur-md font-bold shadow-lg">
+            منسوب الحفر: -12.40م | أعلى نقطة: +28.60م
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between pt-3 border-t border-slate-100 text-xs">
+        <span class="text-slate-400">المسح الجوي متطابق مع شبكة الإحداثيات الوطنية (WGS84 / Ain el Abd)</span>
+        <button onclick="closeDroneModal()" class="px-5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-all">
+          إغلاق
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. Engineering RFIs & Inspection Requests Modal -->
+  <div id="rfi-modal" class="hidden fixed inset-0 modal-overlay z-50 items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl border border-slate-100 text-right animate-scale-up">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <button onclick="closeRfiModal()" class="p-1 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-all">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+        <div class="flex items-center gap-2">
+          <h3 class="text-base font-black text-slate-800 font-['Cairo']">سجل الاعتمادات الهندسية والفحص (RFIs & EIRs)</h3>
+          <span class="px-2 py-0.5 bg-teal-100 text-teal-800 rounded text-xs font-bold font-mono">Engineering Log</span>
+        </div>
+      </div>
+
+      <div class="py-4 max-h-72 overflow-y-auto space-y-2.5">
+        <div id="rfi-list-container" class="space-y-2 text-xs">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between pt-3 border-t border-slate-100 text-xs">
+        <span class="text-slate-400">نظام إدارة طلبات الفحص والمطابقة المعمارية المعتمد</span>
+        <button onclick="closeRfiModal()" class="px-5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition-all">
+          إغلاق
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. Toast Notification -->
+  <div id="toast-notification" class="fixed bottom-6 left-6 z-50 bg-slate-900/90 backdrop-blur-md text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 text-xs opacity-0 translate-y-4 pointer-events-none transition-all duration-300">
+    <div class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></div>
+    <span id="toast-message">تمت العملية بنجاح</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/mockData.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/building3d.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
