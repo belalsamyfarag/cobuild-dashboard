@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoBuild Project Marketplace</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Google Fonts: Inter & Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              green: '#10B981',
+              'green-dark': '#059669',
+              'green-light': '#D1FAE5',
+              blue: '#1D4ED8',
+              'blue-dark': '#1E40AF',
+              'blue-light': '#DBEAFE',
+              orange: '#F59E0B',
+              bg: '#F3F5F7'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            cairo: ['Cairo', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #F3F5F7;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #1E293B;
+      overflow-x: hidden;
+    }
+
+    /* Glassmorphism sidebar & cards */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.85);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04), 0 2px 6px -1px rgba(15, 23, 42, 0.02);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px -4px rgba(16, 185, 129, 0.1), 0 6px 16px -2px rgba(15, 23, 42, 0.06);
+      border-color: rgba(16, 185, 129, 0.35);
+    }
+
+    /* Custom range slider */
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      background: transparent;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 18px;
+      width: 18px;
+      border-radius: 50%;
+      background: #10B981;
+      border: 2px solid #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      cursor: pointer;
+      margin-top: -6px;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 6px;
+      cursor: pointer;
+      background: #E2E8F0;
+      border-radius: 9999px;
+    }
+
+    /* Modal Backdrop */
+    .modal-overlay {
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(6px);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- ==================== TOP NAVIGATION HEADER ==================== -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
+    <div class="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3 flex items-center justify-between gap-4">
+      
+      <!-- Left: Logo with Stylized Isometric Icon -->
+      <a href="index.html" class="flex items-center gap-3 group cursor-pointer">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 p-0.5 shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform flex items-center justify-center">
+          <div class="w-full h-full bg-white rounded-[10px] flex items-center justify-center overflow-hidden">
+            <svg viewBox="0 0 24 24" class="w-6 h-6 text-emerald-600 fill-emerald-500">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#10B981" />
+              <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#1D4ED8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
+        <div class="text-left">
+          <div class="text-xl font-black tracking-tight text-slate-900 flex items-center gap-1">
+            <span class="text-emerald-600">CoBuild</span>
+            <span class="text-xs px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 font-bold border border-emerald-200/60 uppercase tracking-wider">Marketplace</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Center: Navigation Links -->
+      <nav class="hidden md:flex items-center gap-1 bg-slate-100/80 p-1.5 rounded-full border border-slate-200/60 text-sm font-medium">
+        <a href="index.html" class="px-4 py-1.5 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white transition-all">
+          Home
+        </a>
+        <a href="marketplace.html" class="px-4 py-1.5 rounded-full bg-white text-emerald-600 font-bold shadow-sm border border-slate-200/50">
+          Browse
+        </a>
+        <button onclick="openInvestPortfolioModal()" class="px-4 py-1.5 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white transition-all">
+          Investment
+        </button>
+        <a href="index.html" class="px-4 py-1.5 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white transition-all flex items-center gap-1.5">
+          <i data-lucide="layout-dashboard" class="w-4 h-4 text-slate-400"></i>
+          <span>Dashboard</span>
+        </a>
+        <button onclick="openMessagesModal()" class="px-4 py-1.5 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white transition-all flex items-center gap-1">
+          <span>Messages</span>
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        </button>
+      </nav>
+
+      <!-- Right: User Profile & Actions -->
+      <div class="flex items-center gap-3">
+        <!-- Switch to Arabic Transparency Dashboard -->
+        <a href="index.html" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 text-xs font-bold transition-all" title="انتقل إلى مركز شفافية البناء">
+          <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+          <span class="font-cairo">مركز الشفافية (عربي)</span>
+        </a>
+
+        <!-- Notifications -->
+        <button onclick="showToast('No new notifications')" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors relative" title="Notifications">
+          <i data-lucide="bell" class="w-4 h-4"></i>
+          <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-emerald-500"></span>
+        </button>
+
+        <!-- User Profile Dropdown -->
+        <div class="relative">
+          <button id="user-profile-btn" onclick="toggleUserDropdown()" class="flex items-center gap-2 p-1 pl-2.5 rounded-full bg-slate-50 hover:bg-slate-100 border border-slate-200/80 transition-all cursor-pointer">
+            <img 
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" 
+              alt="User Avatar" 
+              class="w-8 h-8 rounded-full object-cover ring-2 ring-emerald-500/60"
+            />
+            <div class="hidden lg:block text-left text-xs">
+              <div class="font-bold text-slate-800">Sarah Jenkins</div>
+              <div class="text-[10px] text-slate-400">Accredited Investor</div>
+            </div>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400"></i>
+          </button>
+
+          <!-- Dropdown Menu -->
+          <div id="user-dropdown-menu" class="hidden absolute right-0 mt-2 w-52 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 z-50 text-xs space-y-1 animate-scale-up">
+            <div class="px-3 py-2 border-b border-slate-100">
+              <div class="font-bold text-slate-800">Sarah Jenkins</div>
+              <div class="text-[11px] text-slate-400 font-mono">sarah.j@cobuild.io</div>
+            </div>
+            <a href="index.html" class="flex items-center gap-2 px-3 py-2 rounded-xl text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+              <i data-lucide="activity" class="w-4 h-4"></i>
+              <span>Construction Hub</span>
+            </a>
+            <button onclick="openInvestPortfolioModal()" class="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors text-left">
+              <i data-lucide="wallet" class="w-4 h-4"></i>
+              <span>Portfolio & Wallet</span>
+            </button>
+            <button onclick="showToast('Signed out')" class="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-rose-600 hover:bg-rose-50 transition-colors text-left">
+              <i data-lucide="log-out" class="w-4 h-4"></i>
+              <span>Sign Out</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==================== MAIN MARKETPLACE CONTENT ==================== -->
+  <main class="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-7">
+
+      <!-- ==================== LEFT SIDEBAR: FILTERS ==================== -->
+      <aside class="lg:col-span-3">
+        <div class="glass-card p-5 sticky top-24 space-y-6">
+          
+          <!-- Sidebar Header -->
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+            <h2 class="text-xs font-black text-slate-400 tracking-wider uppercase flex items-center gap-2">
+              <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5 text-emerald-600"></i>
+              <span>FILTERS</span>
+            </h2>
+            <button onclick="resetFilters()" class="text-xs text-emerald-600 font-bold hover:underline">
+              Reset All
+            </button>
+          </div>
+
+          <!-- Control 1: Location -->
+          <div class="space-y-2">
+            <label for="filter-location" class="text-xs font-bold text-slate-700 flex items-center justify-between">
+              <span>Location</span>
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-slate-400"></i>
+            </label>
+            <div class="relative">
+              <select id="filter-location" onchange="applyFilters()" class="w-full bg-slate-50 border border-slate-200 text-xs font-semibold rounded-xl py-2.5 px-3 text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer">
+                <option value="All Locations" selected>All Locations</option>
+                <option value="London, UK">London, UK</option>
+                <option value="Vancouver, CA">Vancouver, CA</option>
+                <option value="Cairo, EG">Cairo, EG</option>
+                <option value="Dubai, UAE">Dubai, UAE</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Control 2: Budget Range -->
+          <div class="space-y-2">
+            <div class="flex items-center justify-between text-xs font-bold">
+              <span class="text-slate-700">Budget Range</span>
+              <span id="budget-range-display" class="text-emerald-600 font-mono font-bold">$50k - $500k</span>
+            </div>
+            <input 
+              type="range" 
+              id="filter-budget" 
+              min="50" 
+              max="1000" 
+              value="500" 
+              step="25"
+              oninput="updateBudgetSlider(this.value)"
+              class="w-full"
+            />
+            <div class="flex justify-between text-[10px] font-mono text-slate-400">
+              <span>$50k</span>
+              <span>$1.0M+</span>
+            </div>
+          </div>
+
+          <!-- Control 3: Size (sqm) -->
+          <div class="space-y-2">
+            <label class="text-xs font-bold text-slate-700 flex items-center justify-between">
+              <span>Size (sqm)</span>
+              <i data-lucide="maximize" class="w-3.5 h-3.5 text-slate-400"></i>
+            </label>
+            <div class="grid grid-cols-2 gap-2">
+              <input 
+                type="number" 
+                id="filter-size-min" 
+                placeholder="Min 50" 
+                oninput="applyFilters()"
+                class="w-full bg-slate-50 border border-slate-200 text-xs rounded-xl py-2 px-3 text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              />
+              <input 
+                type="number" 
+                id="filter-size-max" 
+                placeholder="Max 300" 
+                oninput="applyFilters()"
+                class="w-full bg-slate-50 border border-slate-200 text-xs rounded-xl py-2 px-3 text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              />
+            </div>
+          </div>
+
+          <!-- Control 4: Completion Date -->
+          <div class="space-y-2">
+            <label for="filter-completion" class="text-xs font-bold text-slate-700 flex items-center justify-between">
+              <span>Completion Date</span>
+              <i data-lucide="calendar" class="w-3.5 h-3.5 text-slate-400"></i>
+            </label>
+            <select id="filter-completion" onchange="applyFilters()" class="w-full bg-slate-50 border border-slate-200 text-xs font-semibold rounded-xl py-2.5 px-3 text-slate-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer">
+              <option value="Select Date Range" selected>Select Date Range</option>
+              <option value="2024 Q4">2024 Q4</option>
+              <option value="2025 Q1">2025 Q1</option>
+              <option value="2025 Q2">2025 Q2</option>
+              <option value="2025+">2025 & Beyond</option>
+            </select>
+          </div>
+
+          <!-- Control 5: Funding Stage (Checkbox Group) -->
+          <div class="space-y-2.5 pt-1">
+            <label class="text-xs font-bold text-slate-700 block">Funding Stage</label>
+            <div class="space-y-2">
+              <label class="flex items-center gap-2.5 cursor-pointer text-xs text-slate-600 hover:text-slate-900 select-none">
+                <input type="checkbox" id="stage-seed" checked onchange="applyFilters()" class="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 border-slate-300 accent-emerald-600 cursor-pointer">
+                <span>Seed</span>
+              </label>
+              <label class="flex items-center gap-2.5 cursor-pointer text-xs text-slate-600 hover:text-slate-900 select-none">
+                <input type="checkbox" id="stage-presale" onchange="applyFilters()" class="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 border-slate-300 accent-emerald-600 cursor-pointer">
+                <span>Pre-Sale</span>
+              </label>
+              <label class="flex items-center gap-2.5 cursor-pointer text-xs text-slate-600 hover:text-slate-900 select-none">
+                <input type="checkbox" id="stage-construction" checked onchange="applyFilters()" class="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 border-slate-300 accent-emerald-600 cursor-pointer">
+                <span>Construction</span>
+              </label>
+              <label class="flex items-center gap-2.5 cursor-pointer text-xs text-slate-600 hover:text-slate-900 select-none">
+                <input type="checkbox" id="stage-completed" onchange="applyFilters()" class="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 border-slate-300 accent-emerald-600 cursor-pointer">
+                <span>Completed</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Control 6: Apply Filters Button (primary-green) -->
+          <button 
+            id="apply_btn" 
+            onclick="applyFilters()" 
+            class="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] text-white font-bold text-xs shadow-md shadow-emerald-600/20 transition-all flex items-center justify-center gap-2"
+          >
+            <i data-lucide="filter" class="w-4 h-4"></i>
+            <span>Apply Filters</span>
+          </button>
+
+        </div>
+      </aside>
+
+      <!-- ==================== RIGHT CONTENT AREA: TOP BAR & PROJECT GRID ==================== -->
+      <section class="lg:col-span-9 space-y-5">
+        
+        <!-- Top Bar: Search, Dropdowns & Sorting -->
+        <div class="glass-card p-4 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+          
+          <!-- Search Input -->
+          <div class="relative flex-1">
+            <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            <input 
+              type="text" 
+              id="marketplace-search-input" 
+              oninput="handleSearch(this.value)"
+              placeholder="Search projects, locations, developers..." 
+              class="w-full bg-slate-50 border border-slate-200/80 rounded-xl py-2.5 pl-10 pr-4 text-xs sm:text-sm text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all"
+            />
+          </div>
+
+          <!-- Quick Filters & Sorting Group -->
+          <div class="flex flex-wrap items-center gap-2 text-xs">
+            
+            <!-- Quick Location Filter -->
+            <select id="top-filter-location" onchange="syncLocationFilter(this.value)" class="bg-slate-50 border border-slate-200 text-slate-700 font-semibold py-2 px-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer">
+              <option value="All Locations">All Locations</option>
+              <option value="London, UK">London, UK</option>
+              <option value="Vancouver, CA">Vancouver, CA</option>
+            </select>
+
+            <!-- Quick Budget Filter -->
+            <select id="top-filter-budget" onchange="syncBudgetFilter(this.value)" class="bg-slate-50 border border-slate-200 text-slate-700 font-semibold py-2 px-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer">
+              <option value="all">Budget: Any</option>
+              <option value="under150k">&lt; $150k</option>
+              <option value="over150k">&gt; $150k</option>
+            </select>
+
+            <!-- Sorting Dropdown -->
+            <select id="top-sorting" onchange="handleSort(this.value)" class="bg-slate-50 border border-slate-200 text-slate-700 font-semibold py-2 px-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 cursor-pointer">
+              <option value="recommended">Sort By: Recommended</option>
+              <option value="newest">Newest First</option>
+              <option value="highestFunded">Highest Funded</option>
+              <option value="priceAsc">Price: Low to High</option>
+            </select>
+
+          </div>
+
+        </div>
+
+        <!-- Result Stats & View Controls -->
+        <div class="flex items-center justify-between px-1 text-xs text-slate-500">
+          <div class="font-medium">
+            Showing <span id="visible-projects-count" class="font-bold text-slate-900 font-mono">9</span> of <span class="font-bold text-slate-900 font-mono">9</span> Projects Available for Co-Investment
+          </div>
+          <div class="flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="text-emerald-700 font-bold text-[11px]">Live Verification & Blockchain Smart Contracts</span>
+          </div>
+        </div>
+
+        <!-- ==================== PROJECT GRID (3 COLUMNS) ==================== -->
+        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Rendered dynamically by JavaScript matching the 9 items from JSON -->
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==================== MODAL 1: INVEST MODAL ==================== -->
+  <div id="invest-modal" class="hidden fixed inset-0 modal-overlay z-50 items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 text-left animate-scale-up space-y-4">
+      
+      <!-- Header -->
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <div class="flex items-center gap-2">
+          <div class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+            <i data-lucide="sparkles" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 id="invest-modal-title" class="text-base font-black text-slate-800">The Grove Residences</h3>
+            <div id="invest-modal-location" class="text-xs text-slate-400">London, UK • Seed Stage</div>
+          </div>
+        </div>
+        <button onclick="closeInvestModal()" class="p-1.5 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-all">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Financial Metrics Box -->
+      <div class="grid grid-cols-3 gap-2 bg-slate-50 p-3 rounded-2xl border border-slate-100 text-center">
+        <div>
+          <div class="text-[10px] text-slate-400 font-medium">Target IRR</div>
+          <div class="text-sm font-black text-emerald-600 font-mono">14.8% p.a.</div>
+        </div>
+        <div>
+          <div class="text-[10px] text-slate-400 font-medium">Min Ticket</div>
+          <div class="text-sm font-black text-slate-800 font-mono">$1,000</div>
+        </div>
+        <div>
+          <div class="text-[10px] text-slate-400 font-medium">Project Term</div>
+          <div class="text-sm font-black text-slate-800 font-mono">24 Months</div>
+        </div>
+      </div>
+
+      <!-- Amount Input -->
+      <div class="space-y-2">
+        <label for="invest-amount-input" class="text-xs font-bold text-slate-700 flex justify-between">
+          <span>Investment Amount</span>
+          <span class="text-emerald-600 font-mono font-bold">Estimated Returns: +$740/yr</span>
+        </label>
+        <div class="relative">
+          <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-bold">$</span>
+          <input 
+            type="number" 
+            id="invest-amount-input" 
+            value="5000" 
+            step="500" 
+            min="1000"
+            class="w-full bg-white border border-slate-200 rounded-xl py-3 pl-8 pr-4 font-mono font-bold text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          />
+        </div>
+
+        <!-- Quick Presets -->
+        <div class="flex items-center gap-2 pt-1">
+          <button onclick="setInvestPreset(1000)" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 text-xs font-mono font-bold transition-all">$1,000</button>
+          <button onclick="setInvestPreset(5000)" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 text-xs font-mono font-bold transition-all">$5,000</button>
+          <button onclick="setInvestPreset(10000)" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 text-xs font-mono font-bold transition-all">$10,000</button>
+          <button onclick="setInvestPreset(25000)" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 text-xs font-mono font-bold transition-all">$25,000</button>
+        </div>
+      </div>
+
+      <!-- Payment Method -->
+      <div class="space-y-1.5 text-xs">
+        <label class="font-bold text-slate-700">Payment & Escrow Protection</label>
+        <div class="flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-slate-50/50">
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="shield-check" class="w-5 h-5 text-emerald-600"></i>
+            <div>
+              <div class="font-bold text-slate-800">Bank Wire / Escrow Smart Contract</div>
+              <div class="text-[10px] text-slate-400">Funds released based on milestone completion</div>
+            </div>
+          </div>
+          <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">Verified</span>
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <button 
+        onclick="confirmInvestment()" 
+        class="w-full py-3.5 rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-bold text-sm shadow-lg shadow-blue-700/20 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+      >
+        <i data-lucide="check-circle" class="w-4 h-4"></i>
+        <span>Confirm & Pledge Investment</span>
+      </button>
+
+      <p class="text-[10px] text-slate-400 text-center">
+        By clicking confirm, you agree to CoBuild's Investor Terms & Conditions and Escrow Charter.
+      </p>
+
+    </div>
+  </div>
+
+  <!-- ==================== MODAL 2: PROJECT DETAILS MODAL ==================== -->
+  <div id="details-modal" class="hidden fixed inset-0 modal-overlay z-50 items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 shadow-2xl border border-slate-100 text-left animate-scale-up space-y-4 max-h-[90vh] overflow-y-auto">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <div>
+          <h3 id="details-modal-title" class="text-lg font-black text-slate-900">Project Overview</h3>
+          <div id="details-modal-location" class="text-xs text-slate-400 flex items-center gap-1 mt-0.5">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-600"></i>
+            <span>London, UK</span>
+          </div>
+        </div>
+        <button onclick="closeDetailsModal()" class="p-1.5 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-all">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="h-64 rounded-2xl overflow-hidden shadow-inner relative">
+        <img id="details-modal-img" src="" alt="Project Render" class="w-full h-full object-cover" />
+        <div class="absolute bottom-3 left-3 bg-black/60 backdrop-blur-md text-white px-3 py-1 rounded-lg text-xs font-mono">
+          Architectural BIM Render
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+          <div class="text-[10px] text-slate-400">Units</div>
+          <div class="text-sm font-bold text-slate-800">48 Luxury Suites</div>
+        </div>
+        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+          <div class="text-[10px] text-slate-400">Completion</div>
+          <div class="text-sm font-bold text-slate-800">2025 Q2</div>
+        </div>
+        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+          <div class="text-[10px] text-slate-400">Developer</div>
+          <div class="text-sm font-bold text-slate-800">Apex Living Ltd</div>
+        </div>
+        <div class="bg-slate-50 p-2.5 rounded-xl border border-slate-100">
+          <div class="text-[10px] text-slate-400">ESG Rating</div>
+          <div class="text-sm font-bold text-emerald-600">A+ Certified</div>
+        </div>
+      </div>
+
+      <div class="space-y-1.5 text-xs text-slate-600 leading-relaxed">
+        <div class="font-bold text-slate-800 text-sm">About This Project:</div>
+        <p>
+          A state-of-the-art sustainable residential community featuring smart energy monitoring, reinforced seismic engineering, and verified blockchain transparency milestones. Fully monitored with CoBuild IoT telemetry and on-site AI PPE cameras.
+        </p>
+      </div>
+
+      <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-100">
+        <a href="index.html" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition-all flex items-center gap-1.5">
+          <i data-lucide="activity" class="w-4 h-4 text-emerald-600"></i>
+          <span>Inspect Live Site Dashboard</span>
+        </a>
+        <button onclick="closeDetailsModal(); openInvestModal(currentActiveProject);" class="px-5 py-2.5 rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs transition-all">
+          Invest In This Project
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-notification" class="fixed bottom-6 right-6 z-50 bg-slate-900/95 backdrop-blur-md text-white text-xs font-semibold px-4 py-3 rounded-2xl shadow-xl border border-slate-700 flex items-center gap-2.5 opacity-0 translate-y-4 pointer-events-none transition-all duration-300">
+    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+    <span id="toast-message">Notification</span>
+  </div>
+
+  <!-- ==================== MARKETPLACE CONTROLLER JAVASCRIPT ==================== -->
+  <script>
+    // 9 Items specified in JSON
+    const marketplaceProjects = [
+      {
+        id: 1,
+        title: "The Grove Residences",
+        location: "London, UK",
+        tag: "New Project",
+        startingPrice: "$125,000",
+        priceValue: 125000,
+        daysRemaining: "24 Days Left",
+        leftBadgeColor: "teal",
+        rightBadgeColor: "orange",
+        fundingProgress: 68,
+        fundedAmount: "€2.4M / €3.5M",
+        isFavorite: false,
+        stage: "Seed",
+        size: 140,
+        imageUrl: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: 2,
+        title: "Lumina Towers",
+        location: "Vancouver, CA",
+        tag: "New Project",
+        startingPrice: "$125,000",
+        priceValue: 125000,
+        daysRemaining: "24 Days Left",
+        leftBadgeColor: "teal",
+        rightBadgeColor: "blue",
+        fundingProgress: 68,
+        fundedAmount: "€2.4M / €3.5M",
+        isFavorite: false,
+        stage: "Construction",
+        size: 180,
+        imageUrl: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: 3,
+        title: "Lumina Towers",
+        location: "Vancouver, CA",
+        tag: "New Project",
+        startingPrice: "$125,000",
+        priceValue: 125000,
+        daysRemaining: "24 Days Left",
+        leftBadgeColor: "teal",
+        rightBadgeColor: "blue",
+        fundingProgress: 68,
+        fundedAmount: "€2.4M / €3.5M",
+        isFavorite: false,
+        stage: "Seed",
+        size: 120,
+        imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: 4,
+        title: "The Grove Residences",
+        location: "London, UK",
+        tag: "New Project",
+        startingPrice: "$125,000",
+        priceValue: 125000,
+        daysRemaining: "24 Days Left",
+        leftBadgeColor: "teal",
+        rightBadgeColor: "orange",
+        fundingProgress: 68,
+        fundedAmount: "€2.4M / €3.5M",
+        isFavorite: false,
+        stage: "Construction",
+        size: 160,
+        imageUrl: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: 5,
+        title: "Lumina Towers",
+        location: "Vancouver, CA",
+        tag: "New Project",
+        startingPrice: "$125,000",
+        priceValue: 125000,
+        daysRemaining: "24 Days Left",
+        leftBadgeColor: "teal",
+        rightBadgeColor: "orange",
+        fundingProgress: 68,
+        fundedAmount: "€2.4M / €3.5M",
+        isFavorite: false,
+        stage: "Pre-Sale",
+        size: 210,
+        imageUrl: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: 6,
+        title: "Lumina Towers",
+        location: "Vancouver, CA",
+        tag: "New Project",
+        startingPrice: "$125,000",
+        priceValue: 125000,
+        daysRemaining: "24 Days Left",
+        leftBadgeColor: "teal",
+        rightBadgeColor: "orange",
+        fundingProgress: 68,
+        fundedAmount: "€2.4M / €3.5M",
+        isFavorite: false,
+        stage: "Seed",
+        size: 95,
+        imageUrl: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: 7,
+        title: "The Grove Residences",
+        location: "London, UK",
+        tag: "New Project",
+        startingPrice: "$125,000",
+        priceValue: 125000,
+        daysRemaining: "24 Days Left",
+        leftBadgeColor: "teal",
+        rightBadgeColor: "orange",
+        fundingProgress: 68,
+        fundedAmount: "€2.4M / €3.5M",
+        isFavorite: false,
+        stage: "Construction",
+        size: 220,
+        imageUrl: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: 8,
+        title: "The Grove Residences",
+        location: "London, UK",
+        tag: "New Project",
+        startingPrice: "$125,000",
+        priceValue: 125000,
+        daysRemaining: "24 Days Left",
+        leftBadgeColor: "teal",
+        rightBadgeColor: "orange",
+        fundingProgress: 68,
+        fundedAmount: "€2.4M / €3.5M",
+        isFavorite: false,
+        stage: "Seed",
+        size: 135,
+        imageUrl: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        id: 9,
+        title: "Lumina Towers",
+        location: "Vancouver, CA",
+        tag: "New Project",
+        startingPrice: "$125,000",
+        priceValue: 125000,
+        daysRemaining: "24 Days Left",
+        leftBadgeColor: "teal",
+        rightBadgeColor: "orange",
+        fundingProgress: 68,
+        fundedAmount: "€2.4M / €3.5M",
+        isFavorite: false,
+        stage: "Construction",
+        size: 190,
+        imageUrl: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80"
+      }
+    ];
+
+    let currentActiveProject = marketplaceProjects[0];
+    let filteredList = [...marketplaceProjects];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProjects(filteredList);
+      if (window.lucide) lucide.createIcons();
+    });
+
+    // Render 3-Column Grid
+    function renderProjects(items) {
+      const grid = document.getElementById('projects-grid');
+      const countEl = document.getElementById('visible-projects-count');
+      if (!grid) return;
+
+      if (countEl) countEl.innerText = items.length;
+
+      if (items.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-16 text-center text-slate-400">
+            <i data-lucide="search-x" class="w-12 h-12 mx-auto mb-3 text-slate-300"></i>
+            <div class="text-base font-bold text-slate-700">No projects match your current filters</div>
+            <p class="text-xs text-slate-400 mt-1">Try resetting your location, budget, or stage filters.</p>
+            <button onclick="resetFilters()" class="mt-4 px-4 py-2 rounded-xl bg-emerald-600 text-white font-bold text-xs shadow">
+              Reset Filters
+            </button>
+          </div>
+        `;
+        if (window.lucide) lucide.createIcons();
+        return;
+      }
+
+      grid.innerHTML = items.map(proj => {
+        const leftBadgeStyle = proj.leftBadgeColor === 'teal' 
+          ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/20' 
+          : 'bg-blue-600 text-white';
+
+        const rightBadgeStyle = proj.rightBadgeColor === 'orange'
+          ? 'bg-amber-500 text-white shadow-md shadow-amber-500/20'
+          : 'bg-blue-600 text-white shadow-md shadow-blue-600/20';
+
+        const heartIcon = proj.isFavorite 
+          ? `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-rose-500 fill-rose-500" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`
+          : `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white hover:text-rose-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>`;
+
+        return `
+          <div class="glass-card project-card rounded-2xl overflow-hidden flex flex-col justify-between border border-slate-200/80 bg-white group">
+            
+            <!-- Card Image & Overlays -->
+            <div class="relative h-52 w-full overflow-hidden bg-slate-900">
+              <img 
+                src="${proj.imageUrl}" 
+                alt="${proj.title}" 
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+              />
+              
+              <!-- Gradient Vignette -->
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/40"></div>
+
+              <!-- Top Image Bar: New Project Tag & Favorite Icon -->
+              <div class="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
+                <span class="px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md text-emerald-800 text-[10px] font-black uppercase tracking-wider shadow-sm">
+                  ${proj.tag}
+                </span>
+                <button 
+                  onclick="toggleFavorite(${proj.id}, event)" 
+                  class="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center hover:bg-black/60 transition-all cursor-pointer"
+                  title="Save to Favorites"
+                >
+                  ${heartIcon}
+                </button>
+              </div>
+
+              <!-- Bottom Image Bar: Title & Location Overlay -->
+              <div class="absolute bottom-3 left-3 right-3 z-10 text-white">
+                <h3 class="text-base font-extrabold tracking-tight drop-shadow-md">${proj.title}</h3>
+                <div class="flex items-center gap-1 text-xs text-slate-200 drop-shadow mt-0.5">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-400"></i>
+                  <span>${proj.location}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Badges Row: Starting Price & Days Remaining -->
+            <div class="px-4 py-2.5 bg-slate-50/90 border-b border-slate-100 flex items-center justify-between text-xs">
+              <div class="flex items-center gap-1.5">
+                <span class="text-[10px] font-semibold text-slate-500">Starting Price:</span>
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-bold font-mono ${leftBadgeStyle}">
+                  ${proj.startingPrice}
+                </span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-bold font-mono ${rightBadgeStyle}">
+                  ${proj.daysRemaining}
+                </span>
+              </div>
+            </div>
+
+            <!-- Details: Stats, Progress Bar & Actions -->
+            <div class="p-4 space-y-3.5 flex-1 flex flex-col justify-between">
+              
+              <!-- Progress Stats -->
+              <div class="space-y-1.5">
+                <div class="flex items-center justify-between text-xs font-semibold">
+                  <span class="text-slate-600">Funding Progress</span>
+                  <span class="font-bold text-emerald-700 font-mono">${proj.fundingProgress}% Funded</span>
+                </div>
+                
+                <!-- Progress Bar -->
+                <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full transition-all duration-700" style="width: ${proj.fundingProgress}%;"></div>
+                </div>
+
+                <div class="text-right text-[11px] font-mono text-slate-400">
+                  ${proj.fundedAmount}
+                </div>
+              </div>
+
+              <!-- Actions: View Details (secondary-teal) & Invest (primary-blue) -->
+              <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
+                <button 
+                  onclick="openDetailsModal(${proj.id})" 
+                  class="py-2.5 px-3 rounded-xl border border-emerald-500/40 text-emerald-700 hover:bg-emerald-50 active:scale-[0.98] text-xs font-bold transition-all text-center"
+                >
+                  View Details
+                </button>
+                <button 
+                  onclick="openInvestModalById(${proj.id})" 
+                  class="py-2.5 px-3 rounded-xl bg-blue-700 hover:bg-blue-800 text-white active:scale-[0.98] text-xs font-bold shadow-md shadow-blue-700/20 transition-all text-center flex items-center justify-center gap-1.5"
+                >
+                  <span>Invest</span>
+                  <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        `;
+      }).join('');
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // Filter Logic
+    function applyFilters() {
+      const loc = document.getElementById('filter-location').value;
+      const budgetMax = parseInt(document.getElementById('filter-budget').value, 10) * 1000;
+      const sizeMin = parseInt(document.getElementById('filter-size-min').value, 10) || 0;
+      const sizeMax = parseInt(document.getElementById('filter-size-max').value, 10) || 999999;
+      
+      const stageSeed = document.getElementById('stage-seed').checked;
+      const stagePresale = document.getElementById('stage-presale').checked;
+      const stageConst = document.getElementById('stage-construction').checked;
+      const stageComp = document.getElementById('stage-completed').checked;
+
+      filteredList = marketplaceProjects.filter(p => {
+        // Location
+        if (loc !== 'All Locations' && p.location !== loc) return false;
+        // Budget
+        if (p.priceValue > budgetMax) return false;
+        // Size
+        if (p.size < sizeMin || p.size > sizeMax) return false;
+        // Stages
+        if (p.stage === 'Seed' && !stageSeed) return false;
+        if (p.stage === 'Pre-Sale' && !stagePresale) return false;
+        if (p.stage === 'Construction' && !stageConst) return false;
+        if (p.stage === 'Completed' && !stageComp) return false;
+
+        return true;
+      });
+
+      renderProjects(filteredList);
+      showToast(`Filter applied: ${filteredList.length} projects found`);
+    }
+
+    function resetFilters() {
+      document.getElementById('filter-location').value = 'All Locations';
+      document.getElementById('filter-budget').value = 500;
+      updateBudgetSlider(500);
+      document.getElementById('filter-size-min').value = '';
+      document.getElementById('filter-size-max').value = '';
+      document.getElementById('stage-seed').checked = true;
+      document.getElementById('stage-presale').checked = false;
+      document.getElementById('stage-construction').checked = true;
+      document.getElementById('stage-completed').checked = false;
+      document.getElementById('marketplace-search-input').value = '';
+
+      filteredList = [...marketplaceProjects];
+      renderProjects(filteredList);
+      showToast('Filters reset to default');
+    }
+
+    function updateBudgetSlider(val) {
+      const label = document.getElementById('budget-range-display');
+      if (label) {
+        label.innerText = `$50k - $${val}k`;
+      }
+      applyFilters();
+    }
+
+    function handleSearch(query) {
+      const q = query.trim().toLowerCase();
+      filteredList = marketplaceProjects.filter(p => {
+        return p.title.toLowerCase().includes(q) ||
+               p.location.toLowerCase().includes(q) ||
+               p.stage.toLowerCase().includes(q);
+      });
+      renderProjects(filteredList);
+    }
+
+    function syncLocationFilter(val) {
+      document.getElementById('filter-location').value = val;
+      applyFilters();
+    }
+
+    function syncBudgetFilter(val) {
+      if (val === 'under150k') {
+        document.getElementById('filter-budget').value = 150;
+        updateBudgetSlider(150);
+      } else if (val === 'over150k') {
+        document.getElementById('filter-budget').value = 800;
+        updateBudgetSlider(800);
+      } else {
+        document.getElementById('filter-budget').value = 1000;
+        updateBudgetSlider(1000);
+      }
+    }
+
+    function handleSort(criteria) {
+      if (criteria === 'priceAsc') {
+        filteredList.sort((a, b) => a.priceValue - b.priceValue);
+      } else if (criteria === 'highestFunded') {
+        filteredList.sort((a, b) => b.fundingProgress - a.fundingProgress);
+      } else if (criteria === 'newest') {
+        filteredList.sort((a, b) => b.id - a.id);
+      } else {
+        filteredList.sort((a, b) => a.id - b.id);
+      }
+      renderProjects(filteredList);
+    }
+
+    function toggleFavorite(id, e) {
+      if (e) e.stopPropagation();
+      const proj = marketplaceProjects.find(p => p.id === id);
+      if (proj) {
+        proj.isFavorite = !proj.isFavorite;
+        renderProjects(filteredList);
+        showToast(proj.isFavorite ? `Saved ${proj.title} to favorites!` : `Removed from favorites`);
+      }
+    }
+
+    // Modals
+    function openInvestModalById(id) {
+      const proj = marketplaceProjects.find(p => p.id === id) || marketplaceProjects[0];
+      openInvestModal(proj);
+    }
+
+    function openInvestModal(proj) {
+      currentActiveProject = proj;
+      const modal = document.getElementById('invest-modal');
+      const title = document.getElementById('invest-modal-title');
+      const loc = document.getElementById('invest-modal-location');
+
+      if (title) title.innerText = proj.title;
+      if (loc) loc.innerText = `${proj.location} • ${proj.stage} Stage`;
+
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }
+
+    function closeInvestModal() {
+      const modal = document.getElementById('invest-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    function setInvestPreset(val) {
+      const input = document.getElementById('invest-amount-input');
+      if (input) input.value = val;
+    }
+
+    function confirmInvestment() {
+      const amount = document.getElementById('invest-amount-input').value;
+      closeInvestModal();
+      
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 80,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+      }
+
+      showToast(`Pledged $${parseInt(amount, 10).toLocaleString()} to ${currentActiveProject.title} successfully!`);
+    }
+
+    function openDetailsModal(id) {
+      const proj = marketplaceProjects.find(p => p.id === id) || marketplaceProjects[0];
+      currentActiveProject = proj;
+      
+      const modal = document.getElementById('details-modal');
+      const title = document.getElementById('details-modal-title');
+      const loc = document.getElementById('details-modal-location');
+      const img = document.getElementById('details-modal-img');
+
+      if (title) title.innerText = proj.title;
+      if (loc) loc.innerHTML = `<i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-600"></i> <span>${proj.location}</span>`;
+      if (img) img.src = proj.imageUrl;
+
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        if (window.lucide) lucide.createIcons();
+      }
+    }
+
+    function closeDetailsModal() {
+      const modal = document.getElementById('details-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    function openInvestPortfolioModal() {
+      showToast('Opening Investment Portfolio: $148,500 Active Assets Under Management');
+    }
+
+    function openMessagesModal() {
+      showToast('Opening CoBuild Developer Communications Portal');
+    }
+
+    function toggleUserDropdown() {
+      const menu = document.getElementById('user-dropdown-menu');
+      if (menu) menu.classList.toggle('hidden');
+    }
+
+    document.addEventListener('click', (e) => {
+      const btn = document.getElementById('user-profile-btn');
+      const menu = document.getElementById('user-dropdown-menu');
+      if (btn && menu && !btn.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.add('hidden');
+      }
+    });
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast-notification');
+      const text = document.getElementById('toast-message');
+      if (!toast || !text) return;
+
+      text.innerText = msg;
+      toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+        toast.classList.remove('opacity-100', 'translate-y-0');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

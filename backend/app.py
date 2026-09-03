@@ -125,6 +125,17 @@ class RestApiHandler(http.server.BaseHTTPRequestHandler):
                         "endpoints": ["/api/project", "/api/reports", "/api/milestones", "/api/floors", "/api/budget", "/api/rfis", "/api/telemetry/live"]
                     })
 
+            elif path == "/marketplace" or path == "/marketplace.html":
+                mp_path = os.path.join(STATIC_DIR, "marketplace.html")
+                if os.path.exists(mp_path):
+                    with open(mp_path, 'rb') as f:
+                        content = f.read()
+                    self._set_cors_headers(200, "text/html")
+                    self.wfile.write(content)
+                    return
+                else:
+                    self._send_json({"error": "Marketplace page not found"}, 404)
+
             elif path.startswith("/css/") or path.startswith("/js/"):
                 file_path = os.path.join(STATIC_DIR, path.lstrip("/"))
                 if os.path.exists(file_path) and os.path.isfile(file_path):
