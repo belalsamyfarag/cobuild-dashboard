@@ -59,28 +59,15 @@ function playUiSound(type = 'click') {
 }
 
 async function initDashboard() {
-  // 1. Check backend API connection
-  if (window.CoBuildAPI) {
-    const isConnected = await CoBuildAPI.checkHealth();
-    const badge = document.getElementById('backend-status-badge');
-    const text = document.getElementById('backend-status-text');
-    if (badge && text) {
-      if (isConnected) {
-        badge.classList.remove('hidden', 'bg-amber-50', 'text-amber-700', 'border-amber-200');
-        badge.classList.add('bg-emerald-50', 'text-emerald-700', 'border-emerald-200');
-        text.innerText = 'SQLite API Live';
-      } else {
-        badge.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-700', 'border-emerald-200');
-        badge.classList.add('bg-slate-100', 'text-slate-600', 'border-slate-200');
-        text.innerText = 'Offline Mode';
-      }
-    }
-  }
+  // 1. Render all dynamic lists and metrics immediately from local data for zero-latency load
+  renderMonthlyReports();
+  renderMilestonesList();
+  renderNotifications();
 
   // 2. Start live clock for camera
   startLiveClock();
 
-  // 3. Initialize Charts
+  // 3. Initialize Visual Charts
   if (typeof initBudgetChart === 'function') {
     initBudgetChart('budgetChart');
   }
@@ -93,17 +80,33 @@ async function initDashboard() {
     initBuildingModel('buildingModelContainer');
   }
 
-  // 5. Render Dynamic Lists from API/Mock
-  await renderMonthlyReports();
-  await renderMilestonesList();
-  renderNotifications();
-
-  // 6. Setup Event Listeners
+  // 5. Setup Event Listeners & Modals
   setupEventListeners();
 
-  // Initialize Lucide icons
+  // 6. Initialize Lucide icons
   if (window.lucide) {
     lucide.createIcons();
+  }
+
+  // 7. Check backend API connection in background without blocking UI
+  if (window.CoBuildAPI) {
+    CoBuildAPI.checkHealth().then(isConnected => {
+      const badge = document.getElementById('backend-status-badge');
+      const text = document.getElementById('backend-status-text');
+      if (badge && text) {
+        badge.classList.remove('hidden');
+        if (isConnected) {
+          badge.className = 'hidden sm:flex items-center gap-1 bg-emerald-50 text-emerald-700 px-2 py-1 rounded-full text-[10px] font-bold border border-emerald-200/70';
+          text.innerText = 'SQLite API Live';
+          // Silently refresh reports and milestones if API has newer data
+          renderMonthlyReports();
+          renderMilestonesList();
+        } else {
+          badge.className = 'hidden sm:flex items-center gap-1 bg-slate-100 text-slate-600 px-2 py-1 rounded-full text-[10px] font-bold border border-slate-200/80';
+          text.innerText = 'Offline Mode';
+        }
+      }
+    }).catch(() => {});
   }
 }
 
@@ -272,24 +275,44 @@ ${rep.summary}
 };
 
 // Gallery Lightbox Modal
+let currentLightboxIndex = 0;
 window.openLightbox = function(imageIndex) {
   playUiSound('click');
-  const item = dashboardData.gallery[imageIndex] || dashboardData.gallery[0];
+  currentLightboxIndex = imageIndex;
+  updateLightboxContent();
   const modal = document.getElementById('lightbox-modal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    if (window.lucide) lucide.createIcons();
+  }
+};
+
+function updateLightboxContent() {
+  const item = dashboardData.gallery[currentLightboxIndex] || dashboardData.gallery[0];
   const imgEl = document.getElementById('lightbox-image');
   const titleEl = document.getElementById('lightbox-title');
   const dateEl = document.getElementById('lightbox-date');
   const descEl = document.getElementById('lightbox-desc');
 
-  if (modal && imgEl) {
+  if (imgEl && item) {
     imgEl.src = item.imageUrl;
-    titleEl.innerText = `${item.title} - ${item.subtitle}`;
-    dateEl.innerText = item.date;
-    descEl.innerText = item.description;
-
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
+    if (titleEl) titleEl.innerText = `${item.title} - ${item.subtitle}`;
+    if (dateEl) dateEl.innerText = item.date;
+    if (descEl) descEl.innerText = item.description;
   }
+}
+
+window.nextLightbox = function() {
+  playUiSound('click');
+  currentLightboxIndex = (currentLightboxIndex + 1) % dashboardData.gallery.length;
+  updateLightboxContent();
+};
+
+window.prevLightbox = function() {
+  playUiSound('click');
+  currentLightboxIndex = (currentLightboxIndex - 1 + dashboardData.gallery.length) % dashboardData.gallery.length;
+  updateLightboxContent();
 };
 
 window.closeLightbox = function() {
@@ -667,11 +690,18 @@ window.toggleLanguage = function() {
     showToast('تم التبديل إلى اللغة العربية (RTL)');
   }
 
-  // Update DOM text elements with data-i18n attributes or direct element lookups
-  const searchInput = document.getElementById('dashboard-search-input');
-  if (searchInput) searchInput.placeholder = t.searchPlaceholder;
+  // Update DOM text elements with data-i18n attributes
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t && t[key]) {
+      el.innerText = t[key];
+    }
+  });
 
-  // Re-render lists with current language
+  const searchInput = document.getElementById('dashboard-search-input');
+  if (searchInput && t) searchInput.placeholder = t.searchPlaceholder;
+
+  // Re-render lists and charts with current language
   renderMonthlyReports();
   renderMilestonesList();
   if (typeof initBudgetChart === 'function') {
@@ -681,11 +711,33 @@ window.toggleLanguage = function() {
 
 // Setup Event Listeners & Interactions
 function setupEventListeners() {
-  // Project Selector
+  // Project Selector with Live Data Binding
   const projSelector = document.getElementById('project-selector');
   if (projSelector) {
     projSelector.addEventListener('change', (e) => {
-      showToast(`تم التبديل إلى: ${e.target.options[e.target.selectedIndex].text}`);
+      const selectedKey = e.target.value;
+      const proj = dashboardData.projects[selectedKey];
+      if (proj) {
+        dashboardData.projectInfo = { ...dashboardData.projectInfo, ...proj };
+        gaugeMetrics[0].value = proj.completionPercentage;
+        
+        // Update Gauge
+        if (typeof initCircularGauge === 'function') {
+          initCircularGauge('gaugeChart', proj.completionPercentage);
+        }
+        const valEl = document.getElementById('gauge-metric-value');
+        if (valEl) valEl.innerText = `${proj.completionPercentage}%`;
+        
+        // Update Completed Floors counter if present
+        const countEl = document.getElementById('completed-floors-count');
+        if (countEl) countEl.innerText = proj.completedFloorsCount;
+
+        // Update Total Budget display
+        const budgetTotalEl = document.getElementById('budget-total-text');
+        if (budgetTotalEl) budgetTotalEl.innerText = proj.totalBudget;
+
+        showToast(`تم التبديل إلى: ${proj.name}`);
+      }
     });
   }
 

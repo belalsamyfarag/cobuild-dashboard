@@ -228,7 +228,7 @@
             <button class="text-slate-400 hover:text-slate-600 transition-colors p-1" title="خيارات إضافية">
               <i data-lucide="more-horizontal" class="w-4 h-4"></i>
             </button>
-            <h2 class="text-base font-extrabold text-slate-800 flex items-center gap-2 font-['Cairo']">
+            <h2 data-i18n="monthlyReports" class="text-base font-extrabold text-slate-800 flex items-center gap-2 font-['Cairo']">
               التقارير الشهرية
             </h2>
           </div>
@@ -254,9 +254,9 @@
         <div class="flex items-center justify-between mb-3">
           <button onclick="openTimelapseModal()" class="text-xs bg-amber-50 text-amber-800 font-bold px-2 py-1 rounded-lg hover:bg-amber-100 transition-colors flex items-center gap-1" title="مقارنة التطور الزمني">
             <i data-lucide="history" class="w-3.5 h-3.5"></i>
-            <span>مقارنة زمنية</span>
+            <span data-i18n="timelapseBtn">مقارنة زمنية</span>
           </button>
-          <h2 class="text-base font-extrabold text-slate-800 flex items-center gap-2 font-['Cairo']">
+          <h2 data-i18n="evolutionMilestones" class="text-base font-extrabold text-slate-800 flex items-center gap-2 font-['Cairo']">
             تطور الموقع ومراحل البناء
           </h2>
         </div>
@@ -358,7 +358,7 @@
               <span id="current-camera-name">كاميرا 1</span>
             </button>
           </div>
-          <h2 class="text-base font-extrabold text-slate-800 flex items-center gap-2 font-['Cairo']">
+          <h2 data-i18n="liveBroadcast" class="text-base font-extrabold text-slate-800 flex items-center gap-2 font-['Cairo']">
             البث المباشر
           </h2>
         </div>
@@ -399,6 +399,28 @@
             </div>
           </div>
 
+          <!-- AI Vision Detection Bounding Boxes Overlay -->
+          <div id="ai-vision-overlay" class="hidden absolute inset-0 z-20 pointer-events-none p-3">
+            <!-- Box 1: Engineer Safety Detection -->
+            <div class="absolute border-2 border-emerald-400 bg-emerald-500/10 rounded-lg animate-pulse" style="top: 25%; left: 15%; width: 30%; height: 50%;">
+              <div class="absolute -top-6 right-0 bg-emerald-600/90 text-white text-[9px] font-mono px-1.5 py-0.5 rounded shadow whitespace-nowrap">
+                مهندس الموقع | PPE 100% ✓
+              </div>
+            </div>
+            <!-- Box 2: Rigging Technician -->
+            <div class="absolute border-2 border-teal-400 bg-teal-500/10 rounded-lg animate-pulse" style="top: 28%; right: 15%; width: 28%; height: 46%;">
+              <div class="absolute -top-6 right-0 bg-teal-600/90 text-white text-[9px] font-mono px-1.5 py-0.5 rounded shadow whitespace-nowrap">
+                فني الشدات | حزام أمان ✓
+              </div>
+            </div>
+            <!-- Box 3: Crane Hook -->
+            <div class="absolute border-2 border-amber-400 bg-amber-500/10 rounded-lg" style="top: 10%; left: 42%; width: 18%; height: 22%;">
+              <div class="absolute -top-5 left-0 bg-amber-600/90 text-white text-[9px] font-mono px-1.5 py-0.5 rounded shadow whitespace-nowrap">
+                حمولة الونش: 4.2T (آمن)
+              </div>
+            </div>
+          </div>
+
           <!-- Bottom Screen Overlay: Live Clock & Snapshot Action -->
           <div class="flex items-center justify-between z-10 text-white/90 text-xs font-mono">
             <button onclick="showToast('تم التقاط لقطة شاشة من البث المباشر وحفظها')" class="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-colors" title="التقاط صورة">
@@ -427,10 +449,10 @@
               <span>التفاصيل</span>
             </button>
             <div class="text-right">
-              <h2 class="text-base font-extrabold text-slate-800 font-['Cairo']">
+              <h2 data-i18n="budgetBreakdown" class="text-base font-extrabold text-slate-800 font-['Cairo']">
                 توزيع الميزانية والتكاليف
               </h2>
-              <div class="text-xs text-slate-400 mt-0.5">المصروفات الفعلية والتحكم في التكلفة</div>
+              <div data-i18n="budgetSubtext" class="text-xs text-slate-400 mt-0.5">المصروفات الفعلية والتحكم في التكلفة</div>
             </div>
           </div>
 
@@ -439,7 +461,7 @@
             <canvas id="budgetChart"></canvas>
             <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
               <span class="text-xs text-slate-400">إجمالي المصروف</span>
-              <span class="text-sm font-extrabold text-slate-800">15.0M ج.م</span>
+              <span id="budget-total-text" class="text-sm font-extrabold text-slate-800">15.0M ج.م</span>
             </div>
           </div>
 
@@ -448,28 +470,28 @@
             <div class="flex items-center justify-between px-1">
               <span class="font-bold text-slate-800">30%</span>
               <div class="flex items-center gap-2">
-                <span class="text-slate-600 font-medium">المواد الخام</span>
+                <span data-i18n="materials" class="text-slate-600 font-medium">المواد الخام</span>
                 <span class="w-2.5 h-2.5 rounded-full bg-[#0d9488]"></span>
               </div>
             </div>
             <div class="flex items-center justify-between px-1">
               <span class="font-bold text-slate-800">20%</span>
               <div class="flex items-center gap-2">
-                <span class="text-slate-600 font-medium">المصنعيات والعمالة</span>
+                <span data-i18n="labor" class="text-slate-600 font-medium">المصنعيات والعمالة</span>
                 <span class="w-2.5 h-2.5 rounded-full bg-[#0284c7]"></span>
               </div>
             </div>
             <div class="flex items-center justify-between px-1">
               <span class="font-bold text-slate-800">10%</span>
               <div class="flex items-center gap-2">
-                <span class="text-slate-600 font-medium">مقاولي الباطن</span>
+                <span data-i18n="contractors" class="text-slate-600 font-medium">مقاولي الباطن</span>
                 <span class="w-2.5 h-2.5 rounded-full bg-[#f59e0b]"></span>
               </div>
             </div>
             <div class="flex items-center justify-between px-1">
               <span class="font-bold text-slate-800">40%</span>
               <div class="flex items-center gap-2">
-                <span class="text-slate-600 font-medium">التراخيص والاحتياطي</span>
+                <span data-i18n="permits" class="text-slate-600 font-medium">التراخيص والاحتياطي</span>
                 <span class="w-2.5 h-2.5 rounded-full bg-[#94a3b8]"></span>
               </div>
             </div>
@@ -485,7 +507,7 @@
           <div class="flex items-start justify-between mb-2">
             <!-- Right Text -->
             <div class="text-right">
-              <h2 class="text-base font-extrabold text-slate-800 font-['Cairo']">
+              <h2 data-i18n="completedFloors" class="text-base font-extrabold text-slate-800 font-['Cairo']">
                 الأدوار المكتملة
               </h2>
             </div>
@@ -493,16 +515,16 @@
             <!-- Floor Indicators -->
             <div class="flex flex-col gap-1.5 items-end text-xs">
               <div class="flex items-center gap-1.5">
-                <span class="text-slate-700 font-bold">أدوار تم صبها وتشطيبها</span>
+                <span data-i18n="floorsCompletedBadge" class="text-slate-700 font-bold">أدوار تم صبها وتشطيبها</span>
                 <span class="w-1.5 h-4 rounded-full bg-emerald-500"></span>
               </div>
               <div class="flex items-center gap-1.5">
-                <span class="text-slate-500 font-medium">أدوار تحت التنفيذ</span>
+                <span data-i18n="floorsInProgressBadge" class="text-slate-500 font-medium">أدوار تحت التنفيذ</span>
                 <span class="w-1.5 h-4 rounded-full bg-amber-500"></span>
               </div>
               <div class="mt-1 text-right">
-                <div class="text-2xl font-black text-slate-900 leading-none">3</div>
-                <div class="text-[10px] text-slate-400">أدوار منتهية</div>
+                <div id="completed-floors-count" class="text-2xl font-black text-slate-900 leading-none">3</div>
+                <div data-i18n="floorsDoneCount" class="text-[10px] text-slate-400">أدوار منتهية</div>
               </div>
             </div>
           </div>
@@ -523,10 +545,10 @@
       <div class="cobuild-card p-4 lg:p-5 lg:col-span-5 flex flex-col justify-between">
         <!-- Header -->
         <div class="flex items-center justify-between mb-3">
-          <h2 class="text-base font-extrabold text-slate-800 font-['Cairo']">
+          <span class="text-xs bg-teal-50 text-teal-700 font-bold px-2 py-0.5 rounded-full border border-teal-100">
             تطور الموقع الميداني
-          </h2>
-          <h2 class="text-base font-extrabold text-slate-800 font-['Cairo']">
+          </span>
+          <h2 data-i18n="finishingStages" class="text-base font-extrabold text-slate-800 font-['Cairo']">
             مراحل التنفيذ والتشطيب
           </h2>
         </div>
@@ -627,7 +649,7 @@
                 <button class="text-slate-400 hover:text-slate-600 p-1">
                   <i data-lucide="more-horizontal" class="w-4 h-4"></i>
                 </button>
-                <h2 class="text-sm font-extrabold text-slate-800 font-['Cairo']">حالة الطقس</h2>
+                <h2 data-i18n="weatherTitle" class="text-sm font-extrabold text-slate-800 font-['Cairo']">حالة الطقس بالموقع</h2>
               </div>
 
               <!-- Main Temp & Icon -->
@@ -714,10 +736,10 @@
           <div class="flex items-center justify-between mb-3">
             <button onclick="openAddMilestoneModal()" class="text-xs bg-teal-50 text-teal-700 font-bold px-2.5 py-1 rounded-lg hover:bg-teal-100 transition-colors flex items-center gap-1">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i>
-              <span>إضافة معلم</span>
+              <span data-i18n="addMilestoneBtn">إضافة معلم</span>
             </button>
-            <h2 class="text-base font-extrabold text-slate-800 font-['Cairo']">
-              المعالم القادمة
+            <h2 data-i18n="upcomingMilestones" class="text-base font-extrabold text-slate-800 font-['Cairo']">
+              المهام والتسليمات القادمة
             </h2>
           </div>
 
@@ -740,8 +762,8 @@
       <div class="cobuild-card p-4 lg:p-5 lg:col-span-4 flex flex-col justify-between">
         <!-- Header -->
         <div class="text-right mb-2">
-          <h2 class="text-base font-extrabold text-slate-800 font-['Cairo']">
-            مؤشرات الشفافية
+          <h2 data-i18n="transparencyMetrics" class="text-base font-extrabold text-slate-800 font-['Cairo']">
+            مؤشرات الجودة والسلامة
           </h2>
         </div>
 
@@ -757,8 +779,8 @@
 
             <!-- Label -->
             <div class="text-right flex-1 px-3">
-              <div id="gauge-metric-label" class="text-xs font-bold text-slate-800">نسبة الإنجاز الكلي</div>
-              <div class="text-[10px] text-slate-400 mt-0.5">نسبة الإنجاز الفعلي</div>
+              <div id="gauge-metric-label" data-i18n="completionRate" class="text-xs font-bold text-slate-800">نسبة الإنجاز الكلي</div>
+              <div class="text-[10px] text-slate-400 mt-0.5">مؤشر التقدم الفعلي</div>
             </div>
 
             <!-- Gauge Canvas & Value -->
@@ -779,8 +801,8 @@
               <i data-lucide="chevron-left" class="w-4 h-4"></i>
             </button>
             <div class="text-right flex-1 px-3">
-              <div class="text-xs font-bold text-slate-800">سجل الأمان</div>
-              <div class="text-[10px] text-slate-500 font-bold mt-0.5">200 يوم سلامة</div>
+              <div data-i18n="safetyRecord" class="text-xs font-bold text-slate-800">سجل السلامة المهنية</div>
+              <div data-i18n="safeDays" class="text-[10px] text-slate-500 font-bold mt-0.5">200 يوم بدون إصابات</div>
             </div>
             <div class="w-9 h-9 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center shrink-0 border border-sky-100">
               <i data-lucide="shield-check" class="w-5 h-5"></i>
@@ -793,8 +815,8 @@
               <i data-lucide="chevron-left" class="w-4 h-4"></i>
             </button>
             <div class="text-right flex-1 px-3">
-              <div class="text-xs font-bold text-slate-800">تأثير البيئة</div>
-              <div class="text-[10px] text-emerald-600 font-bold mt-0.5">الاستدامة في البيئة</div>
+              <div data-i18n="environmentalImpact" class="text-xs font-bold text-slate-800">التوافق البيئي والاستدامة</div>
+              <div data-i18n="ecoSustainability" class="text-[10px] text-emerald-600 font-bold mt-0.5">معتمد وفق اشتراطات البناء الأخضر</div>
             </div>
             <div class="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-100">
               <i data-lucide="leaf" class="w-5 h-5"></i>
@@ -865,9 +887,17 @@
         <h3 id="lightbox-title" class="text-base font-black text-slate-800 font-['Cairo']"></h3>
       </div>
 
-      <div class="py-3">
-        <div class="h-80 w-full rounded-2xl overflow-hidden shadow-inner bg-slate-900">
+      <div class="py-3 relative">
+        <div class="h-80 w-full rounded-2xl overflow-hidden shadow-inner bg-slate-900 relative flex items-center justify-center">
           <img id="lightbox-image" src="" alt="Site Image" class="w-full h-full object-cover" />
+          
+          <!-- Prev / Next Navigation Buttons -->
+          <button onclick="prevLightbox()" class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-teal-600 text-white flex items-center justify-center transition-all z-10 shadow-md" title="الصورة السابقة">
+            <i data-lucide="chevron-left" class="w-5 h-5"></i>
+          </button>
+          <button onclick="nextLightbox()" class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/60 hover:bg-teal-600 text-white flex items-center justify-center transition-all z-10 shadow-md" title="الصورة التالية">
+            <i data-lucide="chevron-right" class="w-5 h-5"></i>
+          </button>
         </div>
         <div class="mt-3 flex items-center justify-between text-xs text-slate-400">
           <div id="lightbox-date" class="font-mono font-bold text-slate-500"></div>

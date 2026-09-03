@@ -12,6 +12,48 @@ const dashboardData = {
     sustainabilityScore: "A+ (معتمد ترشيد وبناء أخضر)"
   },
 
+  projects: {
+    p1: {
+      name: "برج النرجس السكني والتجاري",
+      code: "CB-2023-NRG-01",
+      location: "القاهرة الجديدة - التجمع الخامس، شارع التسعين الشمالي",
+      client: "شركة التطوير العقاري وإدارة المشروعات",
+      generalContractor: "شركة المقاولات والأعمال الهندسية المتكاملة",
+      completionPercentage: 90,
+      safeDays: 200,
+      sustainabilityScore: "A+ (معتمد ترشيد وبناء أخضر)",
+      totalBudget: "15.0M ج.م",
+      totalBudgetSAR: 15000000,
+      completedFloorsCount: 3
+    },
+    p2: {
+      name: "كمبوند زايد ريزيدنس الفاخر",
+      code: "CB-2024-ZYD-02",
+      location: "الجيزة - مدينة الشيخ زايد، المحور المركزي",
+      client: "شركة النيل للتنمية العمرانية",
+      generalContractor: "مجموعة الإنشاءات الحديثة",
+      completionPercentage: 65,
+      safeDays: 140,
+      sustainabilityScore: "A (ترشيد بيئي معتمد)",
+      totalBudget: "28.0M ج.م",
+      totalBudgetSAR: 28000000,
+      completedFloorsCount: 2
+    },
+    p3: {
+      name: "أبراج الساحل الفندقية",
+      code: "CB-2025-SHL-03",
+      location: "الساحل الشمالي - أبراج العلمين الشاطئية",
+      client: "مصر لإدارة الأصول والضيافة",
+      generalContractor: "الرواد للهندسة والمقاولات",
+      completionPercentage: 42,
+      safeDays: 95,
+      sustainabilityScore: "B+ (تحت التقييم)",
+      totalBudget: "45.0M ج.م",
+      totalBudgetSAR: 45000000,
+      completedFloorsCount: 1
+    }
+  },
+
   reports: [
     {
       id: "rep-01",
