@@ -136,6 +136,17 @@ class RestApiHandler(http.server.BaseHTTPRequestHandler):
                 else:
                     self._send_json({"error": "Marketplace page not found"}, 404)
 
+            elif path == "/project-view" or path == "/project-view.html":
+                pv_path = os.path.join(STATIC_DIR, "project-view.html")
+                if os.path.exists(pv_path):
+                    with open(pv_path, 'rb') as f:
+                        content = f.read()
+                    self._set_cors_headers(200, "text/html")
+                    self.wfile.write(content)
+                    return
+                else:
+                    self._send_json({"error": "Project view page not found"}, 404)
+
             elif path.startswith("/css/") or path.startswith("/js/"):
                 file_path = os.path.join(STATIC_DIR, path.lstrip("/"))
                 if os.path.exists(file_path) and os.path.isfile(file_path):

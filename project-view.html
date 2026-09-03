@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoBuild Project View | The Grove Residences</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Google Fonts: Inter & Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              green: '#10B981',
+              'green-dark': '#059669',
+              'green-light': '#D1FAE5',
+              blue: '#3B82F6',
+              'blue-dark': '#1D4ED8',
+              'blue-light': '#DBEAFE',
+              bg: '#E0F2FE'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            cairo: ['Cairo', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #E0F2FE 0%, #F0F9FF 50%, #E0F2FE 100%);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #1E293B;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Glassmorphism widget style */
+    .glass-widget {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass-widget:hover {
+      box-shadow: 0 16px 32px -4px rgba(16, 185, 129, 0.12), 0 8px 16px -4px rgba(15, 23, 42, 0.06);
+    }
+
+    /* Solid White widget style */
+    .solid-white-widget {
+      background: #FFFFFF;
+      border-radius: 20px;
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Green Gradient CTA Button */
+    .btn-green-gradient {
+      background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+      box-shadow: 0 8px 24px -4px rgba(16, 185, 129, 0.45);
+      transition: all 0.25s ease;
+    }
+    .btn-green-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -4px rgba(16, 185, 129, 0.6);
+      filter: brightness(1.05);
+    }
+    .btn-green-gradient:active {
+      transform: translateY(0);
+    }
+
+    /* Interactive Floorplan Unit Hotspots */
+    .unit-hotspot {
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .unit-hotspot:hover {
+      filter: brightness(1.15);
+      stroke-width: 2.5;
+    }
+    .unit-available {
+      fill: rgba(59, 130, 246, 0.25);
+      stroke: #3B82F6;
+    }
+    .unit-available:hover {
+      fill: rgba(59, 130, 246, 0.5);
+    }
+    .unit-sold {
+      fill: rgba(16, 185, 129, 0.25);
+      stroke: #10B981;
+    }
+    .unit-sold:hover {
+      fill: rgba(16, 185, 129, 0.5);
+    }
+
+    /* Circular progress gauge SVG stroke animation */
+    .progress-ring-circle {
+      transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+    }
+
+    /* Modal Backdrop */
+    .modal-overlay {
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(8px);
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <!-- ==================== TOP NAVIGATION HEADER ==================== -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-sky-200/60 shadow-sm">
+    <div class="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3 flex items-center justify-between gap-4">
+      
+      <!-- Left: Logo with Custom Stylized Icon -->
+      <a href="marketplace.html" class="flex items-center gap-3 group cursor-pointer">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 p-0.5 shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform flex items-center justify-center">
+          <div class="w-full h-full bg-white rounded-[10px] flex items-center justify-center overflow-hidden">
+            <svg viewBox="0 0 24 24" class="w-6 h-6 text-emerald-600 fill-emerald-500">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" fill="#10B981" />
+              <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#3B82F6" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
+        <div class="text-left">
+          <div class="text-xl font-black tracking-tight text-slate-900 flex items-center gap-1.5">
+            <span class="text-emerald-600">CoBuild</span>
+            <span class="text-xs px-2 py-0.5 rounded-md bg-sky-100 text-sky-800 font-bold border border-sky-200/60 uppercase tracking-wider">Project View</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Center: Navigation Links -->
+      <nav class="hidden md:flex items-center gap-1 bg-slate-100/90 p-1.5 rounded-full border border-slate-200/60 text-sm font-medium">
+        <a href="index.html" class="px-4 py-1.5 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white transition-all flex items-center gap-1.5">
+          <i data-lucide="activity" class="w-3.5 h-3.5 text-slate-400"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="marketplace.html" class="px-4 py-1.5 rounded-full bg-white text-emerald-600 font-bold shadow-sm border border-slate-200/50 flex items-center gap-1.5">
+          <i data-lucide="building" class="w-3.5 h-3.5 text-emerald-600"></i>
+          <span>Projects</span>
+        </a>
+        <button onclick="openInvestModal()" class="px-4 py-1.5 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white transition-all">
+          Investments
+        </button>
+        <a href="marketplace.html" class="px-4 py-1.5 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white transition-all">
+          Blog
+        </a>
+        <button onclick="showToast('CoBuild Client Advisory: contact@cobuild.io')" class="px-4 py-1.5 rounded-full text-slate-600 hover:text-slate-900 hover:bg-white transition-all">
+          Contact
+        </button>
+      </nav>
+
+      <!-- Right: Switcher, Notifications & User Profile -->
+      <div class="flex items-center gap-3">
+        <!-- Return to Arabic Hub -->
+        <a href="index.html" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white text-slate-700 hover:text-emerald-600 border border-slate-200 text-xs font-bold transition-all shadow-sm" title="العودة إلى مركز الشفافية">
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-emerald-600"></i>
+          <span class="font-cairo">مركز الشفافية (عربي)</span>
+        </a>
+
+        <!-- Notifications -->
+        <button onclick="showToast('Project Milestone Update: Foundation Stage is 73% complete')" class="w-9 h-9 rounded-full bg-white border border-slate-200 shadow-sm text-slate-600 hover:text-emerald-600 flex items-center justify-center transition-colors relative" title="Notifications">
+          <i data-lucide="bell" class="w-4 h-4"></i>
+          <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-emerald-500"></span>
+        </button>
+
+        <!-- User Profile Dropdown -->
+        <div class="relative">
+          <button id="user-profile-btn" onclick="toggleUserDropdown()" class="flex items-center gap-2 p-1 pl-2.5 rounded-full bg-white hover:bg-slate-50 border border-slate-200 shadow-sm transition-all cursor-pointer">
+            <img 
+              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" 
+              alt="User Avatar" 
+              class="w-8 h-8 rounded-full object-cover ring-2 ring-emerald-500/60"
+            />
+            <div class="hidden lg:block text-left text-xs">
+              <div class="font-bold text-slate-800">Sarah Jenkins</div>
+              <div class="text-[10px] text-slate-400 font-mono">Portfolio #8042</div>
+            </div>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400"></i>
+          </button>
+
+          <!-- Dropdown Menu -->
+          <div id="user-dropdown-menu" class="hidden absolute right-0 mt-2 w-52 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 z-50 text-xs space-y-1 animate-scale-up">
+            <div class="px-3 py-2 border-b border-slate-100">
+              <div class="font-bold text-slate-800">Sarah Jenkins</div>
+              <div class="text-[11px] text-slate-400 font-mono">sarah.j@cobuild.io</div>
+            </div>
+            <a href="marketplace.html" class="flex items-center gap-2 px-3 py-2 rounded-xl text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+              <i data-lucide="store" class="w-4 h-4"></i>
+              <span>Marketplace Browse</span>
+            </a>
+            <a href="index.html" class="flex items-center gap-2 px-3 py-2 rounded-xl text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors">
+              <i data-lucide="activity" class="w-4 h-4"></i>
+              <span>Construction IoT Hub</span>
+            </a>
+            <button onclick="showToast('Signed out')" class="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-rose-600 hover:bg-rose-50 transition-colors text-left">
+              <i data-lucide="log-out" class="w-4 h-4"></i>
+              <span>Sign Out</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ==================== MAIN CONTENT CONTAINER ==================== -->
+  <main class="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-7 flex-1 w-full">
+
+    <!-- Breadcrumbs & Quick Back Link -->
+    <div class="flex items-center justify-between text-xs text-slate-500">
+      <div class="flex items-center gap-2">
+        <a href="marketplace.html" class="hover:text-emerald-600 flex items-center gap-1 font-semibold">
+          <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+          <span>Back to Marketplace</span>
+        </a>
+        <span>/</span>
+        <span class="text-slate-400">Residential</span>
+        <span>/</span>
+        <span class="font-bold text-slate-800">The Grove Residences</span>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button onclick="toggleSaveProject()" id="save-btn" class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-slate-200 shadow-sm text-slate-600 hover:text-rose-500 font-bold text-xs transition-all">
+          <i data-lucide="heart" class="w-3.5 h-3.5 text-slate-400" id="save-icon"></i>
+          <span id="save-label">Save</span>
+        </button>
+        <button onclick="shareProject()" class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-slate-200 shadow-sm text-slate-600 hover:text-blue-600 font-bold text-xs transition-all">
+          <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
+          <span>Share</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="glass-widget p-4 sm:p-6 overflow-hidden relative">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        
+        <!-- Hero Visual: modern_residential_building -->
+        <div class="lg:col-span-7 h-80 sm:h-96 rounded-2xl overflow-hidden shadow-inner relative group bg-slate-900">
+          <img 
+            src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1400&q=80" 
+            alt="The Grove Residences - Multi-story residential building exterior with glass balconies and natural wood accents" 
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+          />
+          
+          <!-- Image Badges -->
+          <div class="absolute top-4 left-4 flex flex-wrap items-center gap-2 z-10">
+            <span class="px-3 py-1 rounded-full bg-emerald-600/95 backdrop-blur-md text-white text-xs font-black uppercase tracking-wider shadow-md">
+              Seed Phase Active
+            </span>
+            <span class="px-3 py-1 rounded-full bg-blue-600/90 backdrop-blur-md text-white text-xs font-bold flex items-center gap-1 shadow-md">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+              <span>Smart Contract Verified</span>
+            </span>
+          </div>
+
+          <!-- Bottom Image Gradient & Overlay Info -->
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent flex flex-col justify-end p-5 text-white">
+            <div class="text-xs text-emerald-400 font-mono font-bold tracking-wider uppercase mb-1">
+              Architectural Concept Render • Multi-Story Exterior
+            </div>
+            <p class="text-sm text-slate-200 font-medium line-clamp-2 max-w-xl drop-shadow">
+              Multi-story residential building exterior with glass balconies and natural wood accents. Engineered with cross-laminated sustainable timber and acoustic privacy glass.
+            </p>
+          </div>
+        </div>
+
+        <!-- Hero Details & Primary CTA Box -->
+        <div class="lg:col-span-5 flex flex-col justify-between space-y-5">
+          
+          <div class="space-y-2">
+            <div class="flex items-center gap-2 text-xs text-emerald-700 font-bold">
+              <i data-lucide="map-pin" class="w-4 h-4"></i>
+              <span>London, Kensington & Chelsea, UK</span>
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+              The Grove Residences
+            </h1>
+            <p class="text-xs text-slate-500 leading-relaxed">
+              An iconic high-yield multi-family residential development offering tokenized fractional ownership, verified quarterly dividends, and on-chain escrow transparency.
+            </p>
+          </div>
+
+          <!-- Hero Highlights Grid -->
+          <div class="grid grid-cols-2 gap-3">
+            <div class="bg-white/80 p-3 rounded-xl border border-sky-100 shadow-sm">
+              <div class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Target Return</div>
+              <div class="text-lg font-black text-emerald-600 font-mono">8.5% p.a.</div>
+              <div class="text-[10px] text-slate-400">Quarterly Payouts</div>
+            </div>
+            <div class="bg-white/80 p-3 rounded-xl border border-sky-100 shadow-sm">
+              <div class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Unit Pricing</div>
+              <div class="text-lg font-black text-slate-900 font-mono">$400K - $750K</div>
+              <div class="text-[10px] text-slate-400">Starting Ticket $1,000</div>
+            </div>
+            <div class="bg-white/80 p-3 rounded-xl border border-sky-100 shadow-sm">
+              <div class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Available Units</div>
+              <div class="text-lg font-black text-blue-600 font-mono">27 Available</div>
+              <div class="text-[10px] text-slate-400">Out of 48 Units</div>
+            </div>
+            <div class="bg-white/80 p-3 rounded-xl border border-sky-100 shadow-sm">
+              <div class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Estimated Handover</div>
+              <div class="text-lg font-black text-slate-900 font-mono">Q4 2025</div>
+              <div class="text-[10px] text-emerald-600 font-bold">On Schedule ✓</div>
+            </div>
+          </div>
+
+          <!-- Hero CTA Buttons -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+            <button 
+              onclick="openInvestModal()" 
+              class="flex-1 py-3.5 px-6 rounded-2xl btn-green-gradient text-white text-center font-black text-sm tracking-wide flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <i data-lucide="zap" class="w-4 h-4"></i>
+              <span>INVEST NOW</span>
+            </button>
+            <a 
+              href="index.html" 
+              class="py-3.5 px-5 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-bold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all"
+              title="Inspect On-Site Sensor Data & Construction Telemetry"
+            >
+              <i data-lucide="activity" class="w-4 h-4 text-emerald-600"></i>
+              <span>Live Site Telemetry</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==================== WIDGETS GRID ==================== -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-7">
+
+      <!-- ==================== LEFT COLUMN (8 COLS) ==================== -->
+      <div class="lg:col-span-8 space-y-7">
+        
+        <!-- WIDGET 1: Interactive Unit Selection Map (glassmorphism) -->
+        <section class="glass-widget p-5 sm:p-6 space-y-4">
+          
+          <!-- Widget Header & Legend -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-sky-200/50">
+            <div>
+              <h2 class="text-base sm:text-lg font-black text-slate-900 tracking-tight flex items-center gap-2">
+                <i data-lucide="layout-grid" class="w-5 h-5 text-blue-600"></i>
+                <span>Interactive Unit Selection Map</span>
+              </h2>
+              <p class="text-xs text-slate-500 mt-0.5">Click any floorplan unit to view dimensions, pricing and floor details.</p>
+            </div>
+
+            <!-- Legend: Available (blue) & Sold (green) -->
+            <div class="flex items-center gap-4 text-xs font-bold">
+              <div class="flex items-center gap-1.5">
+                <span class="w-3 h-3 rounded-md bg-blue-500"></span>
+                <span class="text-slate-700">Available</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="w-3 h-3 rounded-md bg-emerald-500"></span>
+                <span class="text-slate-700">Sold</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floorplan Interactive SVG Area -->
+          <div class="relative bg-white/70 rounded-2xl border border-sky-100 p-4 shadow-inner">
+            
+            <!-- Floor Selector Switcher -->
+            <div class="flex items-center justify-between mb-3 text-xs">
+              <div class="flex items-center gap-1 font-bold">
+                <button onclick="selectFloor(1)" id="fl-btn-1" class="px-3 py-1 rounded-lg bg-sky-100 text-blue-700 hover:bg-sky-200 transition-colors">Floor 1</button>
+                <button onclick="selectFloor(2)" id="fl-btn-2" class="px-3 py-1 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition-colors">Floor 2</button>
+                <button onclick="selectFloor(3)" id="fl-btn-3" class="px-3 py-1 rounded-lg bg-blue-600 text-white shadow-sm font-bold">Floor 3 (Active)</button>
+                <button onclick="selectFloor(4)" id="fl-btn-4" class="px-3 py-1 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition-colors">Penthouse</button>
+              </div>
+
+              <span class="text-[11px] text-slate-400 font-mono">Floorplan Level 03 • Tower B</span>
+            </div>
+
+            <!-- Floorplan SVG -->
+            <div class="relative w-full h-72 sm:h-80 flex items-center justify-center overflow-hidden rounded-xl bg-slate-50/50 border border-slate-200/80">
+              <svg viewBox="0 0 700 380" class="w-full h-full select-none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Outer Building Perimeter -->
+                <rect x="30" y="30" width="640" height="320" rx="14" fill="#F8FAFC" stroke="#94A3B8" stroke-width="2.5" stroke-dasharray="6,4" />
+
+                <!-- Central Hallway / Elevator Core -->
+                <rect x="260" y="130" width="180" height="120" rx="8" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="1.5" />
+                <text x="350" y="185" font-size="11" font-weight="bold" fill="#64748B" text-anchor="middle">LOBBY & ELEVATORS</text>
+                <text x="350" y="202" font-size="9" fill="#94A3B8" text-anchor="middle">Core Service Shaft</text>
+
+                <!-- Unit 301 (Available - Blue) -->
+                <rect 
+                  x="40" y="40" width="190" height="130" rx="8" 
+                  class="unit-hotspot unit-available"
+                  onmouseover="showUnitTooltip('Unit 301', '1 Bed, 1 Bath\n82 sqm\n$410,000', 'Available', event)"
+                  onmouseout="hideUnitTooltip()"
+                  onclick="selectUnit('Unit 301', 410000, 'Available')"
+                />
+                <text x="135" y="100" font-size="13" font-weight="bold" fill="#1D4ED8" text-anchor="middle">Unit 301</text>
+                <text x="135" y="120" font-size="10" fill="#3B82F6" text-anchor="middle">1 Bed • $410K</text>
+
+                <!-- Unit 302 (Sold - Green) -->
+                <rect 
+                  x="250" y="40" width="200" height="80" rx="8" 
+                  class="unit-hotspot unit-sold"
+                  onmouseover="showUnitTooltip('Unit 302', 'Studio Executive\n54 sqm\n$320,000', 'Sold', event)"
+                  onmouseout="hideUnitTooltip()"
+                  onclick="selectUnit('Unit 302', 320000, 'Sold')"
+                />
+                <text x="350" y="82" font-size="12" font-weight="bold" fill="#047857" text-anchor="middle">Unit 302 [SOLD]</text>
+
+                <!-- Unit 303 (Sold - Green) -->
+                <rect 
+                  x="470" y="40" width="190" height="130" rx="8" 
+                  class="unit-hotspot unit-sold"
+                  onmouseover="showUnitTooltip('Unit 303', '2 Beds, 2 Baths\n115 sqm\n$590,000', 'Sold', event)"
+                  onmouseout="hideUnitTooltip()"
+                  onclick="selectUnit('Unit 303', 590000, 'Sold')"
+                />
+                <text x="565" y="100" font-size="13" font-weight="bold" fill="#047857" text-anchor="middle">Unit 303 [SOLD]</text>
+                <text x="565" y="120" font-size="10" fill="#10B981" text-anchor="middle">Verified Buyer</text>
+
+                <!-- Unit 304 (Active Tooltip Sample - Available - Blue) -->
+                <rect 
+                  id="svg-unit-304"
+                  x="40" y="190" width="190" height="150" rx="8" 
+                  class="unit-hotspot unit-available stroke-[3]"
+                  style="stroke: #1D4ED8;"
+                  onmouseover="showUnitTooltip('Unit 304', '2 Beds, 1 Bath,\n$450,000', 'Available', event)"
+                  onmouseout="hideUnitTooltip()"
+                  onclick="selectUnit('Unit 304', 450000, 'Available')"
+                />
+                <text x="135" y="260" font-size="14" font-weight="900" fill="#1D4ED8" text-anchor="middle">Unit 304</text>
+                <text x="135" y="280" font-size="11" font-weight="bold" fill="#2563EB" text-anchor="middle">2 Beds, 1 Bath</text>
+                <text x="135" y="298" font-size="11" font-mono font-bold fill="#1E40AF" text-anchor="middle">$450,000</text>
+
+                <!-- Unit 305 (Available - Blue) -->
+                <rect 
+                  x="250" y="260" width="200" height="80" rx="8" 
+                  class="unit-hotspot unit-available"
+                  onmouseover="showUnitTooltip('Unit 305', '1 Bed, 1 Bath\n76 sqm\n$390,000', 'Available', event)"
+                  onmouseout="hideUnitTooltip()"
+                  onclick="selectUnit('Unit 305', 390000, 'Available')"
+                />
+                <text x="350" y="305" font-size="12" font-weight="bold" fill="#1D4ED8" text-anchor="middle">Unit 305 • $390K</text>
+
+                <!-- Unit 306 (Available - Blue) -->
+                <rect 
+                  x="470" y="190" width="190" height="150" rx="8" 
+                  class="unit-hotspot unit-available"
+                  onmouseover="showUnitTooltip('Unit 306', '3 Beds, 2 Baths\n142 sqm\n$720,000', 'Available', event)"
+                  onmouseout="hideUnitTooltip()"
+                  onclick="selectUnit('Unit 306', 720000, 'Available')"
+                />
+                <text x="565" y="260" font-size="13" font-weight="bold" fill="#1D4ED8" text-anchor="middle">Unit 306</text>
+                <text x="565" y="280" font-size="10" fill="#3B82F6" text-anchor="middle">3 Beds • 142 sqm</text>
+                <text x="565" y="298" font-size="11" font-mono font-bold fill="#1E40AF" text-anchor="middle">$720,000</text>
+              </svg>
+
+              <!-- Active Tooltip element matching the JSON spec -->
+              <div 
+                id="unit-map-tooltip" 
+                class="absolute left-16 bottom-16 bg-slate-900/95 backdrop-blur-md text-white px-3.5 py-2.5 rounded-xl shadow-xl border border-slate-700 pointer-events-none text-left z-20"
+              >
+                <div class="flex items-center gap-1.5 text-xs font-black text-emerald-400">
+                  <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                  <span id="tooltip-unit-title">Unit 304</span>
+                </div>
+                <div id="tooltip-unit-details" class="text-[11px] text-slate-200 mt-0.5 leading-snug font-sans whitespace-pre-line font-medium">2 Beds, 1 Bath,
+$450,000</div>
+              </div>
+            </div>
+
+            <!-- Selected Unit Info Card Bar -->
+            <div id="selected-unit-bar" class="mt-3 p-3 bg-blue-50/80 rounded-xl border border-blue-100 flex items-center justify-between text-xs">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-blue-600 text-white font-bold font-mono">SELECTED: UNIT 304</span>
+                <span class="text-slate-700 font-medium">2 Beds, 1 Bath • 96 sqm • Balcony View</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="font-mono font-black text-blue-900 text-sm">$450,000</span>
+                <button onclick="openInvestModal(450000)" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition-all">
+                  Reserve Unit Share
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- WIDGET 3: Construction Timeline (glassmorphism) -->
+        <section class="glass-widget p-5 sm:p-6 space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-sky-200/50">
+            <div>
+              <h2 class="text-base sm:text-lg font-black text-slate-900 tracking-tight flex items-center gap-2">
+                <i data-lucide="git-commit" class="w-5 h-5 text-emerald-600"></i>
+                <span>Construction Timeline</span>
+              </h2>
+              <p class="text-xs text-slate-500 mt-0.5">Real-time IoT verified milestone progress and inspection audits.</p>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold font-mono">
+              STAGE 3 / 6
+            </span>
+          </div>
+
+          <!-- 6 Horizontal Timeline Steps matching JSON -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 pt-2">
+            
+            <!-- Step 1: LAND ACQUISITION (completed) -->
+            <div class="flex flex-col items-center text-center p-3 rounded-xl bg-emerald-50/80 border border-emerald-200 relative">
+              <div class="w-9 h-9 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-md mb-2">
+                <i data-lucide="map-pin" class="w-4 h-4"></i>
+              </div>
+              <div class="text-[10px] font-black text-slate-900 tracking-tight leading-tight">LAND ACQUISITION</div>
+              <span class="text-[9px] font-bold text-emerald-700 mt-1 uppercase">Completed ✓</span>
+            </div>
+
+            <!-- Step 2: DESIGN & PERMITTING (completed) -->
+            <div class="flex flex-col items-center text-center p-3 rounded-xl bg-emerald-50/80 border border-emerald-200 relative">
+              <div class="w-9 h-9 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-md mb-2">
+                <i data-lucide="check" class="w-4 h-4"></i>
+              </div>
+              <div class="text-[10px] font-black text-slate-900 tracking-tight leading-tight">DESIGN & PERMITTING</div>
+              <span class="text-[9px] font-bold text-emerald-700 mt-1 uppercase">Completed ✓</span>
+            </div>
+
+            <!-- Step 3: FOUNDATION (active) -->
+            <div class="flex flex-col items-center text-center p-3 rounded-xl bg-blue-50 border-2 border-blue-500 shadow-md relative ring-4 ring-blue-100">
+              <span class="absolute -top-2 px-2 py-0.2 rounded-full bg-blue-600 text-white text-[8px] font-black tracking-wider uppercase">Active</span>
+              <div class="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-md mb-2 animate-bounce">
+                <!-- Crane Icon -->
+                <svg viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current stroke-2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 22h16" />
+                  <path d="M6 22V4l14-2v4L6 10" />
+                  <path d="M12 5v13" />
+                  <circle cx="18" cy="18" r="2" />
+                </svg>
+              </div>
+              <div class="text-[10px] font-black text-blue-900 tracking-tight leading-tight">FOUNDATION</div>
+              <span class="text-[9px] font-bold text-blue-700 mt-1 font-mono">73% Complete</span>
+            </div>
+
+            <!-- Step 4: SUPERSTRUCTURE (pending) -->
+            <div class="flex flex-col items-center text-center p-3 rounded-xl bg-white/70 border border-slate-200 opacity-75">
+              <div class="w-9 h-9 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center mb-2">
+                <i data-lucide="building" class="w-4 h-4"></i>
+              </div>
+              <div class="text-[10px] font-bold text-slate-600 tracking-tight leading-tight">SUPERSTRUCTURE</div>
+              <span class="text-[9px] text-slate-400 mt-1 uppercase">Pending Q1 2025</span>
+            </div>
+
+            <!-- Step 5: INTERIOR FINISHES (pending) -->
+            <div class="flex flex-col items-center text-center p-3 rounded-xl bg-white/70 border border-slate-200 opacity-75">
+              <div class="w-9 h-9 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center mb-2">
+                <i data-lucide="wrench" class="w-4 h-4"></i>
+              </div>
+              <div class="text-[10px] font-bold text-slate-600 tracking-tight leading-tight">INTERIOR FINISHES</div>
+              <span class="text-[9px] text-slate-400 mt-1 uppercase">Pending Q2 2025</span>
+            </div>
+
+            <!-- Step 6: DELIVERY (pending) -->
+            <div class="flex flex-col items-center text-center p-3 rounded-xl bg-white/70 border border-slate-200 opacity-75">
+              <div class="w-9 h-9 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center mb-2">
+                <i data-lucide="truck" class="w-4 h-4"></i>
+              </div>
+              <div class="text-[10px] font-bold text-slate-600 tracking-tight leading-tight">DELIVERY</div>
+              <span class="text-[9px] text-slate-400 mt-1 uppercase">Handover Q4 2025</span>
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- WIDGET 6: Project Details with Tabs (glassmorphism) -->
+        <section class="glass-widget p-5 sm:p-6 space-y-4">
+          
+          <!-- Tabs Navigation -->
+          <div class="flex items-center gap-2 border-b border-sky-200/50 pb-2">
+            <button 
+              onclick="switchDetailsTab('overview')" 
+              id="tab-btn-overview" 
+              class="px-4 py-2 rounded-xl bg-emerald-600 text-white font-black text-xs shadow-sm transition-all"
+            >
+              PROJECT OVERVIEW
+            </button>
+            <button 
+              onclick="switchDetailsTab('amenities')" 
+              id="tab-btn-amenities" 
+              class="px-4 py-2 rounded-xl bg-white/80 hover:bg-white text-slate-600 font-bold text-xs border border-slate-200/60 transition-all"
+            >
+              AMENITIES
+            </button>
+            <button 
+              onclick="switchDetailsTab('case')" 
+              id="tab-btn-case" 
+              class="px-4 py-2 rounded-xl bg-white/80 hover:bg-white text-slate-600 font-bold text-xs border border-slate-200/60 transition-all"
+            >
+              INVESTMENT CASE
+            </button>
+          </div>
+
+          <!-- Tab 1: Project Overview Content -->
+          <div id="tab-content-overview" class="space-y-4">
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Multi-story residential building exterior with glass balconies and natural wood accents. Crafted by award-winning architectural firm Foster & Partners, The Grove Residences merges cutting-edge sustainable cross-laminated timber with high-efficiency floor-to-ceiling insulated glass. All construction steps are recorded in real-time on the CoBuild Transparency network.
+            </p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+              <div class="p-3 bg-white/70 rounded-xl border border-sky-100">
+                <span class="text-slate-400 block text-[10px]">Architect</span>
+                <span class="font-bold text-slate-800">Foster Design Studio</span>
+              </div>
+              <div class="p-3 bg-white/70 rounded-xl border border-sky-100">
+                <span class="text-slate-400 block text-[10px]">Structural Engineers</span>
+                <span class="font-bold text-slate-800">Arup Engineering</span>
+              </div>
+              <div class="p-3 bg-white/70 rounded-xl border border-sky-100">
+                <span class="text-slate-400 block text-[10px]">General Contractor</span>
+                <span class="font-bold text-slate-800">Balfour Beatty UK</span>
+              </div>
+              <div class="p-3 bg-white/70 rounded-xl border border-sky-100">
+                <span class="text-slate-400 block text-[10px]">Escrow Trustee</span>
+                <span class="font-bold text-emerald-700">Barclays Escrow Trust</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: Amenities Content -->
+          <div id="tab-content-amenities" class="hidden space-y-3">
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs font-semibold text-slate-700">
+              <div class="flex items-center gap-2 p-2.5 bg-white/70 rounded-xl border border-sky-100">
+                <i data-lucide="waves" class="w-4 h-4 text-blue-500"></i>
+                <span>Heated Infinity Pool</span>
+              </div>
+              <div class="flex items-center gap-2 p-2.5 bg-white/70 rounded-xl border border-sky-100">
+                <i data-lucide="dumbell" class="w-4 h-4 text-emerald-500"></i>
+                <span>Wellness & Gym Center</span>
+              </div>
+              <div class="flex items-center gap-2 p-2.5 bg-white/70 rounded-xl border border-sky-100">
+                <i data-lucide="car" class="w-4 h-4 text-amber-500"></i>
+                <span>EV Supercharging Bays</span>
+              </div>
+              <div class="flex items-center gap-2 p-2.5 bg-white/70 rounded-xl border border-sky-100">
+                <i data-lucide="shield" class="w-4 h-4 text-purple-500"></i>
+                <span>24/7 Concierge & Security</span>
+              </div>
+              <div class="flex items-center gap-2 p-2.5 bg-white/70 rounded-xl border border-sky-100">
+                <i data-lucide="sun" class="w-4 h-4 text-yellow-500"></i>
+                <span>Rooftop Sky Lounge</span>
+              </div>
+              <div class="flex items-center gap-2 p-2.5 bg-white/70 rounded-xl border border-sky-100">
+                <i data-lucide="wifi" class="w-4 h-4 text-sky-500"></i>
+                <span>Ultra-Fast Fiber 10Gbps</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 3: Investment Case Content -->
+          <div id="tab-content-case" class="hidden space-y-3 text-xs text-slate-600">
+            <div class="p-3 bg-emerald-50/80 rounded-xl border border-emerald-200">
+              <h4 class="font-bold text-emerald-900 mb-1">Why Invest in The Grove Residences?</h4>
+              <p>Kensington & Chelsea has historically outperformed the greater London prime residential market by 4.2% annually over the past 20 years. Supported by strong rental demand from corporate executives and proximity to world-class universities.</p>
+            </div>
+          </div>
+
+          <!-- Call To Action Box (green-gradient style matching JSON) -->
+          <div class="p-4 sm:p-5 rounded-2xl btn-green-gradient text-white flex flex-col sm:flex-row items-center justify-between gap-4 mt-4 shadow-lg">
+            <div class="text-center sm:text-left">
+              <div class="text-base sm:text-lg font-black tracking-wide">SECURE YOUR SHARE IN THIS PROJECT</div>
+              <p class="text-xs text-emerald-100 mt-0.5">Fractional tokenized co-ownership starting at just $1,000 with capital protection guarantee.</p>
+            </div>
+
+            <button 
+              onclick="openInvestModal()" 
+              class="px-7 py-3 rounded-xl bg-white text-emerald-800 hover:bg-slate-50 font-black text-xs uppercase tracking-wider shadow-md hover:scale-105 active:scale-95 transition-all shrink-0 cursor-pointer"
+            >
+              INVEST NOW
+            </button>
+          </div>
+
+        </section>
+
+      </div>
+
+
+      <!-- ==================== RIGHT COLUMN (4 COLS) ==================== -->
+      <div class="lg:col-span-4 space-y-7">
+        
+        <!-- WIDGET 2: Funding Status (circularProgress, 73% FUNDED - glassmorphism) -->
+        <section class="glass-widget p-5 text-center space-y-4">
+          <div class="flex items-center justify-between pb-2 border-b border-sky-200/50">
+            <h3 class="text-xs font-black text-slate-400 uppercase tracking-wider">Funding Status</h3>
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+          </div>
+
+          <!-- Circular Gauge 73% -->
+          <div class="relative w-44 h-44 mx-auto flex items-center justify-center my-2">
+            <svg class="w-full h-full" viewBox="0 0 120 120">
+              <!-- Background Circle -->
+              <circle 
+                cx="60" cy="60" r="50" 
+                fill="none" 
+                stroke="#E2E8F0" 
+                stroke-width="10" 
+              />
+              <!-- Progress Circle: 73% -> Circumference = 2 * PI * 50 = 314.15; offset = 314.15 * (1 - 0.73) = 84.8 -->
+              <circle 
+                class="progress-ring-circle" 
+                cx="60" cy="60" r="50" 
+                fill="none" 
+                stroke="url(#emerald-gradient)" 
+                stroke-width="10" 
+                stroke-linecap="round"
+                stroke-dasharray="314.15"
+                stroke-dashoffset="84.8" 
+              />
+              <defs>
+                <linearGradient id="emerald-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#10B981" />
+                  <stop offset="100%" stop-color="#3B82F6" />
+                </linearGradient>
+              </defs>
+            </svg>
+
+            <!-- Center Label: 73% FUNDED -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+              <span class="text-3xl font-black text-slate-900 font-mono tracking-tight">73%</span>
+              <span class="text-[11px] font-black text-emerald-600 tracking-wider uppercase mt-0.5">FUNDED</span>
+            </div>
+          </div>
+
+          <!-- Funding Metric Breakdown -->
+          <div class="grid grid-cols-2 gap-2 text-left bg-slate-50 p-3 rounded-xl border border-slate-100 text-xs font-mono">
+            <div>
+              <div class="text-[10px] text-slate-400 font-sans">Raised So Far</div>
+              <div class="font-bold text-slate-800">$3,650,000</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-slate-400 font-sans">Target Cap</div>
+              <div class="font-bold text-slate-800">$5,000,000</div>
+            </div>
+          </div>
+
+          <p class="text-[11px] text-slate-500 leading-tight">
+            184 Investors joined • 24 Days remaining until round closes.
+          </p>
+        </section>
+
+
+        <!-- WIDGET 4: Metrics Dashboard (solid-white style matching JSON) -->
+        <section class="solid-white-widget p-5 space-y-4">
+          <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+            <h3 class="text-xs font-black text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+              <i data-lucide="bar-chart-2" class="w-4 h-4 text-emerald-600"></i>
+              <span>Metrics Dashboard</span>
+            </h3>
+            <span class="text-[10px] bg-sky-50 text-sky-700 font-bold px-2 py-0.5 rounded">Verified</span>
+          </div>
+
+          <!-- 4 Metrics from JSON -->
+          <div class="space-y-3">
+            
+            <!-- Metric 1: ROI PROJECTION -->
+            <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-emerald-50/50 transition-colors border border-slate-100">
+              <div>
+                <div class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">ROI PROJECTION</div>
+                <div class="text-xs text-slate-500 mt-0.5">Net internal rate of return</div>
+              </div>
+              <div class="text-base font-black text-emerald-600 font-mono">8.5% p.a.</div>
+            </div>
+
+            <!-- Metric 2: UNIT PRICE RANGE -->
+            <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-emerald-50/50 transition-colors border border-slate-100">
+              <div>
+                <div class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">UNIT PRICE RANGE</div>
+                <div class="text-xs text-slate-500 mt-0.5">1-Bed to Penthouse</div>
+              </div>
+              <div class="text-base font-black text-slate-800 font-mono">$400K - $750K</div>
+            </div>
+
+            <!-- Metric 3: COMPLETION DATE -->
+            <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-emerald-50/50 transition-colors border border-slate-100">
+              <div>
+                <div class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">COMPLETION DATE</div>
+                <div class="text-xs text-slate-500 mt-0.5">Civil engineering handover</div>
+              </div>
+              <div class="text-base font-black text-blue-600 font-mono">Q4 2025</div>
+            </div>
+
+            <!-- Metric 4: AVAILABLE UNITS COUNTER -->
+            <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50 hover:bg-emerald-50/50 transition-colors border border-slate-100">
+              <div>
+                <div class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">AVAILABLE UNITS</div>
+                <div class="text-xs text-slate-500 mt-0.5">Ready for selection</div>
+              </div>
+              <div class="text-base font-black text-slate-900 font-mono">27 Available</div>
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- WIDGET 5: Embedded Location (mapView, marker with logo - solid-white) -->
+        <section class="solid-white-widget p-5 space-y-4">
+          <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+            <h3 class="text-xs font-black text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+              <i data-lucide="map" class="w-4 h-4 text-blue-600"></i>
+              <span>EMBEDDED LOCATION</span>
+            </h3>
+            <span class="text-xs text-slate-400 font-bold">London, UK</span>
+          </div>
+
+          <!-- Stylized Interactive Map Canvas / Simulation -->
+          <div class="relative h-56 rounded-xl overflow-hidden border border-slate-200 bg-sky-50 shadow-inner flex items-center justify-center group">
+            
+            <!-- Map Vector Background Texture -->
+            <svg class="w-full h-full opacity-60" viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- River Thames / Water Feature -->
+              <path d="M-20,160 C80,180 140,110 240,130 C320,150 360,90 420,110" stroke="#93C5FD" stroke-width="24" stroke-linecap="round" />
+              <!-- Roads / Avenues -->
+              <path d="M0,60 L400,60 M60,0 L60,240 M200,0 L200,240 M340,0 L340,240 M0,200 L400,200" stroke="#CBD5E1" stroke-width="4" />
+              <path d="M-20,120 L420,120 M120,-20 L120,260 M280,-20 L280,260" stroke="#E2E8F0" stroke-width="2" />
+              <!-- Green Park -->
+              <rect x="230" y="20" width="130" height="70" rx="8" fill="#D1FAE5" />
+              <text x="295" y="55" font-size="9" fill="#047857" font-weight="bold" text-anchor="middle">Hyde Park Greens</text>
+            </svg>
+
+            <!-- Embedded CoBuild Logo Pin Marker -->
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div class="relative flex flex-col items-center animate-bounce">
+                <!-- Pin Bubble with CoBuild Icon -->
+                <div class="px-3 py-1.5 rounded-full bg-slate-900 text-white text-[11px] font-bold shadow-xl flex items-center gap-1.5 border border-emerald-400">
+                  <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 fill-emerald-400">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#3B82F6" stroke-width="2" fill="none" />
+                  </svg>
+                  <span>CoBuild: The Grove</span>
+                </div>
+                <!-- Pin Point Needle -->
+                <div class="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-slate-900 -mt-0.5"></div>
+              </div>
+            </div>
+
+            <!-- View Full Map Action Button -->
+            <button onclick="showToast('Opening High-Resolution GIS Satellite Survey...')" class="absolute bottom-2.5 right-2.5 px-2.5 py-1 bg-white/95 text-slate-800 text-[10px] font-bold rounded-lg shadow border border-slate-200 hover:bg-slate-50 transition-all flex items-center gap-1">
+              <i data-lucide="maximize-2" class="w-3 h-3"></i>
+              <span>Full GIS Map</span>
+            </button>
+          </div>
+
+          <!-- Neighborhood Proximity Highlights -->
+          <div class="space-y-1.5 text-xs text-slate-600">
+            <div class="flex items-center justify-between">
+              <span class="flex items-center gap-1.5">
+                <i data-lucide="train" class="w-3.5 h-3.5 text-blue-500"></i>
+                <span>Kensington High St Station</span>
+              </span>
+              <span class="font-bold font-mono text-slate-800">2 min walk</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="flex items-center gap-1.5">
+                <i data-lucide="tree-pine" class="w-3.5 h-3.5 text-emerald-500"></i>
+                <span>Holland Park Gardens</span>
+              </span>
+              <span class="font-bold font-mono text-slate-800">5 min walk</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="flex items-center gap-1.5">
+                <i data-lucide="plane" class="w-3.5 h-3.5 text-slate-400"></i>
+                <span>Heathrow International (LHR)</span>
+              </span>
+              <span class="font-bold font-mono text-slate-800">22 min express</span>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ==================== INVEST MODAL ==================== -->
+  <div id="invest-modal" class="hidden fixed inset-0 modal-overlay z-50 items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 text-left animate-scale-up space-y-4">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+            <i data-lucide="sparkles" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-black text-slate-800">The Grove Residences</h3>
+            <div class="text-xs text-slate-400">8.5% p.a. Projected Return • London, UK</div>
+          </div>
+        </div>
+        <button onclick="closeInvestModal()" class="p-1.5 rounded-full text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-all">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Financial Metrics Box -->
+      <div class="grid grid-cols-3 gap-2 bg-slate-50 p-3 rounded-2xl border border-slate-100 text-center">
+        <div>
+          <div class="text-[10px] text-slate-400 font-medium">Target IRR</div>
+          <div class="text-sm font-black text-emerald-600 font-mono">8.5% p.a.</div>
+        </div>
+        <div>
+          <div class="text-[10px] text-slate-400 font-medium">Min Pledge</div>
+          <div class="text-sm font-black text-slate-800 font-mono">$1,000</div>
+        </div>
+        <div>
+          <div class="text-[10px] text-slate-400 font-medium">Current Status</div>
+          <div class="text-sm font-black text-blue-600 font-mono">73% Funded</div>
+        </div>
+      </div>
+
+      <!-- Amount Input -->
+      <div class="space-y-2">
+        <label for="invest-pledge-amount" class="text-xs font-bold text-slate-700 flex justify-between">
+          <span>Investment Amount (USD)</span>
+          <span class="text-emerald-600 font-mono font-bold" id="est-returns-text">Est. Return: +$425/yr</span>
+        </label>
+        <div class="relative">
+          <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-bold">$</span>
+          <input 
+            type="number" 
+            id="invest-pledge-amount" 
+            value="5000" 
+            step="500" 
+            min="1000"
+            oninput="calcReturns(this.value)"
+            class="w-full bg-white border border-slate-200 rounded-xl py-3 pl-8 pr-4 font-mono font-bold text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+          />
+        </div>
+
+        <!-- Preset Chips -->
+        <div class="flex items-center gap-2 pt-1">
+          <button onclick="setPledgePreset(1000)" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 text-xs font-mono font-bold transition-all">$1,000</button>
+          <button onclick="setPledgePreset(5000)" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 text-xs font-mono font-bold transition-all">$5,000</button>
+          <button onclick="setPledgePreset(10000)" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 text-xs font-mono font-bold transition-all">$10,000</button>
+          <button onclick="setPledgePreset(25000)" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 text-xs font-mono font-bold transition-all">$25,000</button>
+        </div>
+      </div>
+
+      <!-- Verification & Escrow Safeguard -->
+      <div class="p-3 bg-sky-50 rounded-xl border border-sky-100 flex items-center gap-3 text-xs">
+        <i data-lucide="lock" class="w-5 h-5 text-blue-600 shrink-0"></i>
+        <div class="text-slate-600 leading-tight">
+          Pledges held in licensed UK escrow account. Funds released to contractor exclusively upon verified milestone sign-off by Arup engineers.
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <button 
+        onclick="confirmPledge()" 
+        class="w-full py-3.5 rounded-xl btn-green-gradient text-white font-black text-sm tracking-wide shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+      >
+        <i data-lucide="check-circle" class="w-4 h-4"></i>
+        <span>Pledge & Secure Investment</span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast-notification" class="fixed bottom-6 right-6 z-50 bg-slate-900/95 backdrop-blur-md text-white text-xs font-semibold px-4 py-3 rounded-2xl shadow-xl border border-slate-700 flex items-center gap-2.5 opacity-0 translate-y-4 pointer-events-none transition-all duration-300">
+    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+    <span id="toast-message">Notification</span>
+  </div>
+
+  <!-- ==================== PAGE SCRIPTS ==================== -->
+  <script>
+    let isSaved = false;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+    });
+
+    // Floorplan Unit Interaction
+    function showUnitTooltip(title, details, status, e) {
+      const tooltip = document.getElementById('unit-map-tooltip');
+      const titleEl = document.getElementById('tooltip-unit-title');
+      const detailsEl = document.getElementById('tooltip-unit-details');
+
+      if (tooltip && titleEl && detailsEl) {
+        titleEl.innerText = `${title} (${status})`;
+        detailsEl.innerText = details;
+        tooltip.classList.remove('hidden');
+      }
+    }
+
+    function hideUnitTooltip() {
+      // Kept visible for easy inspection of Unit 304 by default per JSON spec
+    }
+
+    function selectUnit(unitName, price, status) {
+      const bar = document.getElementById('selected-unit-bar');
+      if (bar) {
+        bar.innerHTML = `
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded ${status === 'Sold' ? 'bg-emerald-600' : 'bg-blue-600'} text-white font-bold font-mono">SELECTED: ${unitName.toUpperCase()}</span>
+            <span class="text-slate-700 font-medium">${status === 'Sold' ? 'Sold Unit (Verified Co-Owners)' : 'Available for Fractional Pledge'}</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="font-mono font-black text-slate-900 text-sm">$${price.toLocaleString()}</span>
+            ${status === 'Available' ? `<button onclick="openInvestModal(${price})" class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow transition-all">Reserve Share</button>` : ''}
+          </div>
+        `;
+      }
+      showToast(`Selected ${unitName} - $${price.toLocaleString()}`);
+    }
+
+    function selectFloor(num) {
+      for (let i = 1; i <= 4; i++) {
+        const btn = document.getElementById(`fl-btn-${i}`);
+        if (btn) {
+          if (i === num) {
+            btn.className = "px-3 py-1 rounded-lg bg-blue-600 text-white shadow-sm font-bold";
+          } else {
+            btn.className = "px-3 py-1 rounded-lg bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition-colors";
+          }
+        }
+      }
+      showToast(`Switched to Floor ${num} architectural layout`);
+    }
+
+    // Tabs Switcher
+    function switchDetailsTab(tab) {
+      const tabs = ['overview', 'amenities', 'case'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        const content = document.getElementById(`tab-content-${t}`);
+        if (t === tab) {
+          btn.className = "px-4 py-2 rounded-xl bg-emerald-600 text-white font-black text-xs shadow-sm transition-all";
+          content.classList.remove('hidden');
+        } else {
+          btn.className = "px-4 py-2 rounded-xl bg-white/80 hover:bg-white text-slate-600 font-bold text-xs border border-slate-200/60 transition-all";
+          content.classList.add('hidden');
+        }
+      });
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // Investment Modal Handlers
+    function openInvestModal(customAmount) {
+      const modal = document.getElementById('invest-modal');
+      const input = document.getElementById('invest-pledge-amount');
+      if (customAmount && input) {
+        input.value = customAmount;
+        calcReturns(customAmount);
+      }
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        if (window.lucide) lucide.createIcons();
+      }
+    }
+
+    function closeInvestModal() {
+      const modal = document.getElementById('invest-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    function setPledgePreset(val) {
+      const input = document.getElementById('invest-pledge-amount');
+      if (input) {
+        input.value = val;
+        calcReturns(val);
+      }
+    }
+
+    function calcReturns(val) {
+      const text = document.getElementById('est-returns-text');
+      const num = parseInt(val, 10) || 0;
+      const annualReturn = Math.round(num * 0.085);
+      if (text) {
+        text.innerText = `Est. Return: +$${annualReturn.toLocaleString()}/yr`;
+      }
+    }
+
+    function confirmPledge() {
+      const input = document.getElementById('invest-pledge-amount');
+      const val = parseInt(input ? input.value : 5000, 10);
+      closeInvestModal();
+
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 90,
+          spread: 80,
+          origin: { y: 0.6 }
+        });
+      }
+
+      showToast(`Congratulations! Pledged $${val.toLocaleString()} to The Grove Residences successfully!`);
+    }
+
+    // Save & Share Handlers
+    function toggleSaveProject() {
+      isSaved = !isSaved;
+      const icon = document.getElementById('save-icon');
+      const label = document.getElementById('save-label');
+      if (icon && label) {
+        if (isSaved) {
+          icon.classList.add('text-rose-500', 'fill-rose-500');
+          icon.classList.remove('text-slate-400');
+          label.innerText = 'Saved';
+          showToast('Project saved to your investor watchlist!');
+        } else {
+          icon.classList.remove('text-rose-500', 'fill-rose-500');
+          icon.classList.add('text-slate-400');
+          label.innerText = 'Save';
+          showToast('Project removed from watchlist');
+        }
+      }
+    }
+
+    function shareProject() {
+      navigator.clipboard.writeText(window.location.href);
+      showToast('Project link copied to clipboard!');
+    }
+
+    function toggleUserDropdown() {
+      const menu = document.getElementById('user-dropdown-menu');
+      if (menu) menu.classList.toggle('hidden');
+    }
+
+    document.addEventListener('click', (e) => {
+      const btn = document.getElementById('user-profile-btn');
+      const menu = document.getElementById('user-dropdown-menu');
+      if (btn && menu && !btn.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.add('hidden');
+      }
+    });
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast-notification');
+      const text = document.getElementById('toast-message');
+      if (!toast || !text) return;
+
+      text.innerText = msg;
+      toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+        toast.classList.remove('opacity-100', 'translate-y-0');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

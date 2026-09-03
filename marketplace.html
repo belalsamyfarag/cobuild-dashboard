@@ -843,12 +843,12 @@
 
               <!-- Actions: View Details (secondary-teal) & Invest (primary-blue) -->
               <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100">
-                <button 
-                  onclick="openDetailsModal(${proj.id})" 
-                  class="py-2.5 px-3 rounded-xl border border-emerald-500/40 text-emerald-700 hover:bg-emerald-50 active:scale-[0.98] text-xs font-bold transition-all text-center"
+                <a 
+                  href="project-view.html" 
+                  class="py-2.5 px-3 rounded-xl border border-emerald-500/40 text-emerald-700 hover:bg-emerald-50 active:scale-[0.98] text-xs font-bold transition-all text-center flex items-center justify-center"
                 >
                   View Details
-                </button>
+                </a>
                 <button 
                   onclick="openInvestModalById(${proj.id})" 
                   class="py-2.5 px-3 rounded-xl bg-blue-700 hover:bg-blue-800 text-white active:scale-[0.98] text-xs font-bold shadow-md shadow-blue-700/20 transition-all text-center flex items-center justify-center gap-1.5"
