@@ -1,4 +1,4 @@
-# CoBuild PropTech - High Performance Server (Google Cloud Run & Local)
+# CoBuild PropTech - High Performance Server (Co-Development & Day-by-Day Platform)
 import http.server
 import socketserver
 import json
@@ -50,12 +50,13 @@ class RestApiHandler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
         path = parsed.path
+        query = urllib.parse.parse_qs(parsed.query)
 
         # 0. Cloud Health Liveness / Readiness Probe
         if path == "/healthz":
             self._send_json({
                 "status": "healthy",
-                "service": "cobuild-proptech",
+                "service": "cobuild-proptech-codevelopment",
                 "timestamp": time.time(),
                 "environment": "google-cloud-ready"
             })
@@ -142,15 +143,104 @@ class RestApiHandler(http.server.BaseHTTPRequestHandler):
                     "status": "healthy"
                 })
 
-            # 8. Web Page Routes
+            # 8. Daily Logs (Day-by-Day Construction Diary)
+            elif path == "/api/daily-logs":
+                cursor.execute("SELECT * FROM daily_logs ORDER BY date DESC")
+                rows = cursor.fetchall()
+                result = []
+                for r in rows:
+                    item = dict(r)
+                    if item.get("photos_json"):
+                        try:
+                            item["photos"] = json.loads(item["photos_json"])
+                        except:
+                            item["photos"] = []
+                    else:
+                        item["photos"] = []
+                    result.append(item)
+                self._send_json(result)
+
+            elif path == "/api/daily-logs/today":
+                cursor.execute("SELECT * FROM daily_logs ORDER BY date DESC LIMIT 1")
+                row = cursor.fetchone()
+                if row:
+                    item = dict(row)
+                    if item.get("photos_json"):
+                        try:
+                            item["photos"] = json.loads(item["photos_json"])
+                        except:
+                            item["photos"] = []
+                    else:
+                        item["photos"] = []
+                    self._send_json(item)
+                else:
+                    self._send_json({"error": "No daily logs found"}, 404)
+
+            # 9. Co-Development Units
+            elif path == "/api/units":
+                status_filter = query.get("status", [None])[0]
+                if status_filter:
+                    cursor.execute("SELECT * FROM units WHERE status = ? ORDER BY floor_num ASC, unit_num ASC", (status_filter,))
+                else:
+                    cursor.execute("SELECT * FROM units ORDER BY floor_num ASC, unit_num ASC")
+                rows = cursor.fetchall()
+                self._send_json([dict(r) for r in rows])
+
+            elif path.startswith("/api/units/"):
+                unit_id = path.split("/")[-1]
+                cursor.execute("SELECT * FROM units WHERE id = ? OR unit_num = ?", (unit_id, unit_id))
+                row = cursor.fetchone()
+                if row:
+                    self._send_json(dict(row))
+                else:
+                    self._send_json({"error": "Unit not found"}, 404)
+
+            # 10. Buyer Portal: My Unit & Milestone Payments
+            elif path == "/api/buyer/my-unit":
+                res_id = query.get("id", ["RES-302-BELAL"])[0]
+                cursor.execute("""
+                SELECT r.*, u.unit_num, u.floor_num, u.area_sqm, u.bedrooms, u.bathrooms, u.facade, u.floorplan_desc, u.completion_pct
+                FROM buyer_reservations r
+                JOIN units u ON r.unit_id = u.id
+                WHERE r.id = ? OR r.unit_id = ?
+                LIMIT 1
+                """, (res_id, res_id))
+                row = cursor.fetchone()
+                if row:
+                    data = dict(row)
+                    if data.get("payment_schedule_json"):
+                        try:
+                            data["payment_schedule"] = json.loads(data["payment_schedule_json"])
+                        except:
+                            data["payment_schedule"] = []
+                    self._send_json(data)
+                else:
+                    self._send_json({"error": "Reservation not found"}, 404)
+
+            # 11. Syndicate Votes
+            elif path == "/api/syndicate/votes":
+                cursor.execute("SELECT * FROM syndicate_votes ORDER BY deadline ASC")
+                rows = cursor.fetchall()
+                result = []
+                for r in rows:
+                    item = dict(r)
+                    if item.get("options_json"):
+                        try:
+                            item["options"] = json.loads(item["options_json"])
+                        except:
+                            item["options"] = []
+                    result.append(item)
+                self._send_json(result)
+
+            # 12. Web Page Routes
             elif path == "/" or path == "/index.html":
                 index_path = os.path.join(STATIC_DIR, "index.html")
                 if not self._serve_file(index_path):
                     self._send_json({
                         "status": "online",
-                        "name": "CoBuild PropTech REST API",
-                        "version": "2.1.0",
-                        "endpoints": ["/api/project", "/api/reports", "/api/milestones", "/api/floors", "/api/budget", "/api/rfis", "/api/telemetry/live"]
+                        "name": "CoBuild PropTech Co-Development REST API",
+                        "version": "2.5.0",
+                        "endpoints": ["/api/project", "/api/daily-logs", "/api/units", "/api/buyer/my-unit", "/api/syndicate/votes", "/api/reports", "/api/milestones", "/api/floors", "/api/budget", "/api/rfis", "/api/telemetry/live"]
                     })
 
             elif path == "/marketplace" or path == "/marketplace.html":
@@ -163,7 +253,17 @@ class RestApiHandler(http.server.BaseHTTPRequestHandler):
                 if not self._serve_file(pv_path):
                     self._send_json({"error": "Project view page not found"}, 404)
 
-            # 9. Static Assets (CSS, JS, Images, Icons, SVGs)
+            elif path == "/buyer-portal" or path == "/buyer-portal.html":
+                bp_path = os.path.join(STATIC_DIR, "buyer-portal.html")
+                if not self._serve_file(bp_path):
+                    self._send_json({"error": "Buyer portal page not found"}, 404)
+
+            elif path == "/engineer-entry" or path == "/engineer-entry.html":
+                ee_path = os.path.join(STATIC_DIR, "engineer-entry.html")
+                if not self._serve_file(ee_path):
+                    self._send_json({"error": "Engineer entry page not found"}, 404)
+
+            # 13. Static Assets (CSS, JS, Images, Icons, SVGs)
             else:
                 rel_path = path.lstrip("/")
                 target_file = os.path.join(STATIC_DIR, rel_path)
@@ -216,6 +316,131 @@ class RestApiHandler(http.server.BaseHTTPRequestHandler):
                     }
                 }, 201)
 
+            # Add Daily Construction Log (From Site Engineer)
+            elif path == "/api/daily-logs":
+                log_id = payload.get("id") or f"log-{payload.get('date', time.strftime('%Y-%m-%d'))}-{int(time.time())%1000}"
+                date = payload.get("date") or time.strftime("%Y-%m-%d")
+                day_name = payload.get("day_name", "اليوم")
+                title = payload.get("title", "تقرير يومي ميداني")
+                description = payload.get("description", "")
+                workforce_count = int(payload.get("workforce_count", 20))
+                engineer_name = payload.get("engineer_name", "مهندس التنفيذ الميداني")
+                weather = payload.get("weather", "26°C - معتدل")
+                concrete_test = payload.get("concrete_test", "")
+                stage = payload.get("stage", "الأعمال الميدانية")
+                photos = payload.get("photos", [])
+
+                cursor.execute("""
+                INSERT INTO daily_logs (
+                    id, project_id, date, day_name, title, description,
+                    workforce_count, engineer_name, weather, concrete_test, stage, photos_json
+                ) VALUES (?, 'CB-2023-NRG-01', ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """, (log_id, date, day_name, title, description, workforce_count, engineer_name, weather, concrete_test, stage, json.dumps(photos, ensure_ascii=False)))
+                conn.commit()
+
+                self._send_json({
+                    "success": True,
+                    "message": "تم نشر وتوثيق التقرير الميداني اليومي بنجاح وإتاحته لجميع المشترين",
+                    "log_id": log_id
+                }, 201)
+
+            # Reserve an Apartment Unit (Co-Development Booking)
+            elif path == "/api/units/reserve":
+                unit_id = payload.get("unit_id")
+                buyer_name = payload.get("buyer_name", "").strip()
+                buyer_phone = payload.get("buyer_phone", "").strip()
+                buyer_email = payload.get("buyer_email", "").strip()
+
+                if not unit_id or not buyer_name:
+                    self._send_json({"error": "Unit ID and Buyer Name are required"}, 400)
+                    return
+
+                cursor.execute("SELECT * FROM units WHERE id = ?", (unit_id,))
+                unit_row = cursor.fetchone()
+                if not unit_row:
+                    self._send_json({"error": "Unit not found"}, 404)
+                    return
+
+                # Update unit status
+                cursor.execute("UPDATE units SET status = 'reserved', buyer_name = ? WHERE id = ?", (buyer_name, unit_id))
+
+                # Create Reservation record
+                res_id = f"RES-{unit_row['unit_num']}-{int(time.time())%10000}"
+                total_price = unit_row["price_egp"]
+                market_price = unit_row["market_price_egp"]
+                savings = market_price - total_price
+                downpayment = total_price * 0.20
+
+                default_schedule = [
+                    {"stage": "دفعة جدية الحجز والتعاقد التشاركي", "amount": downpayment, "percentage": "20%", "status": "مدفوعة", "date": time.strftime("%Y-%m-%d"), "notes": "حساب الضمان البنكي"},
+                    {"stage": "دفعة إتمام أعمال الحفر والأساسات", "amount": total_price * 0.20, "percentage": "20%", "status": "مجدولة", "date": "المرحلة القادمة", "notes": "باعتماد الاستشاري"},
+                    {"stage": "دفعة صب سقف دور شقتك", "amount": total_price * 0.20, "percentage": "20%", "status": "مجدولة", "date": "مرحلة الهيكل", "notes": "بعد كسر المكعبات"},
+                    {"stage": "دفعة أعمال المباني والمحارة", "amount": total_price * 0.20, "percentage": "20%", "status": "مجدولة", "date": "مرحلة التشطيبات", "notes": "المعاينة الميدانية"},
+                    {"stage": "دفعة الواجهات والمصاعد والرووف", "amount": total_price * 0.15, "percentage": "15%", "status": "مجدولة", "date": "مرحلة الواجهات", "notes": "تركيب الألوميتال"},
+                    {"stage": "دفعة الاستلام النهائي والمفتاح والصك", "amount": total_price * 0.05, "percentage": "5%", "status": "مجدولة", "date": "الاستلام النهائي", "notes": "شهادة الصلاحية"}
+                ]
+
+                cursor.execute("""
+                INSERT OR REPLACE INTO buyer_reservations (
+                    id, unit_id, project_id, buyer_name, buyer_phone, buyer_email,
+                    total_price, market_price, savings_amount, paid_amount, next_milestone, next_amount,
+                    contract_status, escrow_account_num, reservation_date, payment_schedule_json
+                ) VALUES (
+                    ?, ?, 'CB-2023-NRG-01', ?, ?, ?,
+                    ?, ?, ?, ?, 'أعمال الحفر والأساسات', ?,
+                    'عقد تشاركي معتمد وقيد التوثيق', '492001928-EGP (البنك الأهلي المصري)', ?, ?
+                )
+                """, (
+                    res_id, unit_id, buyer_name, buyer_phone, buyer_email,
+                    total_price, market_price, savings, downpayment, total_price * 0.20,
+                    time.strftime("%Y-%m-%d"), json.dumps(default_schedule, ensure_ascii=False)
+                ))
+
+                # Increment project reserved count
+                cursor.execute("UPDATE projects SET co_building_reserved_units = co_building_reserved_units + 1 WHERE id = 'CB-2023-NRG-01'")
+                conn.commit()
+
+                self._send_json({
+                    "success": True,
+                    "message": f"تهانينا! تم حجز الشقة رقم {unit_row['unit_num']} بنجاح وتوثيق العقد التشاركي",
+                    "reservation_id": res_id,
+                    "unit_num": unit_row["unit_num"],
+                    "savings_egp": savings
+                }, 201)
+
+            # Syndicate Vote Submission
+            elif path.startswith("/api/syndicate/votes/") and path.endswith("/vote"):
+                parts = path.split("/")
+                vote_id = parts[4]
+                option_id = int(payload.get("option_id", 1))
+
+                cursor.execute("SELECT * FROM syndicate_votes WHERE id = ?", (vote_id,))
+                vote_row = cursor.fetchone()
+                if not vote_row:
+                    self._send_json({"error": "Vote not found"}, 404)
+                    return
+
+                options = json.loads(vote_row["options_json"])
+                for opt in options:
+                    if opt["id"] == option_id:
+                        opt["votes"] = opt.get("votes", 0) + 1
+
+                new_total = sum(opt.get("votes", 0) for opt in options)
+                for opt in options:
+                    opt["pct"] = round((opt.get("votes", 0) / new_total) * 100) if new_total > 0 else 0
+
+                cursor.execute("""
+                UPDATE syndicate_votes SET options_json = ?, total_votes = ? WHERE id = ?
+                """, (json.dumps(options, ensure_ascii=False), new_total, vote_id))
+                conn.commit()
+
+                self._send_json({
+                    "success": True,
+                    "message": "تم تسجيل صوتك التشاركي بنجاح وتحديث نسب القرارات للملاك",
+                    "options": options,
+                    "total_votes": new_total
+                })
+
             else:
                 self._send_json({"error": "POST endpoint not supported"}, 404)
 
@@ -227,9 +452,10 @@ def run_server():
     with socketserver.ThreadingTCPServer((HOST, PORT), RestApiHandler) as httpd:
         httpd.allow_reuse_address = True
         print(f"===================================================")
-        print(f" CoBuild PropTech Engine - Google Cloud Ready")
+        print(f" CoBuild PropTech Engine - Co-Development Edition")
         print(f" Listening on: http://{HOST}:{PORT}")
         print(f" Health probe: http://{HOST}:{PORT}/healthz")
+        print(f" Endpoints: /api/daily-logs, /api/units, /api/buyer/my-unit, /api/syndicate/votes")
         print(f"===================================================")
         try:
             httpd.serve_forever()

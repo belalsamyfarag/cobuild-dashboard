@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoBuild - تسجيل التقرير الميداني اليومي | مهندس الموقع</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Google Fonts: Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              teal: '#0d9488',
+              'teal-dark': '#0f766e',
+              amber: '#f59e0b',
+              emerald: '#10b981'
+            }
+          },
+          fontFamily: {
+            sans: ['Cairo', 'sans-serif'],
+            cairo: ['Cairo', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #1e293b;
+      min-height: 100vh;
+    }
+  </style>
+</head>
+<body class="p-3 sm:p-5 lg:p-7 antialiased select-none">
+
+  <div class="max-w-4xl mx-auto flex flex-col gap-6">
+
+    <!-- Top Navigation -->
+    <header class="flex items-center justify-between gap-4 bg-white/90 backdrop-blur-md p-4 rounded-2xl border border-slate-200 shadow-sm">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center shadow-md shadow-amber-500/20">
+          <i data-lucide="hard-hat" class="w-5 h-5"></i>
+        </a>
+        <div>
+          <h1 class="text-base sm:text-lg font-black text-slate-900 font-['Cairo']">
+            واجهة مهندس الموقع (التوثيق اليومي السريع)
+          </h1>
+          <p class="text-xs text-slate-500">نشر تطورات الموقع لحظياً لجميع المشترين في أقل من 60 ثانية</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <a href="index.html" class="px-3.5 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-700 flex items-center gap-1.5 transition-colors">
+          <i data-lucide="activity" class="w-3.5 h-3.5 text-teal-600"></i>
+          <span>لوحة الشفافية</span>
+        </a>
+        <a href="buyer-portal.html" class="px-3.5 py-1.5 rounded-full bg-teal-50 hover:bg-teal-100 text-xs font-bold text-teal-800 flex items-center gap-1.5 transition-colors">
+          <i data-lucide="key" class="w-3.5 h-3.5 text-teal-600"></i>
+          <span>بوابة شقتي</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Entry Form Card -->
+    <div class="bg-white rounded-3xl p-5 sm:p-8 border border-slate-200/90 shadow-md">
+      <form id="daily-log-form" onsubmit="handleLogSubmit(event)" class="space-y-6">
+        
+        <!-- Row 1: Date, Day & Project -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1.5">تاريخ التقرير اليومي</label>
+            <input type="date" id="log-date" required class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 font-mono">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1.5">اليوم</label>
+            <select id="log-day" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500">
+              <option value="الإثنين">الإثنين</option>
+              <option value="الثلاثاء">الثلاثاء</option>
+              <option value="الأربعاء">الأربعاء</option>
+              <option value="الخميس">الخميس</option>
+              <option value="الجمعة">الجمعة</option>
+              <option value="السبت">السبت</option>
+              <option value="الأحد">الأحد</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1.5">المرحلة الإنشائية</label>
+            <select id="log-stage" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500">
+              <option value="الهيكل الخرساني - صب الأسقف">الهيكل الخرساني - صب الأسقف</option>
+              <option value="النجارة المسلحة وحديد التسليح">النجارة المسلحة وحديد التسليح</option>
+              <option value="أعمال المباني والعزل المائي">أعمال المباني والعزل المائي</option>
+              <option value="تأسيسات السباكة والكهرباء (MEP)">تأسيسات السباكة والكهرباء (MEP)</option>
+              <option value="أعمال البياض والمحارة والواجهات">أعمال البياض والمحارة والواجهات</option>
+              <option value="الحفر والأساسات واللبشة المسلحة">الحفر والأساسات واللبشة المسلحة</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Row 2: Title of Today's Work -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1.5">عنوان إنجاز اليوم الميداني (يظهر بالخط العريض للمشترين)</label>
+          <input type="text" id="log-title" required placeholder="مثال: صب خرسانة سقف الدور الرابع C40 وتشغيل المضخة 42 متر" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs sm:text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500">
+        </div>
+
+        <!-- Row 3: Description of work -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1.5">تقرير العمليات التفصيلي (ما تم تنفيذه في الموقع اليوم)</label>
+          <textarea id="log-desc" rows="4" required placeholder="اكتب وصفاً واضحاً للأعمال التي جرت اليوم، مثل: وصول خلاطات الخرسانة، مراجعة استشاري الموقع، تمديد خطوط الكهرباء..." class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs sm:text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 leading-relaxed"></textarea>
+        </div>
+
+        <!-- Row 4: Metrics (Workforce, Weather, Engineer) -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1.5">عدد العمالة والمعدات بالموقع</label>
+            <input type="number" id="log-workforce" value="24" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 font-mono">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1.5">حالة الطقس ودرجة الحرارة</label>
+            <input type="text" id="log-weather" value="27°C - مشمس ومعتدل، رياح هادئة" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1.5">اسم المهندس المسؤول</label>
+            <input type="text" id="log-engineer" value="م. حسام الشربيني (مهندس التنفيذ وضبط الجودة)" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500">
+          </div>
+        </div>
+
+        <!-- Row 5: Quality Assurance & Concrete Tests -->
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1.5">نتائج اختبارات الخرسانة وضبط الجودة الميداني</label>
+          <input type="text" id="log-test" value="اختبار الهبوط Slump: 12 سم (مطابق) | تم أخذ 6 مكعبات خرسانية لاختبار الكسر عند 7 و 28 يوماً" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500">
+        </div>
+
+        <!-- Row 6: Photos Upload Simulation -->
+        <div class="bg-amber-50/60 border border-dashed border-amber-300 rounded-2xl p-4 sm:p-5 text-center">
+          <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-700 mx-auto flex items-center justify-center mb-2">
+            <i data-lucide="camera" class="w-5 h-5"></i>
+          </div>
+          <h4 class="text-xs font-bold text-slate-800 mb-1">الصور واللقطات الحية الموثقة لليوم</h4>
+          <p class="text-[11px] text-slate-500 mb-3">سيتم إضافة ختم زمني معتمد تلقائياً على جميع الصور عند النشر</p>
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-xs font-bold text-slate-700 shadow-2xs">
+            <i data-lucide="image" class="w-4 h-4 text-emerald-600"></i>
+            <span>تم تجهيز 3 لقطات ميدانية بدقة عالية</span>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="pt-2">
+          <button type="submit" id="submit-btn" class="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-600 to-teal-600 hover:from-amber-600 hover:to-teal-700 text-white font-black text-sm sm:text-base flex items-center justify-center gap-2 shadow-lg shadow-amber-500/25 transition-all">
+            <i data-lucide="send" class="w-4 h-4"></i>
+            <span>نشر وتوثيق التقرير اليومي للمشترين والملاك</span>
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+
+  <!-- Toast -->
+  <div id="toast-notification" class="fixed bottom-6 left-6 z-50 bg-slate-900/90 backdrop-blur-md text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 text-xs opacity-0 translate-y-4 pointer-events-none transition-all duration-300">
+    <div class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></div>
+    <span id="toast-message">تمت العملية بنجاح</span>
+  </div>
+
+  <script src="js/mockData.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Set today's date in input
+      const today = new Date().toISOString().split('T')[0];
+      const dateEl = document.getElementById("log-date");
+      if (dateEl) dateEl.value = today;
+
+      if (window.lucide) lucide.createIcons();
+    });
+
+    async function handleLogSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById("submit-btn");
+      btn.disabled = true;
+      btn.innerHTML = `<i data-lucide="loader" class="w-4 h-4 animate-spin"></i> <span>جاري التوثيق والنشر...</span>`;
+      if (window.lucide) lucide.createIcons();
+
+      const logData = {
+        id: `log-${document.getElementById("log-date").value}-${Date.now() % 1000}`,
+        date: document.getElementById("log-date").value,
+        day_name: document.getElementById("log-day").value,
+        stage: document.getElementById("log-stage").value,
+        title: document.getElementById("log-title").value,
+        description: document.getElementById("log-desc").value,
+        workforce_count: parseInt(document.getElementById("log-workforce").value) || 20,
+        weather: document.getElementById("log-weather").value,
+        engineer_name: document.getElementById("log-engineer").value,
+        concrete_test: document.getElementById("log-test").value,
+        photos: [
+          { title: "الأعمال الميدانية", time: "10:30 ص", caption: "توثيق استلام الأعمال من الاستشاري المشرف" },
+          { title: "صب الخرسانة الجاهزة", time: "12:15 م", caption: "مطابقة الخلطة واختبار الهبوط" }
+        ]
+      };
+
+      try {
+        await CoBuildAPI.addDailyLog(logData);
+      } catch (err) {
+        console.warn("Saved locally");
+      }
+
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 70,
+          spread: 80,
+          origin: { y: 0.7 }
+        });
+      }
+
+      showToast("🎉 تم نشر وتوثيق التقرير الميداني بنجاح! أصبح متاحاً الآن لجميع المشترين في لوحة الشفافية.");
+
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = `<i data-lucide="send" class="w-4 h-4"></i> <span>نشر وتوثيق التقرير اليومي للمشترين والملاك</span>`;
+        if (window.lucide) lucide.createIcons();
+      }, 2000);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast-notification");
+      const msgEl = document.getElementById("toast-message");
+      if (!toast || !msgEl) return;
+
+      msgEl.textContent = message;
+      toast.classList.remove("opacity-0", "translate-y-4", "pointer-events-none");
+      toast.classList.add("opacity-100", "translate-y-0");
+
+      setTimeout(() => {
+        toast.classList.remove("opacity-100", "translate-y-0");
+        toast.classList.add("opacity-0", "translate-y-4", "pointer-events-none");
+      }, 4000);
+    }
+  </script>
+</body>
+</html>

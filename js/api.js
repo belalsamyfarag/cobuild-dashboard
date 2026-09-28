@@ -155,5 +155,134 @@ const CoBuildAPI = {
       noise_db: 68.0,
       air_quality_aqi: 28
     };
+  },
+
+  // Daily Logs ("يوم بيوم")
+  async getDailyLogs() {
+    if (!this.isBackendConnected) return dashboardData.dailyLogs || [];
+    try {
+      const res = await fetch(`${this.activeBaseUrl}/daily-logs`, { signal: AbortSignal.timeout(2000) });
+      if (res.ok) return await res.json();
+    } catch (e) {}
+    return dashboardData.dailyLogs || [];
+  },
+
+  async getTodayDailyLog() {
+    if (!this.isBackendConnected) return (dashboardData.dailyLogs && dashboardData.dailyLogs[0]) || null;
+    try {
+      const res = await fetch(`${this.activeBaseUrl}/daily-logs/today`, { signal: AbortSignal.timeout(2000) });
+      if (res.ok) return await res.json();
+    } catch (e) {}
+    return (dashboardData.dailyLogs && dashboardData.dailyLogs[0]) || null;
+  },
+
+  async addDailyLog(logData) {
+    if (!this.isBackendConnected) {
+      if (!dashboardData.dailyLogs) dashboardData.dailyLogs = [];
+      dashboardData.dailyLogs.unshift(logData);
+      return { success: true, localOnly: true, log_id: logData.id };
+    }
+    try {
+      const res = await fetch(`${this.activeBaseUrl}/daily-logs`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(logData),
+        signal: AbortSignal.timeout(3000)
+      });
+      if (res.ok) return await res.json();
+    } catch (e) {}
+    if (!dashboardData.dailyLogs) dashboardData.dailyLogs = [];
+    dashboardData.dailyLogs.unshift(logData);
+    return { success: true, fallback: true, log_id: logData.id };
+  },
+
+  // Units & Co-Development Booking
+  async getUnits(status) {
+    if (!this.isBackendConnected) {
+      if (!status) return dashboardData.units || [];
+      return (dashboardData.units || []).filter(u => u.status === status);
+    }
+    try {
+      const url = status ? `${this.activeBaseUrl}/units?status=${status}` : `${this.activeBaseUrl}/units`;
+      const res = await fetch(url, { signal: AbortSignal.timeout(2000) });
+      if (res.ok) return await res.json();
+    } catch (e) {}
+    return dashboardData.units || [];
+  },
+
+  async getUnitDetails(unitId) {
+    if (!this.isBackendConnected) {
+      return (dashboardData.units || []).find(u => u.id === unitId || u.unit_num === unitId) || null;
+    }
+    try {
+      const res = await fetch(`${this.activeBaseUrl}/units/${unitId}`, { signal: AbortSignal.timeout(2000) });
+      if (res.ok) return await res.json();
+    } catch (e) {}
+    return (dashboardData.units || []).find(u => u.id === unitId || u.unit_num === unitId) || null;
+  },
+
+  async reserveUnit(reserveData) {
+    if (!this.isBackendConnected) {
+      const unit = (dashboardData.units || []).find(u => u.id === reserveData.unit_id);
+      if (unit) {
+        unit.status = "reserved";
+        unit.buyer_name = reserveData.buyer_name;
+      }
+      return { success: true, localOnly: true, unit_num: unit ? unit.unit_num : "302" };
+    }
+    try {
+      const res = await fetch(`${this.activeBaseUrl}/units/reserve`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(reserveData),
+        signal: AbortSignal.timeout(3000)
+      });
+      if (res.ok) return await res.json();
+    } catch (e) {}
+    return { success: false };
+  },
+
+  // Buyer Portal ("شقتي")
+  async getMyUnit(reservationId = "RES-302-BELAL") {
+    if (!this.isBackendConnected) return dashboardData.buyerReservation;
+    try {
+      const res = await fetch(`${this.activeBaseUrl}/buyer/my-unit?id=${reservationId}`, { signal: AbortSignal.timeout(2000) });
+      if (res.ok) return await res.json();
+    } catch (e) {}
+    return dashboardData.buyerReservation;
+  },
+
+  // Syndicate Votes
+  async getSyndicateVotes() {
+    if (!this.isBackendConnected) return dashboardData.syndicateVotes || [];
+    try {
+      const res = await fetch(`${this.activeBaseUrl}/syndicate/votes`, { signal: AbortSignal.timeout(2000) });
+      if (res.ok) return await res.json();
+    } catch (e) {}
+    return dashboardData.syndicateVotes || [];
+  },
+
+  async submitSyndicateVote(voteId, optionId) {
+    if (!this.isBackendConnected) {
+      const vote = (dashboardData.syndicateVotes || []).find(v => v.id === voteId);
+      if (vote && vote.options) {
+        const opt = vote.options.find(o => o.id === optionId);
+        if (opt) opt.votes = (opt.votes || 0) + 1;
+        const total = vote.options.reduce((sum, o) => sum + (o.votes || 0), 0);
+        vote.options.forEach(o => o.pct = Math.round((o.votes / total) * 100));
+        vote.total_votes = total;
+      }
+      return { success: true, localOnly: true };
+    }
+    try {
+      const res = await fetch(`${this.activeBaseUrl}/syndicate/votes/${voteId}/vote`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ option_id: optionId }),
+        signal: AbortSignal.timeout(3000)
+      });
+      if (res.ok) return await res.json();
+    } catch (e) {}
+    return { success: false };
   }
 };
