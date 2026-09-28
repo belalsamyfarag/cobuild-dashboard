@@ -1,33 +1,46 @@
-// CoBuild PropTech - High Performance Frontend REST API Client
-const API_BASE_URL = "https://cobuild-dashboard.onrender.com/api";
-const SERVER_ROOT_URL = "https://cobuild-dashboard.onrender.com/";
-const LOCAL_API_URL = "http://127.0.0.1:5000/api";
-const LOCAL_ROOT_URL = "http://127.0.0.1:5000/";
+// CoBuild PropTech - Adaptive Cloud & Local REST API Client (Google Cloud Ready)
+
+// Intelligent Base URL resolution:
+// - When deployed on Google Cloud Run (or any web domain), automatically uses the current origin (/api)
+// - When opened locally via file://, tries local dev ports 8080 and 5000
+function resolveApiBaseUrl() {
+  if (typeof window !== 'undefined' && window.location) {
+    const proto = window.location.protocol;
+    const origin = window.location.origin;
+    if (proto === 'http:' || proto === 'https:') {
+      return `${origin}/api`;
+    }
+  }
+  return "http://127.0.0.1:8080/api";
+}
 
 const CoBuildAPI = {
   isBackendConnected: false,
-  activeBaseUrl: API_BASE_URL,
+  activeBaseUrl: resolveApiBaseUrl(),
 
   async checkHealth() {
-    // 1. Try local server first (instant if running locally)
+    // 1. Try active origin first (instantaneous on Cloud Run or same-origin deployment)
     try {
-      const localRes = await fetch(LOCAL_ROOT_URL, { signal: AbortSignal.timeout(800) });
-      if (localRes.ok) {
+      const probeUrl = this.activeBaseUrl.replace('/api', '') || '/';
+      const res = await fetch(`${probeUrl}/`, { signal: AbortSignal.timeout(1000) });
+      if (res.ok) {
         this.isBackendConnected = true;
-        this.activeBaseUrl = LOCAL_API_URL;
         return true;
       }
     } catch (e) {}
 
-    // 2. Try remote Render server with short timeout to avoid UI freeze
-    try {
-      const res = await fetch(SERVER_ROOT_URL, { signal: AbortSignal.timeout(1500) });
-      if (res.ok) {
-        this.isBackendConnected = true;
-        this.activeBaseUrl = API_BASE_URL;
-        return true;
-      }
-    } catch (e) {}
+    // 2. If opened via file:// or different port, check standard local ports (8080 then 5000)
+    const localFallbacks = ["http://127.0.0.1:8080", "http://127.0.0.1:5000"];
+    for (const host of localFallbacks) {
+      try {
+        const localRes = await fetch(`${host}/`, { signal: AbortSignal.timeout(600) });
+        if (localRes.ok) {
+          this.isBackendConnected = true;
+          this.activeBaseUrl = `${host}/api`;
+          return true;
+        }
+      } catch (err) {}
+    }
 
     this.isBackendConnected = false;
     return false;

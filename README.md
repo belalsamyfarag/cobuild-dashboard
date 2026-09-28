@@ -108,11 +108,64 @@ Endpoints:
 python backend/app.py
 ```
 
+## 🌐 Full-Stack Application Pages
+1. **`index.html`** — Arabic RTL Construction Transparency Dashboard (9 interactive cards, 3D BIM tower, IoT live telemetry, AI vision bounding overlay, audio synth, and bilingual switcher).
+2. **`marketplace.html`** — CoBuild Project Marketplace (3-column co-investment grid, glassmorphism filters, search, and investment pledge modal).
+3. **`project-view.html`** — CoBuild Project View (Architectural hero, interactive unit floorplan map, 73% circular funding gauge, construction timeline, metrics dashboard, and embedded location map).
+
+---
+
+## ☁️ Google Cloud Ecosystem Deployment (Google Cloud Run)
+
+The entire CoBuild PropTech platform is optimized to run as a unified serverless container on **Google Cloud Run**, eligible for Google Cloud's **Always Free Tier** (2M requests/month free).
+
+```
+[User Browser]
+       │ (HTTPS / Auto SSL)
+       ▼
+[Google Cloud Run Container (Port 8080)]
+  ├── / ──────────────────► Transparency Dashboard (index.html)
+  ├── /marketplace ───────► Co-Investment Marketplace (marketplace.html)
+  ├── /project-view ──────► Detailed Unit Floorplan View (project-view.html)
+  ├── /healthz ───────────► Container Health & Liveness Probe
+  └── /api/* ─────────────► Python REST API + SQLite Database
+```
+
+### 🚀 Option 1: 1-Click via Google Cloud Console (No CLI Required)
+1. Go to the **[Google Cloud Run Console](https://console.cloud.google.com/run)**.
+2. Click **"Create Service"** (إنشاء خدمة).
+3. Choose **"Continuously deploy from a repository"** (النشر المستمر من مستودع).
+4. Link your GitHub repository: `belalsamyfarag/cobuild-dashboard` and select **Dockerfile**.
+5. Settings:
+   - **Service Name**: `cobuild-proptech`
+   - **Region**: `me-central1` (Doha) or `europe-west1` (Belgium).
+   - **Authentication**: Check **"Allow unauthenticated invocations"**.
+   - **Container Port**: `8080`.
+6. Click **"Create"**. Cloud Build will build the container and issue a live HTTPS URL (e.g. `https://cobuild-proptech-xxx.a.run.app`).
+
+### ⚡ Option 2: 1-Click via Cloud Shell (In-Browser Terminal)
+1. Open **[shell.cloud.google.com](https://shell.cloud.google.com)** in your browser.
+2. Clone your repository:
+   ```bash
+   git clone https://github.com/belalsamyfarag/cobuild-dashboard.git
+   cd cobuild-dashboard
+   ```
+3. Run the automated script:
+   ```bash
+   chmod +x deploy-gcp.sh
+   ./deploy-gcp.sh
+   ```
+
+### 💻 Option 3: PowerShell Script from Your PC
+```powershell
+.\deploy-gcp.ps1
+```
+*(Requires Google Cloud SDK `gcloud`)*
+
 ---
 
 ## 🧪 Automated Testing
-
-A complete automated test suite is included in `tests/test_api.py`:
+Run the automated test suite against the local or cloud backend:
 ```powershell
 python -m unittest tests/test_api.py
 ```
@@ -122,21 +175,6 @@ python -m unittest tests/test_api.py
 - `GET /api/reports` listing verification
 - `POST /api/milestones` creation & persistence roundtrip
 - `GET /api/floors` BIM inspection verification
-
----
-
-## 🚀 How to Run the Frontend
-
-### Method 1: Direct Browser Launch
-Open `index.html` directly in any web browser:
-```powershell
-Start-Process "C:\Users\belal\.gemini\antigravity\scratch\cobuild-proptech-dashboard\index.html"
-```
-
-### Method 2: PowerShell Runner Script
-```powershell
-.\deploy.ps1
-```
 
 ### Method 3: Python Local Web Server (Port 8080)
 ```powershell

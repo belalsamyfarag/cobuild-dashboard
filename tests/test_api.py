@@ -11,7 +11,8 @@ import time
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(__file__)), "backend"))
 import database
 
-API_URL = "http://127.0.0.1:5000/api"
+API_PORT = os.environ.get("PORT", "8080")
+API_URL = os.environ.get("TEST_API_URL", f"http://127.0.0.1:{API_PORT}/api")
 
 class TestCoBuildBackend(unittest.TestCase):
     @classmethod

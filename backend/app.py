@@ -1,4 +1,4 @@
-# CoBuild PropTech - REST API Server (Python + SQLite)
+# CoBuild PropTech - High Performance Server (Google Cloud Run & Local)
 import http.server
 import socketserver
 import json
@@ -6,31 +6,61 @@ import urllib.parse
 import os
 import sys
 import time
+import mimetypes
 from database import get_connection, init_db
 
-PORT = int(os.environ.get("PORT", 5000))
+# Default to 8080 for Google Cloud Run ($PORT injected dynamically by Cloud Run)
+PORT = int(os.environ.get("PORT", 8080))
 HOST = os.environ.get("HOST", "0.0.0.0")
 STATIC_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+mimetypes.init()
+
 class RestApiHandler(http.server.BaseHTTPRequestHandler):
-    def _set_cors_headers(self, status=200, content_type="application/json"):
+    def _set_cors_headers(self, status=200, content_type="application/json", content_length=None):
         self.send_response(status)
-        self.send_header("Content-Type", f"{content_type}; charset=utf-8")
+        self.send_header("Content-Type", f"{content_type}; charset=utf-8" if "text" in content_type or "json" in content_type or "javascript" in content_type else content_type)
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
         self.send_header("Access-Control-Allow-Headers", "Content-Type, Authorization")
+        self.send_header("Cache-Control", "no-cache" if "/api/" in self.path else "public, max-age=3600")
+        if content_length is not None:
+            self.send_header("Content-Length", str(content_length))
         self.end_headers()
 
     def do_OPTIONS(self):
         self._set_cors_headers(204)
 
     def _send_json(self, data, status=200):
-        self._set_cors_headers(status)
-        self.wfile.write(json.dumps(data, ensure_ascii=False).encode('utf-8'))
+        body = json.dumps(data, ensure_ascii=False).encode('utf-8')
+        self._set_cors_headers(status, "application/json", len(body))
+        self.wfile.write(body)
+
+    def _serve_file(self, file_path):
+        if os.path.exists(file_path) and os.path.isfile(file_path):
+            mime_type, _ = mimetypes.guess_type(file_path)
+            content_type = mime_type or "application/octet-stream"
+            with open(file_path, 'rb') as f:
+                content = f.read()
+            self._set_cors_headers(200, content_type, len(content))
+            self.wfile.write(content)
+            return True
+        return False
 
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
         path = parsed.path
+
+        # 0. Cloud Health Liveness / Readiness Probe
+        if path == "/healthz":
+            self._send_json({
+                "status": "healthy",
+                "service": "cobuild-proptech",
+                "timestamp": time.time(),
+                "environment": "google-cloud-ready"
+            })
+            return
+
         conn = get_connection()
         cursor = conn.cursor()
 
@@ -56,20 +86,20 @@ class RestApiHandler(http.server.BaseHTTPRequestHandler):
                 rows = cursor.fetchall()
                 self._send_json([dict(r) for r in rows])
 
-            # 4. BIM Floors
+            # 4. BIM Floor Inspections
             elif path == "/api/floors":
                 cursor.execute("SELECT * FROM floor_inspections ORDER BY floor_num ASC")
                 rows = cursor.fetchall()
-                floors = []
+                result = []
                 for r in rows:
                     item = dict(r)
                     if item.get("snag_items"):
                         try:
                             item["snag_items"] = json.loads(item["snag_items"])
                         except:
-                            pass
-                    floors.append(item)
-                self._send_json(floors)
+                            item["snag_items"] = []
+                    result.append(item)
+                self._send_json(result)
 
             elif path.startswith("/api/floors/"):
                 floor_id = path.split("/")[-1]
@@ -78,7 +108,10 @@ class RestApiHandler(http.server.BaseHTTPRequestHandler):
                 if row:
                     item = dict(row)
                     if item.get("snag_items"):
-                        item["snag_items"] = json.loads(item["snag_items"])
+                        try:
+                            item["snag_items"] = json.loads(item["snag_items"])
+                        except:
+                            item["snag_items"] = []
                     self._send_json(item)
                 else:
                     self._send_json({"error": "Floor not found"}, 404)
@@ -89,7 +122,7 @@ class RestApiHandler(http.server.BaseHTTPRequestHandler):
                 invoices = [dict(r) for r in cursor.fetchall()]
                 self._send_json({
                     "totalBudgetSAR": 15000000,
-                    "currency": "ر.س",
+                    "currency": "ج.م",
                     "invoices": invoices
                 })
 
@@ -109,58 +142,33 @@ class RestApiHandler(http.server.BaseHTTPRequestHandler):
                     "status": "healthy"
                 })
 
+            # 8. Web Page Routes
             elif path == "/" or path == "/index.html":
                 index_path = os.path.join(STATIC_DIR, "index.html")
-                if os.path.exists(index_path):
-                    with open(index_path, 'rb') as f:
-                        content = f.read()
-                    self._set_cors_headers(200, "text/html")
-                    self.wfile.write(content)
-                    return
-                else:
+                if not self._serve_file(index_path):
                     self._send_json({
                         "status": "online",
                         "name": "CoBuild PropTech REST API",
-                        "version": "2.0.0",
+                        "version": "2.1.0",
                         "endpoints": ["/api/project", "/api/reports", "/api/milestones", "/api/floors", "/api/budget", "/api/rfis", "/api/telemetry/live"]
                     })
 
             elif path == "/marketplace" or path == "/marketplace.html":
                 mp_path = os.path.join(STATIC_DIR, "marketplace.html")
-                if os.path.exists(mp_path):
-                    with open(mp_path, 'rb') as f:
-                        content = f.read()
-                    self._set_cors_headers(200, "text/html")
-                    self.wfile.write(content)
-                    return
-                else:
+                if not self._serve_file(mp_path):
                     self._send_json({"error": "Marketplace page not found"}, 404)
 
             elif path == "/project-view" or path == "/project-view.html":
                 pv_path = os.path.join(STATIC_DIR, "project-view.html")
-                if os.path.exists(pv_path):
-                    with open(pv_path, 'rb') as f:
-                        content = f.read()
-                    self._set_cors_headers(200, "text/html")
-                    self.wfile.write(content)
-                    return
-                else:
+                if not self._serve_file(pv_path):
                     self._send_json({"error": "Project view page not found"}, 404)
 
-            elif path.startswith("/css/") or path.startswith("/js/"):
-                file_path = os.path.join(STATIC_DIR, path.lstrip("/"))
-                if os.path.exists(file_path) and os.path.isfile(file_path):
-                    content_type = "text/css" if path.endswith(".css") else "application/javascript"
-                    with open(file_path, 'rb') as f:
-                        content = f.read()
-                    self._set_cors_headers(200, content_type)
-                    self.wfile.write(content)
-                    return
-                else:
-                    self._send_json({"error": "File not found"}, 404)
-
+            # 9. Static Assets (CSS, JS, Images, Icons, SVGs)
             else:
-                self._send_json({"error": "Endpoint not found"}, 404)
+                rel_path = path.lstrip("/")
+                target_file = os.path.join(STATIC_DIR, rel_path)
+                if not self._serve_file(target_file):
+                    self._send_json({"error": "Resource not found", "path": path}, 404)
 
         finally:
             conn.close()
@@ -216,17 +224,17 @@ class RestApiHandler(http.server.BaseHTTPRequestHandler):
 
 def run_server():
     init_db()
-    with socketserver.TCPServer((HOST, PORT), RestApiHandler) as httpd:
-        print("===================================================")
-        print(f" [*] CoBuild PropTech REST API Server running at:")
-        print(f"     http://{HOST}:{PORT}")
-        print(f"     Database: {os.path.join(os.path.dirname(__file__), 'cobuild.db')}")
-        print("===================================================")
+    with socketserver.ThreadingTCPServer((HOST, PORT), RestApiHandler) as httpd:
+        httpd.allow_reuse_address = True
+        print(f"===================================================")
+        print(f" CoBuild PropTech Engine - Google Cloud Ready")
+        print(f" Listening on: http://{HOST}:{PORT}")
+        print(f" Health probe: http://{HOST}:{PORT}/healthz")
+        print(f"===================================================")
         try:
             httpd.serve_forever()
         except KeyboardInterrupt:
-            print("\nShutting down server.")
-            sys.exit(0)
+            print("\nShutting down server...")
 
 if __name__ == "__main__":
     run_server()
