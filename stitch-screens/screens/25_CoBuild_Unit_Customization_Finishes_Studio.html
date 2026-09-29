@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Plus+Jakarta+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#d3e4fe","on-primary-fixed-variant":"#3f465c","on-error-container":"#93000a","secondary-fixed":"#dde1ff","on-surface-variant":"#45464d","surface-container-highest":"#d3e4fe","secondary":"#3755c3","surface-container-lowest":"#ffffff","on-primary-container":"#7c839b","surface-dim":"#cbdbf5","on-tertiary":"#ffffff","surface-bright":"#f8f9ff","primary-fixed":"#dae2fd","on-secondary":"#ffffff","on-secondary-container":"#00217a","on-secondary-fixed-variant":"#173bab","outline-variant":"#c6c6cd","tertiary":"#000000","on-primary-fixed":"#131b2e","outline":"#76777d","inverse-on-surface":"#eaf1ff","on-background":"#0b1c30","inverse-primary":"#bec6e0","on-tertiary-fixed-variant":"#005236","tertiary-container":"#002113","on-surface":"#0b1c30","background":"#f8f9ff","inverse-surface":"#213145","secondary-fixed-dim":"#b8c4ff","on-primary":"#ffffff","primary":"#000000","error":"#ba1a1a","error-container":"#ffdad6","surface":"#f8f9ff","on-tertiary-fixed":"#002113","surface-tint":"#565e74","surface-container-high":"#dce9ff","on-error":"#ffffff","surface-container-low":"#eff4ff","on-tertiary-container":"#009668","tertiary-fixed-dim":"#4edea3","on-secondary-fixed":"#001453","secondary-container":"#708cfd","surface-container":"#e5eeff","tertiary-fixed":"#6ffbbe","primary-container":"#131b2e","primary-fixed-dim":"#bec6e0"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-xs":"0.25rem","margin":"2rem","margin-mobile":"1rem","space-xl":"2.5rem","gutter":"1.5rem","gutter-mobile":"1rem","space-md":"1rem","space-lg":"1.5rem","space-sm":"0.5rem"},fontFamily:{"body-md":["Inter"],"headline-md":["Plus Jakarta Sans"],"label-md":["Inter"],"headline-sm":["Plus Jakarta Sans"],"code-num":["Inter"],"display-lg":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"label-lg":["Inter"],"label-sm":["Inter"],"display-lg-mobile":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"body-sm":["Inter"],"body-lg":["Inter"]},fontSize:{"body-md":["15px",{lineHeight:"24px",letterSpacing:"0",fontWeight:"400"}],"headline-md":["24px",{lineHeight:"32px",letterSpacing:"-0.01em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"500"}],"headline-sm":["20px",{lineHeight:"28px",letterSpacing:"-0.005em",fontWeight:"600"}],"code-num":["14px",{lineHeight:"20px",letterSpacing:"-0.01em",fontWeight:"500"}],"display-lg":["48px",{lineHeight:"56px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.015em",fontWeight:"600"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"600"}],"display-lg-mobile":["36px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-lg-mobile":["26px",{lineHeight:"34px",letterSpacing:"-0.015em",fontWeight:"600"}],"body-sm":["13px",{lineHeight:"20px",letterSpacing:"0",fontWeight:"400"}],"body-lg":["18px",{lineHeight:"28px",letterSpacing:"0",fontWeight:"400"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-b border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="bg-primary text-on-primary px-margin py-1.5 flex items-center justify-between text-body-sm font-body-sm"><div class="flex items-center gap-space-sm mx-auto"><span class="flex h-2 w-2 relative"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary-fixed opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary-fixed"></span></span><span class="font-label-sm uppercase tracking-wider text-tertiary-fixed font-semibold">Live Construction Log</span><span class="text-outline-variant">|</span><span>Al-Noor Heights Phase 2 foundation concrete pour completed today with 98.4% buyer sign-off.</span><a class="text-tertiary-fixed hover:underline font-label-md flex items-center gap-0.5 ml-space-xs" data-path="construction-live" href="#">View Live Feed <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a></div></div><div class="h-20 w-full px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md shrink-0"><a class="flex items-center gap-space-xs" data-path="landing-page" href="#"><img alt="CoBuild Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WlkSdcUo2owSob12eh3iWtWBAL3olBse8xTQh-Z3Zr-9T6zUJ3IyXdYt3tNQ4QGzSKcb4gyIe_LKbX_ywFxt4cOhaVtFR8nP7TfbiO4a7IXinWWGq2CrJk3tNeyYDCBfj0U4g29T8VJ-TBfQn6dVFMowSVsFOblPuB3lAwvpwL3lDSqNaqSTADGR9Glsj5XPnuFuqBt_utNwPkIJX6ELsll30qUZY_YMRIrGg-72heG5c6wil259qLPzrX"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight">CoBuild</span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium -mt-1">Collective Homebuilding</span></div></a><div class="ml-space-xs inline-flex items-center bg-surface-container-low p-0.5 rounded-lg"><button class="px-2 py-0.5 rounded-lg text-label-sm font-label-sm bg-surface-container-lowest text-on-surface font-semibold shadow-sm" type="button">EN</button><button class="px-2 py-0.5 rounded-lg text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface transition-colors font-medium" type="button">العربية</button></div></div><nav class="hidden lg:flex items-center gap-space-xs font-label-lg text-label-lg" data-active-classes="text-on-surface font-bold bg-surface-container-low rounded-lg"><a class="text-on-surface-variant hover:text-on-surface px-space-md py-space-sm transition-colors" data-path="marketplace" href="#">Marketplace</a><a class="text-on-surface-variant hover:text-on-surface px-space-md py-space-sm transition-colors" data-path="my-apartment" href="#">My Apartment</a><a class="text-on-surface-variant hover:text-on-surface px-space-md py-space-sm transition-colors" data-path="construction-live" href="#">Construction Live</a><a class="text-on-surface-variant hover:text-on-surface px-space-md py-space-sm transition-colors" data-path="community-hub" href="#">Community Hub</a><a class="text-on-surface-variant hover:text-on-surface px-space-md py-space-sm transition-colors" data-path="escrow-payments" href="#">Escrow &amp; Payments</a><div class="relative group"><button class="text-on-surface-variant hover:text-on-surface px-space-md py-space-sm transition-colors inline-flex items-center gap-1 font-label-lg text-label-lg" type="button">Tools <span class="material-symbols-outlined text-[18px] group-hover:rotate-180 transition-transform">expand_more</span></button><div class="absolute left-0 top-full hidden group-hover:flex flex-col bg-surface-container-lowest border border-outline-variant/40 rounded-xl shadow-[0_12px_24px_rgba(0,0,0,0.08)] py-2 w-52 z-50"><a aria-current="page" class="px-space-md py-2 transition-colors block text-on-surface font-bold bg-surface-container-low rounded-lg" data-path="unit-finishes" href="#">Unit Finishes Studio</a><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low px-space-md py-2 transition-colors block text-label-md" data-path="legal-vault" href="#">Legal &amp; Vault</a></div></div></nav><div class="flex items-center gap-space-md shrink-0"><div class="hidden xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low border border-outline-variant/40"><span class="material-symbols-outlined text-[16px] text-on-tertiary-container">verified_user</span><span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold">100% Escrow Protected</span></div><button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" title="Site Notifications" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[10px] font-bold text-on-secondary">3</span></button><div class="flex items-center gap-space-sm pl-space-xs"><img alt="Sarah Al-Mansoor" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGOXR6ElKI-TRGO3rVUejcuUT5itCp7C4i9L54ywhp8LiseCKSraN1htnLrF2WaMwrFQRYvT3AjahknZ-Kjzr-64nKAX8XjQAFpVV2QwFUNhiBC_zSlXbBueXOuyVxO_JjJpR4au9Xl3odYxzaavP9HpM0sb6MbchlOkvdT_Y3ADVrmjNj7KIhanlHhnBLlBFd-zWVVj7eDdu56IW2QVj2XJYmO4K8zGWcW75MhcPVvKzrHt7YJrjmqQ"/><div class="hidden md:flex flex-col text-left"><span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Sarah Al-Mansoor</span><span class="font-label-sm text-label-sm text-on-surface-variant">Co-Owner Unit 402</span></div><button class="text-on-surface-variant hover:text-on-surface p-1 rounded-lg" type="button"><span class="material-symbols-outlined text-[18px]">expand_more</span></button></div></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full">
+<div class="w-full bg-surface-container-low py-space-sm px-margin">
+<div class="max-w-[1360px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-space-xs text-on-surface">
+<div class="flex items-center gap-space-sm">
+<span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-secondary text-on-secondary">
+<span class="material-symbols-outlined text-[16px]">groups</span>
+</span>
+<span class="font-label-md text-label-md">
+<strong class="font-semibold text-secondary">Syndicate Group Tier 3 Activated:</strong> 24 of 28 co-owners locked their palette. Collective syndication saves unit owners an average of 32% on luxury European finishes vs retail distributors.
+        </span>
+</div>
+<div class="flex items-center gap-space-sm self-start md:self-auto">
+<span class="inline-flex items-center gap-1 font-code-num text-code-num text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]">timer</span>
+          Lock-in: 18d 14h 22m
+        </span>
+</div>
+</div>
+</div>
+<div class="w-full px-margin py-space-lg">
+<div class="max-w-[1360px] mx-auto flex flex-col gap-space-xl">
+<section class="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs max-w-3xl">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-label-sm text-label-sm uppercase tracking-wider px-2 py-0.5 rounded bg-surface-container-high text-on-surface font-semibold">
+              Residence Specification
+            </span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-medium">
+              Al-Noor Heights · Building B
+            </span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container bg-surface-container-lowest px-2 py-0.5 rounded font-semibold inline-flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[13px]">verified</span> Bulk Procurement Open
+            </span>
+</div>
+<div class="flex flex-col mt-space-xs">
+<h1 class="font-display-lg text-display-lg text-on-surface font-bold tracking-tight">
+              Unit 402 Customization Studio
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-1">
+              168 m² Layout · 3 Bedroom + Maid's Suite · Collective Purchasing Power Applied
+            </p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm bg-surface-container-lowest p-2 rounded-xl shadow-sm">
+<div class="px-space-md py-1 text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-wide">Fiduciary Escrow</span>
+<span class="font-code-num text-code-num text-on-surface font-semibold">Audited Milestone 03</span>
+</div>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-space-md py-2.5 rounded-lg inline-flex items-center gap-2 hover:bg-on-surface-variant transition-all" id="btn-export-spec">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+            Architectural Spec Sheet
+          </button>
+</div>
+</section>
+<section class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<div class="xl:col-span-8 flex flex-col gap-space-lg">
+<div class="relative w-full rounded-2xl overflow-hidden bg-primary text-on-primary shadow-xl">
+<div class="relative w-full h-[440px] bg-cover bg-center transition-all duration-700" data-alt="Ultra-realistic interior design architectural render of modern living and dining room in luxury apartment, large floor-to-ceiling panoramic windows, natural sunlight highlighting white oak herringbone flooring, sleek anthracite minimalist millwork, soft textured linen sofa, warm ambient light, 8k resolution, minimalist Scandinavian aesthetic." id="visualizer-viewport" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB38YLKoyZ9OmdD2m9jpBXg4Z1WnSh-eQGbHFLJVfT0tmFqdXvNkMJo4oceJVfSR5NgP5CtzNUbNTW_by9iWfrpjpQphQXIbYhRM97d2n3lNSbYHM2R-csr7dvrg8WQOOOCN2PPxpj-cYIw82V0CLQRiZMmX-kLWkP9b2udC9JBf--ZjDaPcf9ZmEXBJqUXNjOFueKAeZtBB_W2KMh3Vgtxfma_p1M5E1ueiv27tsR109BcK1M6K5L4TA')">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-primary/30 pointer-events-none"></div>
+<div class="absolute top-space-md left-space-md right-space-md flex items-center justify-between pointer-events-none">
+<div class="bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1.5 rounded-lg text-on-surface pointer-events-auto shadow-md flex items-center gap-2">
+<span class="flex h-2 w-2 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm uppercase font-bold tracking-wider">3D Real-Time Spatial BIM</span>
+<span class="text-outline-variant">|</span>
+<span class="font-code-num text-code-num text-on-surface-variant" id="active-space-label">Living Room View</span>
+</div>
+<div class="bg-primary/75 backdrop-blur-md text-on-primary px-3 py-1.5 rounded-lg font-code-num text-code-num flex items-center gap-2 pointer-events-auto">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed">view_in_ar</span>
+<span>Interactive Twin: Rev 4.2</span>
+</div>
+</div>
+<div class="absolute bottom-space-md left-space-md right-space-md flex flex-col sm:flex-row items-center justify-between gap-space-sm bg-surface-container-lowest/95 backdrop-blur-md p-space-sm rounded-xl text-on-surface shadow-xl">
+<div class="flex items-center gap-space-sm w-full sm:w-auto">
+<span class="material-symbols-outlined text-secondary text-[20px]">wb_twilight</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Natural Daylight Simulator</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant -mt-1">Oriented South-West (Floor 4)</span>
+</div>
+</div>
+<div class="flex items-center gap-1 bg-surface-container p-1 rounded-lg w-full sm:w-auto justify-between sm:justify-start">
+<button class="tod-btn active px-3 py-1 rounded text-label-sm font-label-sm font-semibold transition-all bg-surface-container-lowest text-on-surface shadow-sm" data-time="morning" type="button">
+                    Morning (08:30)
+                  </button>
+<button class="tod-btn px-3 py-1 rounded text-label-sm font-label-sm font-medium text-on-surface-variant hover:text-on-surface transition-all" data-time="noon" type="button">
+                    Midday (12:00)
+                  </button>
+<button class="tod-btn px-3 py-1 rounded text-label-sm font-label-sm font-medium text-on-surface-variant hover:text-on-surface transition-all" data-time="sunset" type="button">
+                    Golden Hour (17:45)
+                  </button>
+<button class="tod-btn px-3 py-1 rounded text-label-sm font-label-sm font-medium text-on-surface-variant hover:text-on-surface transition-all" data-time="night" type="button">
+                    Night Scene
+                  </button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center gap-2 overflow-x-auto pb-1">
+<button class="room-tab px-space-md py-2.5 rounded-lg font-label-md text-label-md font-semibold text-on-primary bg-primary shrink-0 transition-all flex items-center gap-2" data-room="living">
+<span class="material-symbols-outlined text-[18px]">chair</span>
+                Living &amp; Dining
+              </button>
+<button class="room-tab px-space-md py-2.5 rounded-lg font-label-md text-label-md font-medium text-on-surface-variant hover:text-on-surface bg-surface-container shrink-0 transition-all flex items-center gap-2" data-room="kitchen">
+<span class="material-symbols-outlined text-[18px]">countertops</span>
+                Kitchen &amp; Culinary
+              </button>
+<button class="room-tab px-space-md py-2.5 rounded-lg font-label-md text-label-md font-medium text-on-surface-variant hover:text-on-surface bg-surface-container shrink-0 transition-all flex items-center gap-2" data-room="master">
+<span class="material-symbols-outlined text-[18px]">bed</span>
+                Master Suite
+              </button>
+<button class="room-tab px-space-md py-2.5 rounded-lg font-label-md text-label-md font-medium text-on-surface-variant hover:text-on-surface bg-surface-container shrink-0 transition-all flex items-center gap-2" data-room="baths">
+<span class="material-symbols-outlined text-[18px]">bathtub</span>
+                Baths &amp; Sanitary
+              </button>
+<button class="room-tab px-space-md py-2.5 rounded-lg font-label-md text-label-md font-medium text-on-surface-variant hover:text-on-surface bg-surface-container shrink-0 transition-all flex items-center gap-2" data-room="automation">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+                Smart Backbone
+              </button>
+</div>
+<div class="flex flex-col gap-space-lg">
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div>
+<span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider text-secondary">Specification Group 01</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">Flooring &amp; Architectural Cladding</h3>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Includes dry area installation &amp; acoustic decoupling membrane</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<div class="option-card cursor-pointer rounded-xl p-space-md bg-surface-container flex flex-col justify-between transition-all" data-category="flooring" data-name="Italian Porcelain 120x120cm" data-price="0">
+<div class="flex flex-col gap-space-sm">
+<div class="h-32 w-full rounded-lg bg-cover bg-center overflow-hidden" data-alt="High quality texture closeup of large format Calacatta marble look Italian porcelain tile, fine grey veins on warm white background, matte honed finish, architectural photography." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB-tMnN_0zAcitZPLMycB4zGpc31M7O1orOag4Oo4eniAnnIlvlAV2R68LG_nKfLE9ysOc19SrI_5SWzjUi-_iT9QKI2HaE0wEvRnhrv5lEwAkMCODcKAA-WUtGB6YUdgQwrFWuASbesMtsVNfO1vYfXl166_XPDqr6jpeGKE5t46OBd6EbxLVqBGrMAsxDOl7uT5hPYFD7Ua2V0fGN-lRG05g8q4G2TMmOu8Tzi0RRNJPTA0mDYsYK0A')">
+<div class="p-2 flex justify-between items-start">
+<span class="bg-surface-container-lowest/90 backdrop-blur text-on-surface font-label-sm text-label-sm px-2 py-0.5 rounded font-semibold">120x120 cm</span>
+<span class="w-5 h-5 rounded-full bg-surface-container-lowest flex items-center justify-center text-secondary radio-indicator">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary hidden inner-dot"></span>
+</span>
+</div>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Large Format Italian Porcelain</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Calacatta Marble satin honed look. Zero porosity, zero maintenance.</p>
+</div>
+</div>
+<div class="pt-space-md flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-tertiary-container bg-surface-container-high px-2 py-1 rounded font-bold">Standard Base</span>
+<span class="font-code-num text-code-num font-semibold text-on-surface">+$0 Included</span>
+</div>
+</div>
+<div class="option-card selected cursor-pointer rounded-xl p-space-md bg-surface-container-high shadow-md flex flex-col justify-between transition-all" data-category="flooring" data-name="European White Oak Herringbone" data-price="2400">
+<div class="flex flex-col gap-space-sm">
+<div class="h-32 w-full rounded-lg bg-cover bg-center overflow-hidden" data-alt="Architectural photograph of natural European white oak engineered hardwood flooring laid in a sophisticated herringbone pattern, soft natural oiled matte finish, warm scandinavian timber tone." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA5L7WIsjxVO2IcgYQqUJ32btrwjnqnDGWUDvRriIjPiOTptRmIZi3jYXUmEfXtxhmcaotEExaa6dROA-S3FB_J9cbTGhlocx6G723jXjMpCdUxTdx8OwskyJAa1cGIF0vF8P4JH7JwqE33xY3If7KRWXm6jjJRzsxlLGX_3BLLPq0TKuNw7BQrCvYzG0ZdxtLFojn-RB868pDOJbIZFznV-8-JqNEFvhfgTZ0oCgNFeXkZjmqUbVk1Tw')">
+<div class="p-2 flex justify-between items-start">
+<span class="bg-secondary text-on-secondary font-label-sm text-label-sm px-2 py-0.5 rounded font-semibold">Syndicate Favorite</span>
+<span class="w-5 h-5 rounded-full bg-secondary flex items-center justify-center text-on-secondary radio-indicator">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</span>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-1">
+<h4 class="font-headline-sm text-headline-sm font-semibold text-on-surface">European White Oak</h4>
+<span class="material-symbols-outlined text-secondary text-[16px]">verified</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">15mm engineered timber in 90-degree classical herringbone with silent cork underlay.</p>
+</div>
+</div>
+<div class="pt-space-md flex flex-col gap-0.5">
+<div class="flex items-center justify-between">
+<span class="font-code-num text-code-num font-bold text-secondary">+$2,400 Group</span>
+<span class="font-label-sm text-label-sm line-through text-outline">Retail $4,200</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-medium">Save $1,800 via Collective</span>
+</div>
+</div>
+<div class="option-card cursor-pointer rounded-xl p-space-md bg-surface-container flex flex-col justify-between transition-all" data-category="flooring" data-name="Architectural Micro-Cement" data-price="1800">
+<div class="flex flex-col gap-space-sm">
+<div class="h-32 w-full rounded-lg bg-cover bg-center overflow-hidden" data-alt="Seamless polished architectural micro-cement floor texture, subtle warm industrial light grey, smooth continuous resin concrete finish." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDjY6KLIJtTOrWS1SefGEmTBibDIVCpE88F135Gal9LVqh4R0FyQvUa-D20rZxSuTiOc6qLO7aMJfgYfH6H01aPzGuV_TkPIxWpdkiLdu9MOSiz47-UO3jnrQ2c6YoKBPHbaYtl4BPEcpwFEJ8C0r7KKDNu3gdEAmAGkamc4B-9FDxw7lEhQfBLe3sF0HCk6zYBUz1kFI6qSx9674G2W99YNUKkRpGR10Dzw9uy3lzQEM9IrjdNCM5gJw')">
+<div class="p-2 flex justify-between items-start">
+<span class="bg-surface-container-lowest/90 backdrop-blur text-on-surface font-label-sm text-label-sm px-2 py-0.5 rounded font-semibold">Monolithic</span>
+<span class="w-5 h-5 rounded-full bg-surface-container-lowest flex items-center justify-center text-secondary radio-indicator">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary hidden inner-dot"></span>
+</span>
+</div>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Polished Micro-Cement</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Jointless continuous mineral floor with matte polyurethane protective sealant.</p>
+</div>
+</div>
+<div class="pt-space-md flex flex-col gap-0.5">
+<div class="flex items-center justify-between">
+<span class="font-code-num text-code-num font-semibold text-on-surface">+$1,800 Group</span>
+<span class="font-label-sm text-label-sm line-through text-outline">Retail $2,950</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-medium">Save $1,150 via Collective</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div>
+<span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider text-secondary">Specification Group 02</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">Kitchen Cabinetry &amp; Countertop Ensembles</h3>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Soft-close Blum Legrabox internal pullouts included</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="option-card cursor-pointer rounded-xl p-space-md bg-surface-container flex flex-col justify-between transition-all" data-category="kitchen" data-name="Matte Anthracite &amp; Quartz" data-price="0">
+<div class="flex flex-col gap-space-sm">
+<div class="h-36 w-full rounded-lg bg-cover bg-center overflow-hidden" data-alt="Modern kitchen joinery details, matte anthracite charcoal flat-panel handleless cabinets paired with clean white engineered quartz waterfall edge countertop, warm LED under-cabinet strip lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCHjjytIJDr-PS7L2xwyiXntEOXrQ5_iUBSCBm7mGFcn-2V8YCbfbaVPkj2MFGmDnpWjCSDBSDaMVikBli4cqrJO2Z1EYCca8XjPM0r4wVE_UEjAUGuMr7gT1Hf_0ij43JyXfIm5tDjAyA_U-qPyPNWMZkvdaXdWHatWpkEzRLWCA9aFLTJY1Sp1ySW9KOYok_M9SVGf8MN5S8JMj809LvMzC9dPZoDhyV7xW0VCpjCPTs99SJokAq4vA')">
+<div class="p-2 flex justify-between items-start">
+<span class="bg-surface-container-lowest/90 backdrop-blur text-on-surface font-label-sm text-label-sm px-2 py-0.5 rounded font-semibold">Standard Package</span>
+<span class="w-5 h-5 rounded-full bg-surface-container-lowest flex items-center justify-center text-secondary radio-indicator">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary hidden inner-dot"></span>
+</span>
+</div>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Matte Anthracite Frameless &amp; Quartz</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Anti-fingerprint thermal laminate doors, composite white quartz 20mm waterfall island, and recessed LED channels.</p>
+</div>
+</div>
+<div class="pt-space-md flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-tertiary-container bg-surface-container-high px-2 py-1 rounded font-bold">Base Inclusive</span>
+<span class="font-code-num text-code-num font-semibold text-on-surface">+$0 Included</span>
+</div>
+</div>
+<div class="option-card cursor-pointer rounded-xl p-space-md bg-surface-container flex flex-col justify-between transition-all" data-category="kitchen" data-name="Natural Walnut &amp; Dekton Laurent" data-price="3100">
+<div class="flex flex-col gap-space-sm">
+<div class="h-36 w-full rounded-lg bg-cover bg-center overflow-hidden" data-alt="Luxury custom kitchen island featuring warm natural American walnut fluted wood veneer cabinets and ultra-compact Dekton Laurent sintered stone countertop with dramatic gold veining." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBPkOv6ZryOwpsfbEgO3ktyFs3Y3-KdzCTfnwZWpTv9Mbfuk9nH-oCbJwji9HymaQXgbl2A6CnBt-R_8uDmTMefn0oKLQDAY2VNxlr9mbjTHAeT3JxqtDXB6QaQcB0jHtv__g2FXl1E5i3tKgxdQ2m36N6K1Fu6RVnEP3niIcsjqOhIU9LffdfmcF48r3s_2bj2Mv3TSo-s1ipeaveE1lc51EDDVNwt9K9-ySxyVd-_FwLytgWE3MxUAw')">
+<div class="p-2 flex justify-between items-start">
+<span class="bg-secondary text-on-secondary font-label-sm text-label-sm px-2 py-0.5 rounded font-semibold">Architectural Signature</span>
+<span class="w-5 h-5 rounded-full bg-surface-container-lowest flex items-center justify-center text-secondary radio-indicator">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary hidden inner-dot"></span>
+</span>
+</div>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm font-semibold text-on-surface">Natural Walnut Veneer &amp; Dekton Laurent</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Book-matched architectural walnut veneer with heat-proof Dekton Laurent sintered stone worktops.</p>
+</div>
+</div>
+<div class="pt-space-md flex flex-col gap-0.5">
+<div class="flex items-center justify-between">
+<span class="font-code-num text-code-num font-bold text-secondary">+$3,100 Group</span>
+<span class="font-label-sm text-label-sm line-through text-outline">Retail $5,400</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-medium">Save $2,300 with 19 Unit Consortium</span>
+</div>
+</div>
+</div>
+<div class="mt-space-xs p-space-md rounded-xl bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[24px]">kitchen</span>
+<div>
+<h5 class="font-label-lg text-label-lg font-semibold text-on-surface">Culinary Appliance Bundle</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Siemens StudioLine (Induction, 90cm Oven, Integrated Dishwasher, Island Extraction)</p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Syndicate bulk pre-booked:</span>
+<span class="font-code-num text-code-num font-bold text-secondary bg-surface-container-lowest px-2 py-1 rounded shadow-sm">Included in Base</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col justify-between gap-space-md">
+<div>
+<span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider text-secondary">Group 03 · Wet Areas</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold mt-1">Bathroom Sanitaryware</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Concealed cisterns, rainheads, and frameless glass partitions.</p>
+<div class="flex flex-col gap-space-sm mt-space-md">
+<div class="option-card cursor-pointer rounded-xl p-space-sm bg-surface-container flex items-center justify-between transition-all" data-category="sanitary" data-name="Grohe Essence Graphite" data-price="0">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-lg bg-cover bg-center shrink-0" data-alt="Architectural studio product photograph of brushed hard graphite wall-mounted minimalist basin faucet by Grohe against neutral concrete tile." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC5IR_MpQddN5TfVrEu3WFfxYkslio8q4Mv5e1nNR0LWD_DwaNNlVeoSDw2EbtnowcBQdB3iJrPrgLhYsgqsWEvV42uKlrjp_6OEct3Tt0JLLyMig2EMDqHdJA9UtH-MMN4fTdz8ymVHuzM1JMsrWMv8dgDJkgD_aJqeTZPVtV7Ih39fkcGhFyZJwIwJ2KHkldAwc8bValLpppe0xjoaSNdv2tZybnSSWPiQ71Ix_XJgGh0LjQIoB-8sg')"></div>
+<div>
+<span class="font-label-md text-label-md font-semibold text-on-surface block">Grohe Essence Brushed Graphite</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Concealed mixers + Rimless Wall-hung</span>
+</div>
+</div>
+<span class="font-code-num text-code-num font-medium text-on-surface px-2">Included</span>
+</div>
+<div class="option-card selected cursor-pointer rounded-xl p-space-sm bg-surface-container-high shadow-md flex items-center justify-between transition-all" data-category="sanitary" data-name="Gessi Minimalist Rose Gold" data-price="1650">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-lg bg-cover bg-center shrink-0" data-alt="High-end Italian bathroom brassware, brushed warm rose gold minimalist architectural shower fixture by Gessi mounted on large slate tile." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD1P8ymFNtrHTES-XboYWco1vGzZryl6EKpn6DSAEl-PkLfIEaT8EGr4jwdsFvxUwDoFzpblGPI0p_BPvvRGe0SaadkwL4IaHEkqlT4CiJpFzZnAY8oBQiGGHftoDwPSB4eq4-TZL1MMqbC9KgCpY5f8MPANIj9jm9Us3ViK9kPNd7A14RomKtAzYsbKCI_gaOq40NnLJ8iErTmqRK-nSnQ4TJoBrzyFq08tRQsWAFSE3Ok8VUll4cwrg')"></div>
+<div>
+<div class="flex items-center gap-1">
+<span class="font-label-md text-label-md font-semibold text-on-surface block">Gessi Architectural Rose Gold</span>
+<span class="material-symbols-outlined text-secondary text-[14px]">star</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">PVD Coated + Thermostatic Tower</span>
+</div>
+</div>
+<span class="font-code-num text-code-num font-bold text-secondary px-2">+$1,650</span>
+</div>
+</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between text-on-surface-variant text-label-sm font-label-sm bg-surface-container-low p-2 rounded-lg">
+<span>Cert: WaterSense &amp; LEED Gold Compliant</span>
+<span class="font-code-num text-code-num font-semibold text-on-surface">5-Yr Fiduciary Warranty</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col justify-between gap-space-md">
+<div>
+<span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider text-secondary">Group 04 · Infrastructure</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold mt-1">Smart Home Automation Hub</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Matter 1.3 protocol with localized edge server privacy.</p>
+<div class="flex flex-col gap-space-sm mt-space-md">
+<div class="option-card selected cursor-pointer rounded-xl p-space-sm bg-surface-container-high shadow-md flex items-center justify-between transition-all" data-category="automation" data-name="KNX Backbone + Zigbee" data-price="0">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-lg bg-cover bg-center shrink-0" data-alt="Sleek wall-mounted minimalist touch glass control screen displaying temperature, lighting scenes and energy analytics in a luxury apartment." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBCCw1QEsEnKkIISfwDZ9I96bkNXg-8bMoeMzegU8qTiGhlnAxjCdk8Fi0TOtRh9h0xg9xCXDS1dR3tXy2jDAhrxIpDb4CxVWdo0qOZYmAL4JTkY8kReDmH79wVOO95cPdK6l9KE-03m9kbdVk0s5PimoiRhkusrQ8KXMU7JTtV19MlOuOXqNAsi7KdHOI46taqPSro5pgJL9bJpyOkmUm2EfdcM-_r5MLgvl-JYU1-yEN3PuRdCSl66w')"></div>
+<div>
+<span class="font-label-md text-label-md font-semibold text-on-surface block">KNX Backbone + Zigbee 3.0</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">HVAC, smart motorized drapes, 8 zones</span>
+</div>
+</div>
+<span class="font-code-num text-code-num font-semibold text-secondary px-2">Included</span>
+</div>
+<div class="option-card cursor-pointer rounded-xl p-space-sm bg-surface-container flex items-center justify-between transition-all" data-category="automation" data-name="Acoustic Package (Sonos/B&amp;O)" data-price="2200">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-lg bg-cover bg-center shrink-0" data-alt="Ceiling-flush architectural architectural round speaker grill seamlessly installed in pristine white plaster ceiling with subtle ambient shadow gap." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBqQzZXBrhmvnPD92_4Nj-a8tsIeTQtCGyEA6LJVvnPypydLmSwAskEZc16-5H1p_TBFmDJUL07jEQKChUX7owPYxYWdgmoHMbU-cUvjgI9qnKkPoG3IKvf7PI1Co5lcIp3uryPb5kbinsDOAg2wEVEOKfIm84s4EedSqygDsyVR1qklt8nwc4gfVMlnCTWlG1J42RwA0q2qIf1qB4YRbbtYaT17ejnmZaZcxqZEb2ykYLxe5eiW0238A')"></div>
+<div>
+<span class="font-label-md text-label-md font-semibold text-on-surface block">Architectural Acoustics Package</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Flush B&amp;O ceiling drivers across 4 zones</span>
+</div>
+</div>
+<span class="font-code-num text-code-num font-semibold text-on-surface px-2">+$2,200</span>
+</div>
+</div>
+</div>
+<div class="pt-space-xs flex items-center justify-between text-on-surface-variant text-label-sm font-label-sm bg-surface-container-low p-2 rounded-lg">
+<span>Interoperability: Apple Home, Google &amp; Home Assistant</span>
+<span class="font-code-num text-code-num font-semibold text-on-surface">Zero Cloud Lock-in</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="xl:col-span-4 flex flex-col gap-space-md sticky top-24">
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase font-semibold text-on-surface-variant tracking-wider">Unit Financial Summary</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">Customization Ledger</h3>
+</div>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm bg-surface-container text-secondary px-2.5 py-1 rounded-full font-semibold">
+<span class="material-symbols-outlined text-[14px]">account_balance</span>
+                Escrow Locked
+              </span>
+</div>
+<div class="flex flex-col gap-space-xs bg-surface-container-low p-space-md rounded-xl">
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>Core Construction &amp; Apartment Base</span>
+<span class="font-code-num text-code-num text-on-surface font-semibold">$172,200.00</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<span>Selected Architectural Upgrades</span>
+<span class="font-code-num text-code-num text-secondary font-semibold" id="summary-upgrades">+$4,050.00</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-tertiary-container font-medium">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">savings</span>
+                  Collective Volume Discount (32%)
+                </span>
+<span class="font-code-num text-code-num font-bold" id="summary-discount">-$1,820.00</span>
+</div>
+<div class="pt-space-xs mt-space-xs flex items-baseline justify-between text-on-surface">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-bold tracking-wider">Net Unit Investment</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold">Includes Taxes &amp; Installation</span>
+</div>
+<div class="text-right">
+<span class="font-display-lg text-[32px] leading-8 font-bold text-on-surface" id="summary-total">$174,430.00</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant mt-0.5">$1,038 / m² finished</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm uppercase font-semibold text-on-surface-variant tracking-wider">Active Selections Spec</span>
+<ul class="flex flex-col gap-2 font-body-sm text-body-sm text-on-surface" id="selected-list">
+<li class="flex items-center justify-between p-2 rounded-lg bg-surface-container">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">layers</span>
+<span>Flooring: White Oak Herringbone</span>
+</span>
+<span class="font-code-num text-code-num font-semibold text-on-surface">+$2,400</span>
+</li>
+<li class="flex items-center justify-between p-2 rounded-lg bg-surface-container">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">shower</span>
+<span>Sanitary: Gessi Rose Gold</span>
+</span>
+<span class="font-code-num text-code-num font-semibold text-on-surface">+$1,650</span>
+</li>
+<li class="flex items-center justify-between p-2 rounded-lg bg-surface-container">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">kitchen</span>
+<span>Kitchen: Anthracite &amp; Quartz Waterfall</span>
+</span>
+<span class="font-code-num text-code-num text-on-surface">Standard</span>
+</li>
+<li class="flex items-center justify-between p-2 rounded-lg bg-surface-container">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">sensors</span>
+<span>Automation: KNX Wired Backbone</span>
+</span>
+<span class="font-code-num text-code-num text-on-surface">Standard</span>
+</li>
+</ul>
+</div>
+<div class="flex flex-col gap-space-xs p-space-sm rounded-xl bg-surface-container">
+<div class="flex items-center justify-between font-label-sm text-label-sm">
+<span class="font-semibold text-on-surface">Building Syndicate Consensus</span>
+<span class="font-code-num text-code-num font-bold text-secondary">86% Approved</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden flex">
+<div class="bg-secondary h-full" style="width: 86%"></div>
+</div>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Procurement fires automatically when syndicate reaches 80% threshold. You are ready to lock.</span>
+</div>
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<button class="w-full py-3.5 px-space-md rounded-xl bg-primary text-on-primary font-label-lg text-label-lg font-bold hover:bg-on-surface-variant transition-all flex items-center justify-center gap-2 shadow-lg" id="btn-submit-signoff">
+<span class="material-symbols-outlined text-[20px]">how_to_reg</span>
+                Sign Off &amp; Lock Specification
+              </button>
+<button class="w-full py-2.5 px-space-md rounded-xl bg-surface-container text-on-surface font-label-md text-label-md font-semibold hover:bg-surface-container-high transition-all flex items-center justify-center gap-2" id="btn-download-vault">
+<span class="material-symbols-outlined text-[18px]">download_for_offline</span>
+                Save Draft to Legal Vault
+              </button>
+</div>
+<div class="flex items-start gap-space-xs text-on-surface-variant font-body-sm text-[12px]">
+<span class="material-symbols-outlined text-[16px] text-on-tertiary-container shrink-0 mt-0.5">lock</span>
+<span>Selections are binding upon procurement window closure. Additional customization after closure requires change-order vote.</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-2xl shadow-sm flex flex-col gap-space-sm">
+<span class="font-label-sm text-label-sm uppercase font-semibold text-on-surface-variant">Assigned Lead Architect</span>
+<div class="flex items-center gap-space-sm">
+<img class="w-12 h-12 rounded-full object-cover shrink-0" data-alt="Professional portrait photograph of female senior interior architect with glasses in creative architectural studio, warm lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsgUUilln26La07PIfcCBsCIeAEj6rtRClWvwOA9UgF-5joJ-zz-MKIfSWCFVvg-WulAo2nRGOS0IsYXI3O0O76ivPBcI7lGDJbGrZaq1LK2Qa3px8CWdpjieobL5uMAwlKF534RjkwGVta78OeGnNTajSJE0AIjKuzMQ1P8f3QwbcY90Sx8ZbyjdikzubwhDdo3NuR2m175MwdUGHz15IiAAX7-on_aW_Kay3Bqy-8yM5H_m9VlMz_A"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Layla Tariq, RIBA</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Studio Lead, Al-Noor Phase 2</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              "Unit 402 benefits from exceptional south-western natural illumination. The herringbone oak finish harmonizes beautifully with the afternoon golden tones."
+            </p>
+<button class="mt-space-xs text-secondary font-label-sm text-label-sm font-semibold hover:underline flex items-center gap-1 self-start">
+<span class="material-symbols-outlined text-[16px]">chat</span>
+              Schedule 15-min Architect Consultation
+            </button>
+</div>
+</div>
+</section>
+</div>
+</div>
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 bg-primary text-on-primary px-space-md py-3 rounded-xl shadow-2xl flex items-center gap-space-sm" id="toast-modal">
+<span class="material-symbols-outlined text-tertiary-fixed text-[20px]">check_circle</span>
+<span class="font-label-md text-label-md" id="toast-text">Specifications saved successfully</span>
+</div>
+<script>
+    (function initCustomizationStudio() {
+      // Data models for choices
+      const selections = {
+        flooring: { name: 'European White Oak Herringbone', price: 2400 },
+        kitchen: { name: 'Matte Anthracite & Quartz', price: 0 },
+        sanitary: { name: 'Gessi Minimalist Rose Gold', price: 1650 },
+        automation: { name: 'KNX Backbone + Zigbee', price: 0 }
+      };
+
+      const BASE_COST = 172200;
+      const DISCOUNT_RATE = 0.31; // approx 31-32% collective syndicate discount
+
+      const upgradesEl = document.getElementById('summary-upgrades');
+      const discountEl = document.getElementById('summary-discount');
+      const totalEl = document.getElementById('summary-total');
+      const selectedListEl = document.getElementById('selected-list');
+      const toastEl = document.getElementById('toast-modal');
+      const toastTextEl = document.getElementById('toast-text');
+
+      function showToast(msg) {
+        toastTextEl.textContent = msg;
+        toastEl.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+        setTimeout(() => {
+          toastEl.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+        }, 3200);
+      }
+
+      function updateFinances() {
+        let upgradeSum = 0;
+        Object.values(selections).forEach(item => {
+          upgradeSum += item.price;
+        });
+
+        const discountSum = upgradeSum > 0 ? Math.round(upgradeSum * DISCOUNT_RATE) : 0;
+        const total = BASE_COST + upgradeSum - discountSum;
+
+        upgradesEl.textContent = `+$${upgradeSum.toLocaleString('en-US')}.00`;
+        discountEl.textContent = `-$${discountSum.toLocaleString('en-US')}.00`;
+        totalEl.textContent = `$${total.toLocaleString('en-US')}.00`;
+
+        // Render mini summary list
+        const categoryIcons = {
+          flooring: 'layers',
+          kitchen: 'kitchen',
+          sanitary: 'shower',
+          automation: 'sensors'
+        };
+
+        selectedListEl.innerHTML = Object.entries(selections).map(([cat, item]) => {
+          const icon = categoryIcons[cat] || 'check_circle';
+          const priceStr = item.price > 0 ? `+$${item.price.toLocaleString('en-US')}` : 'Standard';
+          return `
+            <li class="flex items-center justify-between p-2 rounded-lg bg-surface-container">
+              <span class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-secondary">${icon}</span>
+                <span class="truncate max-w-[190px]">${item.name}</span>
+              </span>
+              <span class="font-code-num text-code-num font-semibold text-on-surface">${priceStr}</span>
+            </li>
+          `;
+        }).join('');
+      }
+
+      // Card selection click handling
+      document.querySelectorAll('.option-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const category = card.getAttribute('data-category');
+          const price = parseInt(card.getAttribute('data-price') || '0', 10);
+          const name = card.getAttribute('data-name');
+
+          // Deselect sibling cards of the same category
+          document.querySelectorAll(`.option-card[data-category="${category}"]`).forEach(sibling => {
+            sibling.classList.remove('selected', 'bg-surface-container-high', 'shadow-md');
+            sibling.classList.add('bg-surface-container');
+            const ind = sibling.querySelector('.radio-indicator');
+            if (ind) {
+              ind.classList.remove('bg-secondary', 'text-on-secondary');
+              ind.classList.add('bg-surface-container-lowest');
+              ind.innerHTML = '<span class="w-2.5 h-2.5 rounded-full bg-secondary hidden inner-dot"></span>';
+            }
+          });
+
+          // Activate clicked card
+          card.classList.add('selected', 'bg-surface-container-high', 'shadow-md');
+          card.classList.remove('bg-surface-container');
+          const indicator = card.querySelector('.radio-indicator');
+          if (indicator) {
+            indicator.classList.remove('bg-surface-container-lowest');
+            indicator.classList.add('bg-secondary', 'text-on-secondary');
+            indicator.innerHTML = '<span class="material-symbols-outlined text-[14px]">check</span>';
+          }
+
+          selections[category] = { name, price };
+          updateFinances();
+          showToast(`Selected: ${name}`);
+        });
+      });
+
+      // Time-of-day simulation toggles
+      const todButtons = document.querySelectorAll('.tod-btn');
+      const activeSpaceLabel = document.getElementById('active-space-label');
+      const viewport = document.getElementById('visualizer-viewport');
+
+      const timeFilters = {
+        morning: 'brightness(1.02) contrast(1.03)',
+        noon: 'brightness(1.1) contrast(1.06)',
+        sunset: 'sepia(0.2) saturate(1.3) brightness(0.95)',
+        night: 'brightness(0.7) contrast(1.15) hue-rotate(200deg)'
+      };
+
+      todButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          todButtons.forEach(b => {
+            b.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm', 'font-semibold');
+            b.classList.add('text-on-surface-variant', 'font-medium');
+          });
+          btn.classList.add('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm', 'font-semibold');
+          btn.classList.remove('text-on-surface-variant', 'font-medium');
+
+          const time = btn.getAttribute('data-time');
+          viewport.style.filter = timeFilters[time] || 'none';
+          showToast(`Simulating ${time.toUpperCase()} lighting on unit interior`);
+        });
+      });
+
+      // Room Tabs handling
+      const roomTabs = document.querySelectorAll('.room-tab');
+      roomTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          roomTabs.forEach(t => {
+            t.classList.remove('text-on-primary', 'bg-primary', 'font-semibold');
+            t.classList.add('text-on-surface-variant', 'bg-surface-container', 'font-medium');
+          });
+          tab.classList.add('text-on-primary', 'bg-primary', 'font-semibold');
+          tab.classList.remove('text-on-surface-variant', 'bg-surface-container', 'font-medium');
+          
+          const roomKey = tab.getAttribute('data-room');
+          const roomNames = {
+            living: 'Living & Dining BIM Model',
+            kitchen: 'Kitchen Suite High-Definition Twin',
+            master: 'Master Bedroom & Wardrobe Preview',
+            baths: 'Master Ensuite Sanitary Mockup',
+            automation: 'Whole-Home IoT Infrastructure Map'
+          };
+          activeSpaceLabel.textContent = roomNames[roomKey] || 'Living Space View';
+          showToast(`Switched view to ${activeSpaceLabel.textContent}`);
+        });
+      });
+
+      // Button hooks
+      document.getElementById('btn-submit-signoff')?.addEventListener('click', () => {
+        showToast('Submitting official sign-off to Escrow Custodian...');
+      });
+
+      document.getElementById('btn-download-vault')?.addEventListener('click', () => {
+        showToast('Customization blueprint saved to Legal Vault (v2.4)');
+      });
+
+      document.getElementById('btn-export-spec')?.addEventListener('click', () => {
+        showToast('Generating signed PDF Architectural Spec Sheet...');
+      });
+
+      // Initialize initial calculation
+      updateFinances();
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 mt-space-xl"><div class="w-full px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-4 gap-space-xl pb-space-lg border-b border-outline-variant/20"><div class="space-y-space-sm"><div class="flex items-center gap-space-xs"><img alt="CoBuild Brand Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WlkSdcUo2owSob12eh3iWtWBAL3olBse8xTQh-Z3Zr-9T6zUJ3IyXdYt3tNQ4QGzSKcb4gyIe_LKbX_ywFxt4cOhaVtFR8nP7TfbiO4a7IXinWWGq2CrJk3tNeyYDCBfj0U4g29T8VJ-TBfQn6dVFMowSVsFOblPuB3lAwvpwL3lDSqNaqSTADGR9Glsj5XPnuFuqBt_utNwPkIJX6ELsll30qUZY_YMRIrGg-72heG5c6wil259qLPzrX"/><span class="font-headline-sm text-headline-sm font-bold text-on-surface">CoBuild</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Architectural collective real estate platform empowering buyers to directly fund, supervise, and co-own sustainable residential buildings through fiduciary transparency.</p><div class="pt-space-xs"><span class="inline-flex items-center gap-1 text-label-sm font-label-sm text-on-surface-variant font-medium bg-surface-container-low px-2 py-1 rounded"><span class="material-symbols-outlined text-[14px]">translate</span> Dual LTR/RTL Arabic &amp; English Framework</span></div></div><div><h4 class="font-label-lg text-label-lg font-semibold text-on-surface mb-space-md">Platform Governance</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" data-path="marketplace" href="#">Development Directory</a></li><li><a class="hover:text-on-surface transition-colors" data-path="community-hub" href="#">Shareholder Voting Portal</a></li><li><a class="hover:text-on-surface transition-colors" data-path="construction-live" href="#">BIM &amp; IoT Site Sensor Logs</a></li><li><a class="hover:text-on-surface transition-colors" data-path="escrow-payments" href="#">Milestone Escrow Drawers</a></li><li><a class="hover:text-on-surface transition-colors" data-path="unit-finishes" href="#">Finishes Procurement</a></li><li><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Legal Vault &amp; Title Registry</a></li></ul></div><div><h4 class="font-label-lg text-label-lg font-semibold text-on-surface mb-space-md">Compliance &amp; Legal</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Central Bank Escrow Regulations</a></li><li><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Smart Contract Code Audits</a></li><li><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Collective Risk Disclosure</a></li><li><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Terms of Custody &amp; Title</a></li></ul></div><div><h4 class="font-label-lg text-label-lg font-semibold text-on-surface mb-space-md">Institutional Fiduciary</h4><div class="space-y-space-sm"><div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface bg-surface-container-low p-2 rounded-lg"><span class="material-symbols-outlined text-secondary text-[18px]">verified</span><span>Central Bank Escrow Compliant</span></div><div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface bg-surface-container-low p-2 rounded-lg"><span class="material-symbols-outlined text-secondary text-[18px]">engineering</span><span>ISO 9001 Construction Auditing</span></div><div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface bg-surface-container-low p-2 rounded-lg"><span class="material-symbols-outlined text-on-tertiary-container text-[18px]">token</span><span>Smart Contracts Verified by Quantstamp</span></div></div></div></div><div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md text-label-sm font-label-sm text-on-surface-variant"><div>© 2025 CoBuild Technologies Ltd. All collective property deeds are held under regulated statutory escrows.</div><div class="flex items-center gap-space-lg"><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Contact Support &amp; Concierge</a><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Privacy Policy</a><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Risk Disclosure</a></div></div></div></footer></body></html>

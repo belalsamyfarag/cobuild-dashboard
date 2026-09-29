@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&amp;family=Cairo:wght@400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "tertiary-fixed-dim": "#e9c179",
+          "on-secondary-fixed": "#002114",
+          "on-tertiary-fixed": "#271900",
+          "background": "#faf9f4",
+          "surface-container": "#efeee9",
+          "on-primary": "#ffffff",
+          "secondary-fixed": "#85f8c4",
+          "on-tertiary-container": "#a17f3e",
+          "on-primary-fixed": "#131b2e",
+          "inverse-primary": "#bec6e0",
+          "surface": "#faf9f4",
+          "secondary-fixed-dim": "#68dba9",
+          "on-secondary": "#ffffff",
+          "surface-variant": "#e3e3de",
+          "on-surface-variant": "#45464d",
+          "on-surface": "#1b1c19",
+          "error-container": "#ffdad6",
+          "primary-container": "#131b2e",
+          "inverse-surface": "#30312e",
+          "surface-container-high": "#e9e8e3",
+          "outline-variant": "#c6c6cd",
+          "on-secondary-fixed-variant": "#005137",
+          "on-error-container": "#93000a",
+          "on-primary-fixed-variant": "#3f465c",
+          "on-tertiary": "#ffffff",
+          "secondary-container": "#82f5c1",
+          "tertiary-container": "#271900",
+          "surface-container-low": "#f5f4ef",
+          "surface-bright": "#faf9f4",
+          "inverse-on-surface": "#f2f1ec",
+          "on-tertiary-fixed-variant": "#5d4204",
+          "on-primary-container": "#7c839b",
+          "tertiary": "#000000",
+          "primary-fixed-dim": "#bec6e0",
+          "surface-tint": "#565e74",
+          "primary": "#000000",
+          "on-secondary-container": "#00714e",
+          "surface-container-lowest": "#ffffff",
+          "tertiary-fixed": "#ffdea7",
+          "secondary": "#006c4a",
+          "surface-dim": "#dbdad5",
+          "surface-container-highest": "#e3e3de",
+          "on-error": "#ffffff",
+          "primary-fixed": "#dae2fd",
+          "outline": "#76777d",
+          "on-background": "#1b1c19",
+          "error": "#ba1a1a"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "spacing": {
+          "space-md": "1rem",
+          "space-sm": "0.5rem",
+          "space-lg": "1.5rem",
+          "space-xs": "0.25rem",
+          "margin": "2rem",
+          "gutter": "1.5rem",
+          "gutter-mobile": "0.75rem",
+          "margin-mobile": "1rem",
+          "space-xl": "2.5rem"
+        },
+        "fontFamily": {
+          "label-lg": ["Alexandria", "Cairo", "sans-serif"],
+          "display-hero": ["Alexandria", "Cairo", "sans-serif"],
+          "headline-lg": ["Alexandria", "Cairo", "sans-serif"],
+          "body-md": ["Cairo", "Plus Jakarta Sans", "sans-serif"],
+          "numeric-currency": ["Cairo", "Plus Jakarta Sans", "sans-serif"],
+          "body-sm": ["Cairo", "Plus Jakarta Sans", "sans-serif"],
+          "headline-sm": ["Alexandria", "Cairo", "sans-serif"],
+          "headline-lg-mobile": ["Alexandria", "Cairo", "sans-serif"],
+          "body-lg": ["Cairo", "Plus Jakarta Sans", "sans-serif"],
+          "display-hero-mobile": ["Alexandria", "Cairo", "sans-serif"],
+          "headline-md": ["Alexandria", "Cairo", "sans-serif"],
+          "label-md": ["Alexandria", "Cairo", "sans-serif"]
+        },
+        "fontSize": {
+          "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+          "display-hero": ["44px", { "lineHeight": "60px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+          "headline-lg": ["30px", { "lineHeight": "44px", "fontWeight": "700" }],
+          "body-md": ["14px", { "lineHeight": "24px", "fontWeight": "400" }],
+          "numeric-currency": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+          "body-sm": ["12px", { "lineHeight": "20px", "fontWeight": "400" }],
+          "headline-sm": ["18px", { "lineHeight": "28px", "fontWeight": "600" }],
+          "headline-lg-mobile": ["24px", { "lineHeight": "36px", "fontWeight": "600" }],
+          "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+          "display-hero-mobile": ["30px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+          "headline-md": ["22px", { "lineHeight": "34px", "fontWeight": "600" }],
+          "label-md": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500" }]
+        }
+      }
+    }
+  }
+</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-b border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="bg-primary-container text-on-primary px-margin py-1.5 flex items-center justify-between text-body-sm font-body-sm border-b border-outline-variant/10"><div class="flex items-center gap-space-sm mx-auto overflow-hidden whitespace-nowrap text-ellipsis"><span class="flex h-2 w-2 relative shrink-0"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-fixed opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-secondary-fixed"></span></span><span class="font-label-sm uppercase tracking-wider text-secondary-fixed font-semibold shrink-0">سجل البناء المباشر</span><span class="text-outline-variant/50">|</span><span class="truncate">تم الانتهاء من صب الخرسانة المسلحة لأساسات مشروع التجمع الخامس بحضور استشاري المشروع وموافقة 99.1% من الشركاء.</span><a class="text-secondary-fixed hover:underline font-label-md flex items-center gap-0.5 mr-space-xs shrink-0" data-path="construction-live-monitoring" href="#">عرض البث الحي <span class="material-symbols-outlined text-[16px] rotate-180">arrow_forward</span></a></div></div><div class="h-20 w-full px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md shrink-0"><a class="flex items-center gap-space-xs" data-path="landing-page" href="#"><img alt="CoBuild Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WlkSdcUo2owSob12eh3iWtWBAL3olBse8xTQh-Z3Zr-9T6zUJ3IyXdYt3tNQ4QGzSKcb4gyIe_LKbX_ywFxt4cOhaVtFR8nP7TfbiO4a7IXinWWGq2CrJk3tNeyYDCBfj0U4g29T8VJ-TBfQn6dVFMowSVsFOblPuB3lAwvpwL3lDSqNaqSTADGR9Glsj5XPnuFuqBt_utNwPkIJX6ELsll30qUZY_YMRIrGg-72heG5c6wil259qLPzrX"/><div class="flex flex-col mr-1"><span class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight">كو-بيلد CoBuild</span><span class="font-label-sm text-[11px] text-on-surface-variant font-medium -mt-1">منصة البناء التشاركي السكني</span></div></a><div class="mr-space-xs inline-flex items-center bg-surface-container-low p-0.5 rounded-lg border border-outline-variant/40"><button class="px-2 py-0.5 rounded-lg text-label-sm font-label-sm bg-surface-container-lowest text-on-surface font-semibold shadow-sm" type="button">العربية</button><button class="px-2 py-0.5 rounded-lg text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface transition-colors font-medium" type="button">EN</button></div></div><nav class="hidden lg:flex items-center gap-0.5 font-label-lg text-label-lg overflow-x-auto" data-active-classes="text-on-surface font-bold bg-surface-container-low rounded-lg"><a class="text-on-surface-variant hover:text-on-surface px-space-sm py-1.5 transition-colors whitespace-nowrap" data-path="project-marketplace" href="#">سوق المشروعات</a><a class="text-on-surface-variant hover:text-on-surface px-space-sm py-1.5 transition-colors whitespace-nowrap" data-path="buyer-dashboard" href="#">شقتي</a><a class="text-on-surface-variant hover:text-on-surface px-space-sm py-1.5 transition-colors whitespace-nowrap" data-path="secondary-market-syndicate-resale" href="#">إعادة التنازل</a><a class="text-on-surface-variant hover:text-on-surface px-space-sm py-1.5 transition-colors whitespace-nowrap" data-path="escrow-statutory-payments" href="#">حساب الضمان والخزينة</a><a class="text-on-surface-variant hover:text-on-surface px-space-sm py-1.5 transition-colors whitespace-nowrap" data-path="community-hub-governance" href="#">مجلس الشركاء والتصويت</a><a class="text-on-surface-variant hover:text-on-surface px-space-sm py-1.5 transition-colors whitespace-nowrap" data-path="landowner-submission-portal" href="#">ملاك الأراضي</a><a class="text-on-surface-variant hover:text-on-surface px-space-sm py-1.5 transition-colors whitespace-nowrap" data-path="contractor-engineering-inspection-journal" href="#">دفتر الاستشاري والمقاول</a></nav><div class="flex items-center gap-space-md shrink-0"><div class="hidden 2xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low border border-outline-variant/40"><span class="material-symbols-outlined text-[16px] text-secondary">verified_user</span><span class="font-label-sm text-label-sm text-secondary font-semibold">حساب ضمان بنكي مقيد 100%</span></div><a class="hidden sm:inline-flex items-center gap-1 text-label-sm font-label-sm font-semibold text-secondary hover:text-on-secondary-container bg-surface-container-low px-2.5 py-1.5 rounded-lg border border-outline-variant/40 transition-colors" data-path="buyer-onboarding-kyc-verification" href="#"><span class="material-symbols-outlined text-[16px]">badge</span><span>التحقق من الهوية</span></a><button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" title="الإشعارات والتدقيق" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 left-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[10px] font-bold text-on-secondary">3</span></button><div class="flex items-center gap-space-sm pr-space-xs border-r border-outline-variant/40"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGOXR6ElKI-TRGO3rVUejcuUT5itCp7C4i9L54ywhp8LiseCKSraN1htnLrF2WaMwrFQRYvT3AjahknZ-Kjzr-64nKAX8XjQAFpVV2QwFUNhiBC_zSlXbBueXOuyVxO_JjJpR4au9Xl3odYxzaavP9HpM0sb6MbchlOkvdT_Y3ADVrmjNj7KIhanlHhnBLlBFd-zWVVj7eDdu56IW2QVj2XJYmO4K8zGWcW75MhcPVvKzrHt7YJrjmqQ"/><div class="hidden md:flex flex-col text-right"><span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">م. سارة المنصور</span><span class="font-label-sm text-label-sm text-on-surface-variant">شريكة بالوحدة 402</span></div><button class="text-on-surface-variant hover:text-on-surface p-1 rounded-lg" type="button"><span class="material-symbols-outlined text-[18px]">expand_more</span></button></div></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full">
+<!-- Macro Container -->
+<div class="w-full px-margin py-space-xl max-w-[1360px] mx-auto">
+<!-- Header & Institutional Trust Authority -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-xl">
+<div class="max-w-3xl">
+<div class="inline-flex items-center gap-space-xs bg-surface-container-low px-3 py-1 rounded-full mb-space-sm">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified_user</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider">اعتماد وضوابط البنك المركزي ومأمورية الشهر العقاري</span>
+</div>
+<h1 class="font-display-hero text-headline-lg lg:text-display-hero text-on-surface tracking-tight font-bold">
+          تسجيل المشتري والتحقق من الهوية وحساب الضمان البنكي
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-space-xs leading-relaxed">
+          انضم إلى تكتلات البناء التشاركي السكني المعتمدة في مصر وفق ضوابط حماية المستهلك والبنك المركزي المصري ومأمورية الشهر العقاري.
+        </p>
+</div>
+<!-- Fiduciary Regulatory Pill Tags -->
+<div class="flex flex-wrap md:flex-col items-start md:items-start gap-2 shrink-0">
+<div class="flex items-center gap-2 bg-surface-container-lowest shadow-sm px-3 py-1.5 rounded-lg text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[20px]">account_balance</span>
+<span class="font-label-md text-label-md font-semibold">قيد تنظيم اتحادات الشاغلين ومأمورية الشهر العقاري</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-lowest shadow-sm px-3 py-1.5 rounded-lg text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[20px]">lock_clock</span>
+<span class="font-label-md text-label-md text-secondary font-semibold">حساب ضمان بنكي مقيد (Escrow Account)</span>
+</div>
+</div>
+</div>
+<!-- Stepper Pipeline Architecture -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md mb-space-xl">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Step 1: Completed -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg bg-surface-container-low/60">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">check</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-bold">الخطوة 01 • مكتمل</span>
+<span class="font-headline-sm text-body-md font-semibold text-on-surface truncate">التحقق من الرقم القومي</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">بوابة مصر الرقمية (معتمد)</span>
+</div>
+</div>
+<!-- Step 2: Active -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg bg-surface-container-high shadow-inner border border-secondary/30">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center shrink-0 font-headline-sm text-body-md font-bold">
+            2
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-bold">الخطوة 02 • نشط</span>
+<span class="font-headline-sm text-body-md font-semibold text-on-surface truncate">تحديد أهداف الشراء والملاءة المالية</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">الملف المالي والميزانية المخصصة</span>
+</div>
+</div>
+<!-- Step 3: Upcoming -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg opacity-70">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center shrink-0 font-headline-sm text-body-md text-on-surface-variant font-bold">
+            3
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">الخطوة 03</span>
+<span class="font-headline-sm text-body-md font-semibold text-on-surface truncate">إصدار رقم الآيبان (IBAN)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">حساب الضمان البنكي الفرعي</span>
+</div>
+</div>
+<!-- Step 4: Upcoming -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-lg opacity-70">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center shrink-0 font-headline-sm text-body-md text-on-surface-variant font-bold">
+            4
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">الخطوة 04</span>
+<span class="font-headline-sm text-body-md font-semibold text-on-surface truncate">التوقيع الرقمي على الميثاق</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">ميثاق اتحاد الشركاء التشاركي</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Dynamic Layout (Split Workspace: Main Flow 8 cols, Concierge Sidebar 4 cols) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Primary Worksurface (8 Cols) -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- Identity Authenticated Ribbon -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-secondary-container/40 flex items-center justify-center shrink-0 shadow-sm border border-secondary/20">
+<span class="material-symbols-outlined text-secondary text-[26px]">fingerprint</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-body-lg font-bold text-on-surface">المهندسة / سارة أحمد المنصور</span>
+<span class="inline-flex items-center gap-1 bg-secondary/10 px-2 py-0.5 rounded text-label-sm font-label-sm text-secondary font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> تم التحقق عبر مصر الرقمية
+                </span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">الرقم القومي: 2920815****** • موبايل: 0100****4912 • القاهرة، التجمع الخامس</span>
+</div>
+</div>
+<button class="text-secondary hover:text-on-secondary-container font-label-md text-label-md font-semibold flex items-center gap-1 shrink-0" type="button">
+<span>إثبات التوثيق</span>
+<span class="material-symbols-outlined text-[16px] rotate-180">open_in_new</span>
+</button>
+</div>
+<!-- Section 1: Syndicate Participation Mode -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex flex-col">
+<h2 class="font-headline-md text-headline-sm text-on-surface font-bold">1. اختيار نمط المشاركة التشاركية</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">يحدد اختيارك المعاملة الضريبية وقواعد القيد بجمعية الشركاء ونظام التصويت على مواصفات العقار.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md mt-space-md">
+<!-- Option A: Primary Residence (Selected by default) -->
+<label class="relative flex flex-col justify-between p-space-md rounded-xl bg-surface-container-low/70 cursor-pointer transition-all duration-200 hover:shadow-md shadow-sm border border-secondary/20">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-secondary shadow-sm">
+<span class="material-symbols-outlined text-[24px]">home</span>
+</div>
+<input checked="" class="w-5 h-5 text-secondary accent-secondary focus:ring-0 cursor-pointer" name="syndicate_intent" type="radio" value="primary"/>
+</div>
+<div>
+<span class="font-headline-sm text-body-lg font-bold text-on-surface block">مشتري سكن أساسي</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold block mt-0.5">معفى من ضريبة التصرفات العقارية حتى الحد المسموح</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2 leading-relaxed">
+                  بناء بغرض السكن العائلي المباشر. استحقاق الإعفاءات القانونية المقررة مع أولوية اختيار تعديلات التقسيم الداخلي والعزل الصوتي المفضل للوحدة.
+                </p>
+</div>
+<div class="mt-4 pt-3 flex items-center gap-1.5 text-label-sm font-label-sm text-secondary font-medium border-t border-outline-variant/20">
+<span class="material-symbols-outlined text-[16px]">how_to_vote</span>
+<span>حقوق تصويت كاملة في تشطيبات ومرافق العقار</span>
+</div>
+</label>
+<!-- Option B: Co-Investor -->
+<label class="relative flex flex-col justify-between p-space-md rounded-xl bg-surface-container-lowest cursor-pointer transition-all duration-200 hover:bg-surface-container-low/50 shadow-sm border border-outline-variant/40">
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">trending_up</span>
+</div>
+<input class="w-5 h-5 text-secondary accent-secondary focus:ring-0 cursor-pointer" name="syndicate_intent" type="radio" value="investor"/>
+</div>
+<div>
+<span class="font-headline-sm text-body-lg font-bold text-on-surface block">مستثمر شريك في التكتل</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold block mt-0.5">لتعظيم العائد السعري والتأجيري وإعادة التنازل</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2 leading-relaxed">
+                  دخول استثماري بسعر التكلفة الإنشائية المباشرة بدون هامش أرباح المطورين التجاريين، مع إمكانية إعادة التنازل عن الحصة قبل التسليم عبر سوق المنصة.
+                </p>
+</div>
+<div class="mt-4 pt-3 flex items-center gap-1.5 text-label-sm font-label-sm text-on-surface-variant font-medium border-t border-outline-variant/20">
+<span class="material-symbols-outlined text-[16px]">sync_alt</span>
+<span>سيولة وإعادة التنازل عن الحصة قبل التسليم</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Section 2: Income Range & Escrow Capacity -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg">
+<div class="flex flex-col mb-space-md">
+<h2 class="font-headline-md text-headline-sm text-on-surface font-bold">2. القدرة المالية والميزانية المخصصة للشراء بالجنيه المصري</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">حدد نطاق الميزانية التقديرية لحساب دفعات التنفيذ وجداول المطالبات الإنشائية الشهرية.</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
+<button class="flex flex-col text-right p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container-high transition-all border border-transparent hover:border-outline-variant/50" type="button">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">فئة البداية</span>
+<span class="font-headline-md text-headline-sm font-bold text-on-surface mt-1">2.5 إلى 4 مليون ج.م</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-2">مناسبة لشقق 2-3 غرف في التجمع والشروق وزايد</span>
+</button>
+<button class="flex flex-col text-right p-space-md rounded-xl bg-primary-container text-on-primary shadow-md transition-all border-2 border-secondary" type="button">
+<div class="flex items-center justify-between w-full">
+<span class="font-label-sm text-label-sm text-secondary-fixed font-bold">الخيار الموصى به</span>
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed">check_circle</span>
+</div>
+<span class="font-headline-md text-headline-sm font-bold text-on-primary mt-1">4.5 إلى 7 مليون ج.م</span>
+<span class="font-body-sm text-body-sm text-on-primary-container mt-2">مناسبة لدوبلكس مع حديقة وبنتهاوس</span>
+</button>
+<button class="flex flex-col text-right p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container-high transition-all border border-transparent hover:border-outline-variant/50" type="button">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">فئة النخبة</span>
+<span class="font-headline-md text-headline-sm font-bold text-on-surface mt-1">أكثر من 8 مليون ج.م</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-2">محافظ استثمارية ووحدات فاخرة متكاملة</span>
+</button>
+</div>
+<!-- Dynamic Preferences (Target Region & Typology) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md mt-space-lg pt-space-md bg-surface-container-low/40 p-space-md rounded-xl">
+<div>
+<label class="block font-label-md text-label-md text-on-surface font-semibold mb-1.5">المنطقة الجغرافية المستهدفة</label>
+<div class="relative">
+<select class="w-full h-11 px-3 bg-surface-container-lowest text-on-surface rounded-lg appearance-none font-body-md text-body-md shadow-sm focus:outline-none">
+<option selected="">القاهرة الجديدة (التجمع الخامس، بيت الوطن، النرجس)</option>
+<option>مدينة الشيخ زايد والتوسعات الشرقية</option>
+<option>مدينة الشروق والمستقبل سيتي</option>
+<option>الساحل الشمالي (رأس الحكمة وخليج سيدي عبد الرحمن)</option>
+</select>
+<span class="material-symbols-outlined absolute left-3 top-3 text-on-surface-variant pointer-events-none text-[20px]">expand_more</span>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface font-semibold mb-1.5">النمط المعماري المفضل للوحدة</label>
+<div class="relative">
+<select class="w-full h-11 px-3 bg-surface-container-lowest text-on-surface rounded-lg appearance-none font-body-md text-body-md shadow-sm focus:outline-none">
+<option selected="">دوبلكس أرضي مع حديقة خاصة ومدخل مستقل</option>
+<option>شقة 3 غرف نوم بتراس مفتوح وإطلالة بحرية</option>
+<option>بنتهاوس مع روف خاص وحمام سباحة مصغر</option>
+<option>وحدة طابق كامل بنظام التقسيم الحر</option>
+</select>
+<span class="material-symbols-outlined absolute left-3 top-3 text-on-surface-variant pointer-events-none text-[20px]">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 3: Source of Funds & InstaPay / Egyptian Banking Rails -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg">
+<div class="flex items-start justify-between gap-space-md mb-space-md">
+<div>
+<div class="inline-flex items-center gap-1.5 text-secondary font-label-sm text-label-sm font-semibold mb-1">
+<span class="material-symbols-outlined text-[16px]">account_balance_wallet</span>
+<span>الربط المصرفي الفوري ومنظومة إنستاباي (InstaPay)</span>
+</div>
+<h2 class="font-headline-md text-headline-sm text-on-surface font-bold">3. إثبات الملاءة والربط البنكي المعتمد</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">الربط الفوري عبر منظومة إنستاباي (InstaPay) والتحقق المصرفي المباشر لضمان معايير مكافحة غسل الأموال وحماية أموال المودعين.</p>
+</div>
+<span class="hidden sm:inline-flex items-center gap-1 bg-surface-container-low px-2.5 py-1 rounded-lg text-label-sm font-label-sm text-on-surface font-medium border border-outline-variant/40">
+<span class="material-symbols-outlined text-secondary text-[16px]">verified</span> ربط مصرفي مشفر وآمن
+            </span>
+</div>
+<!-- Quick Connect Egyptian Bank Rails -->
+<div class="grid grid-cols-2 sm:grid-cols-5 gap-space-sm mb-space-md">
+<button class="flex flex-col items-center justify-center p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface transition-all group border border-outline-variant/30" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center shadow-sm mb-2 group-hover:scale-105 transition-transform text-secondary">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-center">البنك الأهلي المصري</span>
+<span class="font-label-sm text-[11px] text-secondary font-medium mt-0.5">ربط فوري</span>
+</button>
+<button class="flex flex-col items-center justify-center p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface transition-all group border border-secondary/40 shadow-sm" type="button">
+<div class="w-10 h-10 rounded-full bg-secondary text-on-secondary flex items-center justify-center shadow-sm mb-2 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-center">بنك مصر</span>
+<span class="font-label-sm text-[11px] text-secondary font-bold mt-0.5">حساب الضمان</span>
+</button>
+<button class="flex flex-col items-center justify-center p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface transition-all group border border-outline-variant/30" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center shadow-sm mb-2 group-hover:scale-105 transition-transform text-on-surface">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-center">بنك CIB</span>
+<span class="font-label-sm text-[11px] text-secondary font-medium mt-0.5">ربط فوري</span>
+</button>
+<button class="flex flex-col items-center justify-center p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface transition-all group border border-outline-variant/30" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center shadow-sm mb-2 group-hover:scale-105 transition-transform text-on-surface">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-center">بنك QNB الأهلي</span>
+<span class="font-label-sm text-[11px] text-secondary font-medium mt-0.5">ربط فوري</span>
+</button>
+<button class="flex flex-col items-center justify-center p-space-sm rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface transition-all group border border-outline-variant/30 col-span-2 sm:col-span-1" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center shadow-sm mb-2 group-hover:scale-105 transition-transform text-on-surface">
+<span class="material-symbols-outlined text-[20px]">account_balance</span>
+</div>
+<span class="font-label-md text-label-md font-bold text-center">بنك الإسكندرية</span>
+<span class="font-label-sm text-[11px] text-secondary font-medium mt-0.5">ربط فوري</span>
+</button>
+</div>
+<!-- Fallback Manual Verification Accordion / Drag Drop -->
+<div class="bg-surface-container-low/70 p-space-md rounded-xl flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-[24px]">cloud_upload</span>
+<div>
+<span class="font-label-lg text-label-lg font-bold text-on-surface block">أو ارفع كشف حساب بنكي إلكتروني معتمد</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">ملف PDF صادر خلال آخر 3 أشهر ومزود بختم ورمز استجابة سريعة (QR Code) رسمي للتحقق.</span>
+</div>
+</div>
+<button class="px-4 py-2 rounded-lg bg-surface-container-lowest text-on-surface hover:bg-surface shadow-sm font-label-md text-label-md font-semibold shrink-0 border border-outline-variant/40" type="button">
+              اختيار الملف
+            </button>
+</div>
+</div>
+<!-- Section 4: Covenant Ratification -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg">
+<div class="flex flex-col mb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">gavel</span>
+<h2 class="font-headline-md text-headline-sm text-on-surface font-bold">4. ميثاق الشراكة التشاركية وحماية المشترين</h2>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">اطلع على الضمانات القانونية والمالية الملزمة المعتمدة لحماية حقوق كل شريك في العقار.</p>
+</div>
+<!-- Compact Covenant Scrollable Viewport -->
+<div class="bg-surface-container-low rounded-xl p-space-md space-y-space-sm font-body-sm text-body-sm text-on-surface my-space-md">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<div>
+<strong class="font-bold text-on-surface">البند الأول — حساب ضمان بنكي مقيد بالبنك المركزي:</strong>
+                إيداع كافة الأموال بحساب ضمان فرعي مستقل لا يصرف للمقاول العام إلا بموجب شهادة معتمدة من الاستشاري الهندسي للمشروع ووفق نسب الإنجاز الفعلي على الأرض.
+              </div>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<div>
+<strong class="font-bold text-on-surface">البند الثاني — حق التراجع والاسترداد الكامل:</strong>
+                يحق للمشتري التراجع واسترداد 100% من المبالغ المودعة خلال فترة تراجع قانونية مدتها 14 يوماً قبل البدء الفعلي في أعمال الحفر وصب الأساسات بالموقع.
+              </div>
+</div>
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<div>
+<strong class="font-bold text-on-surface">البند الثالث — الحوكمة الديمقراطية والتصويت:</strong>
+                حوكمة ديمقراطية لاختيار واجهات المبنى وخامات المصاعد واللاندسكيب بالتصويت الملزم بين الشركاء كلٍ حسب حصته في مساحة العقار.
+              </div>
+</div>
+</div>
+<!-- Acceptance Checkbox -->
+<div class="p-space-sm bg-surface-container-low/60 rounded-xl flex items-start gap-space-sm border border-outline-variant/30">
+<input checked="" class="w-5 h-5 text-secondary accent-secondary rounded mt-1 cursor-pointer" id="covenant_consent" type="checkbox"/>
+<label class="font-body-sm text-body-sm text-on-surface cursor-pointer select-none leading-relaxed" for="covenant_consent">
+              قرأت ووافقت على كافة شروط <a class="font-bold text-secondary hover:underline" href="#">ميثاق اتحاد الشركاء التشاركي لمنصة كو-بيلد</a> وأفوض بنك مصر كأمين ومسؤول لحساب الضمان البنكي الفرعي الخاص بوحدتي السكنية.
+            </label>
+</div>
+<!-- Submission Actions -->
+<div class="mt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+<span>تشفير مالي ومصرفي 256-bit بمعايير البنك المركزي</span>
+</div>
+<div class="flex items-center gap-space-sm w-full sm:w-auto">
+<button class="w-full sm:w-auto px-6 py-3 rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container font-label-lg text-label-lg font-bold transition-all border border-outline-variant/40" type="button">
+                حفظ كمسودة
+              </button>
+<button class="w-full sm:w-auto px-7 py-3 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg font-bold shadow-md transition-all flex items-center justify-center gap-2" type="button">
+<span>الموافقة وإصدار رقم حساب الضمان البنكي (IBAN) في بنك مصر</span>
+<span class="material-symbols-outlined text-[18px] rotate-180">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Support & Concierge Sidebar (4 Cols) -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Dedicated Syndicate Concierge Advisor -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-lg">
+<div class="flex items-center gap-space-sm mb-space-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm font-bold uppercase tracking-wider text-secondary">مستشار البناء التشاركي الخاص بك</span>
+</div>
+<div class="flex items-center gap-space-md mb-space-md">
+<img class="w-14 h-14 rounded-full object-cover shadow-sm shrink-0" data-alt="High-resolution professional corporate portrait of an approachable female Saudi architectural real estate advisor wearing refined business attire with subtle architectural model in the background in natural daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzksJs9PKHjnY0LbpH3hxDVUts0sXzvVyZ4VIqBO6rF5AP0TSy2pIVuxS6prWkwlA2j5lnTXgKgaKg98ApS-oskcAL8bZKQefSSryEFVmHtTIWhFuEVG4xhNVHrlrdhv6s8qUXf7KTlrk47-fTuEXhwZ4al7ujAG-dhCmuG1EJbIWcjsGiVyEUH5X7TCLLkPnfBgyPajVF3gj7v4KPMoc4VSVcwWhk2D1w6NMREaNL8mrC4boXSZwV-Q"/>
+<div class="flex flex-col">
+<h3 class="font-headline-sm text-body-lg font-bold text-on-surface">ريم الحُسيني</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">استشاري تأهيل وتكوين اتحادات الملاك</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium mt-0.5">• متصل الآن • متوسط الرد: 3 دقائق</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed mb-space-md">
+            "هل لديك استفسار حول إعفاءات التصرفات العقارية، قيود حساب الضمان في بنك مصر، أو تخصيص التصميم الداخلي للدوبلكس؟ أنا جاهزة لإرشادك في كافة الخطوات."
+          </p>
+<div class="flex flex-col gap-space-xs">
+<a class="w-full py-2.5 px-4 rounded-lg bg-surface-container-low hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-bold flex items-center justify-center gap-2 transition-all border border-outline-variant/30" href="https://wa.me" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-secondary text-[18px]">chat</span>
+<span>محادثة فورية عبر واتساب</span>
+</a>
+<button class="w-full py-2.5 px-4 rounded-lg bg-surface-container-lowest hover:bg-surface-container-low text-secondary font-label-md text-label-md font-bold flex items-center justify-center gap-2 transition-all shadow-sm border border-secondary/30" type="button">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span>حجز مكالمة استشارية مرئية (15 دقيقة)</span>
+</button>
+</div>
+</div>
+<!-- Fiduciary Verification & Escrow Safeguard Visual Block -->
+<div class="bg-surface-container-low rounded-xl p-space-lg shadow-sm border border-outline-variant/30">
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface font-bold">هيكلية حساب الضمان المقيد</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">shield</span>
+</div>
+<!-- Dynamic Visual Inline SVG: Escrow Ring Fence Diagram localized -->
+<div class="w-full py-2 flex flex-col items-center justify-center">
+<svg class="w-full h-32" fill="none" viewbox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
+<!-- Buyer Node -->
+<rect class="drop-shadow-sm" fill="#FFFFFF" height="50" rx="8" width="80" x="230" y="35"></rect>
+<text class="font-headline-sm font-bold text-[11px] fill-on-surface" text-anchor="middle" x="270" y="58">المشتري الشريك</text>
+<text class="font-body-sm text-[9px] fill-on-surface-variant" text-anchor="middle" x="270" y="73">م. سارة أحمد</text>
+<!-- Line 1 to Escrow -->
+<line stroke="#006C4A" stroke-dasharray="3 3" stroke-width="2" x1="230" x2="185" y1="60" y2="60"></line>
+<circle cx="208" cy="60" fill="#006C4A" r="3"></circle>
+<!-- Central Escrow Bank -->
+<rect fill="#131B2E" height="80" rx="10" width="85" x="100" y="20"></rect>
+<text class="font-headline-sm font-bold text-[11px] fill-tertiary-fixed" text-anchor="middle" x="142" y="48">حساب الضمان</text>
+<text class="font-label-sm text-[9px] fill-primary-fixed" text-anchor="middle" x="142" y="64">بنك مصر المقيد</text>
+<text class="font-label-sm text-[8px] fill-secondary-fixed" text-anchor="middle" x="142" y="82">حساب فرعي معزول</text>
+<!-- Line 2 to Contractor -->
+<line stroke="#006C4A" stroke-width="2" x1="100" x2="70" y1="60" y2="60"></line>
+<polygon fill="#006C4A" points="70,56 64,60 70,64"></polygon>
+<!-- Milestone Site Verification Node -->
+<rect class="drop-shadow-sm" fill="#FFFFFF" height="50" rx="8" width="60" x="4" y="35"></rect>
+<text class="font-headline-sm font-bold text-[10px] fill-on-surface" text-anchor="middle" x="34" y="58">استشاري الموقع</text>
+<text class="font-body-sm text-[8px] fill-on-surface-variant" text-anchor="middle" x="34" y="73">اعتماد المراحل</text>
+</svg>
+</div>
+<div class="mt-space-sm space-y-2 text-body-sm font-body-sm text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>إصدار آيبان (IBAN) مخصص باسمك بالرقم القومي.</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>حظر الصرف للمقاول دون تقرير هندسي استشاري معتمد.</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>متابعة حية للتدفقات والرصيد من لوحة تحكم شقتي.</span>
+</div>
+</div>
+</div>
+<!-- Quality Standards -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md border border-outline-variant/30">
+<h4 class="font-label-md text-label-md font-bold text-on-surface uppercase tracking-wide mb-space-xs">سجل التوثيق والجهات الرقابية</h4>
+<div class="flex flex-col gap-2 mt-space-sm">
+<div class="flex items-center justify-between py-1.5 border-b border-surface-container">
+<span class="font-body-sm text-body-sm text-on-surface">بوابة مصر الرقمية (الرقم القومي)</span>
+<span class="font-label-sm text-label-sm font-bold text-secondary">معتمد ومربوط</span>
+</div>
+<div class="flex items-center justify-between py-1.5 border-b border-surface-container">
+<span class="font-body-sm text-body-sm text-on-surface">بنك مصر (أمين حساب الضمان)</span>
+<span class="font-label-sm text-label-sm font-bold text-secondary">فعال وقيد التنفيذ</span>
+</div>
+<div class="flex items-center justify-between py-1.5">
+<span class="font-body-sm text-body-sm text-on-surface">مأمورية الشهر العقاري واتحادات الملاك</span>
+<span class="font-label-sm text-label-sm font-bold text-secondary">مسجل رسمياً</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 mt-space-xl"><div class="w-full px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-xl pb-space-lg border-b border-outline-variant/20"><div class="space-y-space-sm lg:col-span-2"><div class="flex items-center gap-space-xs"><img alt="CoBuild Brand Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WlkSdcUo2owSob12eh3iWtWBAL3olBse8xTQh-Z3Zr-9T6zUJ3IyXdYt3tNQ4QGzSKcb4gyIe_LKbX_ywFxt4cOhaVtFR8nP7TfbiO4a7IXinWWGq2CrJk3tNeyYDCBfj0U4g29T8VJ-TBfQn6dVFMowSVsFOblPuB3lAwvpwL3lDSqNaqSTADGR9Glsj5XPnuFuqBt_utNwPkIJX6ELsll30qUZY_YMRIrGg-72heG5c6wil259qLPzrX"/><span class="font-headline-sm text-headline-sm font-bold text-on-surface mr-1">كو-بيلد CoBuild مصر</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed max-w-md">منصة معمارية تشاركية تمكّن المشترين في مصر من التمويل والإشراف والتملك المباشر لعقاراتهم بالتكلفة الحقيقية عبر حسابات ضمان بنكية مقيدة وتوثيق استشاري حي لكافة مراحل البناء.</p><div class="pt-space-xs flex flex-wrap items-center gap-2"><span class="inline-flex items-center gap-1 text-label-sm font-label-sm text-on-surface-variant font-medium bg-surface-container-low px-2 py-1 rounded"><span class="material-symbols-outlined text-[14px]">translate</span> واجهة عربية متكاملة لجمهورية مصر العربية</span><span class="inline-flex items-center gap-1 text-label-sm font-label-sm text-secondary font-semibold bg-surface-container-low px-2 py-1 rounded"><span class="material-symbols-outlined text-[14px]">verified_user</span> حسابات ضمان مقيدة في بنك مصر</span></div></div><div><h4 class="font-label-lg text-label-lg font-bold text-on-surface mb-space-md">المشترون والمجتمع</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" data-path="project-marketplace" href="#">سوق المشروعات المتاحة</a></li><li><a class="hover:text-on-surface transition-colors" data-path="buyer-dashboard" href="#">بوابة شقتي</a></li><li><a class="hover:text-on-surface transition-colors" data-path="community-hub-governance" href="#">مجلس تصويت الشركاء</a></li><li><a class="hover:text-on-surface transition-colors" data-path="secondary-market-syndicate-resale" href="#">سوق إعادة التنازل</a></li><li><a class="hover:text-on-surface transition-colors" data-path="buyer-onboarding-kyc-verification" href="#">التحقق من الهوية والتسجيل</a></li><li><a class="hover:text-on-surface transition-colors" data-path="unit-customization-finishes-studio" href="#">ستوديو خيارات التشطيبات</a></li></ul></div><div><h4 class="font-label-lg text-label-lg font-bold text-on-surface mb-space-md">الموقع والاستشاري والشركاء</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" data-path="construction-live-monitoring" href="#">كاميرات البث المباشر بالموقع</a></li><li><a class="hover:text-on-surface transition-colors" data-path="contractor-engineering-inspection-journal" href="#">سجل فحص الاستشاري الهندسي</a></li><li><a class="hover:text-on-surface transition-colors" data-path="landowner-submission-portal" href="#">بوابة ملاك الأراضي بالقاهرة</a></li><li><a class="hover:text-on-surface transition-colors" data-path="admin-project-command" href="#">مركز التحكم وإدارة المشروعات</a></li><li><a class="hover:text-on-surface transition-colors" data-path="architectural-documents-legal-vault" href="#">خزينة العقود والرسومات التنفيذية</a></li><li><a class="hover:text-on-surface transition-colors" data-path="escrow-statutory-payments" href="#">دفعات حساب الضمان البنكي</a></li></ul></div><div><h4 class="font-label-lg text-label-lg font-bold text-on-surface mb-space-md">الضمانات القانونية والمصرفية</h4><div class="space-y-space-sm"><div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface bg-surface-container-low p-2 rounded-lg"><span class="material-symbols-outlined text-secondary text-[18px]">verified</span><span>مطابقة ضوابط البنك المركزي المصري</span></div><div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface bg-surface-container-low p-2 rounded-lg"><span class="material-symbols-outlined text-secondary text-[18px]">engineering</span><span>إشراف مكاتب استشارية معتمدة من نقابة المهندسين</span></div><div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface bg-surface-container-low p-2 rounded-lg"><span class="material-symbols-outlined text-secondary text-[18px]">token</span><span>توثيق عقود اتحاد الشاغلين بالشهر العقاري</span></div></div></div></div><div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md text-label-sm font-label-sm text-on-surface-variant"><div>© 2025 كو-بيلد تكنولوجيز مصر (CoBuild Egypt). جميع حقوق ملكية الحصص العقارية خاضعة لحسابات الضمان البنكية المقيدة.</div><div class="flex items-center gap-space-lg"><a class="hover:text-on-surface transition-colors" data-path="buyer-onboarding-kyc-verification" href="#">التحقق من الهوية</a><a class="hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">سياسة الخصوصية</a><a class="hover:text-on-surface transition-colors" data-path="risk-disclosure" href="#">إخلاء المسؤولية والمخاطر</a></div></div></div></footer></body></html>
