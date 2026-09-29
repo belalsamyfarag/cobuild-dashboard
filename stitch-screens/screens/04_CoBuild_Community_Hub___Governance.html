@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Plus+Jakarta+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#d3e4fe","on-primary-fixed-variant":"#3f465c","on-error-container":"#93000a","secondary-fixed":"#dde1ff","on-surface-variant":"#45464d","surface-container-highest":"#d3e4fe","secondary":"#3755c3","surface-container-lowest":"#ffffff","on-primary-container":"#7c839b","surface-dim":"#cbdbf5","on-tertiary":"#ffffff","surface-bright":"#f8f9ff","primary-fixed":"#dae2fd","on-secondary":"#ffffff","on-secondary-container":"#00217a","on-secondary-fixed-variant":"#173bab","outline-variant":"#c6c6cd","tertiary":"#000000","on-primary-fixed":"#131b2e","outline":"#76777d","inverse-on-surface":"#eaf1ff","on-background":"#0b1c30","inverse-primary":"#bec6e0","on-tertiary-fixed-variant":"#005236","tertiary-container":"#002113","on-surface":"#0b1c30","background":"#f8f9ff","inverse-surface":"#213145","secondary-fixed-dim":"#b8c4ff","on-primary":"#ffffff","primary":"#000000","error":"#ba1a1a","error-container":"#ffdad6","surface":"#f8f9ff","on-tertiary-fixed":"#002113","surface-tint":"#565e74","surface-container-high":"#dce9ff","on-error":"#ffffff","surface-container-low":"#eff4ff","on-tertiary-container":"#009668","tertiary-fixed-dim":"#4edea3","on-secondary-fixed":"#001453","secondary-container":"#708cfd","surface-container":"#e5eeff","tertiary-fixed":"#6ffbbe","primary-container":"#131b2e","primary-fixed-dim":"#bec6e0"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-xs":"0.25rem","margin":"2rem","margin-mobile":"1rem","space-xl":"2.5rem","gutter":"1.5rem","gutter-mobile":"1rem","space-md":"1rem","space-lg":"1.5rem","space-sm":"0.5rem"},fontFamily:{"body-md":["Inter"],"headline-md":["Plus Jakarta Sans"],"label-md":["Inter"],"headline-sm":["Plus Jakarta Sans"],"code-num":["Inter"],"display-lg":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"label-lg":["Inter"],"label-sm":["Inter"],"display-lg-mobile":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"body-sm":["Inter"],"body-lg":["Inter"]},fontSize:{"body-md":["15px",{lineHeight:"24px",letterSpacing:"0",fontWeight:"400"}],"headline-md":["24px",{lineHeight:"32px",letterSpacing:"-0.01em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"500"}],"headline-sm":["20px",{lineHeight:"28px",letterSpacing:"-0.005em",fontWeight:"600"}],"code-num":["14px",{lineHeight:"20px",letterSpacing:"-0.01em",fontWeight:"500"}],"display-lg":["48px",{lineHeight:"56px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.015em",fontWeight:"600"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"600"}],"display-lg-mobile":["36px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-lg-mobile":["26px",{lineHeight:"34px",letterSpacing:"-0.015em",fontWeight:"600"}],"body-sm":["13px",{lineHeight:"20px",letterSpacing:"0",fontWeight:"400"}],"body-lg":["18px",{lineHeight:"28px",letterSpacing:"0",fontWeight:"400"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-b border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="bg-primary text-on-primary px-margin py-1.5 flex items-center justify-between text-body-sm font-body-sm"><div class="flex items-center gap-space-sm mx-auto"><span class="flex h-2 w-2 relative"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary-fixed opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary-fixed"></span></span><span class="font-label-sm uppercase tracking-wider text-tertiary-fixed font-semibold">Live Construction Log</span><span class="text-outline-variant">|</span><span>Al-Noor Heights Phase 2 foundation concrete pour completed today with 98.4% buyer sign-off.</span><a class="text-tertiary-fixed hover:underline font-label-md flex items-center gap-0.5 ml-space-xs" data-path="construction-live" href="#">View Live Feed <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a></div></div><div class="h-20 w-full px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md shrink-0"><a class="flex items-center gap-space-xs" data-path="landing-page" href="#"><img alt="CoBuild Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WlkSdcUo2owSob12eh3iWtWBAL3olBse8xTQh-Z3Zr-9T6zUJ3IyXdYt3tNQ4QGzSKcb4gyIe_LKbX_ywFxt4cOhaVtFR8nP7TfbiO4a7IXinWWGq2CrJk3tNeyYDCBfj0U4g29T8VJ-TBfQn6dVFMowSVsFOblPuB3lAwvpwL3lDSqNaqSTADGR9Glsj5XPnuFuqBt_utNwPkIJX6ELsll30qUZY_YMRIrGg-72heG5c6wil259qLPzrX"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight">CoBuild</span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium -mt-1">Collective Homebuilding</span></div></a><div class="ml-space-xs inline-flex items-center bg-surface-container-low p-0.5 rounded-lg"><button class="px-2 py-0.5 rounded-lg text-label-sm font-label-sm bg-surface-container-lowest text-on-surface font-semibold shadow-sm" type="button">EN</button><button class="px-2 py-0.5 rounded-lg text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface transition-colors font-medium" type="button">العربية</button></div></div><nav class="hidden lg:flex items-center gap-space-xs font-label-lg text-label-lg" data-active-classes="text-on-surface font-bold bg-surface-container-low rounded-lg"><a class="text-on-surface-variant hover:text-on-surface px-space-md py-space-sm transition-colors" data-path="marketplace" href="#">Marketplace</a><a class="text-on-surface-variant hover:text-on-surface px-space-md py-space-sm transition-colors" data-path="my-apartment" href="#">My Apartment</a><a class="text-on-surface-variant hover:text-on-surface px-space-md py-space-sm transition-colors" data-path="construction-live" href="#">Construction Live</a><a aria-current="page" class="px-space-md py-space-sm transition-colors text-on-surface font-bold bg-surface-container-low rounded-lg" data-path="community-hub" href="#">Community Hub</a><a class="text-on-surface-variant hover:text-on-surface px-space-md py-space-sm transition-colors" data-path="escrow-payments" href="#">Escrow &amp; Payments</a><div class="relative group"><button class="text-on-surface-variant hover:text-on-surface px-space-md py-space-sm transition-colors inline-flex items-center gap-1 font-label-lg text-label-lg" type="button">Tools <span class="material-symbols-outlined text-[18px] group-hover:rotate-180 transition-transform">expand_more</span></button><div class="absolute left-0 top-full hidden group-hover:flex flex-col bg-surface-container-lowest border border-outline-variant/40 rounded-xl shadow-[0_12px_24px_rgba(0,0,0,0.08)] py-2 w-52 z-50"><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low px-space-md py-2 transition-colors block text-label-md" data-path="unit-finishes" href="#">Unit Finishes Studio</a><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low px-space-md py-2 transition-colors block text-label-md" data-path="legal-vault" href="#">Legal &amp; Vault</a></div></div></nav><div class="flex items-center gap-space-md shrink-0"><div class="hidden xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low border border-outline-variant/40"><span class="material-symbols-outlined text-[16px] text-on-tertiary-container">verified_user</span><span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold">100% Escrow Protected</span></div><button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" title="Site Notifications" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[10px] font-bold text-on-secondary">3</span></button><div class="flex items-center gap-space-sm pl-space-xs"><img alt="Sarah Al-Mansoor" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGOXR6ElKI-TRGO3rVUejcuUT5itCp7C4i9L54ywhp8LiseCKSraN1htnLrF2WaMwrFQRYvT3AjahknZ-Kjzr-64nKAX8XjQAFpVV2QwFUNhiBC_zSlXbBueXOuyVxO_JjJpR4au9Xl3odYxzaavP9HpM0sb6MbchlOkvdT_Y3ADVrmjNj7KIhanlHhnBLlBFd-zWVVj7eDdu56IW2QVj2XJYmO4K8zGWcW75MhcPVvKzrHt7YJrjmqQ"/><div class="hidden md:flex flex-col text-left"><span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Sarah Al-Mansoor</span><span class="font-label-sm text-label-sm text-on-surface-variant">Co-Owner Unit 402</span></div><button class="text-on-surface-variant hover:text-on-surface p-1 rounded-lg" type="button"><span class="material-symbols-outlined text-[18px]">expand_more</span></button></div></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full">
+<!-- Top Ambient Banner & Synergistic Header -->
+<div class="w-full bg-surface-container-low py-space-xl px-margin">
+<div class="max-w-[1360px] mx-auto flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">how_to_reg</span>
+            Syndicate Assembly #04
+          </span>
+<span class="text-on-surface-variant font-label-md text-label-md">Al-Noor Heights Phase 2</span>
+<span class="text-outline-variant">•</span>
+<span class="font-code-num text-code-num text-on-surface-variant font-medium">Cadastral Deed #RUH-2024-9982</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Co-Owner Democratic Governance</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+          Direct equitable control for 25 verified unit co-purchasers. Every vote is weighted by architectural surface share (1 sqm = 1 share) under autonomous escrow protocols.
+        </p>
+</div>
+<!-- Quick Co-Owner Status Card -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex items-center gap-space-lg shrink-0">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-xl bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[26px]">account_balance</span>
+</div>
+<div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Your Weight</div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">168 <span class="font-body-sm text-body-sm text-on-surface-variant font-normal">Shares</span></div>
+<div class="font-label-sm text-label-sm text-secondary font-medium">Unit 402 (168 m²)</div>
+</div>
+</div>
+<div class="h-10 w-px bg-surface-container-highest"></div>
+<div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Assembly Quorum</div>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">88.4%</span>
+<span class="material-symbols-outlined text-[18px] text-on-tertiary-container">verified</span>
+</div>
+<div class="font-label-sm text-label-sm text-on-tertiary-container font-semibold">22 / 25 Owners Active</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Container -->
+<div class="max-w-[1360px] mx-auto w-full px-margin py-space-xl space-y-space-xl">
+<!-- Reserve Fund & Milestone Flash Metrics (Bento Row) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Amenity Pool Widget -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Syndicate Common Pool</span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-on-tertiary-container bg-surface-container-low px-2 py-0.5 rounded-full font-medium">
+<span class="material-symbols-outlined text-[14px]">lock</span> Escrow Secured
+          </span>
+</div>
+<div class="my-space-md">
+<div class="font-display-lg text-display-lg font-bold text-on-surface leading-none">$45,000<span class="text-headline-md font-body-md text-on-surface-variant">.00</span></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">Allocated buyer-controlled liquidity for common amenity upgrades and vendor volume discounts.</p>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface">Committed: $14,200</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Remaining: $30,800</span>
+</div>
+</div>
+<!-- Live Ballot Countdown Highlight -->
+<div class="bg-primary text-on-primary p-space-lg rounded-xl shadow-md flex flex-col justify-between relative overflow-hidden">
+<div class="relative z-10 flex items-center justify-between">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-tertiary-fixed">
+<span class="h-2 w-2 rounded-full bg-tertiary-fixed animate-ping"></span>
+            Urgent Decision
+          </span>
+<span class="font-code-num text-code-num text-primary-fixed-dim">Closes in 36h 14m</span>
+</div>
+<div class="relative z-10 my-space-md">
+<div class="font-headline-sm text-headline-sm font-semibold">Ballot #09: Rooftop Bioclimatic Pergola</div>
+<p class="font-body-sm text-body-sm text-primary-fixed-dim mt-space-xs">Direct impact on August solar heat gain and common annual electricity budget.</p>
+</div>
+<div class="relative z-10">
+<a class="w-full inline-flex items-center justify-center gap-2 bg-on-primary text-primary py-2.5 px-4 rounded-lg font-label-lg text-label-lg font-semibold hover:bg-surface-bright transition-all shadow-sm" href="#ballot-09">
+            Review &amp; Cast 168 Shares
+            <span class="material-symbols-outlined text-[18px]">how_to_vote</span>
+</a>
+</div>
+</div>
+<!-- Next Town Hall Quick Card -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Next Virtual Assembly</span>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container-low px-2 py-0.5 rounded-full font-medium">Official Audit</span>
+</div>
+<div class="my-space-sm">
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold">May 25, 2025 • 7:30 PM AST</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Lead Structural Architect &amp; Head GC Live Milestone Audit Presentation.</p>
+</div>
+<div class="flex items-center gap-space-sm pt-space-xs">
+<button class="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-surface-container-low hover:bg-surface-container rounded-lg font-label-md text-label-md text-on-surface font-medium transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+            Sync Cal
+          </button>
+<a class="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 bg-surface-container-low hover:bg-surface-container rounded-lg font-label-md text-label-md text-on-surface font-medium transition-colors" href="#townhall-section">
+<span class="material-symbols-outlined text-[16px]">quiz</span>
+            Agenda &amp; Q&amp;A
+          </a>
+</div>
+</div>
+</div>
+<!-- Active Ballots & Democratic Voting Section -->
+<div class="space-y-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Democratic Governance</span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Active Ballots &amp; Co-Owner Votes</h2>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Filter:</span>
+<button class="bg-surface-container-highest text-on-surface font-label-sm text-label-sm px-3 py-1.5 rounded-full font-semibold">All (3)</button>
+<button class="bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm px-3 py-1.5 rounded-full transition-colors">Requires Your Vote (1)</button>
+<button class="bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm px-3 py-1.5 rounded-full transition-colors">Archived</button>
+</div>
+</div>
+<!-- Ballot Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Ballot 09 (Primary Focus / Unvoted) -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-xl p-space-lg shadow-md space-y-space-md" id="ballot-09">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="bg-surface-container-high text-on-secondary-container px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-bold">BALLOT #09</span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-error bg-error-container/40 px-2 py-0.5 rounded-full font-medium">
+<span class="material-symbols-outlined text-[13px]">alarm</span> Closes in 36 Hours
+                </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Category: Common Amenities</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold pt-1">
+                Rooftop Lounge Amenity: Cedar Wood Pergola vs. Bioclimatic Kinetic Louvers
+              </h3>
+</div>
+<span class="text-on-surface-variant bg-surface-container-low p-2 rounded-lg" title="Audited Spec Sheet">
+<span class="material-symbols-outlined text-[20px]">architecture</span>
+</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Specification revision for Level 12 Sky Deck. The original baseline specified Western Red Cedar with high-pressure micro-misters. The Engineering Committee submitted a substitute proposal for motorized anodized aluminum kinetic louvers embedded with bifacial solar glass.
+          </p>
+<!-- Architectural Comparative Table / Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md pt-space-xs">
+<!-- Option A Card -->
+<div class="bg-surface-container-low p-space-md rounded-xl space-y-space-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Option A: Kinetic Louvers</span>
+<span class="bg-surface-container-high text-secondary px-2 py-0.5 rounded text-label-sm font-label-sm font-bold">Recommended</span>
+</div>
+<div class="mt-2 text-headline-sm font-bold text-on-surface">$18,400 <span class="text-body-sm font-normal text-on-surface-variant">from Pool</span></div>
+<ul class="mt-space-sm space-y-1 font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-on-tertiary-container">check</span>
+                    Generates 4.2 kW/h solar offset
+                  </li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-on-tertiary-container">check</span>
+                    Automated rain sensors + zero wood restaining
+                  </li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">trending_down</span>
+                    Lowers annual HOA reserve by $480/yr
+                  </li>
+</ul>
+</div>
+<div class="pt-space-xs">
+<button class="w-full py-2.5 px-4 bg-primary text-on-primary hover:bg-on-surface-variant rounded-lg font-label-md text-label-md font-semibold flex items-center justify-center gap-2 transition-all" onclick="openVoteModal('Option A: Kinetic Louvers with Solar Glass', '18,400', '64% Current Majority')" type="button">
+                  Vote Option A (168 Shares)
+                  <span class="material-symbols-outlined text-[18px]">check_circle</span>
+</button>
+</div>
+</div>
+<!-- Option B Card -->
+<div class="bg-surface-container-low p-space-md rounded-xl space-y-space-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Option B: Cedar Pergola</span>
+<span class="bg-surface-container-highest text-on-surface-variant px-2 py-0.5 rounded text-label-sm font-label-sm">Original Baseline</span>
+</div>
+<div class="mt-2 text-headline-sm font-bold text-on-surface">$12,100 <span class="text-body-sm font-normal text-on-surface-variant">from Pool</span></div>
+<ul class="mt-space-sm space-y-1 font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-on-tertiary-container">check</span>
+                    Natural organic teakwood aesthetic
+                  </li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-on-tertiary-container">check</span>
+                    Instant installation with micro-mist line
+                  </li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-error">warning</span>
+                    Estimated +$1,100/yr periodic oil/lacquer
+                  </li>
+</ul>
+</div>
+<div class="pt-space-xs">
+<button class="w-full py-2.5 px-4 bg-surface-container-lowest text-on-surface hover:bg-surface-container-high rounded-lg font-label-md text-label-md font-semibold flex items-center justify-center gap-2 transition-all" onclick="openVoteModal('Option B: Cedar Wood Pergola with Misters', '12,100', '36% Current Minority')" type="button">
+                  Vote Option B (168 Shares)
+                  <span class="material-symbols-outlined text-[18px]">radio_button_unchecked</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Real-Time Split Progression Bar -->
+<div class="bg-surface-container-low p-space-md rounded-lg space-y-2">
+<div class="flex items-center justify-between font-label-md text-label-md">
+<span class="text-on-surface font-semibold flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+                Kinetic Louvers (64% • 1,840 Shares)
+              </span>
+<span class="text-on-surface-variant flex items-center gap-1.5">
+                Cedar Pergola (36% • 1,035 Shares)
+                <span class="w-2.5 h-2.5 rounded-full bg-outline-variant"></span>
+</span>
+</div>
+<!-- Split Progress Bar -->
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden flex">
+<div class="h-full bg-secondary" style="width: 64%"></div>
+<div class="h-full bg-outline-variant" style="width: 36%"></div>
+</div>
+<div class="flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Quorum Met: 2,875 of 3,250 total project square meters cast</span>
+<span class="text-on-tertiary-container font-semibold">18/25 Co-Owners voted</span>
+</div>
+</div>
+</div>
+<!-- Sidebar Ballots (Ballot #10 & Ballot #11) -->
+<div class="lg:col-span-4 space-y-space-md flex flex-col">
+<!-- Ballot 10: Voted Already -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm space-y-space-sm relative">
+<div class="flex items-center justify-between">
+<span class="bg-surface-container-high text-on-secondary-container px-2 py-0.5 rounded-full font-label-sm text-label-sm font-bold">BALLOT #10</span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-on-tertiary-container bg-surface-container-low px-2 py-0.5 rounded-full font-semibold">
+<span class="material-symbols-outlined text-[14px]">check</span> You Voted Option B
+              </span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">
+              EV Charging Infrastructure
+            </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Dedicated 22kW wallbox per stall vs Shared Rapid DC 60kW Hub with load orchestration.
+            </p>
+<div class="space-y-1.5 pt-1">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface">
+<span>Shared Rapid DC Hub (Your Choice)</span>
+<span class="font-bold">78%</span>
+</div>
+<div class="w-full h-2 bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 78%"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Individual 22kW Wallboxes</span>
+<span>22%</span>
+</div>
+</div>
+<div class="pt-2 text-right">
+<button class="font-label-sm text-label-sm text-secondary hover:underline font-semibold" type="button">Change Vote (Closes in 5d)</button>
+</div>
+</div>
+<!-- Ballot 11: Draft / Upcoming -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm space-y-space-sm flex-1 flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="bg-surface-container-low text-on-surface-variant px-2 py-0.5 rounded-full font-label-sm text-label-sm font-bold">BALLOT #11</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low px-2 py-0.5 rounded-full">Drafting by Board</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">
+                Ground Floor Layout Allocation
+              </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Proposing expansion of Co-working Soundproof Pods vs Private Resident Hydrotherapy Gym.
+              </p>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between mt-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">rate_review</span>
+<span class="font-label-sm text-label-sm text-on-surface font-medium">9 Amendments Proposed</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Voting Opens June 1</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Co-Owner Discussion Forum & Neighbor Voices Section -->
+<div class="space-y-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Verified Co-Owner Circle</span>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold">Syndicate Discussion Forum</h2>
+</div>
+<button class="inline-flex items-center gap-2 bg-primary text-on-primary py-2 px-4 rounded-lg font-label-md text-label-md font-semibold hover:bg-on-surface-variant transition-colors self-start sm:self-auto">
+<span class="material-symbols-outlined text-[18px]">add_comment</span>
+          Start New Topic
+        </button>
+</div>
+<!-- Categories Selector Pill Bar -->
+<div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+<button class="bg-on-surface text-on-primary px-4 py-2 rounded-lg font-label-sm text-label-sm font-semibold shrink-0">
+          All Discussions (48)
+        </button>
+<button class="bg-surface-container-lowest hover:bg-surface-container-low text-on-surface px-4 py-2 rounded-lg font-label-sm text-label-sm font-medium shrink-0 transition-colors">
+          Architectural Choices &amp; Finishes (16)
+        </button>
+<button class="bg-surface-container-lowest hover:bg-surface-container-low text-on-surface px-4 py-2 rounded-lg font-label-sm text-label-sm font-medium shrink-0 transition-colors">
+          Green Building &amp; Solar Tariffs (9)
+        </button>
+<button class="bg-surface-container-lowest hover:bg-surface-container-low text-on-surface px-4 py-2 rounded-lg font-label-sm text-label-sm font-medium shrink-0 transition-colors">
+          Contractor Performance &amp; Site Visits (14)
+        </button>
+<button class="bg-surface-container-lowest hover:bg-surface-container-low text-on-surface px-4 py-2 rounded-lg font-label-sm text-label-sm font-medium shrink-0 transition-colors">
+          Move-in &amp; Community Bylaws (9)
+        </button>
+</div>
+<!-- Main Active Thread Showcase -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<!-- Thread Header -->
+<div class="p-space-lg bg-surface-container-low flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="space-y-1">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-2.5 py-0.5 rounded text-label-sm font-label-sm font-bold">
+                Finishes Procurement
+              </span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">• Active 18 mins ago</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">• 18 Verified Co-Owners Participated</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">
+              Bulk order syndicate discount for Smart Locks (Aqara U200 vs Yale Assure 2 Zigbee)
+            </h3>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-surface-container-lowest text-on-surface rounded-lg font-label-sm text-label-sm font-semibold shadow-sm hover:bg-surface-bright">
+<span class="material-symbols-outlined text-[16px] text-secondary">bookmark</span> Save
+            </button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-secondary text-on-secondary rounded-lg font-label-sm text-label-sm font-semibold shadow-sm hover:bg-secondary/90">
+<span class="material-symbols-outlined text-[16px]">reply</span> Reply to Thread
+            </button>
+</div>
+</div>
+<!-- Thread Posts Timeline -->
+<div class="p-space-lg space-y-space-lg">
+<!-- Post 1: Original poster -->
+<div class="flex items-start gap-space-md">
+<div class="relative shrink-0">
+<img class="w-11 h-11 rounded-full object-cover shadow-sm" data-alt="Professional modern portrait of a Saudi male civil engineer wearing architectural safety glasses and collared shirt in Riyadh design studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV-QF8MMoTB79lCWo3xuZbpGOiUAO5-SAton-D4SRcaIHfnRpC6Agx-XW6ycfFbiXETRS-aRze18OQpOmL0wVVqcUz7eAOWpFChsWuaVIwENA63YZcQokxDtL8qMmA5SfG8-11Bpm40w-GuMEYsQOC__-qDpvKCa-G50exCoVbPpKyIXB5O3aY0Lo_Rqau0DDq2GI8kHNsqQ7oF4rITlbybkXUhMUlFJdHQlA4NtAuPrzIZ7lL4jMmqw"/>
+<span class="absolute -bottom-1 -right-1 bg-surface-container-lowest p-0.5 rounded-full">
+<span class="material-symbols-outlined text-[16px] text-on-tertiary-container" style="font-variation-settings: 'FILL' 1;">verified</span>
+</span>
+</div>
+<div class="flex-1 space-y-1.5">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Eng. Faisal Al-Ghamdi</span>
+<span class="bg-surface-container-low text-on-surface-variant px-2 py-0.5 rounded font-label-sm text-label-sm font-semibold">Unit 202 (175 m²)</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Author</span>
+</div>
+<span class="font-code-num text-code-num text-on-surface-variant">Yesterday at 14:22</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">
+                Fellow neighbors, I negotiated directly with the regional distributor for Aqara and Yale. If at least 15 of us opt into a single batch installation for our private front entry doors before drywall sign-off, we receive <strong>38% off retail list price</strong> ($210/unit vs $340 retail), including unified Apple HomeKey integration and Zigbee 3.0 gateway configuration.
+              </p>
+<div class="flex items-center gap-space-md pt-1">
+<button class="inline-flex items-center gap-1 text-on-surface-variant hover:text-secondary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px]">thumb_up</span> 14 Upvotes
+                </button>
+<button class="text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm font-semibold">Quote Reply</button>
+</div>
+</div>
+</div>
+<!-- Divider -->
+<div class="h-px w-full bg-surface-container-low"></div>
+<!-- Post 2: Reply from Dr. Hessa -->
+<div class="flex items-start gap-space-md pl-space-md md:pl-space-xl">
+<div class="relative shrink-0">
+<img class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="Portrait of an elegant Saudi female physician in clinic background wearing modern medical coat with bright warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6caIsksvO2iOIfivgwaP6mMpqfTozgRcEZUUuyiIou4JIO32Df1UyoGgarKm7EIPOA2BMzHfPcksjtS9MEyPIMmh-BfjTL4JOIIiGNuuc0NHL0RMuGTPw6o_5uTJxlHpcRfIAnVt6-j9QTYaeYQz25T3f0knHeDcc6xVBwiCKJpJCf3ulsDhjBR3fBAKh4cSJB9UisgST_m3XzM4vidETIkT8DR63A4nb5IMpovps0681t1ccs1e6hA"/>
+<span class="absolute -bottom-1 -right-1 bg-surface-container-lowest p-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px] text-on-tertiary-container" style="font-variation-settings: 'FILL' 1;">verified</span>
+</span>
+</div>
+<div class="flex-1 space-y-1.5">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Dr. Hessa Al-Subaie</span>
+<span class="bg-surface-container-low text-on-surface-variant px-2 py-0.5 rounded font-label-sm text-label-sm font-semibold">Unit 501 (210 m²)</span>
+</div>
+<span class="font-code-num text-code-num text-on-surface-variant">Today at 09:15</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">
+                Count Unit 501 in for the Aqara U200! Having the physical keypad integrated into the doorframe finish is much cleaner. Does this package also cover the fire-rated mortise lock cylinder required by Riyadh civil defense code?
+              </p>
+<div class="flex items-center gap-space-md pt-1">
+<button class="inline-flex items-center gap-1 text-on-surface-variant hover:text-secondary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px]">thumb_up</span> 6 Upvotes
+                </button>
+<button class="text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm font-semibold">Quote Reply</button>
+</div>
+</div>
+</div>
+<!-- Post 3: Sarah Al-Mansoor (Current Logged-in User) -->
+<div class="flex items-start gap-space-md pl-space-md md:pl-space-xl bg-surface-container-low p-space-md rounded-xl">
+<div class="relative shrink-0">
+<img alt="Sarah Al-Mansoor" class="w-10 h-10 rounded-full object-cover shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGOXR6ElKI-TRGO3rVUejcuUT5itCp7C4i9L54ywhp8LiseCKSraN1htnLrF2WaMwrFQRYvT3AjahknZ-Kjzr-64nKAX8XjQAFpVV2QwFUNhiBC_zSlXbBueXOuyVxO_JjJpR4au9Xl3odYxzaavP9HpM0sb6MbchlOkvdT_Y3ADVrmjNj7KIhanlHhnBLlBFd-zWVVj7eDdu56IW2QVj2XJYmO4K8zGWcW75MhcPVvKzrHt7YJrjmqQ"/>
+<span class="absolute -bottom-1 -right-1 bg-surface-container-lowest p-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px] text-secondary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</span>
+</div>
+<div class="flex-1 space-y-1.5">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-2">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Sarah Al-Mansoor (You)</span>
+<span class="bg-surface-container-highest text-secondary px-2 py-0.5 rounded font-label-sm text-label-sm font-bold">Unit 402</span>
+</div>
+<span class="font-code-num text-code-num text-on-surface-variant">Today at 11:40</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface">
+                Confirmed with the General Contractor during Tuesday's inspection that Aqara's European EN12209 mortise version meets the building's 90-minute fire core regulation. I've pledged Unit 402 to the collective order sheet.
+              </p>
+<div class="flex items-center gap-space-md pt-1">
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px]">done_all</span> Pledged on Bulk List (#11 of 15 needed)
+                </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Reply Box -->
+<div class="p-space-md bg-surface-container-low flex items-center gap-space-sm">
+<input class="flex-1 bg-surface-container-lowest text-on-surface placeholder:text-on-surface-variant px-4 py-2.5 rounded-lg font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-secondary" placeholder="Share your perspective or propose an amendment..." type="text"/>
+<button class="bg-primary text-on-primary font-label-md text-label-md font-semibold px-4 py-2.5 rounded-lg hover:bg-on-surface-variant transition-colors flex items-center gap-1.5 shrink-0">
+<span>Send</span>
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+</div>
+</div>
+<!-- General Assembly & Live Town Hall Section -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm space-y-space-lg" id="townhall-section">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div>
+<div class="flex items-center gap-2">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-bold">
+              Official Syndicate Town Hall
+            </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Remote Session #05</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface font-bold mt-1">
+            Monthly Construction Milestone Review &amp; GC Inspection
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+            Live with Lead Architect Dr. Zaidan &amp; Project Executive Tariq Al-Husseini (Al-Bawani Contracting).
+          </p>
+</div>
+<!-- Live Countdown Timer Component -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex items-center gap-space-md shrink-0">
+<div class="text-center">
+<div class="font-headline-md text-headline-md font-bold text-on-surface font-code-num">06</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase">Days</div>
+</div>
+<div class="text-headline-sm font-bold text-outline-variant">:</div>
+<div class="text-center">
+<div class="font-headline-md text-headline-md font-bold text-on-surface font-code-num">14</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase">Hours</div>
+</div>
+<div class="text-headline-sm font-bold text-outline-variant">:</div>
+<div class="text-center">
+<div class="font-headline-md text-headline-md font-bold text-on-surface font-code-num">28</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase">Mins</div>
+</div>
+</div>
+</div>
+<!-- Agenda & Question Upvoting Split Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg pt-space-xs">
+<!-- Assembly Agenda -->
+<div class="lg:col-span-6 space-y-space-md bg-surface-container-low p-space-md rounded-xl">
+<div class="flex items-center justify-between">
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-secondary">format_list_bulleted</span>
+              Verified Meeting Agenda
+            </h4>
+<span class="font-code-num text-code-num text-on-surface-variant">Duration: 60 Mins</span>
+</div>
+<div class="space-y-space-sm font-body-sm text-body-sm">
+<div class="p-space-sm bg-surface-container-lowest rounded-lg flex items-start gap-space-sm">
+<span class="font-code-num text-code-num font-bold text-secondary">19:30</span>
+<div>
+<div class="font-semibold text-on-surface">Phase 2 Slab &amp; Core Structural Audit</div>
+<div class="text-on-surface-variant">Review of geotechnical sensor logs and third-party laboratory concrete strength certificates.</div>
+</div>
+</div>
+<div class="p-space-sm bg-surface-container-lowest rounded-lg flex items-start gap-space-sm">
+<span class="font-code-num text-code-num font-bold text-secondary">19:50</span>
+<div>
+<div class="font-semibold text-on-surface">Escrow Milestone Draw Verification</div>
+<div class="text-on-surface-variant">Authorization vote for Tranche #4 release ($420,000) to MEP contractor.</div>
+</div>
+</div>
+<div class="p-space-sm bg-surface-container-lowest rounded-lg flex items-start gap-space-sm">
+<span class="font-code-num text-code-num font-bold text-secondary">20:10</span>
+<div>
+<div class="font-semibold text-on-surface">Open Neighbor Q&amp;A (Prioritized by Upvotes)</div>
+<div class="text-on-surface-variant">Live video responses to the top 4 owner-submitted queries.</div>
+</div>
+</div>
+</div>
+<!-- Calendar Add Links -->
+<div class="flex items-center gap-space-sm pt-space-xs">
+<button class="flex-1 py-2 px-3 bg-surface-container-lowest hover:bg-surface-bright text-on-surface rounded-lg font-label-sm text-label-sm font-semibold flex items-center justify-center gap-1.5 shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[16px]">event</span>
+              Google Calendar
+            </button>
+<button class="flex-1 py-2 px-3 bg-surface-container-lowest hover:bg-surface-bright text-on-surface rounded-lg font-label-sm text-label-sm font-semibold flex items-center justify-center gap-1.5 shadow-sm transition-colors">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+              Outlook .ICS
+            </button>
+</div>
+</div>
+<!-- Submitted Questions & Voting -->
+<div class="lg:col-span-6 space-y-space-sm">
+<div class="flex items-center justify-between">
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-secondary">how_to_vote</span>
+              Submitted Questions for GC
+            </h4>
+<button class="font-label-sm text-label-sm text-secondary hover:underline font-semibold" type="button">Submit Question</button>
+</div>
+<!-- Question 1 -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between gap-space-sm">
+<div class="space-y-1">
+<div class="font-body-sm text-body-sm font-semibold text-on-surface">
+                "Will acoustic insulation between floor slabs exceed standard STC 55 dB?"
+              </div>
+<div class="flex items-center gap-2 font-label-sm text-label-sm text-on-surface-variant">
+<span>By Dr. Tariq (Unit 301)</span>
+<span>•</span>
+<span class="text-on-tertiary-container font-semibold">Accepted for Live Answer</span>
+</div>
+</div>
+<button class="px-3 py-2 bg-surface-container-lowest hover:bg-surface-container text-on-surface rounded-lg font-label-sm text-label-sm font-bold flex flex-col items-center shrink-0 transition-colors">
+<span class="material-symbols-outlined text-[16px] text-secondary">arrow_drop_up</span>
+<span>21</span>
+</button>
+</div>
+<!-- Question 2 -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between gap-space-sm">
+<div class="space-y-1">
+<div class="font-body-sm text-body-sm font-semibold text-on-surface">
+                "Can owners tour the 4th-floor structural level before glazing installation starts?"
+              </div>
+<div class="flex items-center gap-2 font-label-sm text-label-sm text-on-surface-variant">
+<span>By Sarah Al-Mansoor (Unit 402)</span>
+<span>•</span>
+<span>Under Review by Site Safety</span>
+</div>
+</div>
+<button class="px-3 py-2 bg-secondary text-on-secondary rounded-lg font-label-sm text-label-sm font-bold flex flex-col items-center shrink-0 transition-colors">
+<span class="material-symbols-outlined text-[16px]">arrow_drop_up</span>
+<span>17</span>
+</button>
+</div>
+<!-- Question 3 -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex items-center justify-between gap-space-sm">
+<div class="space-y-1">
+<div class="font-body-sm text-body-sm font-semibold text-on-surface">
+                "When will the smart electricity sub-metering contractor be formally contracted?"
+              </div>
+<div class="flex items-center gap-2 font-label-sm text-label-sm text-on-surface-variant">
+<span>By Eng. Mansour (Unit 104)</span>
+<span>•</span>
+<span>Queued</span>
+</div>
+</div>
+<button class="px-3 py-2 bg-surface-container-lowest hover:bg-surface-container text-on-surface rounded-lg font-label-sm text-label-sm font-bold flex flex-col items-center shrink-0 transition-colors">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">arrow_drop_up</span>
+<span>9</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Voting Modal Overlay -->
+<div class="fixed inset-0 z-50 bg-on-background/50 backdrop-blur-sm hidden flex items-center justify-center p-4" id="voteModal">
+<div class="bg-surface-container-lowest rounded-2xl max-w-lg w-full p-space-lg shadow-xl space-y-space-md animate-in fade-in zoom-in-95 duration-150">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[24px]">verified</span>
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Confirm Syndicate Vote</span>
+</div>
+<button class="p-1 text-on-surface-variant hover:text-on-surface rounded-lg" onclick="closeVoteModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="space-y-space-sm">
+<p class="font-body-md text-body-md text-on-surface-variant">
+          You are casting your weighted shareholder voting quota for Ballot #09.
+        </p>
+<div class="bg-surface-container-low p-space-md rounded-xl space-y-2">
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Selected Option</span>
+<span class="font-bold text-on-surface" id="modalOptionName">Option A: Kinetic Louvers</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Pool Allocation</span>
+<span class="font-code-num text-on-surface font-semibold" id="modalOptionCost">$18,400</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Your Voting Equity</span>
+<span class="font-code-num text-secondary font-bold">168 Shares (5.17% of Syndicate)</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Current Status</span>
+<span class="text-on-tertiary-container font-semibold" id="modalOptionStatus">64% Current Majority</span>
+</div>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg flex items-center gap-2 text-label-sm font-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-secondary">gavel</span>
+<span>This ballot is notarized directly into the central statutory development vault.</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm pt-space-xs">
+<button class="flex-1 py-2.5 px-4 bg-surface-container-low text-on-surface rounded-lg font-label-md text-label-md font-semibold hover:bg-surface-container transition-colors" onclick="closeVoteModal()" type="button">
+          Cancel
+        </button>
+<button class="flex-1 py-2.5 px-4 bg-primary text-on-primary rounded-lg font-label-md text-label-md font-semibold hover:bg-on-surface-variant transition-colors flex items-center justify-center gap-2" onclick="submitConfirmedVote()" type="button">
+<span class="material-symbols-outlined text-[18px]">how_to_reg</span>
+          Sign &amp; Cast Vote
+        </button>
+</div>
+</div>
+</div>
+<!-- Inline Micro-interaction Scripts -->
+<script>
+    function openVoteModal(optionName, cost, status) {
+      document.getElementById('modalOptionName').innerText = optionName;
+      document.getElementById('modalOptionCost').innerText = '$' + cost;
+      document.getElementById('modalOptionStatus').innerText = status;
+      document.getElementById('voteModal').classList.remove('hidden');
+    }
+
+    function closeVoteModal() {
+      document.getElementById('voteModal').classList.add('hidden');
+    }
+
+    function submitConfirmedVote() {
+      const modal = document.getElementById('voteModal');
+      modal.innerHTML = `
+        <div class="bg-surface-container-lowest rounded-2xl max-w-sm w-full p-space-lg shadow-xl text-center space-y-space-md animate-in fade-in">
+          <div class="w-12 h-12 rounded-full bg-surface-container-low text-on-tertiary-container flex items-center justify-center mx-auto">
+            <span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+          </div>
+          <div class="space-y-1">
+            <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Vote Verified & Recorded</h3>
+            <p class="font-body-sm text-body-sm text-on-surface-variant">Your 168 shares have been officially counted in the Al-Noor Heights Phase 2 ledger.</p>
+          </div>
+          <button onclick="closeVoteModal(); location.reload();" class="w-full py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md font-semibold">Done</button>
+        </div>
+      `;
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 mt-space-xl"><div class="w-full px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-4 gap-space-xl pb-space-lg border-b border-outline-variant/20"><div class="space-y-space-sm"><div class="flex items-center gap-space-xs"><img alt="CoBuild Brand Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WlkSdcUo2owSob12eh3iWtWBAL3olBse8xTQh-Z3Zr-9T6zUJ3IyXdYt3tNQ4QGzSKcb4gyIe_LKbX_ywFxt4cOhaVtFR8nP7TfbiO4a7IXinWWGq2CrJk3tNeyYDCBfj0U4g29T8VJ-TBfQn6dVFMowSVsFOblPuB3lAwvpwL3lDSqNaqSTADGR9Glsj5XPnuFuqBt_utNwPkIJX6ELsll30qUZY_YMRIrGg-72heG5c6wil259qLPzrX"/><span class="font-headline-sm text-headline-sm font-bold text-on-surface">CoBuild</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Architectural collective real estate platform empowering buyers to directly fund, supervise, and co-own sustainable residential buildings through fiduciary transparency.</p><div class="pt-space-xs"><span class="inline-flex items-center gap-1 text-label-sm font-label-sm text-on-surface-variant font-medium bg-surface-container-low px-2 py-1 rounded"><span class="material-symbols-outlined text-[14px]">translate</span> Dual LTR/RTL Arabic &amp; English Framework</span></div></div><div><h4 class="font-label-lg text-label-lg font-semibold text-on-surface mb-space-md">Platform Governance</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" data-path="marketplace" href="#">Development Directory</a></li><li><a class="hover:text-on-surface transition-colors" data-path="community-hub" href="#">Shareholder Voting Portal</a></li><li><a class="hover:text-on-surface transition-colors" data-path="construction-live" href="#">BIM &amp; IoT Site Sensor Logs</a></li><li><a class="hover:text-on-surface transition-colors" data-path="escrow-payments" href="#">Milestone Escrow Drawers</a></li><li><a class="hover:text-on-surface transition-colors" data-path="unit-finishes" href="#">Finishes Procurement</a></li><li><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Legal Vault &amp; Title Registry</a></li></ul></div><div><h4 class="font-label-lg text-label-lg font-semibold text-on-surface mb-space-md">Compliance &amp; Legal</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Central Bank Escrow Regulations</a></li><li><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Smart Contract Code Audits</a></li><li><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Collective Risk Disclosure</a></li><li><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Terms of Custody &amp; Title</a></li></ul></div><div><h4 class="font-label-lg text-label-lg font-semibold text-on-surface mb-space-md">Institutional Fiduciary</h4><div class="space-y-space-sm"><div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface bg-surface-container-low p-2 rounded-lg"><span class="material-symbols-outlined text-secondary text-[18px]">verified</span><span>Central Bank Escrow Compliant</span></div><div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface bg-surface-container-low p-2 rounded-lg"><span class="material-symbols-outlined text-secondary text-[18px]">engineering</span><span>ISO 9001 Construction Auditing</span></div><div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface bg-surface-container-low p-2 rounded-lg"><span class="material-symbols-outlined text-on-tertiary-container text-[18px]">token</span><span>Smart Contracts Verified by Quantstamp</span></div></div></div></div><div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md text-label-sm font-label-sm text-on-surface-variant"><div>© 2025 CoBuild Technologies Ltd. All collective property deeds are held under regulated statutory escrows.</div><div class="flex items-center gap-space-lg"><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Contact Support &amp; Concierge</a><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Privacy Policy</a><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Risk Disclosure</a></div></div></div></footer></body></html>

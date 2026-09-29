@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Plus+Jakarta+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#d3e4fe","on-primary-fixed-variant":"#3f465c","on-error-container":"#93000a","secondary-fixed":"#dde1ff","on-surface-variant":"#45464d","surface-container-highest":"#d3e4fe","secondary":"#3755c3","surface-container-lowest":"#ffffff","on-primary-container":"#7c839b","surface-dim":"#cbdbf5","on-tertiary":"#ffffff","surface-bright":"#f8f9ff","primary-fixed":"#dae2fd","on-secondary":"#ffffff","on-secondary-container":"#00217a","on-secondary-fixed-variant":"#173bab","outline-variant":"#c6c6cd","tertiary":"#000000","on-primary-fixed":"#131b2e","outline":"#76777d","inverse-on-surface":"#eaf1ff","on-background":"#0b1c30","inverse-primary":"#bec6e0","on-tertiary-fixed-variant":"#005236","tertiary-container":"#002113","on-surface":"#0b1c30","background":"#f8f9ff","inverse-surface":"#213145","secondary-fixed-dim":"#b8c4ff","on-primary":"#ffffff","primary":"#000000","error":"#ba1a1a","error-container":"#ffdad6","surface":"#f8f9ff","on-tertiary-fixed":"#002113","surface-tint":"#565e74","surface-container-high":"#dce9ff","on-error":"#ffffff","surface-container-low":"#eff4ff","on-tertiary-container":"#009668","tertiary-fixed-dim":"#4edea3","on-secondary-fixed":"#001453","secondary-container":"#708cfd","surface-container":"#e5eeff","tertiary-fixed":"#6ffbbe","primary-container":"#131b2e","primary-fixed-dim":"#bec6e0"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-xs":"0.25rem","margin":"2rem","margin-mobile":"1rem","space-xl":"2.5rem","gutter":"1.5rem","gutter-mobile":"1rem","space-md":"1rem","space-lg":"1.5rem","space-sm":"0.5rem"},fontFamily:{"body-md":["Inter"],"headline-md":["Plus Jakarta Sans"],"label-md":["Inter"],"headline-sm":["Plus Jakarta Sans"],"code-num":["Inter"],"display-lg":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"label-lg":["Inter"],"label-sm":["Inter"],"display-lg-mobile":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"body-sm":["Inter"],"body-lg":["Inter"]},fontSize:{"body-md":["15px",{lineHeight:"24px",letterSpacing:"0",fontWeight:"400"}],"headline-md":["24px",{lineHeight:"32px",letterSpacing:"-0.01em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"500"}],"headline-sm":["20px",{lineHeight:"28px",letterSpacing:"-0.005em",fontWeight:"600"}],"code-num":["14px",{lineHeight:"20px",letterSpacing:"-0.01em",fontWeight:"500"}],"display-lg":["48px",{lineHeight:"56px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.015em",fontWeight:"600"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"600"}],"display-lg-mobile":["36px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-lg-mobile":["26px",{lineHeight:"34px",letterSpacing:"-0.015em",fontWeight:"600"}],"body-sm":["13px",{lineHeight:"20px",letterSpacing:"0",fontWeight:"400"}],"body-lg":["18px",{lineHeight:"28px",letterSpacing:"0",fontWeight:"400"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-b border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="bg-primary-container text-on-primary px-margin py-1.5 flex items-center justify-between text-body-sm font-body-sm border-b border-outline-variant/10"><div class="flex items-center gap-space-sm mx-auto overflow-hidden whitespace-nowrap text-ellipsis"><span class="flex h-2 w-2 relative shrink-0"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary-fixed opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary-fixed"></span></span><span class="font-label-sm uppercase tracking-wider text-tertiary-fixed font-semibold shrink-0">Live Construction Log</span><span class="text-outline-variant/50">|</span><span class="truncate">Al-Noor Heights Phase 2 foundation concrete pour completed today with 98.4% buyer sign-off.</span><a class="text-tertiary-fixed hover:underline font-label-md flex items-center gap-0.5 ml-space-xs shrink-0" data-path="construction-live-monitoring" href="#">View Live Feed <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a></div></div><div class="h-20 w-full px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md shrink-0"><a class="flex items-center gap-space-xs" data-path="landing-page" href="#"><img alt="CoBuild Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WlkSdcUo2owSob12eh3iWtWBAL3olBse8xTQh-Z3Zr-9T6zUJ3IyXdYt3tNQ4QGzSKcb4gyIe_LKbX_ywFxt4cOhaVtFR8nP7TfbiO4a7IXinWWGq2CrJk3tNeyYDCBfj0U4g29T8VJ-TBfQn6dVFMowSVsFOblPuB3lAwvpwL3lDSqNaqSTADGR9Glsj5XPnuFuqBt_utNwPkIJX6ELsll30qUZY_YMRIrGg-72heG5c6wil259qLPzrX"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight">CoBuild</span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium -mt-1">Collective Homebuilding</span></div></a><div class="ml-space-xs inline-flex items-center bg-surface-container-low p-0.5 rounded-lg border border-outline-variant/40"><button class="px-2 py-0.5 rounded-lg text-label-sm font-label-sm bg-surface-container-lowest text-on-surface font-semibold shadow-sm" type="button">EN</button><button class="px-2 py-0.5 rounded-lg text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface transition-colors font-medium" type="button">العربية</button></div></div><nav class="hidden lg:flex items-center gap-0.5 font-label-lg text-label-lg overflow-x-auto" data-active-classes="text-on-surface font-bold bg-surface-container-low rounded-lg"><a class="text-on-surface-variant hover:text-on-surface px-space-sm py-1.5 transition-colors whitespace-nowrap" data-path="project-marketplace" href="#">Marketplace</a><a class="text-on-surface-variant hover:text-on-surface px-space-sm py-1.5 transition-colors whitespace-nowrap" data-path="buyer-dashboard" href="#">My Apartment</a><a class="text-on-surface-variant hover:text-on-surface px-space-sm py-1.5 transition-colors whitespace-nowrap" data-path="secondary-market-syndicate-resale" href="#">Secondary Resale</a><a class="text-on-surface-variant hover:text-on-surface px-space-sm py-1.5 transition-colors whitespace-nowrap" data-path="escrow-statutory-payments" href="#">Escrow &amp; Treasury</a><a class="text-on-surface-variant hover:text-on-surface px-space-sm py-1.5 transition-colors whitespace-nowrap" data-path="community-hub-governance" href="#">Governance Hub</a><a aria-current="page" class="px-space-sm py-1.5 transition-colors whitespace-nowrap text-on-surface font-bold bg-surface-container-low rounded-lg" data-path="landowner-submission-portal" href="#">Landowners</a><a class="text-on-surface-variant hover:text-on-surface px-space-sm py-1.5 transition-colors whitespace-nowrap" data-path="contractor-engineering-inspection-journal" href="#">Inspections Log</a><a class="text-on-surface-variant hover:text-on-surface px-space-sm py-1.5 transition-colors whitespace-nowrap" data-path="admin-project-command" href="#">Admin Command</a></nav><div class="flex items-center gap-space-md shrink-0"><div class="hidden 2xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low border border-outline-variant/40"><span class="material-symbols-outlined text-[16px] text-on-tertiary-container">verified_user</span><span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold">100% Escrow Protected</span></div><a class="hidden sm:inline-flex items-center gap-1 text-label-sm font-label-sm font-semibold text-secondary hover:text-on-secondary-container bg-surface-container-low px-2.5 py-1.5 rounded-lg border border-outline-variant/40 transition-colors" data-path="buyer-onboarding-kyc-verification" href="#"><span class="material-symbols-outlined text-[16px]">badge</span><span>KYC Verified</span></a><button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" title="Site Alerts &amp; Audits" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[10px] font-bold text-on-secondary">3</span></button><div class="flex items-center gap-space-sm pl-space-xs border-l border-outline-variant/40"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGOXR6ElKI-TRGO3rVUejcuUT5itCp7C4i9L54ywhp8LiseCKSraN1htnLrF2WaMwrFQRYvT3AjahknZ-Kjzr-64nKAX8XjQAFpVV2QwFUNhiBC_zSlXbBueXOuyVxO_JjJpR4au9Xl3odYxzaavP9HpM0sb6MbchlOkvdT_Y3ADVrmjNj7KIhanlHhnBLlBFd-zWVVj7eDdu56IW2QVj2XJYmO4K8zGWcW75MhcPVvKzrHt7YJrjmqQ"/><div class="hidden md:flex flex-col text-left"><span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Sarah Al-Mansoor</span><span class="font-label-sm text-label-sm text-on-surface-variant">Co-Owner Unit 402</span></div><button class="text-on-surface-variant hover:text-on-surface p-1 rounded-lg" type="button"><span class="material-symbols-outlined text-[18px]">expand_more</span></button></div></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full">
+<!-- Top Notice & Statutory Guarantee Pill Strip -->
+<section class="w-full bg-surface-container-low py-space-sm px-margin">
+<div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">gavel</span>
+</span>
+<span class="font-label-md text-label-md text-on-surface">Regulated under Saudi Ministry of Justice (Najiz Electronic Sak) &amp; SAMA Escrow Mandate</span>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container-lowest px-2 py-0.5 rounded-full font-semibold">SPV Custody Standard</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-code-num text-code-num text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-on-tertiary-container">speed</span>
+          Avg. Syndicate Formation: <span class="text-on-surface font-semibold">27 Days</span>
+</span>
+<div class="hidden sm:flex items-center gap-1 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-secondary">verified_user</span>
+          Zero Broker Commission (0%)
+        </div>
+</div>
+</div>
+</section>
+<!-- Section 1: Hero & Strategic Value Proposition -->
+<section class="w-full bg-surface-container-lowest py-space-xl px-margin">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- Hero Left Column: Editorial Headline & Dual Localization -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container w-fit">
+<span class="material-symbols-outlined text-[16px] text-secondary">account_balance</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold uppercase tracking-wider">Direct Landowner Collective Syndicate Gateway</span>
+</div>
+<h1 class="font-display-lg text-display-lg font-bold text-on-surface tracking-tight leading-none">
+            Partner Your Land With Verified Homebuyers.
+          </h1>
+<p class="font-headline-md text-headline-md text-secondary font-medium -mt-2">
+            Maximize Residual Value With Zero Speculative Broker Friction.
+          </p>
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-1.5" dir="rtl">
+<p class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-relaxed">
+              شارك أرضك مع تجمعات المشترين المعتمدين — حقق أعلى عائد استثماري لأرضك دون وسطاء وبحماية مصرفية وقانونية تامة.
+            </p>
+<span class="font-label-sm text-label-sm text-on-surface-variant">
+              منظومة CoBuild الموثوقة لحوكمة وتطوير أراضي الرياض الحضرية بالتوافق مع وزارة العدل والبنك المركزي السعودي.
+            </span>
+</div>
+<!-- Value Pillars Matrix -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm pt-space-xs">
+<div class="p-space-sm bg-surface-container rounded-lg flex flex-col gap-1">
+<span class="font-display-lg text-[28px] leading-tight font-bold text-on-surface">0%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Middleman Fees</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Save 2.5% to 5% typical speculative broker margins</span>
+</div>
+<div class="p-space-sm bg-surface-container rounded-lg flex flex-col gap-1">
+<span class="font-display-lg text-[28px] leading-tight font-bold text-secondary">45d</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Syndicate Cap</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Direct commitment by pre-vetted buyer syndicates</span>
+</div>
+<div class="p-space-sm bg-surface-container rounded-lg flex flex-col gap-1">
+<span class="font-display-lg text-[28px] leading-tight font-bold text-on-tertiary-container">+34%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Value Uplift</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Residual gain vs traditional distressed raw land sales</span>
+</div>
+<div class="p-space-sm bg-surface-container rounded-lg flex flex-col gap-1">
+<span class="font-display-lg text-[28px] leading-tight font-bold text-on-surface">100%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Escrow Backed</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Monies locked in SAMA regulated development escrow</span>
+</div>
+</div>
+<div class="flex flex-wrap items-center gap-space-md pt-space-sm">
+<a class="bg-primary text-on-primary font-label-lg text-label-lg px-6 py-3.5 rounded-lg font-semibold hover:bg-on-surface transition-all shadow-md flex items-center gap-2" href="#calculator">
+<span>Calculate Plot Potential</span>
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</a>
+<a class="bg-surface-container text-on-surface font-label-lg text-label-lg px-6 py-3.5 rounded-lg font-semibold hover:bg-surface-container-high transition-all flex items-center gap-2" href="#submission-form">
+<span>Direct Sak Submission</span>
+<span class="material-symbols-outlined text-[18px]">description</span>
+</a>
+<div class="flex items-center gap-2 ml-auto text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-fixed-dim"></span>
+<span>18 Urban Plots Currently Under Syndicate Review</span>
+</div>
+</div>
+</div>
+<!-- Hero Right Column: High Visual Real-Estate Card & Live Escrow Lock Proof -->
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<div class="relative bg-surface-container rounded-2xl overflow-hidden shadow-lg">
+<img class="w-full h-72 object-cover" data-alt="Photorealistic architectural aerial rendering of an elegant contemporary residential apartment building in Riyadh, featuring limestone facade, lush internal courtyards, floor-to-ceiling glass windows, warm ambient twilight lighting, modern Saudi architecture blending heritage mashrabiya details with minimalist Scandinavian lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCu5lewrpINK8jPQqzU8Fe27zZV8Ua3yaItqIQcRufg45gVdGPQVbPfo149ePOAY79eUIHbkPeMfyJ9svvwOsw_9lkGWR5iLtI09YsBpmo8IpGpJpncQUaXmF3RUVRikG-EUShsy7QsSk7IqiWKXcU4aC65gqjsYvX6Wgvi76Ac26jkrIKY66d4mOMcr9jlC7PPRdWL4mHs5XDHo-2VnYCQL5nxx2S0vayPqZex94MDcTdmb8lQiXeDvg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent flex flex-col justify-end p-space-lg text-on-primary">
+<div class="flex items-center justify-between mb-2">
+<span class="px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold uppercase tracking-wider">Active Land Conversion</span>
+<span class="font-code-num text-code-num font-semibold text-tertiary-fixed">SAR 18,400,000 Escrow Disbursed</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-primary">Al-Yasmin Master Parcel 88</h3>
+<p class="font-body-sm text-body-sm text-surface-container-highest/90">3,120 m² Urban Corner Plot converted into a 32-Home Syndicate in 24 days without commercial master-developer margins.</p>
+</div>
+</div>
+<!-- Trust / Fiduciary Seal Box -->
+<div class="p-space-md rounded-xl bg-surface-container-high flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[28px] shrink-0" style="font-variation-settings: 'FILL' 1;">security</span>
+<div class="flex flex-col gap-1">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Legal SPV Custody Framework</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Your title deed (Sak) never transfers until 100% of syndicate equity is verified and deposited in statutory escrow under Saudi Central Bank guidelines.
+              </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Interactive Instant Feasibility & Zoning Yield Calculator -->
+<section class="w-full bg-surface-container-low py-space-xl px-margin" id="calculator">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">architecture</span>
+<span class="font-label-sm text-label-sm font-bold uppercase tracking-widest text-secondary">Algorithmic Zoning Analysis</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface">Interactive Riyadh Plot Feasibility &amp; Residual Calculator</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+            Simulate your cadastral parcel parameters against current Riyadh Municipality building codes, floor-area ratios (FAR), and collective syndication yield.
+          </p>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-lowest px-3 py-1.5 rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-on-tertiary-container text-[18px]">verified</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Synced with Riyadh Urban Observatory 2025</span>
+</div>
+</div>
+<!-- Calculator Layout: 2 Columns (Inputs Left, Live Outputs Right) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Interactive Inputs Panel -->
+<div class="lg:col-span-5 bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col gap-space-md">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface flex items-center justify-between">
+<span>Parcel Attributes</span>
+<span class="font-code-num text-code-num text-secondary">Step 1 of 2</span>
+</h3>
+<!-- District Selection -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-semibold text-on-surface" for="district-select">Prime Urban District (Riyadh)</label>
+<div class="relative">
+<select class="w-full h-11 px-3.5 rounded-lg bg-surface font-body-md text-body-md text-on-surface appearance-none focus:outline-none focus:ring-2 focus:ring-secondary/30" id="district-select" onchange="recalculateFeasibility()">
+<option data-sqm-rate="7200" value="al-malqa">Al-Malqa (North Riyadh Prime) - 7,200 SAR/m² benchmark</option>
+<option data-sqm-rate="5800" selected="" value="al-narjis">Al-Narjis (Growth Corridor) - 5,800 SAR/m² benchmark</option>
+<option data-sqm-rate="8500" value="hittin">Hittin (High Density Executive) - 8,500 SAR/m² benchmark</option>
+<option data-sqm-rate="6400" value="al-yasmin">Al-Yasmin (Consolidated Residential) - 6,400 SAR/m² benchmark</option>
+<option data-sqm-rate="5200" value="al-hamra">Al-Hamra (East Executive) - 5,200 SAR/m² benchmark</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 pointer-events-none text-on-surface-variant text-[20px]">expand_more</span>
+</div>
+</div>
+<!-- Total Land Area (Slider + Number Sync) -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md font-semibold text-on-surface" for="area-input">Land Area (Square Meters)</label>
+<div class="flex items-center gap-1 bg-surface-container px-2.5 py-1 rounded-md">
+<input class="w-20 bg-transparent text-right font-code-num text-code-num font-bold text-on-surface focus:outline-none" id="area-input" max="15000" min="600" oninput="syncSlider(this.value)" step="100" type="number" value="2400"/>
+<span class="font-label-sm text-label-sm text-on-surface-variant">m²</span>
+</div>
+</div>
+<input class="w-full accent-secondary cursor-pointer" id="area-slider" max="10000" min="600" oninput="syncInput(this.value)" step="100" type="range" value="2400"/>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>600 m² (Boutique Villa Lot)</span>
+<span>10,000 m² (Full Block)</span>
+</div>
+</div>
+<!-- Cadastral Zoning Code Selection -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-semibold text-on-surface">Municipality Residential Zoning Code</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="p-3 rounded-xl text-left transition-all bg-secondary text-on-secondary font-label-md text-label-md font-bold flex flex-col gap-1 shadow-sm" id="zone-r3" onclick="setZoning('R3')" type="button">
+<span class="flex items-center justify-between">
+<span>Code R-3</span>
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+</span>
+<span class="font-label-sm text-label-sm font-normal opacity-90">FAR 2.4 | Max 3 Floors + Penthouse</span>
+</button>
+<button class="p-3 rounded-xl text-left transition-all bg-surface-container text-on-surface font-label-md text-label-md font-bold flex flex-col gap-1 hover:bg-surface-container-high" id="zone-r4" onclick="setZoning('R4')" type="button">
+<span class="flex items-center justify-between">
+<span>Code R-4</span>
+<span class="material-symbols-outlined text-[16px] opacity-40">circle</span>
+</span>
+<span class="font-label-sm text-label-sm font-normal text-on-surface-variant">FAR 3.0 | Mixed Residential 4.5 Fl.</span>
+</button>
+</div>
+</div>
+<!-- Street Width & Frontage -->
+<div class="grid grid-cols-2 gap-space-sm">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-semibold text-on-surface" for="street-width">Street Width</label>
+<select class="h-10 px-3 rounded-lg bg-surface font-body-sm text-body-sm text-on-surface" id="street-width" onchange="recalculateFeasibility()">
+<option value="20">20 Meters (Standard)</option>
+<option selected="" value="30">30 Meters (Double Boulevard)</option>
+<option value="36">36+ Meters (Commercial Axis)</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-semibold text-on-surface" for="frontage-sides">Frontages</label>
+<select class="h-10 px-3 rounded-lg bg-surface font-body-sm text-body-sm text-on-surface" id="frontage-sides" onchange="recalculateFeasibility()">
+<option value="1">1 Street Frontage</option>
+<option selected="" value="2">Corner Plot (2 Streets)</option>
+<option value="3">3 Street Access (Block Head)</option>
+</select>
+</div>
+</div>
+<div class="p-3 bg-surface-container rounded-lg flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+<span>Includes 2025 Balady standard setbacks &amp; basement parking ratio</span>
+</div>
+</div>
+<!-- Real-Time Projected Output Cards -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<!-- Top Architecture & Yield KPI Bar -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm">
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-1">
+<span class="font-label-sm text-label-sm font-medium">Permissible GFA</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">apartment</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-display-lg text-[32px] font-bold text-on-surface leading-tight" id="output-gfa">5,760</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">m² GFA</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-tertiary-container mt-1">FAR 2.4 Applied</span>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-1">
+<span class="font-label-sm text-label-sm font-medium">Syndicate Units</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">group</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-display-lg text-[32px] font-bold text-on-surface leading-tight" id="output-units">28</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Apartments</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1">Avg. 185 m² 3BR + Balcony</span>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-1">
+<span class="font-label-sm text-label-sm font-medium">Total Collective Cap</span>
+<span class="material-symbols-outlined text-[18px] text-on-tertiary-container">savings</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-display-lg text-[32px] font-bold text-on-tertiary-container leading-tight" id="output-cap">29.4M</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">SAR</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary mt-1">Zero Commercial Margin</span>
+</div>
+</div>
+<!-- Dual Exit Scenarios (Option A vs Option B) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Option A: Full Cash Exit -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm font-bold text-on-surface">Option A</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-on-tertiary-container">done_all</span> 100% Cashout
+                  </span>
+</div>
+<h4 class="font-headline-sm text-headline-sm font-bold text-on-surface">Full Liquidity Escrow Release</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Clean lump-sum settlement transferred to your Saudi account upon 75% syndicate buyer escrow funding milestone.
+                </p>
+<div class="my-space-sm p-space-sm rounded-xl bg-surface-container-low flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Net Landowner Cashout:</span>
+<span class="font-display-lg text-[26px] font-bold text-on-surface leading-tight" id="option-a-amount">SAR 13,920,000</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold">Zero brokerage deduction (Save ~SAR 348,000)</span>
+</div>
+<ul class="space-y-2 font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-tertiary-container text-[16px]">check</span>
+<span>Funds held in SAMA monitored bank escrow</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-tertiary-container text-[16px]">check</span>
+<span>Automatic MoJ electronic Sak de-registration upon receipt</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-tertiary-container text-[16px]">check</span>
+<span>Guaranteed completion timeline in contract</span>
+</li>
+</ul>
+</div>
+<button class="mt-space-md w-full py-2.5 rounded-lg bg-surface-container font-label-md text-label-md font-bold text-on-surface hover:bg-surface-container-high transition-all text-center" onclick="selectOption('Option A')">
+                Select Full Cashout Structure
+              </button>
+</div>
+<!-- Option B: Hybrid Equity Partnership -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-md flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -top-1 -right-1 bg-secondary text-on-secondary px-3 py-1 rounded-bl-xl font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">star</span> Recommended (+34%)
+              </div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm font-bold">Option B</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Equity + Finished Units</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm font-bold text-on-surface">Hybrid Retained Penthouse + Yield</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Retain prime top-floor penthouses at collective at-cost basis + receive balance in cash upon foundation stage.
+                </p>
+<div class="my-space-sm p-space-sm rounded-xl bg-surface-container-low flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Combined Residual Equivalent:</span>
+<span class="font-display-lg text-[26px] font-bold text-secondary leading-tight" id="option-b-amount">SAR 18,652,800</span>
+<span class="font-label-sm text-label-sm text-on-secondary-container font-semibold">Retain 4 Luxury Units + SAR 6.2M Cash</span>
+</div>
+<ul class="space-y-2 font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">verified</span>
+<span>First choice of penthouse floorplates and views</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">verified</span>
+<span>Units finished at syndication wholesale rate</span>
+</li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">verified</span>
+<span>Projected 34% IRR advantage vs immediate land offload</span>
+</li>
+</ul>
+</div>
+<button class="mt-space-md w-full py-2.5 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md font-bold hover:bg-on-secondary-container transition-all text-center shadow-sm" onclick="selectOption('Option B')">
+                Select Hybrid Equity Structure
+              </button>
+</div>
+</div>
+<!-- Comparison Micro Visualizer Chart (Inline SVG) -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="font-bold text-on-surface">Syndicate CoBuild Model vs Speculative Developer Purchase</span>
+<span class="text-on-surface-variant">Financial Efficiency Comparison</span>
+</div>
+<div class="flex flex-col gap-2 pt-1">
+<div>
+<div class="flex justify-between text-label-sm font-label-sm mb-1">
+<span class="text-on-surface">CoBuild Syndicate Landowner Yield</span>
+<span class="font-bold text-secondary">100% Value capture (SAR 18.6M)</span>
+</div>
+<div class="w-full bg-surface-container-low h-3 rounded-full overflow-hidden flex">
+<div class="bg-secondary h-full rounded-full" style="width: 95%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-label-sm font-label-sm mb-1">
+<span class="text-on-surface-variant">Traditional Speculative Developer Purchase Offer</span>
+<span class="font-bold text-on-surface-variant">Discounter Margin (-28% discount)</span>
+</div>
+<div class="w-full bg-surface-container-low h-3 rounded-full overflow-hidden flex">
+<div class="bg-outline-variant h-full rounded-full" style="width: 67%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Land Submission & Cadastral Ingestion Form -->
+<section class="w-full bg-surface-container-lowest py-space-xl px-margin" id="submission-form">
+<div class="max-w-5xl mx-auto flex flex-col gap-space-lg">
+<div class="flex flex-col gap-2 text-center items-center">
+<span class="px-3 py-1 rounded-full bg-surface-container font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider">
+          Secure Cadastral Ingestion
+        </span>
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface">Submit Your Land Deed for AI Syndicate Feasibility</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+          Direct Najiz electronic Sak parsing. Receive a certified zoning footprint, 3D preliminary volumetric study, and syndicate demand profile within 72 hours.
+        </p>
+</div>
+<!-- Multi-stage Form Container -->
+<div class="bg-surface-container-low p-space-lg sm:p-space-xl rounded-2xl shadow-sm flex flex-col gap-space-lg">
+<!-- Interactive Step Navigation Indicator -->
+<div class="grid grid-cols-4 gap-2 pb-space-sm">
+<div class="flex flex-col gap-1 border-b-2 border-primary pb-2" id="step-tab-1">
+<span class="font-label-sm text-label-sm text-on-surface font-bold">01. Cadastral ID</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Sak &amp; Parcel info</span>
+</div>
+<div class="flex flex-col gap-1 border-b-2 border-outline-variant/40 pb-2" id="step-tab-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold">02. Infrastructure</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Utility Readiness</span>
+</div>
+<div class="flex flex-col gap-1 border-b-2 border-outline-variant/40 pb-2" id="step-tab-3">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold">03. Exit Model</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Equity or Cash</span>
+</div>
+<div class="flex flex-col gap-1 border-b-2 border-outline-variant/40 pb-2" id="step-tab-4">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold">04. Documents</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Karoki &amp; Surveys</span>
+</div>
+</div>
+<form class="flex flex-col gap-space-lg" id="landowner-ingestion-form" onsubmit="handleFormSubmission(event)">
+<!-- Step 1 Form Fields: Deed & Location -->
+<div class="flex flex-col gap-space-md" id="form-step-1">
+<div class="flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Step 1: Electronic Sak &amp; Parcel Identifier</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container bg-surface-container-lowest px-2.5 py-1 rounded-full font-semibold">Najiz Integrated</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-semibold text-on-surface">Electronic Deed (Sak) Number *</label>
+<div class="relative">
+<input class="w-full h-11 px-3.5 rounded-lg bg-surface-container-lowest font-code-num text-code-num text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary/30" placeholder="e.g. 310129004812" required="" type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-on-tertiary-container text-[20px]">badge</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Found at top of your Ministry of Justice unified digital deed</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-semibold text-on-surface">National ID / Commercial Reg. (Owner) *</label>
+<input class="w-full h-11 px-3.5 rounded-lg bg-surface-container-lowest font-code-num text-code-num text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary/30" placeholder="10-digit National ID or 700 Number" required="" type="text"/>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Used solely for automated Balady cadastral verification</span>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-semibold text-on-surface">Plan Number (رقم المخطط) *</label>
+<input class="w-full h-11 px-3.5 rounded-lg bg-surface-container-lowest font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary/30" placeholder="e.g. 2450 / أ" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-semibold text-on-surface">Parcel Number (رقم القطعة) *</label>
+<input class="w-full h-11 px-3.5 rounded-lg bg-surface-container-lowest font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary/30" placeholder="e.g. 142 &amp; 143" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-semibold text-on-surface">City &amp; District *</label>
+<input class="w-full h-11 px-3.5 rounded-lg bg-surface-container-lowest font-body-md text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-secondary/30" required="" type="text" value="Riyadh - Al-Narjis"/>
+</div>
+</div>
+<!-- Map Location Component -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md font-semibold text-on-surface flex items-center justify-between">
+<span>Plot Coordinates or Google Maps Pin</span>
+<span class="font-label-sm text-label-sm text-secondary">Click to Pinpoint on Riyadh Cadastre</span>
+</label>
+<div class="w-full h-48 bg-cover bg-center rounded-xl relative overflow-hidden shadow-inner flex items-center justify-center" data-location="Riyadh, Saudi Arabia" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBOraAEvT-CfDjzkQh83ZqWOm_LgPMDifG68S2Kvv2UOfuJtBWW3wpzuBH0fX8ZMghoqgIzK4ZclTkWR1ZumpGoF7yDmcpMaQ9CXgAO3iafRRRVwh5jFVj5fZBTmllfCIZMAguQC71MgyhU8fe5Y2bgccc98iABM6Vr4Qz2VMgkfU7Puy28AlCKw89gKoPBb4Mgp_6DtqYU20SZ_XT5aJvV6edJ79jkt0Q2DwE4__O9iBlz2LlMd29hmg')">
+<div class="bg-surface-container-lowest/90 backdrop-blur-md px-4 py-2 rounded-lg shadow flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">pin_drop</span>
+<span class="font-code-num text-code-num font-bold text-on-surface">24.8415° N, 46.6621° E (Al-Narjis Cluster)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 2: Infrastructure & Utilities Readiness -->
+<div class="flex flex-col gap-space-md pt-space-xs" id="form-step-2">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Step 2: Topographical &amp; Utility Readiness</span>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-sm">
+<label class="p-space-sm bg-surface-container-lowest rounded-xl flex items-center gap-3 cursor-pointer hover:bg-surface-container transition-all">
+<input checked="" class="w-5 h-5 accent-secondary" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Electricity Grid</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Active Substation &lt;200m</span>
+</div>
+</label>
+<label class="p-space-sm bg-surface-container-lowest rounded-xl flex items-center gap-3 cursor-pointer hover:bg-surface-container transition-all">
+<input checked="" class="w-5 h-5 accent-secondary" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Public Water (NWC)</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Mains Pipe Installed</span>
+</div>
+</label>
+<label class="p-space-sm bg-surface-container-lowest rounded-xl flex items-center gap-3 cursor-pointer hover:bg-surface-container transition-all">
+<input checked="" class="w-5 h-5 accent-secondary" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Sewage Network</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Connected to District Line</span>
+</div>
+</label>
+<label class="p-space-sm bg-surface-container-lowest rounded-xl flex items-center gap-3 cursor-pointer hover:bg-surface-container transition-all">
+<input class="w-5 h-5 accent-secondary" type="checkbox"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Soil Test Report</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Geotechnical Drilled</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Step 3: Preferred Partnership Structure -->
+<div class="flex flex-col gap-space-sm pt-space-xs" id="form-step-3">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Step 3: Preferred Partnership Structure</span>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm">
+<label class="p-space-md bg-surface-container-lowest rounded-xl flex flex-col gap-2 cursor-pointer hover:bg-surface-container transition-all">
+<div class="flex items-center justify-between">
+<input class="w-4 h-4 accent-secondary" name="partnership_mode" type="radio" value="cash"/>
+<span class="font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded font-semibold text-on-surface">100% Cash</span>
+</div>
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Full Liquidity Exit</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Lump sum escrow disbursement to landowner once syndicate hits 75% reservation.</span>
+</label>
+<label class="p-space-md bg-surface-container-lowest rounded-xl flex flex-col gap-2 cursor-pointer hover:bg-surface-container transition-all ring-2 ring-secondary/20">
+<div class="flex items-center justify-between">
+<input checked="" class="w-4 h-4 accent-secondary" name="partnership_mode" type="radio" value="hybrid"/>
+<span class="font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed-variant px-2 py-0.5 rounded font-semibold">Recommended</span>
+</div>
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Hybrid Retained Penthouse</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Receive 50% in milestone cash + retain title deeds to prime top-floor penthouses.</span>
+</label>
+<label class="p-space-md bg-surface-container-lowest rounded-xl flex flex-col gap-2 cursor-pointer hover:bg-surface-container transition-all">
+<div class="flex items-center justify-between">
+<input class="w-4 h-4 accent-secondary" name="partnership_mode" type="radio" value="equity"/>
+<span class="font-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded font-semibold text-on-surface">Maximum Yield</span>
+</div>
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Full Syndicate JV</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Co-invest alongside homebuyers as prime equity stakeholder in building SPV.</span>
+</label>
+</div>
+</div>
+<!-- Step 4: Secure Document Upload -->
+<div class="flex flex-col gap-space-sm pt-space-xs" id="form-step-4">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Step 4: Cadastral Documents &amp; Regulatory Survey</span>
+<div class="p-space-lg rounded-2xl bg-surface-container-lowest border border-dashed border-outline-variant/60 flex flex-col items-center justify-center text-center gap-2">
+<span class="material-symbols-outlined text-[40px] text-secondary">cloud_upload</span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Drag &amp; Drop Electronic Sak (PDF) and Karoki Cadastral File</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Supports PDF, DWG, DXF up to 50MB. Najiz QR verification supported.</span>
+</div>
+<button class="mt-2 bg-surface-container px-4 py-2 rounded-lg font-label-md text-label-md font-semibold text-on-surface hover:bg-surface-container-high transition-all" type="button">
+                Browse System Files
+              </button>
+</div>
+</div>
+<!-- Submission Action & Legal Custody Badge -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-md pt-space-sm">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">lock</span>
+<span>All submissions protected under Saudi Personal Data Protection Law (PDPL) &amp; Fiduciary Non-Disclosure</span>
+</div>
+<button class="w-full sm:w-auto bg-primary text-on-primary font-label-lg text-label-lg px-8 py-3.5 rounded-lg font-bold hover:bg-on-surface transition-all shadow-md flex items-center justify-center gap-2" id="submit-btn" type="submit">
+<span>Initiate Feasibility Ingestion</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</form>
+<!-- Feedback Success State Container (Hidden by default, triggered via JS) -->
+<div class="hidden p-space-md rounded-xl bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-between" id="submission-success-banner">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[28px]">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-bold">Sak Ingestion Verified Successfully</span>
+<span class="font-body-sm text-body-sm">Your parcel has been assigned Study Ticket #CB-RYD-8821. Automated zoning report dispatched to your verified email within 72 hours.</span>
+</div>
+</div>
+<button class="font-label-sm text-label-sm font-bold underline" onclick="dismissSuccessBanner()">Dismiss</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: "How CoBuild Protects Landowners" Workflow -->
+<section class="w-full bg-surface-container py-space-xl px-margin">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-lg">
+<div class="flex flex-col gap-1 max-w-2xl">
+<span class="font-label-sm text-label-sm font-bold uppercase tracking-widest text-secondary">Statutory Safeguards</span>
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface">How CoBuild Protects Landowners At Every Milestone</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          A four-stage fiduciary workflow ensuring you never part with land ownership until collective capital is legally committed and locked in central-bank compliant escrow.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Workflow Card 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-secondary font-bold font-headline-sm">
+              01
+            </div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">AI Architectural &amp; Zoning Feasibility</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              In 72 hours, CoBuild runs algorithmic simulations against Balady codes to determine the optimal residential massing, GFA, unit split, and maximum syndicate budget.
+            </p>
+</div>
+<div class="pt-space-xs flex items-center gap-1.5 text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px] text-secondary">memory</span>
+<span>Zero Landowner Cost</span>
+</div>
+</div>
+<!-- Workflow Card 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-secondary font-bold font-headline-sm">
+              02
+            </div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Syndicate Pre-Launch &amp; Reservation</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              The project is offered directly to verified end-homebuyers (families looking for cost-basis apartments). Syndicates achieve 100% reservation within an average of 27-45 days.
+            </p>
+</div>
+<div class="pt-space-xs flex items-center gap-1.5 text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px] text-secondary">groups</span>
+<span>Verified KYC Buyers</span>
+</div>
+</div>
+<!-- Workflow Card 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-secondary font-bold font-headline-sm">
+              03
+            </div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">SAMA Regulated Escrow Disbursement</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              100% of the land cost is deposited into an independent statutory bank escrow. Landowner deed is transferred simultaneously with automated bank release.
+            </p>
+</div>
+<div class="pt-space-xs flex items-center gap-1.5 text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px] text-on-tertiary-container">payments</span>
+<span>100% Guaranteed Payout</span>
+</div>
+</div>
+<!-- Workflow Card 4 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-secondary font-bold font-headline-sm">
+              04
+            </div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Groundbreaking &amp; Milestone Execution</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Grade-A ISO 9001 contractors construct the building under camera monitoring. If Option B was selected, landowner retains titled penthouses with high equity appreciation.
+            </p>
+</div>
+<div class="pt-space-xs flex items-center gap-1.5 text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px] text-secondary">domain_verification</span>
+<span>Independent Supervision</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: Successful Landowner Case Studies -->
+<section class="w-full bg-surface-container-lowest py-space-xl px-margin">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm">
+<div class="flex flex-col gap-1">
+<span class="font-label-sm text-label-sm font-bold uppercase tracking-widest text-secondary">Proven Track Record</span>
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface">Recent Landowner Transformations</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            See how urban Riyadh landowners converted raw lots into successful collective communities with institutional safety.
+          </p>
+</div>
+<a class="text-secondary font-label-lg text-label-lg font-semibold flex items-center gap-1 hover:underline" href="#">
+<span>View All 14 Syndicate Conversions</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<!-- Case Study Hero Bento Card -->
+<div class="bg-surface-container-low rounded-3xl overflow-hidden shadow-sm grid grid-cols-1 lg:grid-cols-12">
+<div class="lg:col-span-6 relative h-72 lg:h-auto min-h-[320px]">
+<img class="w-full h-full object-cover" data-alt="Architectural photo of a newly finished premium boutique apartment complex in Al-Narjis, Riyadh, with beige travertine stone facade, warm exterior LED strip lighting, private landscaped balconies with wooden screens, luxury entrance lobby, and desert modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBubwILXA0H0ZZS9NMp6NTNX0q9zIvPbTgccvcrYJf55n3KWVqfSJsFAAPluiN4OuVnQyu6mBLAms8dxpFVjwzb1mn2NPJGutK_UPBdCQ--L9K6xVFjd4IyDEmLZ8paHGTVgy1uys2yXzeC1OuDUOTgnwdr1NG7HWJDkCCe45HA5uw6Xl5IgPpCa8Pc4tJ-6LSvQGPdmSANH-RgxI0SPIyj_YrZPrIdB7xT9HjVEpYhLmLkk3mh3T2L0w"/>
+<div class="absolute top-4 left-4 bg-primary text-on-primary font-label-sm text-label-sm px-3 py-1 rounded-full font-bold uppercase tracking-wider">
+            Completed Project Q4 2024
+          </div>
+</div>
+<div class="lg:col-span-6 p-space-lg sm:p-space-xl flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">verified</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Al-Narjis Block 14 Parcel (Sak #41029481)</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg font-bold text-on-surface">
+              "We Achieved 22% Higher Net Liquidity Than Any Traditional Brokerage Offer."
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Sheikh Tariq Al-Hazza owned an unutilized 2,800 m² corner plot in Al-Narjis for 6 years. Speculative brokers offered SAR 4,600/m² on delayed promissory terms. CoBuild syndicated the plot to 24 pre-qualified families within 18 days, releasing 100% cash in bank escrow with zero broker deductions.
+            </p>
+<div class="grid grid-cols-3 gap-space-sm pt-space-xs">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">18 Days</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Syndicate Full Funding</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-bold text-on-tertiary-container">+22%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Net Net Value Uplift</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-bold text-secondary">0 SAR</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Legal or Listing Fees</span>
+</div>
+</div>
+</div>
+<div class="p-space-sm rounded-xl bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-3">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Portrait photo of a distinguished Saudi real-estate landowner and family office principal wearing traditional white thobe and red shemagh, warm professional lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUzR154aSJaMy2_yvYFQnDDrl4FJXfonu89PLmazH8zjAIRUIFmmt3Fhpk8EFOpb5StfK9jxKrZnvrMKtE3hPT9qGn3tm2FvmHBtdc2RmsMqiPqYWbfl9pG-rBaevHw1HkeacK6qPJ51nODhuAol8wQe6oj5PxLBABOQsCDAMosMDLsivBOLn31uCIgovPK4ESg2X4fV6SSjCUIX987fUzf-rTlZLKufiNH1hM--24DWNLZeG6NA47uw"/>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">T. Al-Hazza</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Family Land Trustee, Riyadh</span>
+</div>
+</div>
+<span class="font-code-num text-code-num font-semibold text-secondary">24 Apartments Delivered</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 6: Direct Land Specialist Advisory Call to Action -->
+<section class="w-full bg-surface-container-high py-space-xl px-margin">
+<div class="max-w-5xl mx-auto bg-primary text-on-primary rounded-3xl p-space-lg sm:p-space-xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-space-lg relative overflow-hidden">
+<div class="flex flex-col gap-space-sm z-10">
+<span class="font-label-sm text-label-sm font-bold uppercase tracking-widest text-tertiary-fixed">Confidential Institutional Appraisal</span>
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-primary leading-tight">
+          Own 1,500 m² or More in Riyadh? Meet Our Cadastral Team.
+        </h2>
+<p class="font-body-md text-body-md text-on-primary-container max-w-xl">
+          Schedule a private 30-minute feasibility review at our King Fahd Road headquarters or via private encrypted video session.
+        </p>
+<div class="flex items-center gap-3 pt-2">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-tertiary-fixed">
+<span class="material-symbols-outlined text-[16px]">call</span>
+<span>+966 11 490 8820</span>
+</div>
+<span class="text-on-primary-container">|</span>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-tertiary-fixed">
+<span class="material-symbols-outlined text-[16px]">mail</span>
+<span>landowners@cobuild.sa</span>
+</div>
+</div>
+</div>
+<div class="shrink-0 flex flex-col gap-2 z-10 w-full sm:w-auto">
+<a class="bg-tertiary-fixed text-on-tertiary-fixed font-label-lg text-label-lg px-8 py-4 rounded-xl font-bold hover:bg-tertiary-fixed-dim transition-all shadow-md text-center" href="#submission-form">
+          Submit Land Deed Directly
+        </a>
+<span class="font-label-sm text-label-sm text-on-primary-container text-center">Ministry of Justice Najiz verified</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Inline JavaScript Logic for Dynamic Feasibility Calculations -->
+<script>
+  let activeZoning = 'R3';
+
+  function setZoning(zone) {
+    activeZoning = zone;
+    const btnR3 = document.getElementById('zone-r3');
+    const btnR4 = document.getElementById('zone-r4');
+
+    if (zone === 'R3') {
+      btnR3.className = 'p-3 rounded-xl text-left transition-all bg-secondary text-on-secondary font-label-md text-label-md font-bold flex flex-col gap-1 shadow-sm';
+      btnR3.querySelector('.material-symbols-outlined').textContent = 'check_circle';
+      btnR4.className = 'p-3 rounded-xl text-left transition-all bg-surface-container text-on-surface font-label-md text-label-md font-bold flex flex-col gap-1 hover:bg-surface-container-high';
+      btnR4.querySelector('.material-symbols-outlined').textContent = 'circle';
+    } else {
+      btnR4.className = 'p-3 rounded-xl text-left transition-all bg-secondary text-on-secondary font-label-md text-label-md font-bold flex flex-col gap-1 shadow-sm';
+      btnR4.querySelector('.material-symbols-outlined').textContent = 'check_circle';
+      btnR3.className = 'p-3 rounded-xl text-left transition-all bg-surface-container text-on-surface font-label-md text-label-md font-bold flex flex-col gap-1 hover:bg-surface-container-high';
+      btnR3.querySelector('.material-symbols-outlined').textContent = 'circle';
+    }
+    recalculateFeasibility();
+  }
+
+  function syncSlider(val) {
+    document.getElementById('area-slider').value = val;
+    recalculateFeasibility();
+  }
+
+  function syncInput(val) {
+    document.getElementById('area-input').value = val;
+    recalculateFeasibility();
+  }
+
+  function recalculateFeasibility() {
+    const areaInput = parseFloat(document.getElementById('area-input').value) || 2400;
+    const districtSelect = document.getElementById('district-select');
+    const selectedOption = districtSelect.options[districtSelect.selectedIndex];
+    const sqmRate = parseFloat(selectedOption.getAttribute('data-sqm-rate')) || 5800;
+
+    const far = activeZoning === 'R3' ? 2.4 : 3.0;
+    const gfa = Math.round(areaInput * far);
+    const avgApartmentSize = 190; // Average 3BR gross size
+    const estimatedUnits = Math.round(gfa / avgApartmentSize);
+
+    // Total Collective Capital Valuation
+    const constructionCostPerSqm = 2400;
+    const directLandValuation = areaInput * sqmRate;
+    const totalDevelopmentBudget = (gfa * constructionCostPerSqm) + directLandValuation;
+
+    // Option A: Direct Cash Exit
+    const optionAVal = directLandValuation;
+
+    // Option B: Hybrid Equity Partnership (+34% value uplift)
+    const optionBVal = Math.round(directLandValuation * 1.34);
+
+    // Formatter
+    const fmt = new Intl.NumberFormat('en-US');
+
+    document.getElementById('output-gfa').textContent = fmt.format(gfa);
+    document.getElementById('output-units').textContent = estimatedUnits;
+    document.getElementById('output-cap').textContent = (totalDevelopmentBudget / 1000000).toFixed(1) + 'M';
+
+    document.getElementById('option-a-amount').textContent = 'SAR ' + fmt.format(optionAVal);
+    document.getElementById('option-b-amount').textContent = 'SAR ' + fmt.format(optionBVal);
+  }
+
+  function selectOption(optionName) {
+    const formElement = document.getElementById('submission-form');
+    formElement.scrollIntoView({ behavior: 'smooth' });
+    const radios = document.getElementsByName('partnership_mode');
+    if (optionName === 'Option A') {
+      radios[0].checked = true;
+    } else {
+      radios[1].checked = true;
+    }
+  }
+
+  function handleFormSubmission(event) {
+    event.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[18px]">progress_activity</span><span>Validating with Najiz...</span>';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      btn.innerHTML = '<span>Initiate Feasibility Ingestion</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span>';
+      btn.disabled = false;
+      const banner = document.getElementById('submission-success-banner');
+      banner.classList.remove('hidden');
+      banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 1200);
+  }
+
+  function dismissSuccessBanner() {
+    document.getElementById('submission-success-banner').classList.add('hidden');
+  }
+
+  // Initialize values on load
+  document.addEventListener('DOMContentLoaded', () => {
+    recalculateFeasibility();
+  });
+</script></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 mt-space-xl"><div class="w-full px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-xl pb-space-lg border-b border-outline-variant/20"><div class="space-y-space-sm lg:col-span-2"><div class="flex items-center gap-space-xs"><img alt="CoBuild Brand Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WlkSdcUo2owSob12eh3iWtWBAL3olBse8xTQh-Z3Zr-9T6zUJ3IyXdYt3tNQ4QGzSKcb4gyIe_LKbX_ywFxt4cOhaVtFR8nP7TfbiO4a7IXinWWGq2CrJk3tNeyYDCBfj0U4g29T8VJ-TBfQn6dVFMowSVsFOblPuB3lAwvpwL3lDSqNaqSTADGR9Glsj5XPnuFuqBt_utNwPkIJX6ELsll30qUZY_YMRIrGg-72heG5c6wil259qLPzrX"/><span class="font-headline-sm text-headline-sm font-bold text-on-surface">CoBuild</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed max-w-md">Architectural collective real estate platform empowering buyers to directly fund, supervise, and co-own sustainable residential buildings through fiduciary transparency and verifiable construction logs.</p><div class="pt-space-xs flex flex-wrap items-center gap-2"><span class="inline-flex items-center gap-1 text-label-sm font-label-sm text-on-surface-variant font-medium bg-surface-container-low px-2 py-1 rounded"><span class="material-symbols-outlined text-[14px]">translate</span> Dual LTR/RTL Arabic &amp; English Framework</span><span class="inline-flex items-center gap-1 text-label-sm font-label-sm text-on-tertiary-container font-semibold bg-surface-container-low px-2 py-1 rounded"><span class="material-symbols-outlined text-[14px]">verified_user</span> 100% Escrow Backed</span></div></div><div><h4 class="font-label-lg text-label-lg font-semibold text-on-surface mb-space-md">Buyer &amp; Community</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" data-path="project-marketplace" href="#">Project Marketplace</a></li><li><a class="hover:text-on-surface transition-colors" data-path="buyer-dashboard" href="#">My Apartment Portal</a></li><li><a class="hover:text-on-surface transition-colors" data-path="community-hub-governance" href="#">Community Voting Hub</a></li><li><a class="hover:text-on-surface transition-colors" data-path="secondary-market-syndicate-resale" href="#">Secondary Resale Market</a></li><li><a class="hover:text-on-surface transition-colors" data-path="buyer-onboarding-kyc-verification" href="#">Buyer KYC &amp; Onboarding</a></li><li><a class="hover:text-on-surface transition-colors" data-path="unit-customization-finishes-studio" href="#">Finishes &amp; Customization</a></li></ul></div><div><h4 class="font-label-lg text-label-lg font-semibold text-on-surface mb-space-md">Site, Legal &amp; Partners</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" data-path="construction-live-monitoring" href="#">Live Construction IoT Feed</a></li><li><a class="hover:text-on-surface transition-colors" data-path="contractor-engineering-inspection-journal" href="#">Contractor Inspection Logs</a></li><li><a class="hover:text-on-surface transition-colors" data-path="landowner-submission-portal" href="#">Landowner Submission Portal</a></li><li><a class="hover:text-on-surface transition-colors" data-path="admin-project-command" href="#">Admin Command Center</a></li><li><a class="hover:text-on-surface transition-colors" data-path="architectural-documents-legal-vault" href="#">Architectural &amp; Legal Vault</a></li><li><a class="hover:text-on-surface transition-colors" data-path="escrow-statutory-payments" href="#">Milestone Escrow Drawers</a></li></ul></div><div><h4 class="font-label-lg text-label-lg font-semibold text-on-surface mb-space-md">Fiduciary Guarantee</h4><div class="space-y-space-sm"><div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface bg-surface-container-low p-2 rounded-lg"><span class="material-symbols-outlined text-secondary text-[18px]">verified</span><span>Central Bank Escrow Compliant</span></div><div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface bg-surface-container-low p-2 rounded-lg"><span class="material-symbols-outlined text-secondary text-[18px]">engineering</span><span>ISO 9001 Construction Auditing</span></div><div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface bg-surface-container-low p-2 rounded-lg"><span class="material-symbols-outlined text-on-tertiary-container text-[18px]">token</span><span>Smart Contracts Verified by Quantstamp</span></div></div></div></div><div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md text-label-sm font-label-sm text-on-surface-variant"><div>© 2025 CoBuild Technologies Ltd. All collective property deeds are held under regulated statutory escrows.</div><div class="flex items-center gap-space-lg"><a class="hover:text-on-surface transition-colors" data-path="buyer-onboarding-kyc-verification" href="#">Identity Verification</a><a class="hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a><a class="hover:text-on-surface transition-colors" data-path="risk-disclosure" href="#">Risk Disclosure</a></div></div></div></footer></body></html>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Plus+Jakarta+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#d3e4fe","on-primary-fixed-variant":"#3f465c","on-error-container":"#93000a","secondary-fixed":"#dde1ff","on-surface-variant":"#45464d","surface-container-highest":"#d3e4fe","secondary":"#3755c3","surface-container-lowest":"#ffffff","on-primary-container":"#7c839b","surface-dim":"#cbdbf5","on-tertiary":"#ffffff","surface-bright":"#f8f9ff","primary-fixed":"#dae2fd","on-secondary":"#ffffff","on-secondary-container":"#00217a","on-secondary-fixed-variant":"#173bab","outline-variant":"#c6c6cd","tertiary":"#000000","on-primary-fixed":"#131b2e","outline":"#76777d","inverse-on-surface":"#eaf1ff","on-background":"#0b1c30","inverse-primary":"#bec6e0","on-tertiary-fixed-variant":"#005236","tertiary-container":"#002113","on-surface":"#0b1c30","background":"#f8f9ff","inverse-surface":"#213145","secondary-fixed-dim":"#b8c4ff","on-primary":"#ffffff","primary":"#000000","error":"#ba1a1a","error-container":"#ffdad6","surface":"#f8f9ff","on-tertiary-fixed":"#002113","surface-tint":"#565e74","surface-container-high":"#dce9ff","on-error":"#ffffff","surface-container-low":"#eff4ff","on-tertiary-container":"#009668","tertiary-fixed-dim":"#4edea3","on-secondary-fixed":"#001453","secondary-container":"#708cfd","surface-container":"#e5eeff","tertiary-fixed":"#6ffbbe","primary-container":"#131b2e","primary-fixed-dim":"#bec6e0"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-xs":"0.25rem","margin":"2rem","margin-mobile":"1rem","space-xl":"2.5rem","gutter":"1.5rem","gutter-mobile":"1rem","space-md":"1rem","space-lg":"1.5rem","space-sm":"0.5rem"},fontFamily:{"body-md":["Inter"],"headline-md":["Plus Jakarta Sans"],"label-md":["Inter"],"headline-sm":["Plus Jakarta Sans"],"code-num":["Inter"],"display-lg":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"label-lg":["Inter"],"label-sm":["Inter"],"display-lg-mobile":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"body-sm":["Inter"],"body-lg":["Inter"]},fontSize:{"body-md":["15px",{lineHeight:"24px",letterSpacing:"0",fontWeight:"400"}],"headline-md":["24px",{lineHeight:"32px",letterSpacing:"-0.01em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"500"}],"headline-sm":["20px",{lineHeight:"28px",letterSpacing:"-0.005em",fontWeight:"600"}],"code-num":["14px",{lineHeight:"20px",letterSpacing:"-0.01em",fontWeight:"500"}],"display-lg":["48px",{lineHeight:"56px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.015em",fontWeight:"600"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"600"}],"display-lg-mobile":["36px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-lg-mobile":["26px",{lineHeight:"34px",letterSpacing:"-0.015em",fontWeight:"600"}],"body-sm":["13px",{lineHeight:"20px",letterSpacing:"0",fontWeight:"400"}],"body-lg":["18px",{lineHeight:"28px",letterSpacing:"0",fontWeight:"400"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-b border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="bg-primary text-on-primary px-margin py-1.5 flex items-center justify-between text-body-sm font-body-sm"><div class="flex items-center gap-space-sm mx-auto"><span class="flex h-2 w-2 relative"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary-fixed opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary-fixed"></span></span><span class="font-label-sm uppercase tracking-wider text-tertiary-fixed font-semibold">Live Construction Log</span><span class="text-outline-variant">|</span><span>Al-Noor Heights Phase 2 foundation concrete pour completed today with 98.4% buyer sign-off.</span><a class="text-tertiary-fixed hover:underline font-label-md flex items-center gap-0.5 ml-space-xs" data-path="construction-live" href="#">View Live Feed <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a></div></div><div class="h-20 w-full px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md shrink-0"><a class="flex items-center gap-space-xs" data-path="landing-page" href="#"><img alt="CoBuild Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WlkSdcUo2owSob12eh3iWtWBAL3olBse8xTQh-Z3Zr-9T6zUJ3IyXdYt3tNQ4QGzSKcb4gyIe_LKbX_ywFxt4cOhaVtFR8nP7TfbiO4a7IXinWWGq2CrJk3tNeyYDCBfj0U4g29T8VJ-TBfQn6dVFMowSVsFOblPuB3lAwvpwL3lDSqNaqSTADGR9Glsj5XPnuFuqBt_utNwPkIJX6ELsll30qUZY_YMRIrGg-72heG5c6wil259qLPzrX"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight">CoBuild</span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium -mt-1">Collective Homebuilding</span></div></a><div class="ml-space-xs inline-flex items-center bg-surface-container-low p-0.5 rounded-lg"><button class="px-2 py-0.5 rounded-lg text-label-sm font-label-sm bg-surface-container-lowest text-on-surface font-semibold shadow-sm" type="button">EN</button><button class="px-2 py-0.5 rounded-lg text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface transition-colors font-medium" type="button">العربية</button></div></div><nav class="hidden lg:flex items-center gap-space-xs font-label-lg text-label-lg" data-active-classes="text-on-surface font-bold bg-surface-container-low rounded-lg"><a class="text-on-surface-variant hover:text-on-surface px-space-md py-space-sm transition-colors" data-path="marketplace" href="#">Marketplace</a><a class="text-on-surface-variant hover:text-on-surface px-space-md py-space-sm transition-colors" data-path="my-apartment" href="#">My Apartment</a><a class="text-on-surface-variant hover:text-on-surface px-space-md py-space-sm transition-colors" data-path="construction-live" href="#">Construction Live</a><a class="text-on-surface-variant hover:text-on-surface px-space-md py-space-sm transition-colors" data-path="community-hub" href="#">Community Hub</a><a aria-current="page" class="px-space-md py-space-sm transition-colors text-on-surface font-bold bg-surface-container-low rounded-lg" data-path="escrow-payments" href="#">Escrow &amp; Payments</a><div class="relative group"><button class="text-on-surface-variant hover:text-on-surface px-space-md py-space-sm transition-colors inline-flex items-center gap-1 font-label-lg text-label-lg" type="button">Tools <span class="material-symbols-outlined text-[18px] group-hover:rotate-180 transition-transform">expand_more</span></button><div class="absolute left-0 top-full hidden group-hover:flex flex-col bg-surface-container-lowest border border-outline-variant/40 rounded-xl shadow-[0_12px_24px_rgba(0,0,0,0.08)] py-2 w-52 z-50"><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low px-space-md py-2 transition-colors block text-label-md" data-path="unit-finishes" href="#">Unit Finishes Studio</a><a class="text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low px-space-md py-2 transition-colors block text-label-md" data-path="legal-vault" href="#">Legal &amp; Vault</a></div></div></nav><div class="flex items-center gap-space-md shrink-0"><div class="hidden xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low border border-outline-variant/40"><span class="material-symbols-outlined text-[16px] text-on-tertiary-container">verified_user</span><span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold">100% Escrow Protected</span></div><button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" title="Site Notifications" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[10px] font-bold text-on-secondary">3</span></button><div class="flex items-center gap-space-sm pl-space-xs"><img alt="Sarah Al-Mansoor" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGOXR6ElKI-TRGO3rVUejcuUT5itCp7C4i9L54ywhp8LiseCKSraN1htnLrF2WaMwrFQRYvT3AjahknZ-Kjzr-64nKAX8XjQAFpVV2QwFUNhiBC_zSlXbBueXOuyVxO_JjJpR4au9Xl3odYxzaavP9HpM0sb6MbchlOkvdT_Y3ADVrmjNj7KIhanlHhnBLlBFd-zWVVj7eDdu56IW2QVj2XJYmO4K8zGWcW75MhcPVvKzrHt7YJrjmqQ"/><div class="hidden md:flex flex-col text-left"><span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Sarah Al-Mansoor</span><span class="font-label-sm text-label-sm text-on-surface-variant">Co-Owner Unit 402</span></div><button class="text-on-surface-variant hover:text-on-surface p-1 rounded-lg" type="button"><span class="material-symbols-outlined text-[18px]">expand_more</span></button></div></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full">
+<!-- Fiduciary Header Banner -->
+<div class="w-full bg-surface-container-low py-space-lg px-margin">
+<div class="max-w-[1360px] mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-lg">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+            SAMA Statutory Escrow
+          </span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px] text-on-tertiary-container">verified</span>
+            Wafi Certified Authority No. WF-2024-884
+          </span>
+<span class="font-code-num text-code-num text-on-surface-variant">Acc #SA82-RAJH-0091-2839-4401</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">Statutory Escrow &amp; Milestone Ledger</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Unit 402, Al-Noor Heights Collective • Custodian Bank: <strong class="text-on-surface font-semibold">Al Rajhi Bank (Fiduciary Branch)</strong>
+</p>
+</div>
+<div class="flex items-center gap-space-sm bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="p-2.5 rounded-lg bg-surface-container-high text-secondary">
+<span class="material-symbols-outlined text-[28px]">shield_person</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Independent Fiduciary Agent</span>
+<span class="font-label-lg text-label-lg font-bold text-on-surface">PwC Middle East &amp; Al-Tamimi Law</span>
+<span class="font-code-num text-code-num text-on-tertiary-container flex items-center gap-1">
+<span class="h-2 w-2 rounded-full bg-on-tertiary-container inline-block"></span>
+            Monthly Fiduciary Audit: Current
+          </span>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-[1360px] mx-auto w-full px-margin py-space-xl flex flex-col gap-space-xl">
+<!-- Top KPI Grid: Macro Project Escrow vs Buyer Individual Sub-Account -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- KPI 1: Project Escrow Total -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Total Project Escrow Trust</span>
+<span class="p-1.5 rounded-lg bg-surface-container text-secondary">
+<span class="material-symbols-outlined text-[18px]">domain</span>
+</span>
+</div>
+<div class="flex flex-col">
+<span class="font-display-lg-mobile text-display-lg-mobile font-bold text-on-surface font-headline-md tracking-tight">$4,200,000</span>
+<div class="flex items-center justify-between text-body-sm text-body-sm text-on-surface-variant mt-2 pt-2 border-t border-surface-container-high">
+<span>Remaining in Trust:</span>
+<span class="font-code-num text-code-num font-semibold text-on-surface">$2,840,000 (67.6%)</span>
+</div>
+</div>
+</div>
+<!-- KPI 2: Unit 402 Total Allocation -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Unit 402 Cost (Zero Markup)</span>
+<span class="p-1.5 rounded-lg bg-secondary-fixed text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[18px]">architecture</span>
+</span>
+</div>
+<div class="flex flex-col">
+<span class="font-display-lg-mobile text-display-lg-mobile font-bold text-on-surface font-headline-md tracking-tight">$172,200</span>
+<div class="flex items-center justify-between text-body-sm text-body-sm text-on-surface-variant mt-2 pt-2 border-t border-surface-container-high">
+<span>Direct Cost Baseline:</span>
+<span class="font-code-num text-code-num font-semibold text-on-tertiary-container">Architectural Cost-to-Build</span>
+</div>
+</div>
+</div>
+<!-- KPI 3: Unit 402 Deposited vs Retained -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Your Deposited Escrow</span>
+<span class="p-1.5 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed">
+<span class="material-symbols-outlined text-[18px]">lock_open</span>
+</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg-mobile text-display-lg-mobile font-bold text-on-surface font-headline-md tracking-tight">$112,000</span>
+<span class="font-label-md text-label-md font-bold text-on-tertiary-container">65.0%</span>
+</div>
+<div class="flex items-center justify-between text-body-sm text-body-sm text-on-surface-variant mt-2 pt-2 border-t border-surface-container-high">
+<span>Retained in sub-account:</span>
+<span class="font-code-num text-code-num font-semibold text-on-surface">$60,200 (35.0%)</span>
+</div>
+</div>
+</div>
+<!-- KPI 4: Value & Direct Equity Margin -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Projected Market Appraisal</span>
+<span class="p-1.5 rounded-lg bg-surface-container-high text-on-tertiary-container">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg-mobile text-display-lg-mobile font-bold text-on-surface font-headline-md tracking-tight">$238,000</span>
+<span class="font-label-md text-label-md font-bold text-on-tertiary-container">+$65,800</span>
+</div>
+<div class="flex items-center justify-between text-body-sm text-body-sm text-on-surface-variant mt-2 pt-2 border-t border-surface-container-high">
+<span>Unrealized Equity Margin:</span>
+<span class="font-code-num text-code-num font-semibold text-on-tertiary-container">+38.2% vs Resale</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Escrow Protection Anatomy & Physical Ledger Visual -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Interactive Progress Stream -->
+<div class="lg:col-span-8 bg-surface-container-lowest p-space-xl rounded-xl shadow-sm flex flex-col gap-space-lg">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Dual-Signoff Protocol</span>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Milestone Drawdown Verification Schedule</h2>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex h-2.5 w-2.5 rounded-full bg-on-tertiary-container animate-pulse"></span>
+<span class="font-label-md text-label-md text-on-tertiary-container font-semibold">Milestone 4 Pending Release</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Funds are held under statutory escrow at Al Rajhi Bank. Escrow disbursements require simultaneous verification by accredited engineering inspectors (Bureau Veritas, Khatib &amp; Alami) and collective co-owner consensus.
+        </p>
+<!-- Cumulative Linear Flow -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col gap-space-sm">
+<div class="flex justify-between items-center text-body-sm font-body-sm">
+<span class="font-semibold text-on-surface">Overall Escrow Depletion / Construction Execution</span>
+<span class="font-code-num text-code-num font-bold text-on-surface">65.0% Disbursed &amp; Certified</span>
+</div>
+<div class="w-full bg-surface-container-high h-3 rounded-full overflow-hidden flex">
+<div class="bg-secondary h-full" style="width: 15%;" title="Milestone 1: Land (15%)"></div>
+<div class="bg-secondary h-full" style="width: 25%;" title="Milestone 2: Substructure (25%)"></div>
+<div class="bg-secondary h-full" style="width: 25%;" title="Milestone 3: L1-L3 Frame (25%)"></div>
+<div class="bg-tertiary-fixed-dim h-full animate-pulse" style="width: 15%;" title="Milestone 4: L4-L5 Slab (15% - Pending)"></div>
+<div class="bg-surface-variant h-full" style="width: 20%;" title="Locked Future Milestones (20%)"></div>
+</div>
+<div class="flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant flex-wrap gap-2">
+<div class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-secondary"></span> Released ($112,000)</div>
+<div class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-tertiary-fixed-dim"></span> Under Review ($25,830)</div>
+<div class="flex items-center gap-1.5"><span class="h-2 w-2 rounded-full bg-surface-variant"></span> Safely Escrowed ($34,440)</div>
+</div>
+</div>
+<!-- Detailed Table of Milestones -->
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-md text-label-md">
+<th class="py-3 px-4 rounded-l-lg">Milestone Phase</th>
+<th class="py-3 px-3">Sub-Amount</th>
+<th class="py-3 px-3">Audit &amp; Legal Seal</th>
+<th class="py-3 px-3">Escrow Status</th>
+<th class="py-3 px-4 rounded-r-lg text-right">Verification Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high">
+<!-- M1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-semibold text-on-surface">M1: Land Title &amp; Registry</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">15% Equity Tranche</span>
+</div>
+</td>
+<td class="py-4 px-3 font-code-num text-code-num font-semibold text-on-surface">$25,830</td>
+<td class="py-4 px-3">
+<span class="inline-flex items-center gap-1 text-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded text-on-surface">
+<span class="material-symbols-outlined text-[14px] text-secondary">verified</span>
+                    MoJ Deed #992819001
+                  </span>
+</td>
+<td class="py-4 px-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px] text-on-tertiary-container">check_circle</span>
+                    Released Dec 2024
+                  </span>
+</td>
+<td class="py-4 px-4 text-right">
+<button class="text-secondary hover:text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold inline-flex items-center gap-1" type="button">
+                    Deed PDF <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</button>
+</td>
+</tr>
+<!-- M2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-semibold text-on-surface">M2: Substructure &amp; Raft Pour</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">25% Structural Tranche</span>
+</div>
+</td>
+<td class="py-4 px-3 font-code-num text-code-num font-semibold text-on-surface">$43,050</td>
+<td class="py-4 px-3">
+<span class="inline-flex items-center gap-1 text-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded text-on-surface">
+<span class="material-symbols-outlined text-[14px] text-secondary">engineering</span>
+                    Bureau Veritas Lab Lab-88
+                  </span>
+</td>
+<td class="py-4 px-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px] text-on-tertiary-container">check_circle</span>
+                    Released Feb 2025
+                  </span>
+</td>
+<td class="py-4 px-4 text-right">
+<button class="text-secondary hover:text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold inline-flex items-center gap-1" type="button">
+                    Cert Stamp <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</button>
+</td>
+</tr>
+<!-- M3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-semibold text-on-surface">M3: Superstructure to Level 3</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">25% Framing Tranche</span>
+</div>
+</td>
+<td class="py-4 px-3 font-code-num text-code-num font-semibold text-on-surface">$43,050</td>
+<td class="py-4 px-3">
+<span class="inline-flex items-center gap-1 text-label-sm text-label-sm bg-surface-container px-2 py-0.5 rounded text-on-surface">
+<span class="material-symbols-outlined text-[14px] text-secondary">domain_verification</span>
+                    Khatib &amp; Alami Stamp #K492
+                  </span>
+</td>
+<td class="py-4 px-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px] text-on-tertiary-container">check_circle</span>
+                    Released Apr 2025
+                  </span>
+</td>
+<td class="py-4 px-4 text-right">
+<button class="text-secondary hover:text-on-secondary-fixed-variant font-label-sm text-label-sm font-semibold inline-flex items-center gap-1" type="button">
+                    Inspection <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</button>
+</td>
+</tr>
+<!-- M4: ACTIVE / FOCUS -->
+<tr class="bg-surface-container/60 transition-colors">
+<td class="py-4 px-4">
+<div class="flex items-start gap-2">
+<span class="p-1 rounded bg-secondary-fixed text-on-secondary-fixed mt-0.5">
+<span class="material-symbols-outlined text-[16px]">pending_actions</span>
+</span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">M4: Roof Slab Cast (Level 4 &amp; 5)</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Currently 92% Complete • Release target: June 10, 2025</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-3 font-code-num text-code-num font-bold text-on-surface">$25,830</td>
+<td class="py-4 px-3">
+<div class="flex flex-col gap-1">
+<span class="inline-flex items-center gap-1 text-label-sm text-label-sm bg-surface-container-lowest px-2 py-0.5 rounded font-medium text-on-surface">
+<span class="material-symbols-outlined text-[14px] text-on-tertiary-container">fact_check</span>
+                      Site Sensor Verified 98%
+                    </span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Engineer Audit in progress</span>
+</div>
+</td>
+<td class="py-4 px-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm font-semibold shadow-sm">
+<span class="material-symbols-outlined text-[14px] animate-spin">sync</span>
+                    Inspection Active
+                  </span>
+</td>
+<td class="py-4 px-4 text-right">
+<button class="bg-primary text-on-primary hover:bg-primary-container px-3 py-1.5 rounded-lg text-label-sm font-label-sm font-semibold shadow-sm inline-flex items-center gap-1 transition-all" id="approveMilestoneBtn" type="button">
+<span class="material-symbols-outlined text-[16px]">how_to_vote</span>
+                    Cast Co-Owner Vote
+                  </button>
+</td>
+</tr>
+<!-- M5 -->
+<tr class="opacity-75 hover:opacity-100 transition-opacity">
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-semibold text-on-surface">M5: MEP Rough-ins &amp; Façade Glass</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">10% Finishes Tranche</span>
+</div>
+</td>
+<td class="py-4 px-3 font-code-num text-code-num font-semibold text-on-surface">$17,220</td>
+<td class="py-4 px-3 text-label-sm font-label-sm text-on-surface-variant">
+                  Pending Structural Completion
+                </td>
+<td class="py-4 px-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                    Locked in Trust
+                  </span>
+</td>
+<td class="py-4 px-4 text-right text-label-sm font-label-sm text-on-surface-variant font-medium">
+                  Automated Queue
+                </td>
+</tr>
+<!-- M6 -->
+<tr class="opacity-75 hover:opacity-100 transition-opacity">
+<td class="py-4 px-4">
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-semibold text-on-surface">M6: Handover, Warranty &amp; Final Deed</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">10% Statutory Retention</span>
+</div>
+</td>
+<td class="py-4 px-3 font-code-num text-code-num font-semibold text-on-surface">$17,220</td>
+<td class="py-4 px-3 text-label-sm font-label-sm text-on-surface-variant">
+                  Requires 100% Snagging Sign-off
+                </td>
+<td class="py-4 px-3">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                    Locked until Snagging
+                  </span>
+</td>
+<td class="py-4 px-4 text-right text-label-sm font-label-sm text-on-surface-variant font-medium">
+                  Decennial Protection
+                </td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Co-owner Action Drawer Modal Trigger Note -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md" id="voteBanner">
+<div class="flex items-center gap-space-sm">
+<span class="p-2 rounded-lg bg-surface-container-lowest text-secondary">
+<span class="material-symbols-outlined text-[24px]">gavel</span>
+</span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Buyer Milestone 4 Governance Status</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">16 of 18 co-owners approved concrete cure testing results. Sarah Al-Mansoor status: <strong class="text-on-surface font-semibold" id="userVoteStatus">Pending Review</strong></span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="bg-secondary text-on-secondary hover:bg-on-secondary-fixed-variant px-4 py-2 rounded-lg text-label-md font-label-md font-semibold transition-all" id="quickApproveBtn" type="button">
+              Review Lab Core &amp; Approve
+            </button>
+</div>
+</div>
+</div>
+<!-- Right Column: Institutional Vault & SAMA Verification Card -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Custodian Certificate Card -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col gap-space-md relative overflow-hidden">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[24px] text-secondary">account_balance</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Custodian Protocol</span>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container-high px-2 py-0.5 rounded text-on-surface font-semibold">Tier 1 Bank</span>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-lg flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Designated Escrow Depository</span>
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Al Rajhi Bank Statutory Fiduciary</span>
+<div class="flex items-center justify-between mt-1">
+<span class="font-body-sm text-body-sm text-on-surface-variant">IBAN Trust:</span>
+<span class="font-code-num text-code-num font-mono font-semibold text-on-surface">SA82 8000 0912 8394 401</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">SAMA Regulatory Code:</span>
+<span class="font-code-num text-code-num font-semibold text-on-surface">KSA-ESC-2024-ALNOOR</span>
+</div>
+</div>
+<div class="flex flex-col gap-space-xs font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-tertiary-container">verified</span>
+<span>Zero Commingling: Sub-account ringfenced</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-tertiary-container">verified</span>
+<span>Drawdowns require Wafi engineering stamp</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-on-tertiary-container">verified</span>
+<span>Statutory interest credited directly to project reserve</span>
+</div>
+</div>
+<!-- Monthly Audit Badge -->
+<div class="bg-surface-container-high p-space-md rounded-lg flex items-start gap-space-sm mt-space-xs">
+<span class="material-symbols-outlined text-secondary text-[24px]">verified_user</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">PwC Monthly Escrow Attestation</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Ref: PwC-SA-ESC-84912 (May 2025)</span>
+<a class="font-label-sm text-label-sm text-secondary font-semibold hover:underline mt-1 inline-flex items-center gap-0.5" href="#">
+                Download Certified Attestation <span class="material-symbols-outlined text-[14px]">download</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Smart Contract & Hash Audit Explorer -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-lg text-label-lg font-bold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[20px] text-on-tertiary-container">token</span>
+              Smart Contract Escrow Rails
+            </span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-mono bg-surface-container-low px-2 py-0.5 rounded">Verified</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Every transaction is mapped to a cryptographic ledger mirror on Polygon Enterprise, allowing perpetual verification of all payments.
+          </p>
+<div class="space-y-space-xs font-code-num text-code-num">
+<div class="bg-surface-container-low p-2.5 rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Contract Address:</span>
+<span class="font-mono text-on-surface truncate text-xs">0x742d35Cc6634C0532925a3b844Bc454e4438f44e</span>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Latest Milestone Release Hash:</span>
+<span class="font-mono text-secondary truncate text-xs">0x9b8a1c84f676d29948cbb3e857ff8a5a415a77b8</span>
+</div>
+</div>
+<a class="font-label-md text-label-md text-secondary font-semibold hover:underline inline-flex items-center gap-1" href="#">
+            Open Public Block Explorer <span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+</a>
+</div>
+<!-- Architectural Visual of Building Progress -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col">
+<div class="relative h-44 w-full">
+<img class="w-full h-full object-cover" data-alt="A modern architectural construction photo of an upscale multi-family residential building in Riyadh with concrete slabs poured up to level 4 against an azure sky, clean scaffolding, safety banners, and professional construction cranes under natural daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2oePrqLgcOq6CKeZ2nkf7T_vnUaTKIDuakLptv5EUbQCmDs9Bslc_rAdNaxRsxMbx5ilEzyTPte0vNcBUPd5dS1joNfrvmQx6WPhRoXY5Ea6MDloJ07IGGLTTOKxzPhnbkoCQRUUd_iDlr06ZWVFw4kWOIA61br2BB3OxvSoJjT6o4GggmYaFLe3jGLHND1SYOHzQxQVrWJNhqyHYW9BT_3RnPvD8_WCol455kTaQhJG2RLsq7iWuVw"/>
+<div class="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-md px-2.5 py-1 rounded-md text-label-sm font-label-sm font-bold text-on-surface flex items-center gap-1.5 shadow-sm">
+<span class="h-2 w-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
+              Live IoT Cam #3 • Unit 402 Slab
+            </div>
+<div class="absolute bottom-3 right-3 bg-primary/80 backdrop-blur-sm text-on-primary px-2.5 py-1 rounded text-label-sm font-label-sm font-semibold">
+              Level 4 Slab Cast: 92%
+            </div>
+</div>
+<div class="p-space-md flex items-center justify-between bg-surface-container-low">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Drone LiDAR Scan Completed 4h ago</span>
+<button class="text-secondary font-label-sm text-label-sm font-semibold hover:underline inline-flex items-center gap-1" type="button">
+              View BIM 3D Model <span class="material-symbols-outlined text-[14px]">view_in_ar</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Payment Injection & SADAD Deposit Instructions -->
+<div class="bg-surface-container-lowest p-space-xl rounded-xl shadow-sm flex flex-col gap-space-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pb-space-md border-b border-surface-container-high">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Buyer Action Center</span>
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface">Escrow Deposit Rails &amp; SADAD Integration</h3>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Scheduled Milestone 5 Call:</span>
+<span class="font-code-num text-code-num font-bold text-on-surface bg-surface-container-low px-3 py-1.5 rounded-lg">$17,220 Due Aug 15, 2025</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Method 1: SADAD e-Bill -->
+<div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="p-2 rounded-lg bg-surface-container text-secondary font-bold text-xs uppercase">SADAD</span>
+<span class="font-label-sm text-label-sm bg-surface-container-lowest px-2 py-0.5 rounded text-on-tertiary-container font-semibold">Zero Fee</span>
+</div>
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface mt-2">Direct SADAD Instant Bill</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Pay straight from your Saudi banking application using SADAD Biller Code for Al-Noor Heights.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-lg space-y-1">
+<div class="flex justify-between text-body-sm">
+<span class="text-on-surface-variant">Biller Code:</span>
+<span class="font-mono font-bold text-on-surface">084 (CoBuild Fiduciary)</span>
+</div>
+<div class="flex justify-between text-body-sm">
+<span class="text-on-surface-variant">Bill Account:</span>
+<span class="font-mono font-bold text-on-surface">402-882-9104</span>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary hover:bg-primary-container py-2.5 rounded-lg font-label-md text-label-md font-semibold transition-colors flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+            Generate SADAD Invoice
+          </button>
+</div>
+<!-- Method 2: Instant Wire (SAR / USD) -->
+<div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="p-2 rounded-lg bg-surface-container text-secondary">
+<span class="material-symbols-outlined text-[20px]">swap_horiz</span>
+</span>
+<span class="font-label-sm text-label-sm bg-surface-container-lowest px-2 py-0.5 rounded text-on-surface font-semibold">SAR &amp; USD</span>
+</div>
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface mt-2">Real-Time Sarie Wire</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Wire instantly via Saudi Sarie RTGS or SWIFT transfer directly to your designated Unit 402 virtual IBAN.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-lg space-y-1">
+<div class="flex justify-between text-body-sm">
+<span class="text-on-surface-variant">Virtual IBAN:</span>
+<span class="font-mono font-bold text-on-surface text-xs">SA82RAJH0091283944010402</span>
+</div>
+<div class="flex justify-between text-body-sm">
+<span class="text-on-surface-variant">Beneficiary:</span>
+<span class="font-bold text-on-surface text-xs">Sarah Al-Mansoor Escrow Sub</span>
+</div>
+</div>
+<button class="w-full bg-surface-container-lowest hover:bg-surface-container text-on-surface py-2.5 rounded-lg font-label-md text-label-md font-semibold transition-colors flex items-center justify-center gap-2 shadow-sm" id="copyWireBtn" type="button">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+            Copy Wire Instructions
+          </button>
+</div>
+<!-- Method 3: Automated Installment Schedule -->
+<div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="p-2 rounded-lg bg-surface-container text-secondary">
+<span class="material-symbols-outlined text-[20px]">event_repeat</span>
+</span>
+<span class="font-label-sm text-label-sm bg-surface-container-lowest px-2 py-0.5 rounded text-on-surface-variant font-semibold">Auto-Debit</span>
+</div>
+<h4 class="font-label-lg text-label-lg font-bold text-on-surface mt-2">Milestone Standing Order</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Pre-authorize automatic deposit only when independent engineering signs off the respective phase.
+            </p>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-lg flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Auto-Debit on Wafi Approval</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">SMS confirmation required</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="autoDebitToggle" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-container-lowest after:border-surface-variant after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<button class="w-full bg-surface-container-lowest hover:bg-surface-container text-on-surface py-2.5 rounded-lg font-label-md text-label-md font-semibold transition-colors flex items-center justify-center gap-2 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+            Configure Payment Limits
+          </button>
+</div>
+</div>
+</div>
+<!-- Historical Audit Log & SAMA Statutory Compliance Note -->
+<div class="p-space-lg rounded-xl bg-surface-container-low flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="p-3 rounded-xl bg-surface-container-lowest text-secondary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[32px]">balance</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Legal Vault Fiduciary Guarantee</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-2xl">
+            Under Article 14 of Saudi Real Estate Escrow By-Laws, deposited funds cannot be pledged, frozen by third parties, or accessed by the general contractor without certified engineering progression and co-owner voting quorum.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm shrink-0">
+<button class="bg-surface-container-lowest hover:bg-surface-container text-on-surface px-4 py-2 rounded-lg text-label-md font-label-md font-semibold shadow-sm flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+          Wafi Registration License
+        </button>
+</div>
+</div>
+</div>
+<!-- Interactive Vote Modal Dialog (Hidden by Default) -->
+<div class="fixed inset-0 z-50 hidden bg-primary/40 backdrop-blur-sm flex items-center justify-center p-4" id="voteModal">
+<div class="bg-surface-container-lowest w-full max-w-lg rounded-2xl shadow-2xl p-space-xl flex flex-col gap-space-lg transform transition-all">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="p-2 rounded-lg bg-secondary-fixed text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[24px]">verified</span>
+</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Milestone 4 Drawdown Approval</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Unit 402 Share: $25,830.00</span>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded-lg" id="closeModalBtn" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="bg-surface-container-low p-space-md rounded-xl space-y-2 text-body-sm">
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Inspection Agency:</span>
+<span class="font-semibold text-on-surface">Bureau Veritas KSA</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Core Compression Test:</span>
+<span class="font-semibold text-on-tertiary-container">42 MPa (Exceeds Spec 35 MPa)</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Co-Owner Quorum:</span>
+<span class="font-semibold text-on-surface">88.8% Approved (16/18 Units)</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        By authorizing this release, you approve the transfer of $25,830 from the statutory escrow account to the structural contractor for Level 4 &amp; 5 roof slab cast completion.
+      </p>
+<div class="flex items-center gap-space-sm pt-space-xs">
+<button class="flex-1 bg-secondary text-on-secondary hover:bg-on-secondary-fixed-variant py-3 rounded-lg font-label-md text-label-md font-semibold transition-all flex items-center justify-center gap-2 shadow-sm" id="confirmReleaseBtn" type="button">
+<span class="material-symbols-outlined text-[20px]">how_to_reg</span>
+          Confirm &amp; Sign With Digital ID
+        </button>
+<button class="bg-surface-container-low hover:bg-surface-container text-on-surface px-4 py-3 rounded-lg font-label-md text-label-md font-semibold transition-colors" id="cancelModalBtn" type="button">
+          Cancel
+        </button>
+</div>
+</div>
+</div>
+<script>
+    // Milestone 4 Interactive Approval Modal
+    const approveBtn = document.getElementById('approveMilestoneBtn');
+    const quickApproveBtn = document.getElementById('quickApproveBtn');
+    const voteModal = document.getElementById('voteModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const cancelModalBtn = document.getElementById('cancelModalBtn');
+    const confirmReleaseBtn = document.getElementById('confirmReleaseBtn');
+    const userVoteStatus = document.getElementById('userVoteStatus');
+    const voteBanner = document.getElementById('voteBanner');
+    const copyWireBtn = document.getElementById('copyWireBtn');
+
+    function openModal() {
+      voteModal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      voteModal.classList.add('hidden');
+    }
+
+    if (approveBtn) approveBtn.addEventListener('click', openModal);
+    if (quickApproveBtn) quickApproveBtn.addEventListener('click', openModal);
+    if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+    if (cancelModalBtn) cancelModalBtn.addEventListener('click', closeModal);
+
+    if (confirmReleaseBtn) {
+      confirmReleaseBtn.addEventListener('click', function() {
+        confirmReleaseBtn.innerHTML = '<span class="material-symbols-outlined text-[20px] animate-spin">sync</span> Recording on Fiduciary Ledger...';
+        confirmReleaseBtn.disabled = true;
+
+        setTimeout(function() {
+          closeModal();
+          userVoteStatus.innerHTML = '<span class="text-on-tertiary-container font-bold flex items-center gap-1 inline-flex"><span class="material-symbols-outlined text-[16px]">check_circle</span> Approved by Sarah Al-Mansoor (Nafath ID Verified)</span>';
+          if (approveBtn) {
+            approveBtn.outerHTML = '<span class="inline-flex items-center gap-1 text-on-tertiary-container font-label-sm text-label-sm font-bold bg-surface-container px-2.5 py-1.5 rounded-lg"><span class="material-symbols-outlined text-[16px]">verified</span> Signed</span>';
+          }
+          if (quickApproveBtn) {
+            quickApproveBtn.classList.remove('bg-secondary');
+            quickApproveBtn.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+            quickApproveBtn.textContent = 'Approval Recorded (17/18)';
+            quickApproveBtn.disabled = true;
+          }
+        }, 1000);
+      });
+    }
+
+    if (copyWireBtn) {
+      copyWireBtn.addEventListener('click', function() {
+        navigator.clipboard.writeText('SA82RAJH0091283944010402');
+        const origText = copyWireBtn.innerHTML;
+        copyWireBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] text-on-tertiary-container">done</span> Copied IBAN!';
+        setTimeout(function() {
+          copyWireBtn.innerHTML = origText;
+        }, 2000);
+      });
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 mt-space-xl"><div class="w-full px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-4 gap-space-xl pb-space-lg border-b border-outline-variant/20"><div class="space-y-space-sm"><div class="flex items-center gap-space-xs"><img alt="CoBuild Brand Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WlkSdcUo2owSob12eh3iWtWBAL3olBse8xTQh-Z3Zr-9T6zUJ3IyXdYt3tNQ4QGzSKcb4gyIe_LKbX_ywFxt4cOhaVtFR8nP7TfbiO4a7IXinWWGq2CrJk3tNeyYDCBfj0U4g29T8VJ-TBfQn6dVFMowSVsFOblPuB3lAwvpwL3lDSqNaqSTADGR9Glsj5XPnuFuqBt_utNwPkIJX6ELsll30qUZY_YMRIrGg-72heG5c6wil259qLPzrX"/><span class="font-headline-sm text-headline-sm font-bold text-on-surface">CoBuild</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Architectural collective real estate platform empowering buyers to directly fund, supervise, and co-own sustainable residential buildings through fiduciary transparency.</p><div class="pt-space-xs"><span class="inline-flex items-center gap-1 text-label-sm font-label-sm text-on-surface-variant font-medium bg-surface-container-low px-2 py-1 rounded"><span class="material-symbols-outlined text-[14px]">translate</span> Dual LTR/RTL Arabic &amp; English Framework</span></div></div><div><h4 class="font-label-lg text-label-lg font-semibold text-on-surface mb-space-md">Platform Governance</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" data-path="marketplace" href="#">Development Directory</a></li><li><a class="hover:text-on-surface transition-colors" data-path="community-hub" href="#">Shareholder Voting Portal</a></li><li><a class="hover:text-on-surface transition-colors" data-path="construction-live" href="#">BIM &amp; IoT Site Sensor Logs</a></li><li><a class="hover:text-on-surface transition-colors" data-path="escrow-payments" href="#">Milestone Escrow Drawers</a></li><li><a class="hover:text-on-surface transition-colors" data-path="unit-finishes" href="#">Finishes Procurement</a></li><li><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Legal Vault &amp; Title Registry</a></li></ul></div><div><h4 class="font-label-lg text-label-lg font-semibold text-on-surface mb-space-md">Compliance &amp; Legal</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Central Bank Escrow Regulations</a></li><li><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Smart Contract Code Audits</a></li><li><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Collective Risk Disclosure</a></li><li><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Terms of Custody &amp; Title</a></li></ul></div><div><h4 class="font-label-lg text-label-lg font-semibold text-on-surface mb-space-md">Institutional Fiduciary</h4><div class="space-y-space-sm"><div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface bg-surface-container-low p-2 rounded-lg"><span class="material-symbols-outlined text-secondary text-[18px]">verified</span><span>Central Bank Escrow Compliant</span></div><div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface bg-surface-container-low p-2 rounded-lg"><span class="material-symbols-outlined text-secondary text-[18px]">engineering</span><span>ISO 9001 Construction Auditing</span></div><div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface bg-surface-container-low p-2 rounded-lg"><span class="material-symbols-outlined text-on-tertiary-container text-[18px]">token</span><span>Smart Contracts Verified by Quantstamp</span></div></div></div></div><div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md text-label-sm font-label-sm text-on-surface-variant"><div>© 2025 CoBuild Technologies Ltd. All collective property deeds are held under regulated statutory escrows.</div><div class="flex items-center gap-space-lg"><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Contact Support &amp; Concierge</a><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Privacy Policy</a><a class="hover:text-on-surface transition-colors" data-path="legal-vault" href="#">Risk Disclosure</a></div></div></div></footer></body></html>
