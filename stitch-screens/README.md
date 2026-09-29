@@ -16,6 +16,7 @@ stitch_last_10_screens/
 
 | # | Screen Title | Locale | Dimensions | HTML File | Screenshot |
 |---|---|---|---|---|---|
+| **09** | CoBuild مصر - سوق المشاريع التفاعلي المتحرك | 🇪🇬 Arabic (RTL) | 3242 × 6092 | [Open HTML](screens/09_CoBuild_مصر_سوق_المشاريع_التفاعلي_المتحرك.html) | [View PNG](screenshots/09_CoBuild_مصر_سوق_المشاريع_التفاعلي_المتحرك.png) |
 | **16** | CoBuild مصر - استوديو التخصيص والتشطيبات المعمارية | 🇪🇬 Arabic (RTL) | 2560 × 4148 | [Open HTML](screens/16_CoBuild_مصر_استوديو_التخصيص_والتشطيبات_المعمارية.html) | [View PNG](screenshots/16_CoBuild_مصر_استوديو_التخصيص_والتشطيبات_المعمارية.png) |
 | **17** | CoBuild - Construction Live Monitoring | 🌐 English | 2914 × 6892 | [Open HTML](screens/17_CoBuild_Construction_Live_Monitoring.html) | [View PNG](screenshots/17_CoBuild_Construction_Live_Monitoring.png) |
 | **18** | CoBuild مصر - تسجيل المشتري والتحقق (KYC Onboarding) | 🇪🇬 Arabic (RTL) | 2560 × 5650 | [Open HTML](screens/18_CoBuild_مصر_تسجيل_المشتري_والتحقق_KYC_Onboarding.html) | [View PNG](screenshots/18_CoBuild_مصر_تسجيل_المشتري_والتحقق_KYC_Onboarding.png) |

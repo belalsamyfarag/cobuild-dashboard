@@ -7,8 +7,24 @@
     "projectType": "TEXT_TO_UI_PRO"
   },
   "total_screens_in_project": 27,
-  "fetched_screens_count": 12,
+  "fetched_screens_count": 13,
   "screens": [
+    {
+      "catalog_index": 9,
+      "title": "CoBuild مصر - سوق المشاريع التفاعلي المتحرك",
+      "id": "4a23235ae1584e2498cdbc63af8d1370",
+      "name": "projects/10617388055527102029/screens/4a23235ae1584e2498cdbc63af8d1370",
+      "is_ui_screen": true,
+      "screen_type": "DESIGN",
+      "has_html": true,
+      "html_file": "screens/09_CoBuild_مصر_سوق_المشاريع_التفاعلي_المتحرك.html",
+      "has_img": true,
+      "img_file": "screenshots/09_CoBuild_مصر_سوق_المشاريع_التفاعلي_المتحرك.png",
+      "width": "3242",
+      "height": "6092",
+      "device_type": "DESKTOP",
+      "locale": "ar"
+    },
     {
       "catalog_index": 16,
       "title": "CoBuild مصر - استوديو التخصيص والتشطيبات المعمارية",

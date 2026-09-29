@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+/* Rich Motion & Micro-interaction CSS Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 108, 74, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(0, 108, 74, 0);
+  }
+}
+
+@keyframes liveBeacon {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+@keyframes springyBookmark {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.35) rotate(-10deg); }
+  75% { transform: scale(0.85) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.live-glow-badge {
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+.live-beacon-dot {
+  animation: liveBeacon 2s infinite ease-in-out;
+}
+
+.card-project {
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.3s ease;
+}
+
+.card-project:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.08), 0 10px 15px -5px rgba(0, 0, 0, 0.04);
+}
+
+.filter-chip {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+
+.filter-chip:active {
+  transform: scale(0.95);
+}
+
+.bookmark-btn.active {
+  color: #ba1a1a !important;
+  animation: springyBookmark 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.bookmark-btn.active .material-symbols-outlined {
+  font-variation-settings: 'FILL' 1, 'wght' 700;
+}
+
+.progress-bar-fill {
+  transition: width 1.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.accordion-transition {
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease, margin 0.35s ease;
+}
+
+/* Reduced motion preference compliance */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.001s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001s !important;
+  }
+}
+</style><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&amp;family=Alexandria:wght@400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#e3e3de","on-primary-fixed-variant":"#3f465c","on-error-container":"#93000a","secondary-fixed":"#85f8c4","on-surface-variant":"#45464d","surface-container-highest":"#e3e3de","secondary":"#006c4a","surface-container-lowest":"#ffffff","on-primary-container":"#7c839b","surface-dim":"#dbdad5","on-tertiary":"#ffffff","surface-bright":"#faf9f4","primary-fixed":"#dae2fd","on-secondary":"#ffffff","on-secondary-container":"#00714e","on-secondary-fixed-variant":"#005137","outline-variant":"#c6c6cd","tertiary":"#000000","on-primary-fixed":"#131b2e","outline":"#76777d","inverse-on-surface":"#f2f1ec","on-background":"#1b1c19","inverse-primary":"#bec6e0","on-tertiary-fixed-variant":"#5d4204","tertiary-container":"#271900","on-surface":"#1b1c19","background":"#faf9f4","inverse-surface":"#30312e","secondary-fixed-dim":"#68dba9","on-primary":"#ffffff","primary":"#000000","error":"#ba1a1a","error-container":"#ffdad6","surface":"#faf9f4","on-tertiary-fixed":"#271900","surface-tint":"#565e74","surface-container-high":"#e9e8e3","on-error":"#ffffff","surface-container-low":"#f5f4ef","on-tertiary-container":"#a17f3e","tertiary-fixed-dim":"#e9c179","on-secondary-fixed":"#002114","secondary-container":"#82f5c1","surface-container":"#efeee9","tertiary-fixed":"#ffdea7","primary-container":"#131b2e","primary-fixed-dim":"#bec6e0"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-xs":"0.25rem","margin":"2rem","margin-mobile":"1rem","space-xl":"2.5rem","gutter":"1.5rem","gutter-mobile":"0.75rem","space-md":"1rem","space-lg":"1.5rem","space-sm":"0.5rem"},fontFamily:{"body-md":["Cairo","Alexandria","sans-serif"],"headline-md":["Alexandria","Cairo","sans-serif"],"label-md":["Alexandria","Cairo","sans-serif"],"headline-sm":["Alexandria","Cairo","sans-serif"],"numeric-currency":["Cairo","Plus Jakarta Sans","sans-serif"],"display-hero":["Alexandria","sans-serif"],"headline-lg":["Alexandria","Cairo","sans-serif"],"label-lg":["Alexandria","Cairo","sans-serif"],"body-sm":["Cairo","sans-serif"],"body-lg":["Cairo","sans-serif"]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="bg-primary text-on-primary px-margin py-1.5 flex items-center justify-between text-body-sm font-body-sm overflow-hidden"><div class="flex items-center gap-space-sm mx-auto transition-transform duration-300"><span class="flex h-2 w-2 relative shrink-0"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-container opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-secondary-container live-beacon-dot"></span></span><span class="font-label-md uppercase tracking-wider text-secondary-fixed font-bold shrink-0">متابعة البناء الميداني الحي</span><span class="text-outline-variant shrink-0">|</span><span class="truncate max-w-xl md:max-w-none">تم الانتهاء من صب خرسانة الأساسات لمشروع كمبوند النرجس هايتس اليوم بنسبة اعتماد 99.1% من المشترين.</span><a class="text-secondary-fixed hover:underline font-label-md flex items-center gap-0.5 mr-space-xs shrink-0 group" data-path="construction-live" href="#"><span>عرض البث الحي المباشر</span> <span class="material-symbols-outlined text-[16px] rotate-180 group-hover:-translate-x-1 transition-transform">arrow_forward</span></a></div></div><div class="h-20 w-full px-margin flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-md shrink-0"><img alt="CoBuild Egypt Logo" class="h-8 w-auto object-contain transition-transform hover:scale-105" src="https://lh3.googleusercontent.com/aida/AEtjO1WlkSdcUo2owSob12eh3iWtWBAL3olBse8xTQh-Z3Zr-9T6zUJ3IyXdYt3tNQ4QGzSKcb4gyIe_LKbX_ywFxt4cOhaVtFR8nP7TfbiO4a7IXinWWGq2CrJk3tNeyYDCBfj0U4g29T8VJ-TBfQn6dVFMowSVsFOblPuB3lAwvpwL3lDSqNaqSTADGR9Glsj5XPnuFuqBt_utNwPkIJX6ELsll30qUZY_YMRIrGg-72heG5c6wil259qLPzrX"/><div class="flex flex-col"><div class="flex items-center gap-2"><span class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight">CoBuild مصر</span><span class="px-2 py-0.5 rounded bg-secondary/10 text-secondary text-[11px] font-bold live-glow-badge">حسابات ضمان معتمدة</span></div><span class="font-label-md text-on-surface-variant font-medium -mt-1">سوق المشاريع التشاركية والتطوير المباشر</span></div><div class="mr-space-xs inline-flex items-center bg-surface-container-low p-0.5 rounded-lg"><button class="px-2.5 py-0.5 rounded-lg text-label-md bg-surface-container-lowest text-on-surface font-bold shadow-sm transition-all" type="button">العربية</button><button class="px-2 py-0.5 rounded-lg text-label-md text-on-surface-variant hover:text-on-surface transition-colors font-medium" type="button">EN</button></div></div><nav class="hidden xl:flex items-center gap-space-xs font-label-lg text-label-lg" data-active-classes="text-on-surface font-bold bg-surface-container-low rounded-lg"><a aria-current="page" class="px-space-md py-space-sm transition-all text-on-surface font-bold bg-surface-container-low rounded-lg hover:shadow-sm" data-path="marketplace" href="#">سوق المشاريع</a><a class="text-on-surface-variant hover:text-on-surface px-space-md py-space-sm transition-colors rounded-lg hover:bg-surface-container-low/60" data-path="my-apartment" href="#">شقتي التشاركية</a><a class="text-on-surface-variant hover:text-on-surface px-space-md py-space-sm transition-colors rounded-lg hover:bg-surface-container-low/60" data-path="construction-live" href="#">متابعة التنفيذ الحي</a><a class="text-on-surface-variant hover:text-on-surface px-space-md py-space-sm transition-colors rounded-lg hover:bg-surface-container-low/60" data-path="community-hub" href="#">مجلس الملاك والتصويت</a><a class="text-on-surface-variant hover:text-on-surface px-space-md py-space-sm transition-colors rounded-lg hover:bg-surface-container-low/60" data-path="escrow-payments" href="#">حسابات الضمان والدفعات</a></nav><div class="flex items-center gap-space-md shrink-0"><div class="relative hidden 2xl:block w-72"><span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span><input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm pr-9 pl-3 py-2 rounded-lg border border-outline-variant/50 focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition-all placeholder:text-outline text-right" placeholder="ابحث بالمشروع، الحي، أو رقم الوحدة..." type="text"/></div><div class="flex items-center gap-space-xs"><button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" title="إشعارات الموقع الحية" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 left-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[10px] font-bold text-on-secondary animate-pulse">3</span></button><div class="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low border border-outline-variant/40 hover:border-secondary/40 transition-colors"><span class="material-symbols-outlined text-[16px] text-secondary">verified_user</span><span class="font-label-md text-secondary font-bold">100% حساب ضمان بنكي مقيد</span></div></div><div class="flex items-center gap-space-sm pr-space-xs"><img alt="الملف الشخصي" class="w-8 h-8 rounded-full object-cover ring-2 ring-transparent hover:ring-secondary/40 transition-all cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGOXR6ElKI-TRGO3rVUejcuUT5itCp7C4i9L54ywhp8LiseCKSraN1htnLrF2WaMwrFQRYvT3AjahknZ-Kjzr-64nKAX8XjQAFpVV2QwFUNhiBC_zSlXbBueXOuyVxO_JjJpR4au9Xl3odYxzaavP9HpM0sb6MbchlOkvdT_Y3ADVrmjNj7KIhanlHhnBLlBFd-zWVVj7eDdu56IW2QVj2XJYmO4K8zGWcW75MhcPVvKzrHt7YJrjmqQ"/><div class="hidden md:flex flex-col text-right"><span class="font-label-md text-label-md font-bold text-on-surface leading-tight">م. كريم الشناوي</span><span class="font-label-md text-[11px] text-on-surface-variant">شريك مالك - وحدة 402 النرجس</span></div><button class="text-on-surface-variant hover:text-on-surface p-1 rounded-lg transition-transform hover:translate-y-0.5" type="button"><span class="material-symbols-outlined text-[18px]">expand_more</span></button></div></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full">
+<div class="w-full px-margin py-space-lg flex flex-col gap-space-lg">
+<!-- Sub-header Breadcrumb & Operational Ticker -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md bg-surface-container-low p-space-md rounded-xl">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary font-bold px-2.5 py-0.5 bg-surface-container rounded">سجل البناء التشاركي في مصر</span>
+<span class="text-outline-variant">•</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">حسابات ضمان مشروطة بإشراف بنكي: <strong class="text-on-surface font-bold"><span class="counter-number" data-target="16">0</span> مشروعاً قيد التمويل والإنشاء</strong></span>
+<span class="text-outline-variant hidden sm:inline">•</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant hidden sm:inline">صفر هوامش تسويق وأرباح مطورين مبالغ فيها</span>
+</div>
+<div class="flex items-center gap-space-md shrink-0">
+<div class="flex items-center gap-2">
+<span class="flex h-2.5 w-2.5 rounded-full bg-secondary live-beacon-dot"></span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">متوسط توفير المشتري التشاركي: <span class="text-secondary font-bold font-numeric-currency"><span class="counter-number" data-decimals="1" data-target="34.2">0.0</span>% مقارنة بالسوق</span></span>
+</div>
+</div>
+</div>
+<!-- Discovery Search & Autocomplete Interface -->
+<div class="flex flex-col gap-space-md bg-surface-container-lowest p-space-lg rounded-xl shadow-sm transition-all duration-300 hover:shadow-md">
+<div class="flex flex-col lg:flex-row items-stretch gap-space-md">
+<!-- Main Smart Search Input -->
+<div class="relative flex-1">
+<div class="flex items-center bg-surface-container-low rounded-lg px-space-md py-2.5 focus-within:bg-surface-container focus-within:ring-2 focus-within:ring-secondary/20 transition-all duration-300">
+<span class="material-symbols-outlined text-outline ml-space-sm text-[22px] transition-colors group-focus-within:text-secondary">travel_explore</span>
+<input autocomplete="off" class="w-full bg-transparent font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none text-right" id="marketplace-search-input" placeholder="ابحث بالحي (التجمع الخامس، بيت الوطن، الشيخ زايد، 6 أكتوبر، زايد الجديدة) أو بنوع الوحدة..." type="text"/>
+<button class="hidden text-outline hover:text-on-surface p-1 rounded-full hover:bg-surface-variant/40 transition-colors" id="clear-search-btn" title="مسح البحث">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Predictive Dropdown Auto-Suggest -->
+<div class="hidden absolute top-full left-0 right-0 mt-1.5 bg-surface-container-lowest rounded-xl shadow-xl z-30 p-space-md max-h-80 overflow-y-auto border border-outline-variant/30 backdrop-blur-lg animate-fade-in-up" id="search-autocomplete-box" style="animation-duration: 0.25s;">
+<div class="font-label-md text-label-md text-outline uppercase font-bold tracking-wider mb-2">أكثر المناطق طلباً الآن</div>
+<div class="space-y-1">
+<div class="autocomplete-item flex items-center justify-between p-2.5 rounded-lg hover:bg-surface-container cursor-pointer transition-all duration-200 hover:translate-x-[-4px]" data-search="التجمع الخامس، النرجس وبيت الوطن">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">location_on</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">القاهرة الجديدة (النرجس الجديدة وبيت الوطن)</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant bg-surface-container-low px-2 py-0.5 rounded">6 مشاريع قيد الاكتتاب</span>
+</div>
+<div class="autocomplete-item flex items-center justify-between p-2.5 rounded-lg hover:bg-surface-container cursor-pointer transition-all duration-200 hover:translate-x-[-4px]" data-search="الشيخ زايد، الحي الدبلوماسي">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">villa</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">الشيخ زايد وتوسعات زايد الجديدة</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant bg-surface-container-low px-2 py-0.5 rounded">دوبلكسات وفلل تشاركية</span>
+</div>
+<div class="autocomplete-item flex items-center justify-between p-2.5 rounded-lg hover:bg-surface-container cursor-pointer transition-all duration-200 hover:translate-x-[-4px]" data-search="6 أكتوبر، التوسعات الشمالية">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">domain</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">6 أكتوبر - منطقة التوسعات الشمالية</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant bg-surface-container-low px-2 py-0.5 rounded">أسرع وتيرة تمويل</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Controls & View Switcher -->
+<div class="flex items-center gap-space-sm shrink-0 flex-wrap sm:flex-nowrap">
+<button class="flex items-center gap-2 px-space-md py-2.5 bg-surface-container-low hover:bg-surface-container text-on-surface rounded-lg font-label-md text-label-md font-bold transition-all duration-200 active:scale-95" id="toggle-filter-drawer">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span>تصفية المشاريع والتكلفة</span>
+<span class="h-5 w-5 bg-secondary text-on-secondary rounded-full flex items-center justify-center font-label-md text-[11px] font-bold shadow-sm">3</span>
+</button>
+<!-- Sort Select -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md pl-8 pr-space-md py-2.5 rounded-lg focus:outline-none cursor-pointer transition-colors font-bold">
+<option value="funding-desc">الترتيب: نسبة اكتمال التمويل (الأعلى أولاً)</option>
+<option value="newest">الترتيب: الأحدث إدراجاً</option>
+<option value="price-sqm">الترتيب: أقل تكلفة فعلية للمتر (ج.م)</option>
+<option value="delivery-earliest">الترتيب: أقرب موعد تسليم (2025/2026)</option>
+<option value="savings-high">الترتيب: أعلى نسبة توفير مقابل السوق</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">expand_more</span>
+</div>
+<!-- Layout Switcher Group -->
+<div class="flex items-center bg-surface-container-low p-1 rounded-lg">
+<button class="p-1.5 rounded bg-surface-container-lowest text-on-surface shadow-sm transition-all" id="btn-view-grid" title="عرض الشبكة">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+</button>
+<button class="p-1.5 rounded text-on-surface-variant hover:text-on-surface transition-colors" id="btn-view-map" title="الخريطة التفاعلية">
+<span class="material-symbols-outlined text-[20px]">map</span>
+</button>
+<button class="p-1.5 rounded text-on-surface-variant hover:text-on-surface transition-colors" id="btn-view-list" title="القائمة الميدانية">
+<span class="material-symbols-outlined text-[20px]">view_agenda</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Filter Chips Scrollable Row -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1 pt-1 no-scrollbar" id="filter-chips-container">
+<button class="filter-chip active shrink-0 px-space-md py-1.5 rounded-full font-label-md text-label-md bg-primary text-on-primary transition-all font-bold shadow-sm" data-category="all">
+          جميع المشاريع (16)
+        </button>
+<button class="filter-chip shrink-0 px-space-md py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface hover:bg-surface-container transition-all font-medium hover:shadow-xs" data-category="high-funding">
+          اقترب اكتمال التمويل (&gt;80%)
+        </button>
+<button class="filter-chip shrink-0 px-space-md py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface hover:bg-surface-container transition-all font-medium hover:shadow-xs" data-category="groundwork">
+          جاري الحفر والأساسات
+        </button>
+<button class="filter-chip shrink-0 px-space-md py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface hover:bg-surface-container transition-all font-medium hover:shadow-xs" data-category="deliver-soon">
+          تسليم 2025/2026
+        </button>
+<button class="filter-chip shrink-0 px-space-md py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface hover:bg-surface-container transition-all font-medium hover:shadow-xs" data-category="duplex">
+          شقق دوبلكس مع حديقة
+        </button>
+<button class="filter-chip shrink-0 px-space-md py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface hover:bg-surface-container transition-all font-medium hover:shadow-xs" data-category="penthouse">
+          بنتهاوس مع روف
+        </button>
+<button class="filter-chip shrink-0 px-space-md py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface hover:bg-surface-container transition-all font-medium hover:shadow-xs" data-category="tagamoa">
+          التجمع الخامس والقاهرة الجديدة
+        </button>
+<button class="filter-chip shrink-0 px-space-md py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface hover:bg-surface-container transition-all font-medium hover:shadow-xs" data-category="zayed-october">
+          الشيخ زايد و6 أكتوبر
+        </button>
+</div>
+<!-- Expandable Multi-Metric Filter Console -->
+<div class="hidden pt-space-md bg-surface-container-low/60 rounded-xl p-space-md border border-outline-variant/30 animate-fade-in-up" id="extended-filters-panel" style="animation-duration: 0.3s;">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-md">
+<!-- Price Range Slider Widget -->
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md font-bold text-on-surface">الميزانية المستهدفة للوحدة</span>
+<span class="font-numeric-currency text-secondary font-bold" id="price-readout">2,200,000 - 5,500,000 ج.م</span>
+</div>
+<input class="w-full accent-secondary cursor-pointer" id="price-range-slider" max="600" min="200" type="range" value="450"/>
+<div class="flex justify-between font-label-md text-[12px] text-outline">
+<span>2.0 مليون ج.م</span>
+<span>6.0+ مليون ج.م</span>
+</div>
+</div>
+<!-- Bedroom Multi-Toggle -->
+<div class="space-y-2">
+<span class="font-label-md text-label-md font-bold text-on-surface">نوع وتقسيم الوحدة</span>
+<div class="grid grid-cols-4 gap-1">
+<button class="bedroom-toggle py-1.5 rounded bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-primary hover:text-on-primary font-medium transition-all">2 نوم</button>
+<button class="bedroom-toggle py-1.5 rounded bg-primary text-on-primary font-label-md text-label-md font-bold transition-all shadow-xs">3 نوم</button>
+<button class="bedroom-toggle py-1.5 rounded bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-primary hover:text-on-primary font-medium transition-all">دوبلكس</button>
+<button class="bedroom-toggle py-1.5 rounded bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-primary hover:text-on-primary font-medium transition-all">بنتهاوس</button>
+</div>
+</div>
+<!-- Completion Target Year -->
+<div class="space-y-2">
+<span class="font-label-md text-label-md font-bold text-on-surface">موعد التسليم والاستلام</span>
+<div class="flex gap-1.5">
+<button class="flex-1 py-1.5 rounded bg-primary text-on-primary font-label-md text-label-md font-bold transition-all shadow-xs">2025 النصف 2</button>
+<button class="flex-1 py-1.5 rounded bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-container font-medium transition-all">2026 النصف 1</button>
+<button class="flex-1 py-1.5 rounded bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-container font-medium transition-all">2026 النصف 2</button>
+</div>
+</div>
+<!-- Regulated Escrow Bank Fiduciary -->
+<div class="space-y-2">
+<span class="font-label-md text-label-md font-bold text-on-surface">بنك حساب الضمان (Escrow)</span>
+<select class="w-full bg-surface-container-lowest text-on-surface font-body-sm text-body-sm p-2 rounded-lg focus:outline-none font-medium border border-outline-variant/30">
+<option value="all">كافة البنوك المعتمدة</option>
+<option value="banque-misr">بنك مصر (حسابات ضمان البناء)</option>
+<option value="nbe">البنك الأهلي المصري (NBE)</option>
+<option value="cib">البنك التجاري الدولي (CIB)</option>
+<option value="qnb">بنك قطر الوطني الأهلي (QNB)</option>
+</select>
+</div>
+<!-- Yield/Equity Appreciation Tag -->
+<div class="space-y-2">
+<span class="font-label-md text-label-md font-bold text-on-surface">ميزة التوفير وحصانة السعر</span>
+<div class="flex items-center justify-between p-2 bg-surface-container-lowest rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">trending_up</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">توفير لا يقل عن 30%</span>
+</div>
+<input checked="" class="accent-secondary w-4 h-4 cursor-pointer" type="checkbox"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Active Filter Summary & Metrics Strip -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm text-on-surface-variant">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface"><span id="active-projects-count">6</span> مشاريع تشاركية جاهزة للاكتتاب المباشر</span>
+<span class="font-label-md text-label-md bg-secondary/10 text-secondary px-2.5 py-0.5 rounded-full font-bold live-glow-badge">بإشراف هندسي وحساب ضمان بنكي</span>
+</div>
+<div class="flex items-center gap-space-md font-body-sm text-body-sm">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">shield</span>
+<span>صرف الدفعات مشروط بنسب الإنجاز الفعلي</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+<span>عقود تضامنية ومطابقة للكود المصري</span>
+</div>
+</div>
+</div>
+<!-- Interactive Map View Split Canvas (Default Hidden, Toggled by Switcher) -->
+<div class="hidden w-full flex-col lg:flex-row gap-space-md rounded-xl overflow-hidden bg-surface-container-lowest p-space-md shadow-sm border border-outline-variant/20 animate-fade-in-up" id="marketplace-map-container">
+<div class="w-full lg:w-2/5 flex flex-col gap-space-sm max-h-[560px] overflow-y-auto pl-1">
+<div class="font-label-lg text-label-lg font-bold text-on-surface pb-1">توزيع المشاريع جغرافياً في مصر</div>
+<div class="p-space-md bg-surface-container-low rounded-lg hover:bg-surface-container cursor-pointer transition-all duration-200 hover:translate-x-[-3px]">
+<div class="flex justify-between items-start">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">كمبوند النرجس هايتس</span>
+<span class="font-label-md text-label-md bg-primary text-on-primary px-2 py-0.5 rounded font-bold shadow-xs">88% مكتمل</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">القاهرة الجديدة - النرجس الجديدة • صب سقف الدور الرابع</p>
+<div class="flex items-center justify-between mt-2 pt-2 border-t-0 font-label-md text-label-md">
+<span class="text-secondary font-bold font-numeric-currency">يبدأ من 3,250,000 ج.م</span>
+<span class="text-on-surface-variant">نوفمبر 2025</span>
+</div>
+</div>
+<div class="p-space-md bg-surface-container-low rounded-lg hover:bg-surface-container cursor-pointer transition-all duration-200 hover:translate-x-[-3px]">
+<div class="flex justify-between items-start">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">ريزيدنس الياسمين جرينز</span>
+<span class="font-label-md text-label-md bg-secondary text-on-secondary px-2 py-0.5 rounded font-bold shadow-xs">95% مكتمل</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">الشيخ زايد - الحي الدبلوماسي • تشطيبات الواجهات والمرافق</p>
+<div class="flex items-center justify-between mt-2 pt-2 border-t-0 font-label-md text-label-md">
+<span class="text-secondary font-bold font-numeric-currency">يبدأ من 4,100,000 ج.م</span>
+<span class="text-on-surface-variant">أغسطس 2025</span>
+</div>
+</div>
+<div class="p-space-md bg-surface-container-low rounded-lg hover:bg-surface-container cursor-pointer transition-all duration-200 hover:translate-x-[-3px]">
+<div class="flex justify-between items-start">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">لوفتس بيت الوطن</span>
+<span class="font-label-md text-label-md bg-surface-container text-on-surface px-2 py-0.5 rounded font-bold shadow-xs">72% مكتمل</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">التجمع الخامس - الحي الثاني • أعمال عزل وبناء البدروم</p>
+<div class="flex items-center justify-between mt-2 pt-2 border-t-0 font-label-md text-label-md">
+<span class="text-secondary font-bold font-numeric-currency">18,500 ج.م / م²</span>
+<span class="text-on-surface-variant">مارس 2026</span>
+</div>
+</div>
+</div>
+<div class="w-full lg:w-3/5 min-h-[440px] rounded-lg overflow-hidden relative">
+<div class="w-full h-full min-h-[440px] bg-cover bg-center rounded-lg" data-location="Cairo and Giza, Egypt" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBd5NvXVDyZZ7Zt3WgTP4RpeLGKcFAcSDax6GBOhAeWpB0l_Z0rtiWFb6-Q2K0VRTjpVgvjXSZ8v5kNE2cLgx9DdpHsHcJXcI5dPDI8eh6ont2hNcT7UlRAaQHHLVCKpO_UrQuyqGNUcbqhGkXbqAKupcE3qFXsZdfTuZIpxfLMjVEMEzyyO6QYfBDF9lhWscLrOI6mGG3xJk2JrAbQ3QUzmjfifjc5Trs4JFg4B1xptnCSLi719ArXWA')">
+<div class="absolute inset-0 bg-primary/10 flex items-center justify-center p-space-md pointer-events-none">
+<div class="bg-surface-container-lowest/95 backdrop-blur-md p-space-md rounded-xl shadow-lg text-center max-w-sm border border-outline-variant/30">
+<span class="material-symbols-outlined text-secondary text-[32px] mb-1">location_city</span>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">مشاريع القاهرة الكبرى والمدن الجديدة</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">إحداثيات حية وتراخيص موثقة في التجمع الخامس، زايد، أكتوبر، والشروق.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Projects 6-Card Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-space-lg transition-opacity duration-300" id="projects-grid-container">
+<!-- CARD 1: كمبوند النرجس هايتس -->
+<div class="card-project group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl flex flex-col border border-outline-variant/20 animate-fade-in-up" data-card-idx="1" style="animation-delay: 0.05s;">
+<!-- Visual & Architectural Media Frame -->
+<div class="relative w-full h-64 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Modern architectural rendering of residential building in New Narges Fifth Settlement Cairo with limestone facades and modern balconies" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIID0pn7vv1DBCkE-T2NjLI9aCx2x1eGJRoRPKP2grOlmHAS8Mo4EO-dhPjDxVVAK8GoRVCD0-K-2RH4JtRK_9xrr1CBGnTKeJMU3VIleCXKjoktXRI2KjK6oP18E8PMrN1b1f585pBN-Dak6o2QMxuZLFut0BJpVElIa84aHmVCf3qDHXpVdspOErbuQjb7E1YRutVC7gnoN1VR12r4gj-euB9egQobrBwMhSGX0enmYALPvakCbTbA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/85 via-transparent to-black/30 pointer-events-none"></div>
+<!-- Top Badges -->
+<div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest/95 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[16px]">account_balance</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">بنك مصر - حساب ضمان مقيد</span>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="bookmark-btn p-1.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface hover:text-error transition-all shadow-sm flex items-center justify-center" title="حفظ المشروع للمقارنة">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="px-2.5 py-1 rounded-full bg-primary text-on-primary font-label-md text-label-md font-bold shadow-sm">
+              مرحلة الهيكل الخرساني
+            </div>
+</div>
+</div>
+<!-- Bottom Visual Overlay -->
+<div class="absolute bottom-3 left-3 right-3 flex items-end justify-between text-on-primary">
+<div>
+<span class="font-label-md text-label-md text-secondary-fixed font-bold">التجمع الخامس (النرجس الجديدة)</span>
+<h3 class="font-headline-md text-headline-md font-bold text-on-primary leading-tight mt-0.5">كمبوند النرجس هايتس</h3>
+</div>
+<div class="text-left">
+<div class="font-label-md text-surface-container text-[12px]">الاستلام المستهدف</div>
+<div class="font-label-md text-label-md font-bold text-on-primary">نوفمبر 2025</div>
+</div>
+</div>
+</div>
+<!-- Content Body -->
+<div class="p-space-lg flex-1 flex flex-col justify-between gap-space-md">
+<!-- Funding Status & Meter -->
+<div class="space-y-2">
+<div class="flex justify-between items-baseline">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm font-bold text-secondary">تمويل 88% مكتمل</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">(حجز 22 من 25 وحدة)</span>
+</div>
+<span class="font-label-md text-label-md text-secondary font-bold px-2 py-0.5 bg-secondary/10 rounded-md">متبقي 3 شقق</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-2.5 bg-surface-container rounded-full overflow-hidden">
+<div class="progress-bar-fill h-full bg-secondary rounded-full" data-width="88%" style="width: 0%"></div>
+</div>
+<div class="flex items-center justify-between font-label-md text-on-surface-variant pt-0.5">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]">construction</span>
+<span>المرحلة الحالية: <strong>صب سقف الدور الرابع</strong></span>
+</div>
+<span class="font-numeric-currency text-[13px]">الميزانية: 81.2M ج.م</span>
+</div>
+</div>
+<!-- Financial Alpha Metric Box -->
+<div class="grid grid-cols-2 gap-space-sm bg-surface-container-low p-space-md rounded-xl border border-outline-variant/30 transition-colors group-hover:border-secondary/30">
+<div>
+<span class="font-label-md text-[12px] text-on-surface-variant block font-medium">سعر الشقة التشاركي</span>
+<span class="font-numeric-currency text-headline-sm font-bold text-on-surface">3,250,000 ج.م</span>
+<span class="font-label-md text-[12px] text-outline block mt-0.5">17,560 ج.م / م²</span>
+</div>
+<div class="pr-space-sm border-r border-outline-variant/40">
+<span class="font-label-md text-[12px] text-secondary block font-bold">وفر مباشر للمشتري</span>
+<span class="font-numeric-currency text-headline-sm font-bold text-secondary">وفر 1,450,000 ج.م</span>
+<span class="font-label-md text-[12px] text-on-surface-variant block mt-0.5">مقارنة بسعر السوق 4.7M</span>
+</div>
+</div>
+<!-- Unit Specs Strip -->
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm px-1">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">bed</span> 3 غرف نوم ماستر</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">bathtub</span> 3 حمام</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">square_foot</span> المساحة 185 م²</span>
+</div>
+<!-- Action Footbar -->
+<div class="flex items-center gap-space-sm pt-space-xs">
+<button class="flex-1 py-3 px-space-md bg-primary hover:bg-neutral-800 text-on-primary rounded-lg font-label-md text-label-md font-bold transition-all shadow flex items-center justify-center gap-2 group/btn hover:shadow-md active:scale-[0.99]">
+<span>احجز وحدتك في الاكتتاب</span>
+<span class="material-symbols-outlined text-[18px] rotate-180 group-hover/btn:-translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="p-3 bg-surface-container-low hover:bg-surface-container text-on-surface rounded-lg transition-all hover:scale-105 active:scale-95" title="مخطط BIM ثلاثي الأبعاد">
+<span class="material-symbols-outlined text-[20px]">view_in_ar</span>
+</button>
+</div>
+</div>
+</div>
+<!-- CARD 2: ريزيدنس الياسمين جرينز -->
+<div class="card-project group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl flex flex-col border border-outline-variant/20 animate-fade-in-up" data-card-idx="2" style="animation-delay: 0.1s;">
+<!-- Visual Frame -->
+<div class="relative w-full h-64 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Modern collective garden duplex residential apartment building in Sheikh Zayed with lush green landscape" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2dysPoCSJW0APujWSIIB8MFkfj646qmzp5atFFZX2ZrRQn1DjePaVdGbfVJhnB3xpZMeACHY8NwTkX_BHzXqdantKA57tEg_g3yXh1zhe5a2OLgIqBxgqr4KSDdGDAxNaBz3-mKuPXvSIle77dc3DsKMLezzCsTxGvDUrnKbQtr-J8YcPeg-80FqAKwI3s-ASmyZjAU3lawn_P2E0DQ57nuaLCiv7p5t23Ddw2covf0skbwQiboUjKw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/85 via-transparent to-black/30 pointer-events-none"></div>
+<div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest/95 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[16px]">account_balance</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">البنك الأهلي المصري</span>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="bookmark-btn p-1.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface hover:text-error transition-all shadow-sm flex items-center justify-center" title="حفظ المشروع للمقارنة">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="px-2.5 py-1 rounded-full bg-secondary text-on-secondary font-label-md text-label-md font-bold shadow-sm live-glow-badge">
+              متبقي شقتين فقط
+            </div>
+</div>
+</div>
+<div class="absolute bottom-3 left-3 right-3 flex items-end justify-between text-on-primary">
+<div>
+<span class="font-label-md text-label-md text-secondary-fixed font-bold">الشيخ زايد (الحي الدبلوماسي)</span>
+<h3 class="font-headline-md text-headline-md font-bold text-on-primary leading-tight mt-0.5">ريزيدنس الياسمين جرينز</h3>
+</div>
+<div class="text-left">
+<div class="font-label-md text-surface-container text-[12px]">الاستلام المستهدف</div>
+<div class="font-label-md text-label-md font-bold text-on-primary">أغسطس 2025</div>
+</div>
+</div>
+</div>
+<!-- Body -->
+<div class="p-space-lg flex-1 flex flex-col justify-between gap-space-md">
+<div class="space-y-2">
+<div class="flex justify-between items-baseline">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm font-bold text-secondary">تمويل 95% مكتمل</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">(حجز 18 من 20 وحدة)</span>
+</div>
+<span class="font-label-md text-label-md text-error font-bold px-2 py-0.5 bg-error-container rounded-md">يغلق قريباً</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container rounded-full overflow-hidden">
+<div class="progress-bar-fill h-full bg-secondary rounded-full" data-width="95%" style="width: 0%"></div>
+</div>
+<div class="flex items-center justify-between font-label-md text-on-surface-variant pt-0.5">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]">plumbing</span>
+<span>المرحلة الحالية: <strong>التشطيبات والواجهات المعمارية</strong></span>
+</div>
+<span class="font-numeric-currency text-[13px]">الميزانية: 82M ج.م</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm bg-surface-container-low p-space-md rounded-xl border border-outline-variant/30 transition-colors group-hover:border-secondary/30">
+<div>
+<span class="font-label-md text-[12px] text-on-surface-variant block font-medium">سعر الوحدة التشاركي</span>
+<span class="font-numeric-currency text-headline-sm font-bold text-on-surface">4,100,000 ج.م</span>
+<span class="font-label-md text-[12px] text-outline block mt-0.5">17,820 ج.م / م²</span>
+</div>
+<div class="pr-space-sm border-r border-outline-variant/40">
+<span class="font-label-md text-[12px] text-secondary block font-bold">وفر مباشر للمشتري</span>
+<span class="font-numeric-currency text-headline-sm font-bold text-secondary">وفر 1,800,000 ج.م</span>
+<span class="font-label-md text-[12px] text-on-surface-variant block mt-0.5">مقارنة بسعر زايد 5.9M</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm px-1">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">bed</span> دوبلكس 230 م² مع حديقة</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">yard</span> حديقة خاصة 85 م²</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">lock</span> جراج خاص</span>
+</div>
+<div class="flex items-center gap-space-sm pt-space-xs">
+<button class="flex-1 py-3 px-space-md bg-primary hover:bg-neutral-800 text-on-primary rounded-lg font-label-md text-label-md font-bold transition-all shadow flex items-center justify-center gap-2 group/btn hover:shadow-md active:scale-[0.99]">
+<span>اقتناص الوحدة 19 من 20</span>
+<span class="material-symbols-outlined text-[18px] rotate-180 group-hover/btn:-translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="p-3 bg-surface-container-low hover:bg-surface-container text-on-surface rounded-lg transition-all hover:scale-105 active:scale-95" title="مخطط BIM ثلاثي الأبعاد">
+<span class="material-symbols-outlined text-[20px]">view_in_ar</span>
+</button>
+</div>
+</div>
+</div>
+<!-- CARD 3: لوفتس بيت الوطن -->
+<div class="card-project group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl flex flex-col border border-outline-variant/20 animate-fade-in-up" data-card-idx="3" style="animation-delay: 0.15s;">
+<!-- Visual Frame -->
+<div class="relative w-full h-64 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Modern architectural residential project in Beit El Watan New Cairo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1C1Bkd0EasInNW3rbI7RQY6mZ-DG90fa-kOTmsdnQnzD26i-5FACGez38FpY0m0umV3ZPKRmbMjKN6h5kWCdbfjb3V1_2ms2u36ibd_lunWASWRINx5nZ_K9WBBQRtom1GYHbQEa94L2NZ8nwTSos76EGNfl9K-pNfWLOxK2Oy6gzp0HUPc-IJBTG-i-alSg1gZzvrN7hlncjgWSGclxV2VFR4jqUNML6-_JQi-R7MDmsETDzcrWD7A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/85 via-transparent to-black/30 pointer-events-none"></div>
+<div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest/95 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[16px]">account_balance</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">بنك CIB - البنك التجاري الدولي</span>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="bookmark-btn p-1.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface hover:text-error transition-all shadow-sm flex items-center justify-center" title="حفظ المشروع للمقارنة">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface font-label-md text-label-md font-bold shadow-sm">
+              إطلالة حديقة مفتوحة
+            </div>
+</div>
+</div>
+<div class="absolute bottom-3 left-3 right-3 flex items-end justify-between text-on-primary">
+<div>
+<span class="font-label-md text-label-md text-secondary-fixed font-bold">التجمع الخامس (الحي الثاني - بيت الوطن)</span>
+<h3 class="font-headline-md text-headline-md font-bold text-on-primary leading-tight mt-0.5">لوفتس بيت الوطن</h3>
+</div>
+<div class="text-left">
+<div class="font-label-md text-surface-container text-[12px]">الاستلام المستهدف</div>
+<div class="font-label-md text-label-md font-bold text-on-primary">مارس 2026</div>
+</div>
+</div>
+</div>
+<!-- Body -->
+<div class="p-space-lg flex-1 flex flex-col justify-between gap-space-md">
+<div class="space-y-2">
+<div class="flex justify-between items-baseline">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm font-bold text-secondary">تمويل 72% مكتمل</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">(حجز 18 من 25 وحدة)</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-bold px-2 py-0.5 bg-surface-container rounded-md">متبقي 7 وحدات</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container rounded-full overflow-hidden">
+<div class="progress-bar-fill h-full bg-secondary rounded-full" data-width="72%" style="width: 0%"></div>
+</div>
+<div class="flex items-center justify-between font-label-md text-on-surface-variant pt-0.5">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]">domain</span>
+<span>المرحلة الحالية: <strong>عزل وبناء البدروم والأرضي</strong></span>
+</div>
+<span class="font-numeric-currency text-[13px]">الميزانية: 74M ج.م</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm bg-surface-container-low p-space-md rounded-xl border border-outline-variant/30 transition-colors group-hover:border-secondary/30">
+<div>
+<span class="font-label-md text-[12px] text-on-surface-variant block font-medium">سعر المتر التشاركي</span>
+<span class="font-numeric-currency text-headline-sm font-bold text-on-surface">18,500 ج.م / م²</span>
+<span class="font-label-md text-[12px] text-outline block mt-0.5">إجمالي الوحدة: 2,960,000 ج.م</span>
+</div>
+<div class="pr-space-sm border-r border-outline-variant/40">
+<span class="font-label-md text-[12px] text-secondary block font-bold">وفر مقارنة بالسوق</span>
+<span class="font-numeric-currency text-headline-sm font-bold text-secondary">بدل 28,000 ج.م</span>
+<span class="font-label-md text-[12px] text-on-surface-variant block mt-0.5">وفر 9,500 ج.م في المتر الواحد</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm px-1">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">bed</span> شقق 160 م² متكرر</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">balcony</span> تراس واجهة بحري</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">square_foot</span> 3 غرف + 2 حمام</span>
+</div>
+<div class="flex items-center gap-space-sm pt-space-xs">
+<button class="flex-1 py-3 px-space-md bg-primary hover:bg-neutral-800 text-on-primary rounded-lg font-label-md text-label-md font-bold transition-all shadow flex items-center justify-center gap-2 group/btn hover:shadow-md active:scale-[0.99]">
+<span>احجز وحدتك في الاكتتاب</span>
+<span class="material-symbols-outlined text-[18px] rotate-180 group-hover/btn:-translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="p-3 bg-surface-container-low hover:bg-surface-container text-on-surface rounded-lg transition-all hover:scale-105 active:scale-95" title="مخطط BIM ثلاثي الأبعاد">
+<span class="material-symbols-outlined text-[20px]">view_in_ar</span>
+</button>
+</div>
+</div>
+</div>
+<!-- CARD 4: تاون فيوز - 6 أكتوبر -->
+<div class="card-project group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl flex flex-col border border-outline-variant/20 animate-fade-in-up" data-card-idx="4" style="animation-delay: 0.2s;">
+<!-- Visual Frame -->
+<div class="relative w-full h-64 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Contemporary residential building in 6th of October City Egypt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy1FBVtWrYOdN04NeIOEDE-Gf5jXLurHAcpGU-knmAFWHwPgDALLf1ED1ksdua0aR6e-dyPEXozRtAFFZgOLWAy6afspdv59IUfriHyDQjXFlFSp6Pu5jlGkd8MEcC5D9SCNuJYhQGgbKAzTAcDJNcBr-sc0dLWLBQDNzcIC0Syw4j-I_k0YTYUua5QdoqEBX1ksPCUTnE4UHkb8IxIaOd7DPwavfRh8P2Pcf3Y2SexYhVjWUYlyLRdw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/85 via-transparent to-black/30 pointer-events-none"></div>
+<div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest/95 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[16px]">account_balance</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">بنك مصر - حساب ضمان مقيد</span>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="bookmark-btn p-1.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface hover:text-error transition-all shadow-sm flex items-center justify-center" title="حفظ المشروع للمقارنة">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface font-label-md text-label-md font-bold shadow-sm">
+              طاقة شمسية مستدامة
+            </div>
+</div>
+</div>
+<div class="absolute bottom-3 left-3 right-3 flex items-end justify-between text-on-primary">
+<div>
+<span class="font-label-md text-label-md text-secondary-fixed font-bold">6 أكتوبر (التوسعات الشمالية)</span>
+<h3 class="font-headline-md text-headline-md font-bold text-on-primary leading-tight mt-0.5">تاون فيوز - 6 أكتوبر</h3>
+</div>
+<div class="text-left">
+<div class="font-label-md text-surface-container text-[12px]">الاستلام المستهدف</div>
+<div class="font-label-md text-label-md font-bold text-on-primary">يوليو 2026</div>
+</div>
+</div>
+</div>
+<!-- Body -->
+<div class="p-space-lg flex-1 flex flex-col justify-between gap-space-md">
+<div class="space-y-2">
+<div class="flex justify-between items-baseline">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm font-bold text-secondary">تمويل 54% مكتمل</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">(حجز 15 من 28 وحدة)</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-bold px-2 py-0.5 bg-surface-container rounded-md">متبقي 13 وحدة</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container rounded-full overflow-hidden">
+<div class="progress-bar-fill h-full bg-secondary rounded-full" data-width="54%" style="width: 0%"></div>
+</div>
+<div class="flex items-center justify-between font-label-md text-on-surface-variant pt-0.5">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]">engineering</span>
+<span>المرحلة الحالية: <strong>مرحلة الحفر وعزل الأساسات</strong></span>
+</div>
+<span class="font-numeric-currency text-[13px]">الميزانية: 78.4M ج.م</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm bg-surface-container-low p-space-md rounded-xl border border-outline-variant/30 transition-colors group-hover:border-secondary/30">
+<div>
+<span class="font-label-md text-[12px] text-on-surface-variant block font-medium">سعر الوحدة التشاركي</span>
+<span class="font-numeric-currency text-headline-sm font-bold text-on-surface">2,800,000 ج.م</span>
+<span class="font-label-md text-[12px] text-outline block mt-0.5">16,400 ج.م / م²</span>
+</div>
+<div class="pr-space-sm border-r border-outline-variant/40">
+<span class="font-label-md text-[12px] text-secondary block font-bold">وفر مباشر للمشتري</span>
+<span class="font-numeric-currency text-headline-sm font-bold text-secondary">وفر 1,200,000 ج.م</span>
+<span class="font-label-md text-[12px] text-on-surface-variant block mt-0.5">مقارنة بسعر المطورين 4.0M</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm px-1">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">bed</span> 3 غرف + ريسبشن</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">solar_power</span> إنارة طاقة شمسية</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">square_foot</span> المساحة 170 م²</span>
+</div>
+<div class="flex items-center gap-space-sm pt-space-xs">
+<button class="flex-1 py-3 px-space-md bg-primary hover:bg-neutral-800 text-on-primary rounded-lg font-label-md text-label-md font-bold transition-all shadow flex items-center justify-center gap-2 group/btn hover:shadow-md active:scale-[0.99]">
+<span>احجز وحدتك في الاكتتاب</span>
+<span class="material-symbols-outlined text-[18px] rotate-180 group-hover/btn:-translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="p-3 bg-surface-container-low hover:bg-surface-container text-on-surface rounded-lg transition-all hover:scale-105 active:scale-95" title="مخطط BIM ثلاثي الأبعاد">
+<span class="material-symbols-outlined text-[20px]">view_in_ar</span>
+</button>
+</div>
+</div>
+</div>
+<!-- CARD 5: سولاريس كورت - التجمع الأول -->
+<div class="card-project group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl flex flex-col border border-outline-variant/20 animate-fade-in-up" data-card-idx="5" style="animation-delay: 0.25s;">
+<!-- Visual Frame -->
+<div class="relative w-full h-64 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Boutique modern low rise residential building in First Settlement New Cairo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwAjV2MqKclUoTRc-UZqsQxULHA3QJTUI_wfC-1xih5tdsl0PYzUuoogxKPhLOlISEXOyW5YIvrkATrd0LYKZg2rErVuiiSUe8QCju4qh5LUnvHpE1MfM2nHklonRZrwNZpS-apPoQFUyvo1XDh-H74H59_4HgTHr8ZzqJFCcsh3zV7_jmGPYqsqjeGlhx_DJ0dw2kwflOdUpHF6THI4t6eNbBA66g2iY-MftUR-ivUaf5Y-3ugqGg1g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/85 via-transparent to-black/30 pointer-events-none"></div>
+<div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest/95 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[16px]">account_balance</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">بنك QNB الأهلي</span>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="bookmark-btn p-1.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface hover:text-error transition-all shadow-sm flex items-center justify-center" title="حفظ المشروع للمقارنة">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface font-label-md text-label-md font-bold shadow-sm">
+              ميني كمبوند (12 شقة فقط)
+            </div>
+</div>
+</div>
+<div class="absolute bottom-3 left-3 right-3 flex items-end justify-between text-on-primary">
+<div>
+<span class="font-label-md text-label-md text-secondary-fixed font-bold">القاهرة الجديدة - التجمع الأول</span>
+<h3 class="font-headline-md text-headline-md font-bold text-on-primary leading-tight mt-0.5">سولاريس كورت</h3>
+</div>
+<div class="text-left">
+<div class="font-label-md text-surface-container text-[12px]">الاستلام المستهدف</div>
+<div class="font-label-md text-label-md font-bold text-on-primary">ديسمبر 2026</div>
+</div>
+</div>
+</div>
+<!-- Body -->
+<div class="p-space-lg flex-1 flex flex-col justify-between gap-space-md">
+<div class="space-y-2">
+<div class="flex justify-between items-baseline">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm font-bold text-secondary">تمويل 41% مكتمل</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">(حجز 5 من 12 وحدة)</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-bold px-2 py-0.5 bg-surface-container rounded-md">متبقي 7 وحدات</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container rounded-full overflow-hidden">
+<div class="progress-bar-fill h-full bg-secondary rounded-full" data-width="41%" style="width: 0%"></div>
+</div>
+<div class="flex items-center justify-between font-label-md text-on-surface-variant pt-0.5">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]">architecture</span>
+<span>المرحلة الحالية: <strong>اعتماد رخصة البناء والمخطط</strong></span>
+</div>
+<span class="font-numeric-currency text-[13px]">الميزانية: 39.5M ج.م</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm bg-surface-container-low p-space-md rounded-xl border border-outline-variant/30 transition-colors group-hover:border-secondary/30">
+<div>
+<span class="font-label-md text-[12px] text-on-surface-variant block font-medium">سعر الشقة التشاركي</span>
+<span class="font-numeric-currency text-headline-sm font-bold text-on-surface">3,100,000 ج.م</span>
+<span class="font-label-md text-[12px] text-outline block mt-0.5">20,600 ج.م / م²</span>
+</div>
+<div class="pr-space-sm border-r border-outline-variant/40">
+<span class="font-label-md text-[12px] text-secondary block font-bold">وفر مباشر للمشتري</span>
+<span class="font-numeric-currency text-headline-sm font-bold text-secondary">وفر 1,350,000 ج.م</span>
+<span class="font-label-md text-[12px] text-on-surface-variant block mt-0.5">مقارنة بسعر المنطقة 4.45M</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm px-1">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">bed</span> 3 غرف نوم مودرن</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">security</span> خصوصية تامة وحراسة</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">square_foot</span> 150 م²</span>
+</div>
+<div class="flex items-center gap-space-sm pt-space-xs">
+<button class="flex-1 py-3 px-space-md bg-primary hover:bg-neutral-800 text-on-primary rounded-lg font-label-md text-label-md font-bold transition-all shadow flex items-center justify-center gap-2 group/btn hover:shadow-md active:scale-[0.99]">
+<span>احجز وحدتك في الاكتتاب</span>
+<span class="material-symbols-outlined text-[18px] rotate-180 group-hover/btn:-translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="p-3 bg-surface-container-low hover:bg-surface-container text-on-surface rounded-lg transition-all hover:scale-105 active:scale-95" title="مخطط BIM ثلاثي الأبعاد">
+<span class="material-symbols-outlined text-[20px]">view_in_ar</span>
+</button>
+</div>
+</div>
+</div>
+<!-- CARD 6: الأندلس جاردنز - التجمع الخامس -->
+<div class="card-project group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl flex flex-col border border-outline-variant/20 animate-fade-in-up" data-card-idx="6" style="animation-delay: 0.3s;">
+<!-- Visual Frame -->
+<div class="relative w-full h-64 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Al Andalus New Cairo contemporary residential duplex building with courtyards and water features" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQomF49dPcpswHXTO02y07Ab1crkkIhQkyQ5TqEW5Q4iEPL4mGJs5KHVMDCLLoIBX6x9XcMXNtYiAsEEl81922UabyTAd8KWGVSCckyR9Enab-BBQ9tdEenHEayG7knOwY_wCZYYASGczbKWX-cRKOHyUaERrHoacJTTpO8uWsdioL7gSVIjvLNorOS1Um0qQqEjLYM-euh4-5Vr2qH78VeczLF8OEwB75zNQFv0mTxSXbtDo0TmhuUA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/85 via-transparent to-black/30 pointer-events-none"></div>
+<div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest/95 backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[16px]">account_balance</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">بنك مصر - حساب ضمان مقيد</span>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="bookmark-btn p-1.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface hover:text-error transition-all shadow-sm flex items-center justify-center" title="حفظ المشروع للمقارنة">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+</button>
+<div class="px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface font-label-md text-label-md font-bold shadow-sm">
+              دوبلكسات بحدائق
+            </div>
+</div>
+</div>
+<div class="absolute bottom-3 left-3 right-3 flex items-end justify-between text-on-primary">
+<div>
+<span class="font-label-md text-label-md text-secondary-fixed font-bold">التجمع الخامس (حي الأندلس)</span>
+<h3 class="font-headline-md text-headline-md font-bold text-on-primary leading-tight mt-0.5">الأندلس جاردنز</h3>
+</div>
+<div class="text-left">
+<div class="font-label-md text-surface-container text-[12px]">الاستلام المستهدف</div>
+<div class="font-label-md text-label-md font-bold text-on-primary">أبريل 2026</div>
+</div>
+</div>
+</div>
+<!-- Body -->
+<div class="p-space-lg flex-1 flex flex-col justify-between gap-space-md">
+<div class="space-y-2">
+<div class="flex justify-between items-baseline">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm font-bold text-secondary">تمويل 65% مكتمل</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">(حجز 11 من 16 وحدة)</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-bold px-2 py-0.5 bg-surface-container rounded-md">متبقي 5 وحدات</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container rounded-full overflow-hidden">
+<div class="progress-bar-fill h-full bg-secondary rounded-full" data-width="65%" style="width: 0%"></div>
+</div>
+<div class="flex items-center justify-between font-label-md text-on-surface-variant pt-0.5">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]">foundation</span>
+<span>المرحلة الحالية: <strong>صب الهيكل الخرساني والأعمدة</strong></span>
+</div>
+<span class="font-numeric-currency text-[13px]">الميزانية: 62M ج.م</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm bg-surface-container-low p-space-md rounded-xl border border-outline-variant/30 transition-colors group-hover:border-secondary/30">
+<div>
+<span class="font-label-md text-[12px] text-on-surface-variant block font-medium">سعر الدوبلكس التشاركي</span>
+<span class="font-numeric-currency text-headline-sm font-bold text-on-surface">3,850,000 ج.م</span>
+<span class="font-label-md text-[12px] text-outline block mt-0.5">17,100 ج.م / م²</span>
+</div>
+<div class="pr-space-sm border-r border-outline-variant/40">
+<span class="font-label-md text-[12px] text-secondary block font-bold">وفر مباشر للمشتري</span>
+<span class="font-numeric-currency text-headline-sm font-bold text-secondary">وفر 1,650,000 ج.م</span>
+<span class="font-label-md text-[12px] text-on-surface-variant block mt-0.5">مقارنة بسعر الأندلس 5.5M</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm px-1">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">bed</span> دوبلكس 225 م²</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">yard</span> حديقة خاصة 70 م²</span>
+<span>•</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[18px]">square_foot</span> 4 غرف + 3 حمام</span>
+</div>
+<div class="flex items-center gap-space-sm pt-space-xs">
+<button class="flex-1 py-3 px-space-md bg-primary hover:bg-neutral-800 text-on-primary rounded-lg font-label-md text-label-md font-bold transition-all shadow flex items-center justify-center gap-2 group/btn hover:shadow-md active:scale-[0.99]">
+<span>احجز وحدتك في الاكتتاب</span>
+<span class="material-symbols-outlined text-[18px] rotate-180 group-hover/btn:-translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<button class="p-3 bg-surface-container-low hover:bg-surface-container text-on-surface rounded-lg transition-all hover:scale-105 active:scale-95" title="مخطط BIM ثلاثي الأبعاد">
+<span class="material-symbols-outlined text-[20px]">view_in_ar</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Collective Landowner Launchpad & Platform Fiduciary Stats -->
+<div class="mt-space-lg flex flex-col xl:flex-row gap-space-lg">
+<!-- Launchpad Propose Land Card (With Interactive Accordion/Expandable Details) -->
+<div class="xl:w-7/12 bg-primary text-on-primary rounded-xl p-space-xl flex flex-col justify-between relative overflow-hidden shadow-lg border border-outline-variant/10">
+<!-- Ambient Decorative Visual Accent -->
+<div class="absolute -left-12 -bottom-12 w-64 h-64 bg-secondary/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10 space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-on-primary/10 text-secondary-fixed font-label-md text-label-md font-bold">
+<span class="material-symbols-outlined text-[18px]">add_business</span>
+<span>مبادرة ملّاك الأراضي في المدن الجديدة</span>
+</div>
+<button class="text-secondary-fixed hover:text-on-primary flex items-center gap-1 font-label-md text-[13px] font-bold p-1 rounded transition-colors" id="toggle-land-initiative" title="توسيع أو طي التفاصيل">
+<span id="land-toggle-text">تفاصيل المبادرة</span>
+<span class="material-symbols-outlined text-[20px] transition-transform duration-300" id="land-toggle-icon">expand_more</span>
+</button>
+</div>
+<div class="space-y-space-xs">
+<h3 class="font-headline-lg text-headline-lg font-bold text-on-primary tracking-tight">امتلك أرض في موقع مميز؟ شارك تكتل المشترين وحقق أعلى عائد عادل لأرضك بدون سماسرة.</h3>
+<p class="font-body-md text-body-md text-on-primary-container max-w-xl leading-relaxed">
+              تخلّص من عمولات السماسرة والمضاربين واحتكار الشركات. قدّم قطعة أرضك للجنة الفحص الهندسي والمالي في CoBuild مصر، وسيقوم نظامنا بتأسيس اتحاد البناء التشاركي وتجميع المشترين المعتمدين وفتح حساب الضمان في البنك خلال 45 يوماً.
+            </p>
+</div>
+<!-- Expandable Content Panel -->
+<div class="accordion-transition overflow-hidden" id="land-initiative-details" style="max-height: 500px; opacity: 1;">
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-md pt-space-sm text-on-primary">
+<div class="bg-on-primary/5 p-space-md rounded-lg border border-on-primary/10 hover:border-secondary-fixed/40 transition-colors">
+<span class="material-symbols-outlined text-secondary-fixed text-[24px] mb-1">gavel</span>
+<div class="font-label-md text-label-md font-bold">إشراف قانوني معتمد</div>
+<div class="font-body-sm text-body-sm text-on-primary-container">صياغة عقود تضامنية وحصص عقارية مسجلة</div>
+</div>
+<div class="bg-on-primary/5 p-space-md rounded-lg border border-on-primary/10 hover:border-secondary-fixed/40 transition-colors">
+<span class="material-symbols-outlined text-secondary-fixed text-[24px] mb-1">group_add</span>
+<div class="font-label-md text-label-md font-bold">مشترين مؤهلين مسبقاً</div>
+<div class="font-body-sm text-body-sm text-on-primary-container">أكثر من 5,800 عميل جاهز للشراء الفوري</div>
+</div>
+<div class="bg-on-primary/5 p-space-md rounded-lg border border-on-primary/10 hover:border-secondary-fixed/40 transition-colors">
+<span class="material-symbols-outlined text-secondary-fixed text-[24px] mb-1">architecture</span>
+<div class="font-label-md text-label-md font-bold">دراسة جدوى مجانية</div>
+<div class="font-body-sm text-body-sm text-on-primary-container">تصميمات معمارية وحساب دقيق لعائد الأرض</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative z-10 pt-space-lg flex flex-col sm:flex-row items-center gap-space-md">
+<button class="w-full sm:w-auto px-space-lg py-3.5 bg-surface-container-lowest text-on-surface hover:bg-surface-container-low rounded-lg font-label-lg text-label-lg font-bold transition-all shadow-md flex items-center justify-center gap-2 group/land-btn active:scale-95">
+<span>قدّم أرضك للشراكة مع تكتل المشترين</span>
+<span class="material-symbols-outlined text-[20px] rotate-180 group-hover/land-btn:-translate-x-1.5 transition-transform">arrow_forward</span>
+</button>
+<a class="font-label-md text-label-md text-secondary-fixed hover:underline flex items-center gap-1 font-bold group" href="#">
+<span>تحميل دليل مالك الأرض والاشتراطات البنائية (PDF)</span>
+<span class="material-symbols-outlined text-[16px] group-hover:translate-y-0.5 transition-transform">download</span>
+</a>
+</div>
+</div>
+<!-- Real-Time Transparency Fiduciary Performance Ticker -->
+<div class="xl:w-5/12 bg-surface-container-lowest p-space-xl rounded-xl shadow-sm flex flex-col justify-between border border-outline-variant/20 hover:border-secondary/30 transition-colors">
+<div>
+<div class="flex items-center justify-between pb-space-md border-b-0">
+<div>
+<span class="font-label-md text-label-md uppercase tracking-wider text-secondary font-bold">مؤشرات الأداء المالي الحي في مصر</span>
+<h4 class="font-headline-md text-headline-md font-bold text-on-surface mt-0.5">حجم التمويل التشاركي والأمان الرقابي</h4>
+</div>
+<span class="material-symbols-outlined text-secondary text-[28px] animate-pulse">query_stats</span>
+</div>
+<div class="space-y-space-md mt-space-md">
+<!-- Metric 1 -->
+<div class="flex items-center justify-between p-space-md bg-surface-container-low rounded-xl hover:bg-surface-container transition-all duration-200 hover:translate-x-[-3px]">
+<div class="flex items-center gap-space-sm">
+<div class="h-10 w-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">paid</span>
+</div>
+<div>
+<div class="font-numeric-currency text-headline-sm font-bold text-on-surface"><span class="counter-number" data-target="840">0</span> مليون ج.م</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant font-medium">أموال مؤمنة بحسابات ضمان بنكية مشروطة</div>
+</div>
+</div>
+<span class="font-label-md text-label-md font-bold text-secondary bg-surface-container px-2.5 py-1 rounded shadow-xs">+24% هذا الربع</span>
+</div>
+<!-- Metric 2 -->
+<div class="flex items-center justify-between p-space-md bg-surface-container-low rounded-xl hover:bg-surface-container transition-all duration-200 hover:translate-x-[-3px]">
+<div class="flex items-center gap-space-sm">
+<div class="h-10 w-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">percent</span>
+</div>
+<div>
+<div class="font-numeric-currency text-headline-sm font-bold text-on-surface"><span class="counter-number" data-decimals="1" data-target="34.2">0.0</span>%</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant font-medium">متوسط توفير المشترين مقابل تسعير السوق</div>
+</div>
+</div>
+<span class="font-label-md text-label-md font-bold text-secondary bg-surface-container px-2.5 py-1 rounded shadow-xs">سعر تكلفة مباشر</span>
+</div>
+<!-- Metric 3 -->
+<div class="flex items-center justify-between p-space-md bg-surface-container-low rounded-xl hover:bg-surface-container transition-all duration-200 hover:translate-x-[-3px]">
+<div class="flex items-center gap-space-sm">
+<div class="h-10 w-10 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">timer</span>
+</div>
+<div>
+<div class="font-numeric-currency text-headline-sm font-bold text-on-surface"><span class="counter-number" data-target="38">0</span> يوماً</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant font-medium">متوسط اكتمال التمويل وبدء المقاولة</div>
+</div>
+</div>
+<span class="font-label-md text-label-md font-bold text-on-surface-variant bg-surface-container px-2.5 py-1 rounded shadow-xs">الأسرع: 9 أيام</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-md border-t border-outline-variant/20 flex items-center justify-between text-on-surface-variant font-label-md text-label-md">
+<span class="flex items-center gap-1 font-bold text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[16px]">verified</span>
+            إشراف ومطابقة الكود المصري للبناء وتدقيق هندسي دوري
+          </span>
+<a class="text-secondary font-bold hover:underline flex items-center gap-0.5" href="#"><span>سجل تقارير الجودة</span> <span class="material-symbols-outlined text-[14px] rotate-180">arrow_forward</span></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    // 1. Number Counting Animation
+    function animateCounters() {
+      const counters = document.querySelectorAll('.counter-number');
+      counters.forEach(counter => {
+        const target = parseFloat(counter.getAttribute('data-target') || '0');
+        const decimals = parseInt(counter.getAttribute('data-decimals') || '0', 10);
+        const duration = 1400; // ms
+        const startTime = performance.now();
+
+        function step(now) {
+          const progress = Math.min((now - startTime) / duration, 1);
+          // Ease out expo
+          const easeOut = 1 - Math.pow(2, -10 * progress);
+          const current = progress === 1 ? target : (target * easeOut);
+          counter.textContent = current.toFixed(decimals);
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            counter.textContent = target.toFixed(decimals);
+          }
+        }
+        requestAnimationFrame(step);
+      });
+    }
+
+    // 2. Animated Progress Bars on load
+    function animateProgressBars() {
+      const bars = document.querySelectorAll('.progress-bar-fill');
+      bars.forEach((bar, index) => {
+        const targetWidth = bar.getAttribute('data-width') || '0%';
+        setTimeout(() => {
+          bar.style.width = targetWidth;
+        }, 120 + (index * 70));
+      });
+    }
+
+    // 3. Bookmark / Favorite Toggle Micro-interaction
+    function initBookmarks() {
+      const bookmarkBtns = document.querySelectorAll('.bookmark-btn');
+      bookmarkBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          btn.classList.toggle('active');
+        });
+      });
+    }
+
+    // 4. Accordion Toggle for Land Initiative Card
+    function initAccordion() {
+      const toggleBtn = document.getElementById('toggle-land-initiative');
+      const details = document.getElementById('land-initiative-details');
+      const icon = document.getElementById('land-toggle-icon');
+      const toggleText = document.getElementById('land-toggle-text');
+
+      if (toggleBtn && details && icon) {
+        let isExpanded = true;
+        toggleBtn.addEventListener('click', () => {
+          isExpanded = !isExpanded;
+          if (isExpanded) {
+            details.style.maxHeight = '500px';
+            details.style.opacity = '1';
+            icon.style.transform = 'rotate(0deg)';
+            toggleText.textContent = 'تفاصيل المبادرة';
+          } else {
+            details.style.maxHeight = '0px';
+            details.style.opacity = '0';
+            icon.style.transform = 'rotate(180deg)';
+            toggleText.textContent = 'عرض التفاصيل';
+          }
+        });
+      }
+    }
+
+    // 5. Autocomplete & Live Search Input Micro-interactions
+    const searchInput = document.getElementById('marketplace-search-input');
+    const autoBox = document.getElementById('search-autocomplete-box');
+    const clearBtn = document.getElementById('clear-search-btn');
+
+    if (searchInput && autoBox && clearBtn) {
+      searchInput.addEventListener('focus', () => {
+        autoBox.classList.remove('hidden');
+      });
+
+      searchInput.addEventListener('input', (e) => {
+        if (e.target.value.length > 0) {
+          clearBtn.classList.remove('hidden');
+        } else {
+          clearBtn.classList.add('hidden');
+        }
+      });
+
+      clearBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        clearBtn.classList.add('hidden');
+        autoBox.classList.add('hidden');
+        searchInput.focus();
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!searchInput.contains(e.target) && !autoBox.contains(e.target) && !clearBtn.contains(e.target)) {
+          autoBox.classList.add('hidden');
+        }
+      });
+
+      document.querySelectorAll('.autocomplete-item').forEach(item => {
+        item.addEventListener('click', () => {
+          searchInput.value = item.getAttribute('data-search');
+          autoBox.classList.add('hidden');
+          clearBtn.classList.remove('hidden');
+          triggerGridRefresh();
+        });
+      });
+    }
+
+    // 6. Extended Filter Drawer Toggle
+    const filterBtn = document.getElementById('toggle-filter-drawer');
+    const filterPanel = document.getElementById('extended-filters-panel');
+    if (filterBtn && filterPanel) {
+      filterBtn.addEventListener('click', () => {
+        filterPanel.classList.toggle('hidden');
+      });
+    }
+
+    // 7. Price Slider Readout Update
+    const priceSlider = document.getElementById('price-range-slider');
+    const priceReadout = document.getElementById('price-readout');
+    if (priceSlider && priceReadout) {
+      priceSlider.addEventListener('input', (e) => {
+        const val = (e.target.value / 100).toFixed(1);
+        priceReadout.textContent = '2.0 مليون - ' + val + ' مليون ج.م';
+      });
+    }
+
+    // 8. Filter Chips Toggle with Springy Grid Refresh
+    const chips = document.querySelectorAll('.filter-chip');
+    const gridContainer = document.getElementById('projects-grid-container');
+    const activeCount = document.getElementById('active-projects-count');
+
+    function triggerGridRefresh() {
+      if (gridContainer) {
+        gridContainer.style.opacity = '0.4';
+        gridContainer.style.transform = 'scale(0.99)';
+        setTimeout(() => {
+          gridContainer.style.opacity = '1';
+          gridContainer.style.transform = 'scale(1)';
+        }, 180);
+      }
+    }
+
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        chips.forEach(c => {
+          c.classList.remove('bg-primary', 'text-on-primary', 'font-bold', 'shadow-sm');
+          c.classList.add('bg-surface-container-low', 'text-on-surface', 'font-medium');
+        });
+        chip.classList.remove('bg-surface-container-low', 'text-on-surface', 'font-medium');
+        chip.classList.add('bg-primary', 'text-on-primary', 'font-bold', 'shadow-sm');
+        
+        triggerGridRefresh();
+        if (activeCount) {
+          const category = chip.getAttribute('data-category');
+          activeCount.textContent = (category === 'all') ? '6' : (category === 'high-funding' ? '2' : '4');
+        }
+      });
+    });
+
+    // 9. View Switcher: Grid vs Map vs List
+    const btnGrid = document.getElementById('btn-view-grid');
+    const btnMap = document.getElementById('btn-view-map');
+    const btnList = document.getElementById('btn-view-list');
+    const mapContainer = document.getElementById('marketplace-map-container');
+
+    function resetViewBtns() {
+      [btnGrid, btnMap, btnList].forEach(btn => {
+        if (btn) {
+          btn.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm');
+          btn.classList.add('text-on-surface-variant');
+        }
+      });
+    }
+
+    if (btnGrid && btnMap && btnList && gridContainer && mapContainer) {
+      btnGrid.addEventListener('click', () => {
+        resetViewBtns();
+        btnGrid.classList.add('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm');
+        gridContainer.classList.remove('hidden');
+        gridContainer.className = 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-space-lg transition-opacity duration-300';
+        mapContainer.classList.add('hidden');
+      });
+
+      btnMap.addEventListener('click', () => {
+        resetViewBtns();
+        btnMap.classList.add('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm');
+        mapContainer.classList.remove('hidden');
+        gridContainer.classList.add('hidden');
+      });
+
+      btnList.addEventListener('click', () => {
+        resetViewBtns();
+        btnList.classList.add('bg-surface-container-lowest', 'text-on-surface', 'shadow-sm');
+        gridContainer.classList.remove('hidden');
+        gridContainer.className = 'grid grid-cols-1 gap-space-md transition-opacity duration-300';
+        mapContainer.classList.add('hidden');
+      });
+    }
+
+    // Initialize animations once DOM is ready
+    window.addEventListener('DOMContentLoaded', () => {
+      animateCounters();
+      animateProgressBars();
+      initBookmarks();
+      initAccordion();
+    });
+    // Fallback if DOMContentLoaded has already fired
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      animateCounters();
+      animateProgressBars();
+      initBookmarks();
+      initAccordion();
+    }
+  })();
+</script></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 mt-space-xl"><div class="w-full px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-4 gap-space-xl pb-space-lg border-b border-outline-variant/20"><div class="space-y-space-sm"><div class="flex items-center gap-space-xs"><img alt="CoBuild Egypt Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WlkSdcUo2owSob12eh3iWtWBAL3olBse8xTQh-Z3Zr-9T6zUJ3IyXdYt3tNQ4QGzSKcb4gyIe_LKbX_ywFxt4cOhaVtFR8nP7TfbiO4a7IXinWWGq2CrJk3tNeyYDCBfj0U4g29T8VJ-TBfQn6dVFMowSVsFOblPuB3lAwvpwL3lDSqNaqSTADGR9Glsj5XPnuFuqBt_utNwPkIJX6ELsll30qUZY_YMRIrGg-72heG5c6wil259qLPzrX"/><span class="font-headline-sm text-headline-sm font-bold text-on-surface">CoBuild مصر</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">المنصة الرائدة للتطوير المعماري التشاركي في مصر، تُمكّن المشترين من تمويل وتملك وحداتهم السكنية بالتكلفة الفعلية العادلة عبر حسابات بنكية مقيدة وفق الكود المصري للبناء.</p><div class="pt-space-xs"><span class="inline-flex items-center gap-1 text-label-md font-label-md text-on-surface-variant font-medium bg-surface-container-low px-2 py-1 rounded"><span class="material-symbols-outlined text-[14px]">translate</span> واجهة ثنائية اللغة (عربي / English)</span></div></div><div><h4 class="font-label-lg text-label-lg font-bold text-on-surface mb-space-md">إدارة وحوكمة المنصة</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" data-path="marketplace" href="#">دليل المشاريع المتاحة</a></li><li><a class="hover:text-on-surface transition-colors" data-path="community-hub" href="#">بوابة تصويت وقرارات الملاك</a></li><li><a class="hover:text-on-surface transition-colors" data-path="construction-live" href="#">كاميرات البث وسجلات مهندس الموقع</a></li><li><a class="hover:text-on-surface transition-colors" data-path="escrow-payments" href="#">جدول صرف الدفعات الإنشائية</a></li></ul></div><div><h4 class="font-label-lg text-label-lg font-bold text-on-surface mb-space-md">الامتثال والحماية القانونية</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" data-path="trust-and-security" href="#">ضوابط حسابات الضمان البنكية المعتمدة</a></li><li><a class="hover:text-on-surface transition-colors" data-path="trust-and-security" href="#">صيغ العقود التضامنية واتحاد الشاغلين</a></li><li><a class="hover:text-on-surface transition-colors" data-path="risk-disclosure" href="#">إفصاح المخاطر وسياسة الشفافية الكاملة</a></li><li><a class="hover:text-on-surface transition-colors" data-path="terms-of-service" href="#">شروط نقل وتسجيل الملكية العقارية</a></li></ul></div><div><h4 class="font-label-lg text-label-lg font-bold text-on-surface mb-space-md">الجهات الرقابية والبنوك الشريكة</h4><div class="space-y-space-sm"><div class="flex items-center gap-2 text-label-md font-label-md text-on-surface bg-surface-container-low p-2 rounded-lg font-bold"><span class="material-symbols-outlined text-secondary text-[18px]">account_balance</span><span>مطابقة تعليمات البنك المركزي المصري</span></div><div class="flex items-center gap-2 text-label-md font-label-md text-on-surface bg-surface-container-low p-2 rounded-lg font-bold"><span class="material-symbols-outlined text-secondary text-[18px]">verified</span><span>حسابات ضمان: بنك مصر والبنك الأهلي المصري</span></div><div class="flex items-center gap-2 text-label-md font-label-md text-on-surface bg-surface-container-low p-2 rounded-lg font-bold"><span class="material-symbols-outlined text-secondary text-[18px]">credit_card</span><span>شريك المدفوعات والتمويل: CIB &amp; QNB</span></div></div></div></div><div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md text-label-md text-label-md text-on-surface-variant"><div>© 2025 CoBuild مصر للحلول العقارية التشاركية. جميع حقوق الملكية والتراخيص خاضعة للقوانين المصرية وحسابات الضمان المقيدة.</div><div class="flex items-center gap-space-lg font-medium"><a class="hover:text-on-surface transition-colors" data-path="contact-support" href="#">خدمة العملاء والكونسيرج</a><a class="hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">سياسة الخصوصية</a><a class="hover:text-on-surface transition-colors" data-path="risk-disclosure" href="#">إقرار الحصص العقارية</a></div></div></div></footer></body></html>

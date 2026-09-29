@@ -19,6 +19,10 @@ class TestCoBuildBackend(unittest.TestCase):
     def setUpClass(cls):
         # Verify database initialization and seeding
         database.init_db()
+        conn = database.get_connection()
+        conn.cursor().execute("DELETE FROM daily_logs WHERE id LIKE 'test-log-%'")
+        conn.commit()
+        conn.close()
 
     def test_01_database_tables_exist(self):
         """Verify all 11 relational tables exist in SQLite database"""
@@ -160,6 +164,8 @@ class TestCoBuildBackend(unittest.TestCase):
         row = cursor.fetchone()
         self.assertIsNotNone(row)
         self.assertEqual(row["day_name"], "الثلاثاء")
+        cursor.execute("DELETE FROM daily_logs WHERE id = ?", (test_id,))
+        conn.commit()
         conn.close()
 
     def test_08_direct_syndicate_voting_increment(self):
