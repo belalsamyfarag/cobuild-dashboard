@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Plus+Jakarta+Sans:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-variant":"#d3e4fe","on-primary-fixed-variant":"#3f465c","on-error-container":"#93000a","secondary-fixed":"#dde1ff","on-surface-variant":"#45464d","surface-container-highest":"#d3e4fe","secondary":"#3755c3","surface-container-lowest":"#ffffff","on-primary-container":"#7c839b","surface-dim":"#cbdbf5","on-tertiary":"#ffffff","surface-bright":"#f8f9ff","primary-fixed":"#dae2fd","on-secondary":"#ffffff","on-secondary-container":"#00217a","on-secondary-fixed-variant":"#173bab","outline-variant":"#c6c6cd","tertiary":"#000000","on-primary-fixed":"#131b2e","outline":"#76777d","inverse-on-surface":"#eaf1ff","on-background":"#0b1c30","inverse-primary":"#bec6e0","on-tertiary-fixed-variant":"#005236","tertiary-container":"#002113","on-surface":"#0b1c30","background":"#f8f9ff","inverse-surface":"#213145","secondary-fixed-dim":"#b8c4ff","on-primary":"#ffffff","primary":"#000000","error":"#ba1a1a","error-container":"#ffdad6","surface":"#f8f9ff","on-tertiary-fixed":"#002113","surface-tint":"#565e74","surface-container-high":"#dce9ff","on-error":"#ffffff","surface-container-low":"#eff4ff","on-tertiary-container":"#009668","tertiary-fixed-dim":"#4edea3","on-secondary-fixed":"#001453","secondary-container":"#708cfd","surface-container":"#e5eeff","tertiary-fixed":"#6ffbbe","primary-container":"#131b2e","primary-fixed-dim":"#bec6e0"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-xs":"0.25rem","margin":"2rem","margin-mobile":"1rem","space-xl":"2.5rem","gutter":"1.5rem","gutter-mobile":"1rem","space-md":"1rem","space-lg":"1.5rem","space-sm":"0.5rem"},fontFamily:{"body-md":["Inter"],"headline-md":["Plus Jakarta Sans"],"label-md":["Inter"],"headline-sm":["Plus Jakarta Sans"],"code-num":["Inter"],"display-lg":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"label-lg":["Inter"],"label-sm":["Inter"],"display-lg-mobile":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"body-sm":["Inter"],"body-lg":["Inter"]},fontSize:{"body-md":["15px",{lineHeight:"24px",letterSpacing:"0",fontWeight:"400"}],"headline-md":["24px",{lineHeight:"32px",letterSpacing:"-0.01em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"500"}],"headline-sm":["20px",{lineHeight:"28px",letterSpacing:"-0.005em",fontWeight:"600"}],"code-num":["14px",{lineHeight:"20px",letterSpacing:"-0.01em",fontWeight:"500"}],"display-lg":["48px",{lineHeight:"56px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-lg":["32px",{lineHeight:"40px",letterSpacing:"-0.015em",fontWeight:"600"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"600"}],"display-lg-mobile":["36px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-lg-mobile":["26px",{lineHeight:"34px",letterSpacing:"-0.015em",fontWeight:"600"}],"body-sm":["13px",{lineHeight:"20px",letterSpacing:"0",fontWeight:"400"}],"body-lg":["18px",{lineHeight:"28px",letterSpacing:"0",fontWeight:"400"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-b border-outline-variant/30 shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="bg-primary-container text-on-primary px-margin py-1.5 flex items-center justify-between text-body-sm font-body-sm border-b border-outline-variant/10"><div class="flex items-center gap-space-sm mx-auto overflow-hidden whitespace-nowrap text-ellipsis"><span class="flex h-2 w-2 relative shrink-0"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary-fixed opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary-fixed"></span></span><span class="font-label-sm uppercase tracking-wider text-tertiary-fixed font-semibold shrink-0">Live Construction Log</span><span class="text-outline-variant/50">|</span><span class="truncate">Al-Noor Heights Phase 2 foundation concrete pour completed today with 98.4% buyer sign-off.</span><a class="text-tertiary-fixed hover:underline font-label-md flex items-center gap-0.5 ml-space-xs shrink-0" data-path="construction-live-monitoring" href="#">View Live Feed <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a></div></div><div class="h-20 w-full px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md shrink-0"><a class="flex items-center gap-space-xs" data-path="landing-page" href="#"><img alt="CoBuild Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WlkSdcUo2owSob12eh3iWtWBAL3olBse8xTQh-Z3Zr-9T6zUJ3IyXdYt3tNQ4QGzSKcb4gyIe_LKbX_ywFxt4cOhaVtFR8nP7TfbiO4a7IXinWWGq2CrJk3tNeyYDCBfj0U4g29T8VJ-TBfQn6dVFMowSVsFOblPuB3lAwvpwL3lDSqNaqSTADGR9Glsj5XPnuFuqBt_utNwPkIJX6ELsll30qUZY_YMRIrGg-72heG5c6wil259qLPzrX"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight">CoBuild</span><span class="font-label-sm text-label-sm text-on-surface-variant font-medium -mt-1">Collective Homebuilding</span></div></a><div class="ml-space-xs inline-flex items-center bg-surface-container-low p-0.5 rounded-lg border border-outline-variant/40"><button class="px-2 py-0.5 rounded-lg text-label-sm font-label-sm bg-surface-container-lowest text-on-surface font-semibold shadow-sm" type="button">EN</button><button class="px-2 py-0.5 rounded-lg text-label-sm font-label-sm text-on-surface-variant hover:text-on-surface transition-colors font-medium" type="button">العربية</button></div></div><nav class="hidden lg:flex items-center gap-0.5 font-label-lg text-label-lg overflow-x-auto" data-active-classes="text-on-surface font-bold bg-surface-container-low rounded-lg"><a class="text-on-surface-variant hover:text-on-surface px-space-sm py-1.5 transition-colors whitespace-nowrap" data-path="project-marketplace" href="#">Marketplace</a><a class="text-on-surface-variant hover:text-on-surface px-space-sm py-1.5 transition-colors whitespace-nowrap" data-path="buyer-dashboard" href="#">My Apartment</a><a aria-current="page" class="px-space-sm py-1.5 transition-colors whitespace-nowrap text-on-surface font-bold bg-surface-container-low rounded-lg" data-path="secondary-market-syndicate-resale" href="#">Secondary Resale</a><a class="text-on-surface-variant hover:text-on-surface px-space-sm py-1.5 transition-colors whitespace-nowrap" data-path="escrow-statutory-payments" href="#">Escrow &amp; Treasury</a><a class="text-on-surface-variant hover:text-on-surface px-space-sm py-1.5 transition-colors whitespace-nowrap" data-path="community-hub-governance" href="#">Governance Hub</a><a class="text-on-surface-variant hover:text-on-surface px-space-sm py-1.5 transition-colors whitespace-nowrap" data-path="landowner-submission-portal" href="#">Landowners</a><a class="text-on-surface-variant hover:text-on-surface px-space-sm py-1.5 transition-colors whitespace-nowrap" data-path="contractor-engineering-inspection-journal" href="#">Inspections Log</a><a class="text-on-surface-variant hover:text-on-surface px-space-sm py-1.5 transition-colors whitespace-nowrap" data-path="admin-project-command" href="#">Admin Command</a></nav><div class="flex items-center gap-space-md shrink-0"><div class="hidden 2xl:flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low border border-outline-variant/40"><span class="material-symbols-outlined text-[16px] text-on-tertiary-container">verified_user</span><span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold">100% Escrow Protected</span></div><a class="hidden sm:inline-flex items-center gap-1 text-label-sm font-label-sm font-semibold text-secondary hover:text-on-secondary-container bg-surface-container-low px-2.5 py-1.5 rounded-lg border border-outline-variant/40 transition-colors" data-path="buyer-onboarding-kyc-verification" href="#"><span class="material-symbols-outlined text-[16px]">badge</span><span>KYC Verified</span></a><button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-all" title="Site Alerts &amp; Audits" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-secondary text-[10px] font-bold text-on-secondary">3</span></button><div class="flex items-center gap-space-sm pl-space-xs border-l border-outline-variant/40"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGOXR6ElKI-TRGO3rVUejcuUT5itCp7C4i9L54ywhp8LiseCKSraN1htnLrF2WaMwrFQRYvT3AjahknZ-Kjzr-64nKAX8XjQAFpVV2QwFUNhiBC_zSlXbBueXOuyVxO_JjJpR4au9Xl3odYxzaavP9HpM0sb6MbchlOkvdT_Y3ADVrmjNj7KIhanlHhnBLlBFd-zWVVj7eDdu56IW2QVj2XJYmO4K8zGWcW75MhcPVvKzrHt7YJrjmqQ"/><div class="hidden md:flex flex-col text-left"><span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Sarah Al-Mansoor</span><span class="font-label-sm text-label-sm text-on-surface-variant">Co-Owner Unit 402</span></div><button class="text-on-surface-variant hover:text-on-surface p-1 rounded-lg" type="button"><span class="material-symbols-outlined text-[18px]">expand_more</span></button></div></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full font-body-md text-on-surface">
+<!-- Top Hero & Institutional Fiduciary Header -->
+<section class="w-full px-margin py-space-xl bg-surface-container-low/60">
+<div class="max-w-[1360px] mx-auto flex flex-col gap-space-lg">
+<!-- Overline & Compliance Seal -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-lowest shadow-sm">
+<span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider text-on-tertiary-container">SAMA Regulated &amp; Wafi Licensed</span>
+<span class="text-outline-variant/60 font-body-sm">|</span>
+<span class="font-code-num text-code-num text-on-surface-variant">Protocol Ref: CBD-SEC-8942-X</span>
+</div>
+<div class="flex items-center gap-space-sm text-label-sm font-label-sm text-on-surface-variant">
+<span class="inline-flex items-center gap-1"><span class="material-symbols-outlined text-[16px] text-secondary">verified_user</span> Escrow Custodian: Al-Tamimi &amp; Co.</span>
+<span class="hidden md:inline text-outline-variant/40">•</span>
+<span class="hidden md:inline-flex items-center gap-1 text-on-tertiary-container font-semibold"><span class="material-symbols-outlined text-[16px]">gavel</span> 0% Speculative Cap Enforced</span>
+</div>
+</div>
+<!-- Main Headline + Institutional Value Pitch -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-end">
+<div class="lg:col-span-8 flex flex-col gap-space-xs">
+<div class="font-label-md text-label-md uppercase tracking-wider text-secondary font-bold">Secondary Syndicate Resale &amp; Equity Reassignment</div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">Pre-Completion Liquidity for Verified Co-Owners</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">Trade, novate, or reassign off-plan collective property deeds within a secure legal framework. Direct peer-to-peer syndicate exit prior to final municipal handover without predatory brokerage friction.</p>
+</div>
+<div class="lg:col-span-4 flex lg:justify-end">
+<a class="inline-flex items-center justify-center gap-2 px-space-lg py-3 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg font-semibold shadow-md hover:bg-primary-container transition-all" href="#seller-calculator">
+<span class="material-symbols-outlined text-[18px]">currency_exchange</span>
+<span>Calculate Exit Liquidity</span>
+</a>
+</div>
+</div>
+<!-- Live Exchange Ticker / 4 High-Impact Metrics -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter pt-space-xs">
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-on-surface-variant">Active Share Reassignments</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-display-lg text-display-lg font-bold text-on-surface">18</span>
+<span class="font-label-md text-label-md text-on-tertiary-container font-semibold">Units Liquid</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-auto pt-2">Across 6 collective towers in Riyadh &amp; Khobar</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-on-surface-variant">24h Syndicate Resale Volume</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-display-lg text-display-lg font-bold text-on-surface">1.84M</span>
+<span class="font-code-num text-code-num text-on-surface-variant font-semibold">SAR</span>
+</div>
+<div class="flex items-center gap-1 text-on-tertiary-container font-label-sm text-label-sm mt-auto pt-2">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span>+14.2% week-on-week escrow clearing</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-on-surface-variant">Avg. Co-Build Equity Gain</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-display-lg text-display-lg font-bold text-on-tertiary-container">+28.4%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">vs Cost</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-auto pt-2">Preserved below +30% maximum syndicate ceiling</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wide text-on-surface-variant">Avg. Escrow Title Handshake</span>
+<div class="flex items-baseline gap-2 mt-1">
+<span class="font-display-lg text-display-lg font-bold text-on-surface">48h</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Fast Track</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-auto pt-2">Automated digital notary transfer via Najiz / Wafi</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Filter & Marketplace Search Hub -->
+<section class="w-full px-margin py-space-md bg-surface-container-lowest shadow-sm sticky top-20 z-40">
+<div class="max-w-[1360px] mx-auto flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<!-- Category Pills -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 lg:pb-0" id="filter-container">
+<button class="filter-btn px-3 py-1.5 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-semibold whitespace-nowrap shadow-sm" data-category="all">All Reassignments (18)</button>
+<button class="filter-btn px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm font-medium whitespace-nowrap transition-colors" data-category="progress-50">Construction &gt;50% Complete</button>
+<button class="filter-btn px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm font-medium whitespace-nowrap transition-colors" data-category="penthouse">Penthouses &amp; Lofts</button>
+<button class="filter-btn px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm font-medium whitespace-nowrap transition-colors" data-category="duplex">Garden Duplexes</button>
+<button class="filter-btn px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm font-medium whitespace-nowrap transition-colors" data-category="delivery-near">Delivery &lt;6 Months</button>
+<button class="filter-btn px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm font-medium whitespace-nowrap transition-colors" data-category="par-value">Distress / 0% Par Value</button>
+</div>
+<!-- Sorter & Search Input -->
+<div class="flex items-center gap-space-sm shrink-0">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-[18px] text-on-surface-variant">search</span>
+<input class="pl-9 pr-3 py-2 text-body-sm font-body-sm rounded-lg bg-surface-container-low text-on-surface placeholder:text-on-surface-variant/70 focus:outline-none focus:bg-surface-container-lowest shadow-sm w-56 md:w-64 transition-all" placeholder="Filter by building, district, or unit..." type="text"/>
+</div>
+<div class="relative">
+<select class="appearance-none pl-3 pr-8 py-2 text-label-sm font-label-sm rounded-lg bg-surface-container-low text-on-surface font-semibold focus:outline-none cursor-pointer shadow-sm">
+<option>Highest Accrued Margin</option>
+<option>Lowest Transfer Premium</option>
+<option>Nearest Completion Date</option>
+<option>District: Al-Malqa &amp; Hittin</option>
+<option>District: Diplomatic Quarter (DQ)</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-2 top-2.5 text-[16px] text-on-surface-variant">unfold_more</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Marketplace Main Work Area (Cards + Interactive Sidebar) -->
+<section class="w-full px-margin py-space-xl">
+<div class="max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-start">
+<!-- Primary Reassignment Inventory List (8 Cols) -->
+<div class="lg:col-span-8 flex flex-col gap-space-xl">
+<!-- Card 1: Featured Flagship Opportunity -->
+<article class="p-space-lg rounded-xl bg-surface-container-lowest shadow-md hover:shadow-xl transition-all duration-300 flex flex-col gap-space-md group">
+<!-- Card Header & Status Ribbon -->
+<div class="flex flex-wrap items-start justify-between gap-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm font-bold">AL-NOOR HEIGHTS • PHASE 2</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">Riyadh (Al-Malqa)</span>
+</div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface mt-1 group-hover:text-secondary transition-colors">Unit 304 - Modern Panoramic 3BR + Maid</h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant">175 m² gross internal floor area • Level 3 West Wing • Private Underground Double Bay</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Asking Reassignment</span>
+<div class="font-headline-lg text-headline-lg font-bold text-on-surface">$215,000</div>
+<span class="font-code-num text-code-num text-on-tertiary-container font-semibold">$1,228 / m²</span>
+</div>
+</div>
+<!-- Visual Twin & Live IoT Site Feed Snapshot Split -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md">
+<!-- Architectural Render Container -->
+<div class="md:col-span-8 relative h-60 rounded-lg overflow-hidden bg-surface-container">
+<div class="bg-cover bg-center w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Photorealistic 3D architectural interior rendering of high-end Riyadh modern living room with floor to ceiling triple glazed glass windows, warm travertine stone surfaces, bespoke brass fixtures, minimalist furniture, soft desert sunset glow, clean Scandinavian-Arabian aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA5ALq3YAMZDfEVw9ZCbFkVs1zsdH2bpFH8SfpJDC7dMbtBh5L86I3IN_sUspY3p7W34OjpdJvBPilV871XfMDBWNgnCZjQaEDbc32Oe4HCaH2qBvQ4ISAeuKquwlbOxyAm_3nwGGKQKd2RqHuNGlQBjjYYwEQege9KM6UAcMa7RYKTbLXnUp98hiUrv_yKZpp-IFVhQxH0SI1qRSU59jXmnIV-i4q5ASFOfMBjnZBBVzxONXrjk3leyg')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded bg-primary-container/85 backdrop-blur-md text-on-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px] text-tertiary-fixed">verified</span>
+<span>Verified Syndicate Unit #04</span>
+</div>
+<div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-on-primary">
+<div class="flex items-center gap-2">
+<span class="flex h-2 w-2 rounded-full bg-tertiary-fixed animate-ping"></span>
+<span class="font-label-sm text-label-sm font-semibold">Live Site Cam 04: Active Pouring</span>
+</div>
+<button class="px-2 py-1 rounded bg-surface-container-lowest/20 hover:bg-surface-container-lowest/40 backdrop-blur-sm text-on-primary font-label-sm text-label-sm transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">view_in_ar</span> View Digital Twin
+                </button>
+</div>
+</div>
+<!-- Site Progress & Concrete Verification Module -->
+<div class="md:col-span-4 p-space-md rounded-lg bg-surface-container-low flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Physical Progress</span>
+<span class="font-code-num text-code-num font-bold text-on-tertiary-container">64.2%</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-on-tertiary-container rounded-full" style="width: 64.2%"></div>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-2 leading-tight">Current milestone: Level 4 Post-Tension Slab Pouring approved by Khatib &amp; Alami.</div>
+</div>
+<div class="pt-space-sm space-y-1">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Escrow Held:</span>
+<span class="font-semibold text-on-surface font-code-num">$112,000 (Ringfenced)</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Remaining Calls:</span>
+<span class="font-semibold text-on-surface font-code-num">$103,000 (Over 3 Qtrs)</span>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Est. Handover:</span>
+<span class="font-semibold text-on-surface">March 2026</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Fiduciary Ledger Strip: Cost vs Resale vs Market Spread -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-space-sm p-space-md rounded-lg bg-surface-container">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Original Baseline Cost</span>
+<div class="font-headline-sm text-headline-sm font-semibold text-on-surface font-code-num">$172,200</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">$984 / m² zero developer markup</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Seller Realized Equity</span>
+<div class="font-headline-sm text-headline-sm font-bold text-on-tertiary-container font-code-num">+$42,800 (+24.8%)</div>
+<span class="font-label-sm text-label-sm text-on-tertiary-container font-semibold">Capped below 30% syndicate max</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase text-on-surface-variant">Retail Completion Appraisal</span>
+<div class="font-headline-sm text-headline-sm font-semibold text-secondary font-code-num">$258,000</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Buyer secures $43,000 upfront delta</span>
+</div>
+</div>
+<!-- Bottom Action Bar & Legal Disclosure -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex items-center gap-2">
+<img class="w-7 h-7 rounded-full object-cover" data-alt="Portrait photo of an executive Saudi female co-investor wearing professional modern attire with natural daylight in clean architectural office." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzR5MhFrBe2Pkm494gkscpBiyFthNINd29woX_WRZUEEB9b69xj3vUiJ2wGEnSiC_sSXUviBlxNH5uAtRRodHq666D_C4Iu91945GHYRo8WpR_EKpWy9zrGMmECo_aEYVA8ZfCXfpMKYNKvCeDDL01IjJ2NFIslKZO83INKn__lonJU5mtr7bm5GKLJ1GhIH3s1XvQ-hCLrQyvXJ8Ezm5jiUMp3zH8wQVIUqEoFOQoIK4Tm6wfTJOXtA"/>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Seller: Verified Co-Owner #108</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Syndicate founder member • Clean escrow standing</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md font-semibold hover:bg-surface-container transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">description</span>
+<span>Audit Deed File</span>
+</button>
+<button class="px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-primary-container shadow-sm transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">lock</span>
+<span>Submit Escrow Offer</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 2: Al-Yasmin Garden Homes (Near Delivery) -->
+<article class="p-space-lg rounded-xl bg-surface-container-lowest shadow-md hover:shadow-xl transition-all duration-300 flex flex-col gap-space-md group">
+<div class="flex flex-wrap items-start justify-between gap-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full bg-tertiary-fixed-dim text-on-tertiary-fixed font-label-sm text-label-sm font-bold">NEAR COMPLETION • 95%</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">Riyadh (Al-Yasmin)</span>
+</div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface mt-1 group-hover:text-secondary transition-colors">Unit 102 - 3BR Garden Duplex &amp; Private Patio</h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant">210 m² total footprint + 45 m² landscaped courtyard garden • Private Street Access</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Asking Reassignment</span>
+<div class="font-headline-lg text-headline-lg font-bold text-on-surface">$235,000</div>
+<span class="font-code-num text-code-num text-on-surface-variant">$1,119 / m²</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md">
+<div class="md:col-span-8 relative h-56 rounded-lg overflow-hidden bg-surface-container">
+<div class="bg-cover bg-center w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Contemporary modern garden duplex apartment terrace with outdoor lounge, date palms, natural sand-colored limestone cladding, ambient warm LED architectural uplighting, high resolution exterior view." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBL9kD524Wm5Y5HxYjfVJWnm_YU9VdJE7itktZKxAuo47L9OEoOx84OJsAv5QIAYBUQCeYvPXEbHJIfb8yglf4sfjhWNq-UPw4GhS-OzaA-7hsEc1z3rp2C3YOufjjjDcyv-aw415gJA1FUtcCAHxC2Yy60Ysdf5-Q9KH5KnfDEGtS6WQwOhAD420Q_Czllghus2SaAzwIzhznimKQ7tSygleqIKCHG6A-lRCrxbiN3yo17JxatDxj3HA')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"></div>
+<div class="absolute bottom-3 left-3 flex items-center gap-2 text-on-primary">
+<span class="material-symbols-outlined text-tertiary-fixed text-[18px]">verified</span>
+<span class="font-label-sm text-label-sm font-semibold">Immediate Handover in 60 Days</span>
+</div>
+</div>
+<div class="md:col-span-4 p-space-md rounded-lg bg-surface-container-low flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Inspection Status</span>
+<span class="font-code-num text-code-num font-bold text-on-tertiary-container">95.0%</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-on-tertiary-container rounded-full" style="width: 95%"></div>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-2">Final snagging in progress. Electrical &amp; water meters activated with SEC.</div>
+</div>
+<div class="p-2 rounded bg-surface-container-lowest text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Independent Valuation</span>
+<span class="font-headline-sm text-headline-sm font-bold text-secondary font-code-num">$295,000</span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container block font-semibold">Instant $60,000 Buyer Gain</span>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-on-tertiary-container">account_balance</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Pre-approved by Al-Rajhi &amp; SNB Mortgages</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md font-semibold hover:bg-surface-container transition-colors">Snagging Log</button>
+<button class="px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-primary-container shadow-sm transition-all">Direct Escrow Offer</button>
+</div>
+</div>
+</article>
+<!-- Card 3 & 4 Grid: DQ Urban Loft & Khobar Corniche -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- Card 3: DQ Urban Loft (Par Value Relocation Sale) -->
+<article class="p-space-md rounded-xl bg-surface-container-lowest shadow-md flex flex-col justify-between group">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-label-sm font-bold">DIPLOMATIC QUARTER</span>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm font-bold">0% MARKUP • PAR VALUE</span>
+</div>
+<div class="relative h-44 rounded-lg overflow-hidden bg-surface-container mt-2">
+<div class="bg-cover bg-center w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Architectural visualization of a sustainable brutalist and glass residential loft in Riyadh Diplomatic Quarter with lush desert landscaping, indigenous flora, raw concrete elements." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCbrm_z2TcCcNL0ER-DKa2QiAYu7Lx-1G8TDFlSHT12_972-Yxj6HiBKDPS89P1RgwJHzwGV5BAwe7EjNqv_YjqT5IVBwfG1Sg2Ivi3avwQN8oHUYOMEOfQwXa65NnMeiumY3T1J2d59e8wUyqrm8jB5RSPzdEUBUQV_rs8wBKo9g6MUAZV49jqmlhdGP1AX0c7QXXIpnXaEAw_Ql0x1ReUsSQSDKiEOqE9EwrtwXAlANjIm9Uf8b5WfQ')"></div>
+<div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-primary-container/90 text-on-primary font-label-sm text-label-sm">Owner Relocation Exit</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface mt-2">Unit 501 - DQ Terrace Loft</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">140 m² • 2BR • 41% Construction (Basement Substructure Complete). Original Syndicate Co-Op Price.</p>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-transparent flex flex-col gap-2">
+<div class="flex items-baseline justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Asking Reassignment</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface font-code-num">$158,000</span>
+</div>
+<div class="flex items-center justify-between text-label-sm font-label-sm text-on-tertiary-container bg-surface-container-low p-2 rounded">
+<span>Accrued Profit Taken by Seller:</span>
+<span class="font-bold font-code-num">$0 (Zero Premium)</span>
+</div>
+<button class="w-full mt-1 py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-primary-container shadow-sm transition-all">Claim Par-Value Assignment</button>
+</div>
+</article>
+<!-- Card 4: Corniche Breeze Residences (Khobar) -->
+<article class="p-space-md rounded-xl bg-surface-container-lowest shadow-md flex flex-col justify-between group">
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed-variant font-label-sm text-label-sm font-bold">KHOBAR CORNICHE</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">SEA VIEW</span>
+</div>
+<div class="relative h-44 rounded-lg overflow-hidden bg-surface-container mt-2">
+<div class="bg-cover bg-center w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="Luxury coastal high-rise apartment balcony overlooking the sparkling turquoise Arabian Gulf in Al Khobar, modern coastal architecture, bright sunny morning light, ultra realistic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBwdocQSd1_WkhdDdb3UCbc-11xPlNVgDarp7Lm5umzDN8Hrtm1E__P83sOCg6osiCaVz1Wk3X02Fm2E1v49mXdGS27ZiWH2WTonmwaf4LUNuss14iL4bKNwSKKoyORHBF7ZZ1zHP_6ktGJIj1ihxew4IMkLReZsgBhBW01-xTvYEsL5Uk1VA3QdSCCF4trTEyo5adGfTgLf2ASzRxnjruoHhnKD1HGjsp43GVe-DsPoDgj_LKhJw166w')"></div>
+<div class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-surface-container-lowest/90 backdrop-blur-md text-on-surface font-label-sm text-label-sm font-bold">Level 11 of 14</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface mt-2">Unit 203 - Full Frontal Gulf View</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">155 m² • 3BR • 78% Complete (Facade Glazing Installed). Syndicate equity traded with turnkey parking.</p>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-transparent flex flex-col gap-2">
+<div class="flex items-baseline justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Asking Reassignment</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface font-code-num">$198,500</span>
+</div>
+<div class="flex items-center justify-between text-label-sm font-label-sm text-secondary bg-surface-container-low p-2 rounded">
+<span>Value Delta vs Retail:</span>
+<span class="font-bold font-code-num">-$38,000 Below Market</span>
+</div>
+<button class="w-full mt-1 py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-primary-container shadow-sm transition-all">Submit Escrow Offer</button>
+</div>
+</article>
+</div>
+</div>
+<!-- Right Column: Interactive Seller Calculator & Escrow Guarantee Sidebar (4 Cols) -->
+<aside class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Interactive Liquidity Calculator Widget -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-md flex flex-col gap-space-md" id="seller-calculator">
+<div class="flex items-center gap-space-xs">
+<span class="p-2 rounded-lg bg-surface-container text-secondary material-symbols-outlined text-[20px]">calculate</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Seller Exit Engine</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Simulate your Syndicate Assignment</span>
+</div>
+</div>
+<!-- Unit Selector Input -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label-sm text-label-sm uppercase font-semibold text-on-surface-variant">Select Your Owned Unit</label>
+<div class="relative">
+<select class="w-full p-2.5 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md font-medium focus:outline-none appearance-none cursor-pointer" id="calc-unit">
+<option data-cost="185000" data-paid="125000" data-pct="72" value="402">Unit 402 - Al-Noor Heights (Sarah Al-Mansoor)</option>
+<option data-cost="210000" data-paid="180000" data-pct="88" value="208">Unit 208 - Al-Yasmin Court (Holding Co.)</option>
+</select>
+<span class="material-symbols-outlined pointer-events-none absolute right-3 top-3 text-[18px] text-on-surface-variant">unfold_more</span>
+</div>
+</div>
+<!-- Price Markup Slider -->
+<div class="flex flex-col gap-2 pt-space-xs">
+<div class="flex justify-between items-center">
+<label class="font-label-sm text-label-sm uppercase font-semibold text-on-surface-variant">Syndicate Markup %</label>
+<span class="font-code-num text-code-num font-bold text-on-tertiary-container" id="markup-val">+22% ($40,700)</span>
+</div>
+<input class="w-full accent-primary cursor-pointer" id="markup-slider" max="30" min="0" type="range" value="22"/>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>0% (Par)</span>
+<span class="text-error font-semibold">Max Cap 30%</span>
+</div>
+</div>
+<!-- Live Breakdown Result Container -->
+<div class="p-space-md rounded-lg bg-surface-container-low flex flex-col gap-2">
+<div class="flex justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Your Paid Escrow Capital:</span>
+<span class="font-code-num font-semibold text-on-surface" id="calc-paid">$125,000</span>
+</div>
+<div class="flex justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Recommended List Price:</span>
+<span class="font-code-num font-bold text-on-surface" id="calc-asking">$225,700</span>
+</div>
+<div class="flex justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Estimated Cash to Seller:</span>
+<span class="font-code-num font-bold text-on-tertiary-container text-[16px]" id="calc-cash">$165,700</span>
+</div>
+<div class="flex justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Platform Escrow Fee (0.75%):</span>
+<span class="font-code-num text-on-surface-variant" id="calc-fee">$1,692</span>
+</div>
+</div>
+<!-- Pre-approved Match Indicator -->
+<div class="flex items-center gap-2 p-2.5 rounded-lg bg-secondary-fixed/50 text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="font-label-sm text-label-sm font-semibold">142 pre-approved waitlist buyers matched for Al-Noor Heights</span>
+</div>
+<!-- Action -->
+<button class="w-full py-3 rounded-lg bg-primary text-on-primary font-label-lg text-label-lg font-semibold shadow-md hover:bg-primary-container transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">publish</span>
+<span>Initiate Secondary Listing</span>
+</button>
+</div>
+<!-- Fiduciary Rulebook & SAMA Protections Card -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-md flex flex-col gap-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[24px]">verified</span>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Institutional Safeguards</h3>
+</div>
+<div class="space-y-space-md">
+<div class="flex items-start gap-space-sm">
+<div class="p-2 rounded bg-surface-container-low text-secondary shrink-0">
+<span class="material-symbols-outlined text-[18px]">policy</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Decennial Warranty In Tact</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">All 10-year structural building insurance coverage automatically shifts seamlessly to the assignee with no policy re-underwriting fees.</span>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<div class="p-2 rounded bg-surface-container-low text-on-tertiary-container shrink-0">
+<span class="material-symbols-outlined text-[18px]">shield</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Anti-Flipping 30% Ceiling</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Bylaws prevent predatory scalping. CoBuild secondary trades enforce an algorithmic ceiling tied strictly to regional physical cost inflation.</span>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<div class="p-2 rounded bg-surface-container-low text-primary shrink-0">
+<span class="material-symbols-outlined text-[18px]">approval</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Digital Title Deed Novation</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Direct integration with Saudi Ministry of Justice (Najiz) and Wafi registers the buyer's equity ownership in a single irrevocable transaction.</span>
+</div>
+</div>
+</div>
+<div class="p-space-sm rounded bg-surface-container-low text-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Need legal counsel? </span>
+<a class="font-label-sm text-label-sm font-bold text-secondary hover:underline" href="#">Schedule 1-on-1 Escrow Notary Review →</a>
+</div>
+</div>
+<!-- Syndicate Secondary Market Activity Stream -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-md flex flex-col gap-space-sm">
+<span class="font-label-sm text-label-sm uppercase font-bold text-on-surface tracking-wider">Recent Executed Assignments</span>
+<div class="space-y-2 pt-1">
+<div class="p-2 rounded bg-surface-container-low flex items-center justify-between text-body-sm">
+<div class="flex flex-col">
+<span class="font-label-sm font-semibold text-on-surface">Unit 201 • Al-Malqa</span>
+<span class="text-[11px] text-on-surface-variant">Settled 3h ago via Bank AlJazira</span>
+</div>
+<span class="font-code-num font-bold text-on-tertiary-container">$205,000</span>
+</div>
+<div class="p-2 rounded bg-surface-container-low flex items-center justify-between text-body-sm">
+<div class="flex flex-col">
+<span class="font-label-sm font-semibold text-on-surface">Penthouse B • Hittin</span>
+<span class="text-[11px] text-on-surface-variant">Settled yesterday via SABB</span>
+</div>
+<span class="font-code-num font-bold text-on-tertiary-container">$340,000</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</section>
+<!-- Interactive JavaScript Controller -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Calculator Interactive Logic
+      const unitSelect = document.getElementById('calc-unit');
+      const slider = document.getElementById('markup-slider');
+      const markupVal = document.getElementById('markup-val');
+      const calcAsking = document.getElementById('calc-asking');
+      const calcPaid = document.getElementById('calc-paid');
+      const calcCash = document.getElementById('calc-cash');
+      const calcFee = document.getElementById('calc-fee');
+
+      function recalculate() {
+        if (!unitSelect || !slider) return;
+        const opt = unitSelect.options[unitSelect.selectedIndex];
+        const cost = parseFloat(opt.dataset.cost) || 185000;
+        const paid = parseFloat(opt.dataset.paid) || 125000;
+        const markupPct = parseInt(slider.value, 10);
+        
+        const markupAmount = cost * (markupPct / 100);
+        const asking = cost + markupAmount;
+        const cashToSeller = paid + markupAmount;
+        const fee = asking * 0.0075;
+
+        markupVal.textContent = `+${markupPct}% ($${Math.round(markupAmount).toLocaleString()})`;
+        calcAsking.textContent = `$${Math.round(asking).toLocaleString()}`;
+        calcPaid.textContent = `$${Math.round(paid).toLocaleString()}`;
+        calcCash.textContent = `$${Math.round(cashToSeller).toLocaleString()}`;
+        calcFee.textContent = `$${Math.round(fee).toLocaleString()}`;
+      }
+
+      if (slider && unitSelect) {
+        slider.addEventListener('input', recalculate);
+        unitSelect.addEventListener('change', recalculate);
+        recalculate();
+      }
+
+      // Filter Pill UI active states
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => {
+            b.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+            b.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+          });
+          btn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+          btn.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+        });
+      });
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 mt-space-xl"><div class="w-full px-margin py-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-xl pb-space-lg border-b border-outline-variant/20"><div class="space-y-space-sm lg:col-span-2"><div class="flex items-center gap-space-xs"><img alt="CoBuild Brand Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1WlkSdcUo2owSob12eh3iWtWBAL3olBse8xTQh-Z3Zr-9T6zUJ3IyXdYt3tNQ4QGzSKcb4gyIe_LKbX_ywFxt4cOhaVtFR8nP7TfbiO4a7IXinWWGq2CrJk3tNeyYDCBfj0U4g29T8VJ-TBfQn6dVFMowSVsFOblPuB3lAwvpwL3lDSqNaqSTADGR9Glsj5XPnuFuqBt_utNwPkIJX6ELsll30qUZY_YMRIrGg-72heG5c6wil259qLPzrX"/><span class="font-headline-sm text-headline-sm font-bold text-on-surface">CoBuild</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed max-w-md">Architectural collective real estate platform empowering buyers to directly fund, supervise, and co-own sustainable residential buildings through fiduciary transparency and verifiable construction logs.</p><div class="pt-space-xs flex flex-wrap items-center gap-2"><span class="inline-flex items-center gap-1 text-label-sm font-label-sm text-on-surface-variant font-medium bg-surface-container-low px-2 py-1 rounded"><span class="material-symbols-outlined text-[14px]">translate</span> Dual LTR/RTL Arabic &amp; English Framework</span><span class="inline-flex items-center gap-1 text-label-sm font-label-sm text-on-tertiary-container font-semibold bg-surface-container-low px-2 py-1 rounded"><span class="material-symbols-outlined text-[14px]">verified_user</span> 100% Escrow Backed</span></div></div><div><h4 class="font-label-lg text-label-lg font-semibold text-on-surface mb-space-md">Buyer &amp; Community</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" data-path="project-marketplace" href="#">Project Marketplace</a></li><li><a class="hover:text-on-surface transition-colors" data-path="buyer-dashboard" href="#">My Apartment Portal</a></li><li><a class="hover:text-on-surface transition-colors" data-path="community-hub-governance" href="#">Community Voting Hub</a></li><li><a class="hover:text-on-surface transition-colors" data-path="secondary-market-syndicate-resale" href="#">Secondary Resale Market</a></li><li><a class="hover:text-on-surface transition-colors" data-path="buyer-onboarding-kyc-verification" href="#">Buyer KYC &amp; Onboarding</a></li><li><a class="hover:text-on-surface transition-colors" data-path="unit-customization-finishes-studio" href="#">Finishes &amp; Customization</a></li></ul></div><div><h4 class="font-label-lg text-label-lg font-semibold text-on-surface mb-space-md">Site, Legal &amp; Partners</h4><ul class="space-y-space-sm font-body-sm text-body-sm text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" data-path="construction-live-monitoring" href="#">Live Construction IoT Feed</a></li><li><a class="hover:text-on-surface transition-colors" data-path="contractor-engineering-inspection-journal" href="#">Contractor Inspection Logs</a></li><li><a class="hover:text-on-surface transition-colors" data-path="landowner-submission-portal" href="#">Landowner Submission Portal</a></li><li><a class="hover:text-on-surface transition-colors" data-path="admin-project-command" href="#">Admin Command Center</a></li><li><a class="hover:text-on-surface transition-colors" data-path="architectural-documents-legal-vault" href="#">Architectural &amp; Legal Vault</a></li><li><a class="hover:text-on-surface transition-colors" data-path="escrow-statutory-payments" href="#">Milestone Escrow Drawers</a></li></ul></div><div><h4 class="font-label-lg text-label-lg font-semibold text-on-surface mb-space-md">Fiduciary Guarantee</h4><div class="space-y-space-sm"><div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface bg-surface-container-low p-2 rounded-lg"><span class="material-symbols-outlined text-secondary text-[18px]">verified</span><span>Central Bank Escrow Compliant</span></div><div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface bg-surface-container-low p-2 rounded-lg"><span class="material-symbols-outlined text-secondary text-[18px]">engineering</span><span>ISO 9001 Construction Auditing</span></div><div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface bg-surface-container-low p-2 rounded-lg"><span class="material-symbols-outlined text-on-tertiary-container text-[18px]">token</span><span>Smart Contracts Verified by Quantstamp</span></div></div></div></div><div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md text-label-sm font-label-sm text-on-surface-variant"><div>© 2025 CoBuild Technologies Ltd. All collective property deeds are held under regulated statutory escrows.</div><div class="flex items-center gap-space-lg"><a class="hover:text-on-surface transition-colors" data-path="buyer-onboarding-kyc-verification" href="#">Identity Verification</a><a class="hover:text-on-surface transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a><a class="hover:text-on-surface transition-colors" data-path="risk-disclosure" href="#">Risk Disclosure</a></div></div></div></footer></body></html>

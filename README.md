@@ -112,6 +112,7 @@ python backend/app.py
 1. **`index.html`** — Arabic RTL Construction Transparency Dashboard (9 interactive cards, 3D BIM tower, IoT live telemetry, AI vision bounding overlay, audio synth, and bilingual switcher).
 2. **`marketplace.html`** — CoBuild Project Marketplace (3-column co-investment grid, glassmorphism filters, search, and investment pledge modal).
 3. **`project-view.html`** — CoBuild Project View (Architectural hero, interactive unit floorplan map, 73% circular funding gauge, construction timeline, metrics dashboard, and embedded location map).
+4. **`stitch-screens/index.html`** — Google Stitch Interactive Design Gallery (Live showcase of the latest 10+ screens generated on Stitch, with standalone HTML source code, high-res PNG screenshots, bilingual RTL/LTR filters, and device preview modals).
 
 ---
 
