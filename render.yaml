@@ -1,0 +1,22 @@
+# ==============================================================================
+# Render.com Blueprint (Infrastructure-as-Code) for CoBuild PropTech Platform
+# Docs: https://render.com/docs/blueprint-spec
+# ==============================================================================
+
+services:
+  - type: web
+    name: cobuild-proptech
+    env: python
+    region: frankfurt # or oregon / ohio / singapore
+    plan: free
+    buildCommand: "python backend/database.py"
+    startCommand: "python backend/app.py"
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: 10000
